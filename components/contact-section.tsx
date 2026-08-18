@@ -14,7 +14,6 @@ import {
   ArrowRight,
   ArrowUpRight,
   FileDown,
-  Instagram, 
   Clock, 
   AlertCircle, 
   MessageSquare 

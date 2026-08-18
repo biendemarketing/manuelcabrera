@@ -8,7 +8,6 @@ import {
   Mail, 
   Phone, 
   MapPin, 
-  Instagram, 
   Briefcase, 
   GraduationCap, 
   Award, 
@@ -113,10 +112,6 @@ export function CVModal({ isOpen, onClose }: CVModalProps) {
                 <p className="flex items-center gap-2">
                   <Mail className="w-3.5 h-3.5 text-zinc-500" />
                   <span>{PERSONAL_INFO.email}</span>
-                </p>
-                <p className="flex items-center gap-2">
-                  <Instagram className="w-3.5 h-3.5 text-zinc-500" />
-                  <span>@{PERSONAL_INFO.instagramPrimary} • @{PERSONAL_INFO.instagramSecondary}</span>
                 </p>
                 <p className="flex items-center gap-2">
                   <MapPin className="w-3.5 h-3.5 text-zinc-500" />

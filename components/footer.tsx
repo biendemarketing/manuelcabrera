@@ -4,7 +4,7 @@ import React from 'react';
 import Link from 'next/link';
 import { PERSONAL_INFO } from '@/data/portfolio-data';
 import { ManuelCabreraLogo } from '@/components/logo';
-import { ArrowUp, Instagram, Mail, Phone } from 'lucide-react';
+import { ArrowUp, Mail, Phone } from 'lucide-react';
 import { BlurFadeDiv } from '@/components/blur-fade-section';
 
 export function Footer() {
@@ -61,15 +61,6 @@ export function Footer() {
           {/* Social Links & Back to top */}
           <div className="flex items-center gap-3">
             <div className="flex items-center gap-3 text-xs font-semibold">
-              <a
-                href={`https://instagram.com/${PERSONAL_INFO.instagramPrimary}`}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="p-2.5 rounded-full bg-white dark:bg-zinc-900 text-zinc-700 dark:text-zinc-300 hover:bg-zinc-200 dark:hover:bg-zinc-800 hover:text-zinc-950 dark:hover:text-white transition-all shadow-xs"
-                title="Instagram"
-              >
-                <Instagram className="w-4 h-4" />
-              </a>
               <a
                 href={PERSONAL_INFO.whatsappUrl}
                 target="_blank"

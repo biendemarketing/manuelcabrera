@@ -103,11 +103,8 @@ Abre [http://localhost:3000](http://localhost:3000) en tu navegador para ver la 
 ## 📬 Contacto Profesional
 
 * **Nombre:** Manuel Cabrera
-* **Email Principal:** [manuelcabrerasinfo@gmail.com](mailto:manuelcabrerasinfo@gmail.com)
-* **Email Secundario:** [sedphotord@gmail.com](mailto:sedphotord@gmail.com)
+* **Email:** [manuelcabrerasinfo@gmail.com](mailto:manuelcabrerasinfo@gmail.com)
 * **WhatsApp / Teléfono:** [+1 (849) 635-2835](https://wa.me/18496352835)
-* **Instagram Personal:** [@manuelgraphics](https://instagram.com/manuelgraphics)
-* **Instagram Fotografía:** [@sedphoto_](https://instagram.com/sedphoto_)
 * **Ubicación:** Verón, Punta Cana, La Altagracia, República Dominicana
 * **Web Oficial:** [https://manuelcabrera.pro](https://manuelcabrera.pro)
 
