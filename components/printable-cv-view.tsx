@@ -436,7 +436,7 @@ export function PrintableCVView() {
                   style={{ breakInside: 'avoid', pageBreakInside: 'avoid' }}
                 >
                   <p className="font-bold text-zinc-900 dark:text-white text-[11px] truncate">{ref.name}</p>
-                  <p className="text-indigo-600 dark:text-indigo-400 text-[10px] truncate">{ref.position}</p>
+                  <p className="text-indigo-600 dark:text-indigo-400 text-[10px] truncate">{ref.role}</p>
                   <p className="text-zinc-500 dark:text-zinc-400 text-[10px] truncate font-medium">{ref.company}</p>
                   <p className="text-zinc-600 dark:text-zinc-300 text-[10px] font-mono mt-1">{ref.phone}</p>
                 </div>
