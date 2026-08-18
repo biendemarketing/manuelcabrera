@@ -14,7 +14,9 @@ import {
   GraduationCap, 
   Award, 
   Wrench,
-  ExternalLink
+  ExternalLink,
+  User,
+  CheckCircle2
 } from 'lucide-react';
 import { 
   PERSONAL_INFO, 
@@ -59,7 +61,7 @@ export function CVModal({ isOpen, onClose }: CVModalProps) {
       onClick={onClose}
     >
       <div 
-        className="relative w-full max-w-4xl max-h-[92vh] bg-white dark:bg-zinc-900 rounded-3xl shadow-2xl overflow-y-auto my-auto flex flex-col animate-in zoom-in-95 duration-200"
+        className="relative w-full max-w-5xl max-h-[92vh] bg-white dark:bg-zinc-900 rounded-3xl shadow-2xl overflow-y-auto my-auto flex flex-col animate-in zoom-in-95 duration-200"
         onClick={(e) => e.stopPropagation()}
       >
         {/* Modal Top Control Bar */}
@@ -79,10 +81,10 @@ export function CVModal({ isOpen, onClose }: CVModalProps) {
               href="/cv"
               target="_blank"
               className="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-full bg-indigo-600 hover:bg-indigo-500 text-white text-xs font-bold transition-all shadow-sm"
-              title="Abrir vista de impresión y exportación dedicada"
+              title="Abrir vista de impresión dedicada"
             >
               <ExternalLink className="w-3.5 h-3.5" />
-              <span className="hidden sm:inline">Vista Imprimible 8.5x11</span>
+              <span className="hidden sm:inline">Página Imprimible</span>
             </Link>
             <button
               onClick={handlePrint}
@@ -101,48 +103,48 @@ export function CVModal({ isOpen, onClose }: CVModalProps) {
           </div>
         </div>
 
-        {/* Printable Resume Content */}
-        <div className="p-6 sm:p-10 space-y-8 text-zinc-800 dark:text-zinc-200 print:text-black print:bg-white">
+        {/* Printable Resume Content (Alto Contraste y Sin Bordes Duros) */}
+        <div className="p-6 sm:p-10 space-y-8 text-zinc-950 dark:text-zinc-100 print:text-black print:bg-white">
           
-          {/* 1. PORTADA A TODO EL ANCHO CON INFORMACIÓN A LA IZQUIERDA */}
-          <div className="relative w-full rounded-2xl sm:rounded-3xl overflow-hidden mb-6 shadow-xl border border-zinc-200/80 dark:border-zinc-800 min-h-[220px] sm:min-h-[250px] flex flex-col justify-end p-5 sm:p-7">
+          {/* 1. PORTADA A TODO EL ANCHO CON ENFOQUE SUPERIOR COMPLETO */}
+          <div className="relative w-full rounded-2xl sm:rounded-3xl overflow-hidden mb-6 shadow-xl min-h-[260px] sm:min-h-[300px] flex flex-col justify-end p-5 sm:p-8">
             {PERSONAL_INFO.heroBgPhoto && (
               <Image
                 src={PERSONAL_INFO.heroBgPhoto}
                 alt={PERSONAL_INFO.name}
                 fill
                 priority
-                sizes="(max-width: 1000px) 100vw, 900px"
-                className="object-cover object-center select-none"
+                sizes="(max-width: 1000px) 100vw, 1000px"
+                className="object-cover object-top select-none"
               />
             )}
 
-            <div className="absolute inset-0 bg-gradient-to-r from-black/95 via-black/75 to-black/30 pointer-events-none" />
+            <div className="absolute inset-0 bg-gradient-to-r from-black/95 via-black/80 to-black/30 pointer-events-none" />
             <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-transparent to-black/20 pointer-events-none" />
 
-            <div className="relative z-10 w-full max-w-xl space-y-2 text-left">
+            <div className="relative z-10 w-full max-w-2xl space-y-2.5 text-left">
               <div className="flex items-center gap-2">
-                <div className="px-2 py-0.5 rounded-md bg-white/15 backdrop-blur-md border border-white/20 inline-flex items-center gap-1.5 shadow-sm">
+                <div className="px-2.5 py-1 rounded-md bg-white/20 backdrop-blur-md inline-flex items-center gap-1.5 shadow-sm">
                   <ManuelCabreraLogo className="h-3 w-auto text-white" />
                   <span className="text-[9px] font-black uppercase tracking-widest text-white">
                     Perfil Profesional
                   </span>
                 </div>
-                <span className="px-2 py-0.5 rounded-md bg-emerald-500/20 backdrop-blur-md border border-emerald-400/30 text-[9px] font-bold text-emerald-300 uppercase">
+                <span className="px-2.5 py-1 rounded-md bg-emerald-500/30 backdrop-blur-md text-[9px] font-bold text-emerald-300 uppercase">
                   {PERSONAL_INFO.availability}
                 </span>
               </div>
 
-              <h1 className="text-2xl sm:text-3xl font-black uppercase tracking-tight text-white drop-shadow-md">
+              <h1 className="text-2xl sm:text-3xl md:text-4xl font-black uppercase tracking-tight text-white drop-shadow-md">
                 {PERSONAL_INFO.name}
               </h1>
 
-              <p className="text-xs sm:text-sm font-bold text-indigo-300 drop-shadow-sm">
+              <p className="text-xs sm:text-sm md:text-base font-bold text-indigo-300 drop-shadow-sm">
                 Director Creativo • Marketing Digital, UI/UX & Desarrollo Web
               </p>
 
-              <div className="flex flex-wrap items-center gap-2 pt-0.5 text-[10px] font-semibold text-zinc-200">
-                <span className="px-2 py-0.5 rounded-md bg-white/15 backdrop-blur-md border border-white/20 font-mono font-bold text-white">
+              <div className="flex flex-wrap items-center gap-2 pt-0.5 text-xs font-semibold text-zinc-200">
+                <span className="px-2.5 py-0.5 rounded-md bg-white/20 backdrop-blur-md font-mono font-bold text-white">
                   {PERSONAL_INFO.experienceYears} de Experiencia
                 </span>
                 <span>•</span>
@@ -151,139 +153,140 @@ export function CVModal({ isOpen, onClose }: CVModalProps) {
                 <span>República Dominicana</span>
               </div>
 
-              <div className="flex flex-wrap items-center gap-x-3 gap-y-1.5 pt-1 text-[11px] text-zinc-100 font-medium">
-                <div className="flex items-center gap-1 font-bold bg-black/40 backdrop-blur-md px-2 py-0.5 rounded-md border border-white/10">
-                  <Phone className="w-3 h-3 text-indigo-400" />
-                  <a href={`tel:${PERSONAL_INFO.phone}`} className="hover:underline text-white">
+              <div className="flex flex-wrap items-center gap-x-3 gap-y-1.5 pt-1 text-xs text-white font-semibold">
+                <div className="flex items-center gap-1 bg-black/50 backdrop-blur-md px-2.5 py-1 rounded-md">
+                  <Phone className="w-3.5 h-3.5 text-indigo-400" />
+                  <a href={`tel:${PERSONAL_INFO.phone}`} className="hover:underline text-white font-bold">
                     {PERSONAL_INFO.phoneFormatted}
                   </a>
                 </div>
 
-                <div className="flex items-center gap-1 font-semibold bg-black/40 backdrop-blur-md px-2 py-0.5 rounded-md border border-white/10">
-                  <Mail className="w-3 h-3 text-indigo-400" />
-                  <a href={`mailto:${PERSONAL_INFO.email}`} className="hover:underline text-white">
+                <div className="flex items-center gap-1 bg-black/50 backdrop-blur-md px-2.5 py-1 rounded-md">
+                  <Mail className="w-3.5 h-3.5 text-indigo-400" />
+                  <a href={`mailto:${PERSONAL_INFO.email}`} className="hover:underline text-white font-semibold">
                     {PERSONAL_INFO.email}
                   </a>
                 </div>
 
-                <div className="flex items-center gap-1 bg-black/40 backdrop-blur-md px-2 py-0.5 rounded-md border border-white/10 text-[10px]">
-                  <MapPin className="w-3 h-3 text-indigo-400" />
+                <div className="flex items-center gap-1 bg-black/50 backdrop-blur-md px-2.5 py-1 rounded-md text-xs">
+                  <MapPin className="w-3.5 h-3.5 text-indigo-400" />
                   <span className="text-zinc-200">{PERSONAL_INFO.location}</span>
                 </div>
               </div>
             </div>
           </div>
 
-            {/* Profile Summary */}
-            <div className="mt-4 pt-3 border-b border-zinc-200 dark:border-zinc-800 pb-5">
-              <h2 className="text-xs font-bold uppercase tracking-wider text-zinc-900 dark:text-white mb-1">
-                Sobre Mí & Perfil Profesional
-              </h2>
-              <p className="text-xs sm:text-sm text-zinc-600 dark:text-zinc-300 leading-relaxed">
-                {PERSONAL_INFO.aboutSummary}
-              </p>
-            </div>
+          {/* Profile Summary */}
+          <div className="mt-4 pt-3 pb-4">
+            <h2 className="text-xs font-black uppercase tracking-wider text-indigo-600 dark:text-indigo-400 mb-1.5 flex items-center gap-1.5">
+              <User className="w-3.5 h-3.5" />
+              <span>Sobre Mí & Perfil Profesional</span>
+            </h2>
+            <p className="text-sm text-zinc-950 dark:text-zinc-100 font-medium leading-relaxed">
+              {PERSONAL_INFO.aboutSummary}
+            </p>
+          </div>
 
           {/* Work Experience */}
           <div className="space-y-4">
-            <h2 className="text-sm font-bold uppercase tracking-wider text-zinc-900 dark:text-white flex items-center gap-2 pb-2">
-              <Briefcase className="w-4 h-4 text-zinc-500" />
+            <h2 className="text-xs font-black uppercase tracking-wider text-indigo-600 dark:text-indigo-400 flex items-center gap-1.5 pb-1">
+              <Briefcase className="w-3.5 h-3.5" />
               <span>Experiencia Laboral</span>
             </h2>
 
-            <div className="space-y-5">
-              {WORK_EXPERIENCES.map((job) => (
-                <div key={job.id} className="space-y-1">
-                  <div className="flex flex-col sm:flex-row sm:items-center justify-between">
-                    <h3 className="text-sm font-bold text-zinc-900 dark:text-white">
-                      {job.company} — <span className="font-semibold text-zinc-700 dark:text-zinc-300">{job.role}</span>
-                    </h3>
-                    <span className="text-xs font-mono font-medium text-zinc-500 dark:text-zinc-400">{job.period}</span>
+            <div className="space-y-4">
+              {WORK_EXPERIENCES.map((exp) => (
+                <div key={exp.id} className="p-4 sm:p-5 rounded-2xl bg-zinc-100/80 dark:bg-zinc-800/40 text-zinc-950 dark:text-zinc-100">
+                  <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-1 mb-2">
+                    <div>
+                      <h3 className="text-base font-black text-zinc-950 dark:text-white">
+                        {exp.role}
+                      </h3>
+                      <p className="text-xs font-bold text-indigo-700 dark:text-indigo-400">
+                        {exp.company} • <span className="text-zinc-700 dark:text-zinc-300 font-semibold">{exp.location}</span>
+                      </p>
+                    </div>
+                    <span className="text-xs font-black font-mono px-3 py-1 rounded-full bg-zinc-200 dark:bg-zinc-700 text-zinc-950 dark:text-white w-fit shadow-xs">
+                      {exp.period}
+                    </span>
                   </div>
-                  <p className="text-xs text-zinc-500 dark:text-zinc-400 font-medium">{job.location} • <span className="italic">{job.statusLabel}</span></p>
-                  <ul className="space-y-1 text-xs text-zinc-600 dark:text-zinc-300 pt-1">
-                    {job.responsibilities.map((r, i) => (
-                      <li key={i} className="flex items-start gap-2">
-                        <span className="w-1.5 h-1.5 rounded-full bg-zinc-400 dark:bg-zinc-500 mt-1.5 shrink-0" />
-                        <span>{r}</span>
+
+                  <ul className="mt-2.5 space-y-1 text-xs text-zinc-900 dark:text-zinc-200 list-disc list-inside font-medium">
+                    {exp.responsibilities.map((resp, idx) => (
+                      <li key={idx} className="leading-relaxed">
+                        <span>{resp}</span>
                       </li>
                     ))}
                   </ul>
+
+                  <div className="flex flex-wrap gap-1 mt-3">
+                    {exp.skills.map((skill, sIdx) => (
+                      <span key={sIdx} className="text-[10px] font-bold px-2.5 py-0.5 rounded-lg bg-zinc-200/90 dark:bg-zinc-700/80 text-zinc-900 dark:text-zinc-100 shadow-xs">
+                        {skill}
+                      </span>
+                    ))}
+                  </div>
                 </div>
               ))}
             </div>
           </div>
 
-          {/* Education & Courses in 2 Columns */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 pt-6">
-            
-            {/* Education */}
-            <div className="space-y-4">
-              <h2 className="text-sm font-bold uppercase tracking-wider text-zinc-900 dark:text-white flex items-center gap-2 pb-2">
-                <GraduationCap className="w-4 h-4 text-zinc-500" />
-                <span>Educación</span>
-              </h2>
-              <div className="space-y-3">
-                {EDUCATION_ITEMS.map((edu) => (
-                  <div key={edu.id} className="space-y-0.5">
-                    <div className="flex items-center justify-between text-xs">
-                      <span className="font-bold text-zinc-900 dark:text-white">{edu.institution}</span>
-                      <span className="font-mono text-zinc-500 dark:text-zinc-400">{edu.period}</span>
-                    </div>
-                    <p className="text-xs text-zinc-700 dark:text-zinc-300 font-medium">{edu.degree}</p>
-                    <p className="text-[11px] text-zinc-500 dark:text-zinc-400">{edu.statusLabel}</p>
-                  </div>
-                ))}
+          {/* Software Tools */}
+          <div className="space-y-3">
+            <h2 className="text-xs font-black uppercase tracking-wider text-indigo-600 dark:text-indigo-400 flex items-center gap-1.5 pb-1">
+              <Wrench className="w-3.5 h-3.5" />
+              <span>Software & Habilidades Técnicas</span>
+            </h2>
+            <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 text-xs">
+              <div className="p-3 rounded-2xl bg-zinc-100/80 dark:bg-zinc-800/40">
+                <p className="font-black text-zinc-950 dark:text-white text-xs mb-1">Diseño & UI/UX</p>
+                <p className="text-[10px] text-zinc-800 dark:text-zinc-300 font-medium">Photoshop, Illustrator, InDesign, Figma, Adobe XD, Acrobat Pro.</p>
+              </div>
+              <div className="p-3 rounded-2xl bg-zinc-100/80 dark:bg-zinc-800/40">
+                <p className="font-black text-zinc-950 dark:text-white text-xs mb-1">Marketing & Ads</p>
+                <p className="text-[10px] text-zinc-800 dark:text-zinc-300 font-medium">Meta Ads Manager, Google Ads, GA4, TikTok Ads, SEO/SEM.</p>
+              </div>
+              <div className="p-3 rounded-2xl bg-zinc-100/80 dark:bg-zinc-800/40">
+                <p className="font-black text-zinc-950 dark:text-white text-xs mb-1">Software & Web</p>
+                <p className="text-[10px] text-zinc-800 dark:text-zinc-300 font-medium">TypeScript, Next.js, React, Node.js, PostgreSQL, Tailwind.</p>
+              </div>
+              <div className="p-3 rounded-2xl bg-zinc-100/80 dark:bg-zinc-800/40">
+                <p className="font-black text-zinc-950 dark:text-white text-xs mb-1">3D, Video & IA</p>
+                <p className="text-[10px] text-zinc-800 dark:text-zinc-300 font-medium">Blender 3D, Cinema 4D, Gemini Pro, ChatGPT, Midjourney.</p>
               </div>
             </div>
-
-            {/* Technical Courses */}
-            <div className="space-y-4">
-              <h2 className="text-sm font-bold uppercase tracking-wider text-zinc-900 dark:text-white flex items-center gap-2 pb-2">
-                <Award className="w-4 h-4 text-zinc-500" />
-                <span>Cursos Técnicos & Certificaciones</span>
-              </h2>
-              <div className="grid grid-cols-1 gap-2 text-xs">
-                {TECHNICAL_COURSES.map((c, i) => (
-                  <div key={i} className="flex items-center justify-between py-1">
-                    <span className="font-medium text-zinc-800 dark:text-zinc-200">{c.name}</span>
-                    <span className="font-semibold text-zinc-500 dark:text-zinc-400 text-[11px]">({c.institution})</span>
-                  </div>
-                ))}
-              </div>
-            </div>
-
           </div>
 
-          {/* Software & Tools Matrix */}
-          <div className="space-y-3 pt-6">
-            <h2 className="text-sm font-bold uppercase tracking-wider text-zinc-900 dark:text-white flex items-center gap-2">
-              <Wrench className="w-4 h-4 text-zinc-500" />
-              <span>Software & Aplicaciones Dominadas</span>
+          {/* Education */}
+          <div className="space-y-3">
+            <h2 className="text-xs font-black uppercase tracking-wider text-indigo-600 dark:text-indigo-400 flex items-center gap-1.5 pb-1">
+              <GraduationCap className="w-3.5 h-3.5" />
+              <span>Formación Académica</span>
             </h2>
-            <div className="flex flex-wrap gap-1.5">
-              {SOFTWARE_TOOLS.map((tool, idx) => (
-                <span
-                  key={idx}
-                  className="text-xs px-2.5 py-1 rounded-full bg-zinc-100 dark:bg-zinc-800 text-zinc-800 dark:text-zinc-200 font-medium"
-                >
-                  {tool.name} ({tool.level}%)
-                </span>
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs">
+              {EDUCATION_ITEMS.map((edu) => (
+                <div key={edu.id} className="p-3.5 rounded-2xl bg-zinc-100/80 dark:bg-zinc-800/40">
+                  <p className="font-black text-zinc-950 dark:text-white text-xs">{edu.degree}</p>
+                  <p className="text-indigo-700 dark:text-indigo-400 font-bold text-[11px] mt-0.5">{edu.institution}</p>
+                  <p className="text-zinc-700 dark:text-zinc-300 text-[10px] font-mono font-semibold mt-1">{edu.period} • {edu.statusLabel}</p>
+                </div>
               ))}
             </div>
           </div>
 
           {/* References */}
-          <div className="space-y-3 pt-6">
-            <h2 className="text-sm font-bold uppercase tracking-wider text-zinc-900 dark:text-white">
-              Referencias Profesionales
+          <div className="space-y-3">
+            <h2 className="text-xs font-black uppercase tracking-wider text-indigo-600 dark:text-indigo-400 flex items-center gap-1.5 pb-1">
+              <Award className="w-3.5 h-3.5" />
+              <span>Referencias Profesionales</span>
             </h2>
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 text-xs">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-2.5 text-xs">
               {REFERENCES.map((ref, idx) => (
-                <div key={idx} className="p-3.5 rounded-2xl bg-zinc-50 dark:bg-zinc-800/60 shadow-xs">
-                  <p className="font-bold text-zinc-900 dark:text-white">{ref.name}</p>
-                  <p className="text-[11px] text-zinc-600 dark:text-zinc-400 font-medium">{ref.role} • {ref.company}</p>
-                  <p className="text-[11px] font-mono text-zinc-500 dark:text-zinc-400 mt-1">Tel: {ref.phone}</p>
+                <div key={idx} className="p-3 rounded-2xl bg-zinc-100/80 dark:bg-zinc-800/40">
+                  <p className="font-black text-zinc-950 dark:text-white text-xs truncate">{ref.name}</p>
+                  <p className="text-indigo-700 dark:text-indigo-400 font-bold text-[11px] truncate">{ref.role}</p>
+                  <p className="text-zinc-800 dark:text-zinc-300 text-[10px] truncate font-medium">{ref.company}</p>
+                  <p className="text-zinc-950 dark:text-zinc-100 font-bold font-mono text-xs mt-1">{ref.phone}</p>
                 </div>
               ))}
             </div>
@@ -293,8 +296,8 @@ export function CVModal({ isOpen, onClose }: CVModalProps) {
 
         {/* Modal Bottom CTA */}
         <div className="p-6 bg-zinc-50 dark:bg-zinc-950 rounded-b-3xl flex flex-col sm:flex-row items-center justify-between gap-4">
-          <p className="text-xs text-zinc-500">
-            Documento actualizado para contratación y servicios 2026.
+          <p className="text-xs text-zinc-600 dark:text-zinc-400 font-medium">
+            Documento oficial actualizado para contratación y servicios 2026.
           </p>
           <div className="flex items-center gap-3">
             <button
