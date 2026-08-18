@@ -1,9 +1,47 @@
-'use client';
-
+import type { Metadata } from 'next';
 import React from 'react';
 import Link from 'next/link';
 import { SkillsInteractive } from '@/components/skills-interactive';
 import { ArrowLeft, ArrowRight } from 'lucide-react';
+
+const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://manuelcabrera.pro';
+
+export const metadata: Metadata = {
+  title: 'Habilidades & Competencias Técnicas',
+  description: 'Explora las habilidades técnicas y creativas de Manuel Cabrera: Adobe Creative Suite, Cinema 4D, Blender, Next.js, React, TypeScript, Meta Ads, Google Ads, SEO, Fotografía, IA Generativa y más de 40 herramientas dominadas.',
+  keywords: [
+    'Habilidades diseñador gráfico',
+    'Adobe Illustrator Photoshop InDesign',
+    'Cinema 4D Blender 3D',
+    'Next.js React TypeScript',
+    'Meta Ads Google Ads',
+    'SEO marketing digital',
+    'Competencias creativas',
+    'Software diseño República Dominicana',
+  ],
+  alternates: {
+    canonical: '/habilidades',
+  },
+  openGraph: {
+    title: 'Habilidades Técnicas | Manuel Cabrera',
+    description: '+40 herramientas dominadas: Adobe Creative Suite, Next.js, Cinema 4D, Blender, Meta Ads, Google Ads, SEO, IA Generativa y más.',
+    url: `${SITE_URL}/habilidades`,
+    images: [
+      {
+        url: `${SITE_URL}/opengraph.png`,
+        width: 1200,
+        height: 630,
+        alt: 'Habilidades técnicas de Manuel Cabrera',
+      },
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Habilidades Técnicas | Manuel Cabrera',
+    description: '+40 herramientas de diseño, desarrollo y marketing digital dominadas.',
+    images: [`${SITE_URL}/opengraph.png`],
+  },
+};
 
 export default function HabilidadesPage() {
   return (

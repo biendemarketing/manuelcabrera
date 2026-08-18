@@ -2,7 +2,7 @@
 
 > Manuel Cabrera es un Director Creativo, Diseñador Gráfico Senior, Estratega de Marketing Digital y Desarrollador Full-Stack radicado en Verón, Punta Cana, República Dominicana. Con más de 11 años de experiencia, ha liderado proyectos de branding corporativo, desarrollo de plataformas web SaaS, campañas de alto rendimiento en Meta Ads y Google Ads, modelado 3D y producción de gran formato para clientes corporativos de hotelería, construcción, medicina y retail.
 
-- URL de Producción: https://manuelcabrera.vercel.app/
+- URL de Producción: https://manuelcabrera.pro/
 - Contacto Directo: +1 (829) 562-7014 / biendemarketing@gmail.com
 - Repositorio GitHub: https://github.com/biendemarketing/manuelcabrera
 

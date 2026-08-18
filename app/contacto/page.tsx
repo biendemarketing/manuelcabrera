@@ -1,10 +1,46 @@
-'use client';
-
+import type { Metadata } from 'next';
 import React from 'react';
 import Link from 'next/link';
 import { ContactSection } from '@/components/contact-section';
 import { ArrowLeft, Phone } from 'lucide-react';
 import { PERSONAL_INFO } from '@/data/portfolio-data';
+
+const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://manuelcabrera.pro';
+
+export const metadata: Metadata = {
+  title: 'Contacto — Trabaja Conmigo',
+  description: 'Contáctame para proyectos de Marketing Digital, Diseño Gráfico, Branding, Desarrollo Web, UI/UX o Modelado 3D. Disponible en Punta Cana, Santo Domingo y remotamente para el mundo.',
+  keywords: [
+    'Contactar diseñador gráfico Punta Cana',
+    'Contratar marketing digital República Dominicana',
+    'Freelancer diseño web',
+    'Presupuesto branding',
+    'Servicios creativos',
+    'Director creativo contacto',
+  ],
+  alternates: {
+    canonical: '/contacto',
+  },
+  openGraph: {
+    title: 'Contacto — Trabaja Conmigo | Manuel Cabrera',
+    description: 'Disponible para proyectos de Marketing Digital, Branding, Diseño Web y 3D. Punta Cana, República Dominicana & proyectos remotos.',
+    url: `${SITE_URL}/contacto`,
+    images: [
+      {
+        url: `${SITE_URL}/opengraph.png`,
+        width: 1200,
+        height: 630,
+        alt: 'Contactar a Manuel Cabrera — Director Creativo',
+      },
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Contacto | Manuel Cabrera',
+    description: 'Contáctame para tu próximo proyecto de Marketing Digital, Branding o Diseño Web.',
+    images: [`${SITE_URL}/opengraph.png`],
+  },
+};
 
 export default function ContactoPage() {
   return (

@@ -1,12 +1,12 @@
 import { MetadataRoute } from 'next';
 import { PROJECTS } from '@/data/portfolio-data';
 
-const BASE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://manuelcabrera.vercel.app';
+const BASE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://manuelcabrera.pro';
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const currentDate = new Date().toISOString();
 
-  // Static main pages
+  // Static main pages — ordered by priority
   const staticRoutes: MetadataRoute.Sitemap = [
     {
       url: BASE_URL,
@@ -18,16 +18,22 @@ export default function sitemap(): MetadataRoute.Sitemap {
       url: `${BASE_URL}/proyectos`,
       lastModified: currentDate,
       changeFrequency: 'weekly',
-      priority: 0.9,
-    },
-    {
-      url: `${BASE_URL}/recopilacion`,
-      lastModified: currentDate,
-      changeFrequency: 'weekly',
-      priority: 0.85,
+      priority: 0.95,
     },
     {
       url: `${BASE_URL}/sobre-mi`,
+      lastModified: currentDate,
+      changeFrequency: 'monthly',
+      priority: 0.85,
+    },
+    {
+      url: `${BASE_URL}/contacto`,
+      lastModified: currentDate,
+      changeFrequency: 'monthly',
+      priority: 0.85,
+    },
+    {
+      url: `${BASE_URL}/recopilacion`,
       lastModified: currentDate,
       changeFrequency: 'monthly',
       priority: 0.8,
@@ -46,12 +52,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
     },
   ];
 
-  // Dynamic project routes
+  // Dynamic project detail pages
   const projectRoutes: MetadataRoute.Sitemap = PROJECTS.map((project) => ({
     url: `${BASE_URL}/proyectos/${project.id}`,
     lastModified: currentDate,
-    changeFrequency: 'monthly',
-    priority: project.featured ? 0.85 : 0.7,
+    changeFrequency: 'monthly' as const,
+    priority: project.featured ? 0.9 : 0.75,
   }));
 
   return [...staticRoutes, ...projectRoutes];

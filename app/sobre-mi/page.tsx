@@ -1,10 +1,46 @@
-'use client';
-
+import type { Metadata } from 'next';
 import React from 'react';
 import Link from 'next/link';
 import { AboutBiography } from '@/components/about-biography';
 import { ArrowLeft, Mail, Phone } from 'lucide-react';
 import { PERSONAL_INFO } from '@/data/portfolio-data';
+
+const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://manuelcabrera.pro';
+
+export const metadata: Metadata = {
+  title: 'Sobre Mí — Manuel Cabrera',
+  description: 'Conoce a Manuel Cabrera: Director Creativo y Estratega de Marketing Digital con más de 11 años de experiencia en Punta Cana y Santo Domingo, República Dominicana. Especialista en Diseño Gráfico, Desarrollo Web, UI/UX, Modelado 3D e Inteligencia Artificial.',
+  keywords: [
+    'Manuel Cabrera quién soy',
+    'Director Creativo Punta Cana',
+    'Trayectoria profesional marketing digital',
+    'Diseñador gráfico senior República Dominicana',
+    'Experiencia desarrollo web',
+    'Autobiografía profesional creativa',
+  ],
+  alternates: {
+    canonical: '/sobre-mi',
+  },
+  openGraph: {
+    title: 'Sobre Mí — Manuel Cabrera | Director Creativo',
+    description: 'Más de 11 años creando impacto visual. Conoce mi historia, filosofía de diseño y trayectoria en Marketing Digital, Branding y Desarrollo Web.',
+    url: `${SITE_URL}/sobre-mi`,
+    images: [
+      {
+        url: `${SITE_URL}/opengraph.png`,
+        width: 1200,
+        height: 630,
+        alt: 'Manuel Cabrera — Director Creativo & Marketing Digital',
+      },
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Sobre Mí | Manuel Cabrera',
+    description: 'Director Creativo con +11 años de experiencia en Marketing Digital, Diseño Gráfico y Desarrollo Web. Punta Cana, RD.',
+    images: [`${SITE_URL}/opengraph.png`],
+  },
+};
 
 export default function SobreMiPage() {
   return (

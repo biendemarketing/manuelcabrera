@@ -1,9 +1,47 @@
-'use client';
-
+import type { Metadata } from 'next';
 import React from 'react';
 import Link from 'next/link';
 import { SoftwareShowcase } from '@/components/software-showcase';
 import { ArrowLeft, ArrowRight } from 'lucide-react';
+
+const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://manuelcabrera.pro';
+
+export const metadata: Metadata = {
+  title: 'Software & Herramientas Profesionales',
+  description: 'Suite completa de software dominado por Manuel Cabrera: Adobe Creative Suite (Illustrator, Photoshop, InDesign, After Effects, Premiere), Cinema 4D, Blender, Next.js, React, TypeScript, Figma, Meta Ads Manager, Google Ads y más de 40 herramientas profesionales.',
+  keywords: [
+    'Adobe Creative Suite Dominicana',
+    'Cinema 4D Blender 3D',
+    'Figma UI diseño',
+    'Next.js React TypeScript desarrollador',
+    'Meta Ads Manager Google Ads',
+    'Software diseño gráfico',
+    'Herramientas marketing digital',
+    'Suite profesional creativos',
+  ],
+  alternates: {
+    canonical: '/software',
+  },
+  openGraph: {
+    title: 'Software & Herramientas | Manuel Cabrera',
+    description: '+40 herramientas profesionales: Adobe Creative Suite, Cinema 4D, Blender, Next.js, Figma, Meta Ads y más.',
+    url: `${SITE_URL}/software`,
+    images: [
+      {
+        url: `${SITE_URL}/opengraph.png`,
+        width: 1200,
+        height: 630,
+        alt: 'Software y herramientas profesionales de Manuel Cabrera',
+      },
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Software & Herramientas | Manuel Cabrera',
+    description: '+40 herramientas de diseño, desarrollo y marketing digital.',
+    images: [`${SITE_URL}/opengraph.png`],
+  },
+};
 
 export default function SoftwarePage() {
   return (

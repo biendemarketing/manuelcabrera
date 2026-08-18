@@ -1,8 +1,8 @@
-# Manuel Cabrera — Marketing Digital, UI/UX & Portafolio Creativo
+# Manuel Cabrera — Director Creativo, Marketing Digital & Portafolio Profesional
 
 > Portafolio profesional oficial de Manuel Cabrera. Director Creativo, Estratega de Marketing Digital, Diseñador Gráfico Senior, Desarrollador Web Full-Stack y Especialista en Modelado 3D con más de 11 años de trayectoria profesional en República Dominicana (Punta Cana, Bávaro, Santo Domingo).
 
-- Sitio web oficial: https://manuelcabrera.vercel.app/
+- Sitio web oficial: https://manuelcabrera.pro/
 - Ubicación: Verón, Punta Cana, La Altagracia, República Dominicana
 - Teléfono / WhatsApp: +1 (829) 562-7014
 - Correo Electrónico: biendemarketing@gmail.com
@@ -13,7 +13,7 @@
 
 1. **Marketing Digital & Estrategia Publicitaria**:
    - Gestión y optimización avanzada de campañas de conversión en Meta Ads (Facebook & Instagram Ads) y Google Ads.
-   - Growth Marketing, embudos de ventas, SEO local y analítica web.
+   - Growth Marketing, embudos de ventas, SEO local, analítica web y automatización de marketing.
 
 2. **Diseño Gráfico & Branding Corporativo**:
    - Identidad visual completa, logotipos vectoriales, manuales de marca, diseño publicitario para eventos masivos y hotelería.
@@ -25,6 +25,9 @@
 
 4. **Modelado 3D & Render Hiperrealista**:
    - Visualización arquitectónica, packaging de productos farmacéuticos/cosméticos, stands publicitarios y animaciones 3D.
+
+5. **Inteligencia Artificial Generativa**:
+   - Producción de imágenes, videos y contenido con IA para campañas publicitarias y contenido editorial.
 
 ## Proyectos Destacados en el Portafolio
 
@@ -38,12 +41,24 @@
 - **CAMI Instituto — Campaña Publicitaria Social Media**: 14 piezas publicitarias únicas de alta conversión para diplomados y cursos técnicos de enfermería.
 - **Latik — Identidad Visual de Marca**: Branding integral para estudio de tatuajes y arte corporal en Punta Cana.
 - **Corambar — Identidad Corporativa & Gran Formato**: Imagen de marca para constructora y desarrolladora inmobiliaria en Higüey y Bávaro.
+- **La Boutique — Catálogo Editorial**: Diagramación premium de catálogo de moda con fotografía de producto.
+- **Master Creative — Agencia de Comunicación**: Dirección creativa, campañas publicitarias y gestión de redes sociales.
 
 ## Secciones del Sitio
 
-- [Inicio](https://manuelcabrera.vercel.app/): Presentación ejecutiva, slider de proyectos en ultra alta definición 2K y resumen de casos de éxito.
-- [Proyectos](https://manuelcabrera.vercel.app/proyectos): Galería completa categorizada de proyectos con mockups interactivos en Mac y iPhone 14 Pro Max.
-- [Recopilación Histórica](https://manuelcabrera.vercel.app/recopilacion): 65 diapositivas en Ultra HD que recopilan más de una década de trabajo visual.
-- [Sobre Mí](https://manuelcabrera.vercel.app/sobre-mi): Biografía profesional, trayectoria y filosofía de diseño.
-- [Habilidades](https://manuelcabrera.vercel.app/habilidades): Resumen de competencias técnicas en diseño, código y marketing.
-- [Software & Herramientas](https://manuelcabrera.vercel.app/software): Suite de programas dominados (Adobe Creative Cloud, Cinema 4D, Blender, Next.js, Meta Ads Manager, etc.).
+- [Inicio](https://manuelcabrera.pro/): Presentación ejecutiva, slider de proyectos en ultra alta definición 2K y resumen de casos de éxito.
+- [Proyectos](https://manuelcabrera.pro/proyectos): Galería completa categorizada de proyectos con mockups interactivos en Mac y iPhone 14 Pro Max.
+- [Recopilación Histórica](https://manuelcabrera.pro/recopilacion): 70 láminas en Ultra HD que recopilan más de una década de trabajo visual.
+- [Sobre Mí](https://manuelcabrera.pro/sobre-mi): Biografía profesional, trayectoria y filosofía de diseño.
+- [Habilidades](https://manuelcabrera.pro/habilidades): Resumen de competencias técnicas en diseño, código y marketing.
+- [Software & Herramientas](https://manuelcabrera.pro/software): Suite de programas dominados (Adobe Creative Cloud, Cinema 4D, Blender, Next.js, Meta Ads Manager, etc.).
+- [Contacto](https://manuelcabrera.pro/contacto): Formulario de contacto y datos directos para proyectos.
+
+## Datos Técnicos del Sitio
+
+- Framework: Next.js 15 (App Router, SSG/ISR)
+- Lenguajes: TypeScript, React, CSS (Tailwind)
+- Hosting: Vercel (CDN global)
+- Dominio: manuelcabrera.pro
+- Idioma principal: Español (República Dominicana)
+- Modo de renderizado: Static Site Generation con rutas dinámicas por proyecto
