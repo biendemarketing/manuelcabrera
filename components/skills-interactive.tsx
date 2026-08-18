@@ -117,7 +117,7 @@ export function SkillsInteractive() {
             onMouseLeave={() => setIsPaused(false)}
             onTouchStart={handleTouchStart}
             onTouchEnd={handleTouchEnd}
-            className="w-full rounded-3xl sm:rounded-[36px] bg-white dark:bg-gradient-to-br dark:from-zinc-900/80 dark:via-zinc-900/40 dark:to-zinc-950/80 border border-zinc-200/80 dark:border-zinc-800/60 p-6 sm:p-10 md:p-12 lg:p-16 shadow-xl dark:shadow-2xl relative overflow-hidden backdrop-blur-xl transition-colors duration-300"
+            className="w-full rounded-3xl sm:rounded-[36px] bg-white dark:bg-zinc-900 border border-zinc-200/80 dark:border-zinc-800/60 p-6 sm:p-10 md:p-12 lg:p-16 shadow-xl dark:shadow-2xl relative overflow-hidden transition-colors duration-300"
           >
             {/* Top decorative ambient glow */}
             <div className="absolute top-0 right-1/4 w-96 h-48 bg-indigo-500/10 rounded-full blur-3xl pointer-events-none" />

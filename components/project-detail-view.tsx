@@ -431,7 +431,7 @@ export function ProjectDetailView({
 
               {/* DEDICATED SOCIAL MEDIA & INSTAGRAM FEED SECTION */}
               {(instagramImgs.length > 0 || project.instagramUrl) && (
-                <div className="rounded-3xl p-6 sm:p-8 lg:p-10 border border-zinc-200 dark:border-zinc-800/90 bg-white dark:bg-gradient-to-b dark:from-zinc-900/90 dark:via-zinc-950 dark:to-black shadow-xl dark:shadow-2xl space-y-8">
+                <div className="rounded-3xl p-6 sm:p-8 lg:p-10 border border-zinc-200 dark:border-zinc-800/90 bg-white dark:bg-zinc-900 shadow-xl dark:shadow-2xl space-y-8">
                   {/* Section Header */}
                   <div className="flex flex-wrap items-center justify-between gap-4 pb-4 border-b border-zinc-200 dark:border-zinc-800">
                     <div className="space-y-1">

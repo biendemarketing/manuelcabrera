@@ -61,7 +61,7 @@ export function SoftwareShowcase() {
               <BlurFadeDiv 
                 key={group.id} 
                 delay={groupIdx * 0.04}
-                className="p-6 sm:p-8 rounded-3xl bg-white dark:bg-zinc-900/30 border border-zinc-200/90 dark:border-0 shadow-md dark:shadow-lg relative overflow-hidden transition-colors duration-300"
+                className="p-6 sm:p-8 rounded-3xl bg-white dark:bg-zinc-900 border border-zinc-200/90 dark:border-zinc-800/60 shadow-md dark:shadow-lg relative overflow-hidden transition-colors duration-300"
               >
                 {/* Category Header */}
                 <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-6 border-b border-zinc-100 dark:border-zinc-800/60 mb-6">
@@ -118,7 +118,7 @@ export function SoftwareShowcase() {
         </div>
 
         {/* Global AI Integration Banner */}
-        <BlurFadeDiv delay={0.2} className="mt-14 p-6 sm:p-8 rounded-3xl bg-white dark:bg-gradient-to-br dark:from-zinc-900/90 dark:via-zinc-900/50 dark:to-zinc-950 text-zinc-900 dark:text-white shadow-xl dark:shadow-2xl relative overflow-hidden border border-zinc-200 dark:border-0 transition-colors duration-300">
+        <BlurFadeDiv delay={0.2} className="mt-14 p-6 sm:p-8 rounded-3xl bg-white dark:bg-zinc-900 text-zinc-900 dark:text-white shadow-xl dark:shadow-2xl relative overflow-hidden border border-zinc-200 dark:border-zinc-800/60 transition-colors duration-300">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-center relative z-10">
             <div className="lg:col-span-8 space-y-2">
               <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-zinc-100 dark:bg-zinc-800 border border-zinc-200 dark:border-zinc-700 text-zinc-800 dark:text-zinc-100 text-xs font-bold">

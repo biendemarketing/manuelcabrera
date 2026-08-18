@@ -162,7 +162,7 @@ function StepCard({ step, index }: { step: ProcessStep; index: number }) {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: '-60px' }}
           transition={{ duration: 0.6, delay: 0.1 }}
-          className="relative p-6 sm:p-8 md:p-9 rounded-3xl bg-white dark:bg-zinc-900/90 border border-zinc-200/90 dark:border-zinc-800/80 shadow-lg dark:shadow-2xl overflow-hidden group hover:bg-zinc-50 dark:hover:bg-zinc-900 transition-all duration-300 text-left"
+          className="relative p-6 sm:p-8 md:p-9 rounded-3xl bg-white dark:bg-zinc-900 border border-zinc-200/90 dark:border-zinc-800/80 shadow-lg dark:shadow-2xl overflow-hidden group hover:bg-zinc-50 dark:hover:bg-zinc-900 transition-all duration-300 text-left"
         >
           {/* Subtle Ambient Radial Glow */}
           <div 
