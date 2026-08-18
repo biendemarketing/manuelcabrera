@@ -32,8 +32,8 @@ import { ManuelCabreraLogo } from '@/components/logo';
 export function PrintableCVView() {
   // Theme state: 'light' or 'dark'
   const [printTheme, setPrintTheme] = useState<'light' | 'dark'>('light');
-  // Paper size format: 'letter' (8.5x11), 'a4', 'legal', 'auto'
-  const [paperFormat, setPaperFormat] = useState<'letter' | 'a4' | 'legal' | 'auto'>('letter');
+  // Paper size format: 'full' (ancho completo), 'letter' (8.5x11), 'a4'
+  const [paperFormat, setPaperFormat] = useState<'full' | 'letter' | 'a4'>('full');
   // Layout density: 'normal' or 'compact'
   const [density, setDensity] = useState<'normal' | 'compact'>('normal');
 
@@ -45,14 +45,12 @@ export function PrintableCVView() {
   const getContainerWidth = () => {
     switch (paperFormat) {
       case 'letter':
-        return 'max-w-[850px]'; // standard 8.5" proportion
+        return 'max-w-[880px]'; // standard 8.5" proportion
       case 'a4':
         return 'max-w-[820px]';
-      case 'legal':
-        return 'max-w-[850px]';
-      case 'auto':
+      case 'full':
       default:
-        return 'max-w-4xl';
+        return 'w-full max-w-6xl 2xl:max-w-7xl';
     }
   };
 
@@ -113,9 +111,18 @@ export function PrintableCVView() {
               </button>
             </div>
 
-            {/* Paper Size Selector (8.5x11, A4, Legal, Fluido) */}
+            {/* Paper Size Selector (Ancho Completo, 8.5x11, A4) */}
             <div className="hidden md:flex items-center bg-zinc-800 px-2 py-1 rounded-xl border border-zinc-700 gap-1">
-              <span className="text-[10px] uppercase font-bold text-zinc-400 mr-1">Tamaño:</span>
+              <span className="text-[10px] uppercase font-bold text-zinc-400 mr-1">Vista:</span>
+              <button
+                onClick={() => setPaperFormat('full')}
+                className={`px-2 py-0.5 rounded-md font-bold transition-all cursor-pointer text-[11px] ${
+                  paperFormat === 'full' ? 'bg-indigo-600 text-white' : 'text-zinc-400 hover:text-zinc-200'
+                }`}
+                title="Abarcar todo el ancho disponible de la pantalla"
+              >
+                Ancho Completo
+              </button>
               <button
                 onClick={() => setPaperFormat('letter')}
                 className={`px-2 py-0.5 rounded-md font-bold transition-all cursor-pointer text-[11px] ${
@@ -133,15 +140,6 @@ export function PrintableCVView() {
                 title="Formato Internacional A4 (210 x 297 mm)"
               >
                 A4
-              </button>
-              <button
-                onClick={() => setPaperFormat('auto')}
-                className={`px-2 py-0.5 rounded-md font-bold transition-all cursor-pointer text-[11px] ${
-                  paperFormat === 'auto' ? 'bg-indigo-600 text-white' : 'text-zinc-400 hover:text-zinc-200'
-                }`}
-                title="Formato Fluido y Adaptable"
-              >
-                Fluido
               </button>
             </div>
 

@@ -641,6 +641,12 @@ export default function RootLayout({
           dangerouslySetInnerHTML={{ __html: JSON.stringify(professionalServiceJsonLd) }}
         />
 
+        {/* ── Schema.org: Google Sitelinks (SiteNavigationElement) ── */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(sitelinksJsonLd) }}
+        />
+
         {/* ── Theme: Avoid FOUC (Flash of Unstyled Content) ── */}
         <script
           dangerouslySetInnerHTML={{
