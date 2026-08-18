@@ -1,20 +1,114 @@
+# Manuel Cabrera — Marketing, UI/UX & Portafolio Creativo
+
 <div align="center">
-<img width="1200" height="475" alt="GHBanner" src="https://ai.google.dev/static/site-assets/images/share-ais-513315318.png" />
+
+![Manuel Cabrera Banner](public/brands/bigprint-logo.svg)
+
+### **Marketing Digital • Diseño UI/UX • Desarrollo Web • Branding & Identidad • Renders 3D**
+
+[![Next.js](https://img.shields.io/badge/Next.js-15-black?style=for-the-badge&logo=next.js)](https://nextjs.org/)
+[![React](https://img.shields.io/badge/React-19-blue?style=for-the-badge&logo=react)](https://react.dev/)
+[![TypeScript](https://img.shields.io/badge/TypeScript-5.0-3178C6?style=for-the-badge&logo=typescript)](https://www.typescriptlang.org/)
+[![TailwindCSS](https://img.shields.io/badge/Tailwind_CSS-3.4-38B2AC?style=for-the-badge&logo=tailwind-css)](https://tailwindcss.com/)
+[![License](https://img.shields.io/badge/License-MIT-purple?style=for-the-badge)](LICENSE)
+
+**[🌐 Ver Portafolio en Vivo](http://localhost:3000)** • **[📂 Recopilación de Proyectos](http://localhost:3000/#recopilacion-proyectos)** • **[📫 Contacto Directo](#-contacto)**
+
 </div>
 
-# Run and deploy your AI Studio app
+---
 
-This contains everything you need to run your app locally.
+## 🚀 Sobre Manuel Cabrera
 
-View your app in AI Studio: https://ai.studio/apps/a9dd0b2e-cb62-4b04-9bd1-2194ae4b25cb
+Profesional multidisciplinario con más de **11 años de experiencia** combinando **Estrategia de Marketing Digital**, **Diseño Gráfico Publicitario**, **Arquitectura UI/UX** y **Desarrollo Web Full-Stack**. 
 
-## Run Locally
+Especializado en la creación y escalamiento de marcas comerciales, gestión de pautas publicitarias de alto retorno (**Meta Ads, Google Ads, TikTok Ads**), diseño editorial y gran formato, así como ingeniería de software para plataformas SaaS y comercio electrónico en la República Dominicana e internacionalmente.
 
-**Prerequisites:**  Node.js
+---
 
+## 🌟 Proyectos Destacados
 
-1. Install dependencies:
-   `npm install`
-2. Set the `GEMINI_API_KEY` in [.env.local](.env.local) to your Gemini API key
-3. Run the app:
-   `npm run dev`
+| Proyecto | Disciplina / Sector | Enlace / Plataforma |
+| :--- | :--- | :--- |
+| **FacturaDO** | Software SaaS, Facturación DGII e-CF & Nómina Ley 16-92 | [facturadord.com](https://facturadord.com/) |
+| **Decora Group Punta Cana** | Portal Web Corporativo, Cotizador en Línea, SEO Local & Meta Ads | [decoragrouppuntacana.com](https://decoragrouppuntacana.com/) |
+| **Fancy RD Radio** | Portal Web de Streaming en Vivo HD, SEO & Identidad Vectorial | [fancyrd.com](https://www.fancyrd.com/) |
+| **La Boutique (Club Med)** | E-Commerce Oficial, Personalizador Textil en Vivo & Turnos | [laboutiquerd.com](https://www.laboutiquerd.com/) |
+| **Waooo Tours & Adventures** | Portal Web Turístico, Excursiones & Motor de Reservas | [waoootoursandadventures.vercel.app](https://waoootoursandadventures.vercel.app/) |
+| **Big Print Punta Cana** | Portal Web, Estrategia de Marketing & Catálogo Gran Formato | Punta Cana, R.D. |
+| **Didusa SRL & Didusa Jamaica** | Portales Corporativos HVAC, Infraestructura Cloud & Correo | [didusasrl.com](https://didusasrl.com) |
+| **CAMI Instituto** | Campañas de Redes Sociales, Admisión & Identidad Educativa | Social Media & Ads |
+| **Latik & Corambar Realty** | Diseño de Logotipos Vectoriales, Isotipos & Manuales de Marca | Branding Corporativo |
+
+---
+
+## ⚡ Características Principales del Portafolio
+
+* **🎬 Recopilación de Proyectos en Slider Ultra HD 2K:** Presentación fluida y automatizada de láminas en alta resolución con barra de carga reactiva y transiciones suaves.
+* **🖼️ Visor de Cuadrícula & Lightbox Modal:** Galería interactiva con filtrado instantáneo por categorías (*Branding, Web, Redes Sociales, Impresión, 3D, Fotografía*), buscador en tiempo real y zoom HD.
+* **✨ Estética Moderna en Modo Oscuro:** Interfaz optimizada con micro-animaciones, glassmorphism, gradientes HSL y tipografía contemporánea.
+* **📱 100% Responsivo & Optimizado:** Experiencia impecable adaptada para dispositivos móviles, tablets y monitores ultrawide.
+* **🔍 SEO Técnico & Schema.org:** Metadatos avanzados, OpenGraph y marcado semántico para indexación en motores de búsqueda.
+
+---
+
+## 🛠️ Stack Tecnológico & Herramientas
+
+### Desarrollo & Software
+* **Frontend:** Next.js (App Router), React, TypeScript, Tailwind CSS, Lucide Icons, Framer Motion.
+* **Backend & Infraestructura:** Node.js, Next.js API Routes, Vercel Cloud, Hosting SSL/DNS.
+* **Integraciones:** Facturación Electrónica DGII (e-CF), Algoritmos de Nómina TSS (SUIR Plus), HTML5 Streaming Audio.
+
+### Suite Creativa & Marketing
+* **Diseño & Vectorial:** Adobe Illustrator, Adobe Photoshop, Adobe InDesign, Figma.
+* **Modelado & Render 3D:** Cinema 4D, Blender 3D.
+* **Marketing & Analítica:** Meta Ads Manager (Facebook & Instagram Ads), Google Ads, Google Analytics 4 (GA4), TikTok Ads.
+
+---
+
+## 💻 Instalación y Ejecución Local
+
+Para correr el portafolio en tu entorno local:
+
+```bash
+# 1. Clonar el repositorio
+git clone https://github.com/biendemarketing/manuelcabrera.git
+
+# 2. Entrar a la carpeta del proyecto
+cd manuelcabrera
+
+# 3. Instalar dependencias
+npm install
+# o con pnpm / bun:
+# pnpm install
+# bun install
+
+# 4. Iniciar el servidor de desarrollo
+npm run dev
+```
+
+Abre [http://localhost:3000](http://localhost:3000) en tu navegador para ver la aplicación.
+
+### Comandos Disponibles
+
+* `npm run dev` — Inicia el servidor de desarrollo local con Hot Reloading.
+* `npm run build` — Compila la versión optimizada de producción.
+* `npm run start` — Ejecuta el servidor de producción.
+* `npm run lint` — Ejecuta el linter de código con ESLint.
+
+---
+
+## 📬 Contacto Profesional
+
+* **Nombre:** Manuel Cabrera
+* **Email:** [biendemarketing@gmail.com](mailto:biendemarketing@gmail.com)
+* **Ubicación:** Punta Cana / Santo Domingo, República Dominicana
+* **WhatsApp / Teléfono:** Disponible bajo solicitud
+
+---
+
+<div align="center">
+
+Diseñado y desarrollado con pasión por **Manuel Cabrera** • © 2026 Todos los derechos reservados.
+
+</div>
