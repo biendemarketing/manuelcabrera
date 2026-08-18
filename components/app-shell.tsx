@@ -1,11 +1,16 @@
 'use client';
 
 import React, { useState } from 'react';
+import dynamic from 'next/dynamic';
 import { Navbar } from './navbar';
 import { Footer } from './footer';
-import { CVModal } from './cv-modal';
 import { IntroSplash } from './intro-splash';
 import { IntroProvider } from './intro-context';
+
+const CVModal = dynamic(
+  () => import('./cv-modal').then((mod) => mod.CVModal),
+  { ssr: false }
+);
 
 export function AppShell({ children }: { children: React.ReactNode }) {
   const [cvModalOpen, setCvModalOpen] = useState(false);
@@ -17,7 +22,7 @@ export function AppShell({ children }: { children: React.ReactNode }) {
         <Navbar onOpenCV={() => setCvModalOpen(true)} />
         <main className="flex-1 w-full">{children}</main>
         <Footer />
-        <CVModal isOpen={cvModalOpen} onClose={() => setCvModalOpen(false)} />
+        {cvModalOpen && <CVModal isOpen={cvModalOpen} onClose={() => setCvModalOpen(false)} />}
       </div>
     </IntroProvider>
   );

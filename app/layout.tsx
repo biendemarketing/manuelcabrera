@@ -6,16 +6,16 @@ import { AppShell } from '@/components/app-shell';
 
 const dmSans = DM_Sans({
   subsets: ['latin'],
-  weight: ['400', '500', '600', '700', '800', '900'],
   variable: '--font-dm-sans',
   display: 'swap',
+  preload: true,
 });
 
 const inter = Inter({
   subsets: ['latin'],
-  weight: ['400', '500', '600', '700'],
   variable: '--font-inter',
   display: 'swap',
+  preload: true,
 });
 
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://manuelcabrera.pro';
@@ -291,6 +291,8 @@ export default function RootLayout({
         {/* ── Preconnect to critical origins ── */}
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        <link rel="preconnect" href="https://res.cloudinary.com" crossOrigin="anonymous" />
+        <link rel="dns-prefetch" href="https://res.cloudinary.com" />
 
         {/* ── Extended Open Graph tags ── */}
         <meta property="og:image:secure_url" content={`${SITE_URL}/opengraph.png`} />

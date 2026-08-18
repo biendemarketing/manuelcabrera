@@ -11,15 +11,29 @@ export function IntroSplash() {
   const [isRendered, setIsRendered] = useState(true);
 
   useEffect(() => {
-    // Cinematic duration: 2.2 seconds display + 0.6 seconds exit transition
+    try {
+      if (sessionStorage.getItem('mc_intro_shown') === 'true') {
+        setIsVisible(false);
+        setIsRendered(false);
+        completeIntro();
+        return;
+      }
+    } catch {
+      // Safe fallback
+    }
+
+    // Snappy duration: 1.1s display + clean exit
     const fadeTimer = setTimeout(() => {
       setIsVisible(false);
       completeIntro();
-    }, 2200);
+      try {
+        sessionStorage.setItem('mc_intro_shown', 'true');
+      } catch {}
+    }, 1100);
 
     const cleanupTimer = setTimeout(() => {
       setIsRendered(false);
-    }, 2800);
+    }, 1500);
 
     return () => {
       clearTimeout(fadeTimer);
@@ -30,7 +44,10 @@ export function IntroSplash() {
   const handleSkip = () => {
     setIsVisible(false);
     completeIntro();
-    setTimeout(() => setIsRendered(false), 300);
+    try {
+      sessionStorage.setItem('mc_intro_shown', 'true');
+    } catch {}
+    setTimeout(() => setIsRendered(false), 200);
   };
 
   if (!isRendered) return null;

@@ -1,18 +1,40 @@
 'use client';
 
 import React, { useState } from 'react';
+import dynamic from 'next/dynamic';
 import { HeroSection } from '@/components/hero-section';
 import { AboutBiography } from '@/components/about-biography';
 import { SkillsInteractive } from '@/components/skills-interactive';
 import { EducationSection } from '@/components/education-section';
 import { ExperienceSection } from '@/components/experience-section';
-import { WorkProcessSection } from '@/components/work-process-section';
-import { TrustedBrandsMarquee } from '@/components/trusted-brands-marquee';
-import { ProjectsRecopilacionSlider } from '@/components/projects-recopilacion-slider';
 import { ProjectsGallery } from '@/components/projects-gallery';
-import { SoftwareShowcase } from '@/components/software-showcase';
 import { ContactSection } from '@/components/contact-section';
-import { CVModal } from '@/components/cv-modal';
+
+// Dynamic code-split components for fast FCP and tiny initial JS bundle
+const WorkProcessSection = dynamic(
+  () => import('@/components/work-process-section').then((mod) => mod.WorkProcessSection),
+  { ssr: true }
+);
+
+const TrustedBrandsMarquee = dynamic(
+  () => import('@/components/trusted-brands-marquee').then((mod) => mod.TrustedBrandsMarquee),
+  { ssr: true }
+);
+
+const ProjectsRecopilacionSlider = dynamic(
+  () => import('@/components/projects-recopilacion-slider').then((mod) => mod.ProjectsRecopilacionSlider),
+  { ssr: true }
+);
+
+const SoftwareShowcase = dynamic(
+  () => import('@/components/software-showcase').then((mod) => mod.SoftwareShowcase),
+  { ssr: true }
+);
+
+const CVModal = dynamic(
+  () => import('@/components/cv-modal').then((mod) => mod.CVModal),
+  { ssr: false }
+);
 
 export default function Home() {
   const [isCVOpen, setIsCVOpen] = useState(false);
@@ -25,7 +47,7 @@ export default function Home() {
       {/* 2. Sobre Mí (Biografía, Spotlight B&W a Color, Hobbies, Aptitudes y Marcas Propias) */}
       <AboutBiography />
 
-      {/* 3. Habilidades Profesionales & Flujo IA (ScrollStack) - Antes de Formación */}
+      {/* 3. Habilidades Profesionales & Flujo IA */}
       <SkillsInteractive />
 
       {/* 4. Formación Académica & Certificaciones */}
@@ -34,26 +56,26 @@ export default function Home() {
       {/* 5. Experiencia Laboral & Trayectoria (11+ Años) */}
       <ExperienceSection />
 
-      {/* 6. PROCESO — Cómo trabajas (Cards Verticales Conectadas con Línea Scroll) */}
+      {/* 6. PROCESO — Cómo trabajas */}
       <WorkProcessSection />
 
       {/* 7. Marcas & Empresas que Confían */}
       <TrustedBrandsMarquee />
 
-      {/* 8. Recopilación de Proyectos — Gran Slider de Presentación (70 Láminas con Barra de Carga & Galería Grid) */}
+      {/* 8. Recopilación de Proyectos — Gran Slider de Presentación (70 Láminas) */}
       <ProjectsRecopilacionSlider />
 
       {/* 9. Proyectos Destacados & Casos de Éxito */}
       <ProjectsGallery />
 
-      {/* 9. Software & Herramientas Dominadas */}
+      {/* 10. Software & Herramientas Dominadas */}
       <SoftwareShowcase />
 
-      {/* 10. Contacto Directo, Formulario & Barra de Acciones Rápidas */}
+      {/* 11. Contacto Directo, Formulario & Barra de Acciones Rápidas */}
       <ContactSection onOpenCV={() => setIsCVOpen(true)} />
 
-      {/* CV Modal trigger */}
-      <CVModal isOpen={isCVOpen} onClose={() => setIsCVOpen(false)} />
+      {/* CV Modal (solo se carga cuando se activa) */}
+      {isCVOpen && <CVModal isOpen={isCVOpen} onClose={() => setIsCVOpen(false)} />}
     </div>
   );
 }
