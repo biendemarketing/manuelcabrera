@@ -58,6 +58,18 @@
 - Framework: Next.js 15 (App Router, SSG/ISR)
 - Lenguajes: TypeScript, React, CSS (Tailwind)
 - Hosting: Vercel (CDN global)
+- Optimización de imágenes: WebP, AVIF, Cloudinary auto-format
+- Core Web Vitals: 95+ en Desktop y Mobile
+
+## Índice de Palabras Clave & Búsquedas Frecuentes (SEO & IA Search)
+
+- **Marketing Digital & Publicidad**: marketing digital, agencia de marketing digital, marketing digital para empresas, publicidad digital, Google Ads, Meta Ads (Facebook & Instagram Ads), TikTok Ads, gestión de redes sociales, social media marketing, SEO, posicionamiento web, consultoría de marketing, digital marketing agency Dominican Republic.
+- **Diseño Gráfico & Branding**: diseño gráfico, diseñador gráfico, diseño de logos, diseño de logotipo, creación de logo, identidad corporativa, identidad visual, branding, diseño de marca, diseño publicitario, diseño de packaging, diseño editorial, diseño de flyers, contratar diseñador gráfico, logo design, brand identity.
+- **Desarrollo Web & Software**: desarrollo web, diseño web, diseño de páginas web, desarrollo de software, desarrollo de aplicaciones móviles, ecommerce, tienda online, landing page, diseño UI/UX, Next.js, React, TypeScript, contratar desarrollo web, web development Dominican Republic.
+- **Automatización & IA**: automatización de procesos empresariales, automatización con IA, workflows, integración de APIs, soluciones de inteligencia artificial para empresas, IA generativa, chatbots con IA, AI automation agency.
+- **Fotografía & Video**: fotografía profesional, fotografía comercial, fotografía de producto, video corporativo, producción audiovisual, videos publicitarios, videógrafo profesional, edición de video.
+- **Impresión & Gran Formato**: imprenta punta cana, impresión gran formato, rotulación de vinil comercial y vehicular, letreros luminosos, vallas publicitarias, mupis, señalética, bordado 3D textil.
+- **Cobertura Geográfica (República Dominicana & Internacional)**: Punta Cana, Bávaro, Verón, Cap Cana, La Altagracia, Higüey, Santo Domingo, Santiago de los Caballeros, La Romana, San Pedro de Macorís, Puerto Plata, Samaná, Las Terrenas, San Cristóbal, Baní, Bonao, La Vega, San Francisco de Macorís, Estados Unidos, España, Puerto Rico.
 - Dominio: manuelcabrera.pro
 - Idioma principal: Español (República Dominicana)
 - Modo de renderizado: Static Site Generation con rutas dinámicas por proyecto
