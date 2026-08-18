@@ -144,13 +144,13 @@ export function ContactSection({ onOpenCV }: ContactSectionProps = {}) {
   };
 
   return (
-    <BlurFadeSection id="contacto" className="py-20 bg-white dark:bg-zinc-950 relative w-full">
+    <BlurFadeSection id="contacto" className="py-20 bg-zinc-50 dark:bg-zinc-950 relative w-full transition-colors duration-300">
       <div className="w-full px-4 sm:px-8 md:px-12 lg:px-16 xl:px-20 2xl:px-28">
         
         {/* Section Header */}
         <BlurFadeDiv className="flex flex-col items-center text-center max-w-4xl mx-auto mb-14">
-          <div className="inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full bg-zinc-100 dark:bg-zinc-800 text-zinc-800 dark:text-zinc-200 text-xs font-semibold uppercase tracking-widest mb-3 shadow-xs">
-            <MessageSquare className="w-3.5 h-3.5 text-zinc-500" />
+          <div className="inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full bg-white dark:bg-zinc-800 text-indigo-600 dark:text-zinc-200 border border-zinc-200 dark:border-zinc-700 text-xs font-semibold uppercase tracking-widest mb-3 shadow-xs">
+            <MessageSquare className="w-3.5 h-3.5 text-indigo-600 dark:text-zinc-400" />
             <span>Contacto Profesional</span>
           </div>
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-zinc-950 dark:text-white tracking-tight">
@@ -168,16 +168,16 @@ export function ContactSection({ onOpenCV }: ContactSectionProps = {}) {
           <div className="lg:col-span-5 space-y-6">
             
             {/* Direct Cards */}
-            <div className="p-7 sm:p-8 rounded-3xl bg-zinc-50 dark:bg-zinc-900 shadow-md space-y-5">
+            <div className="p-7 sm:p-8 rounded-3xl bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 shadow-md space-y-5">
               <h3 className="text-lg font-bold text-zinc-950 dark:text-white">
                 Canales de Comunicación
               </h3>
 
               {/* WhatsApp Item */}
-              <div className="flex items-center justify-between p-4 rounded-2xl bg-white dark:bg-zinc-800 shadow-sm">
+              <div className="flex items-center justify-between p-4 rounded-2xl bg-zinc-50 dark:bg-zinc-800 border border-zinc-200/80 dark:border-transparent shadow-xs">
                 <div className="flex items-center gap-3">
-                  <div className="w-10 h-10 rounded-xl bg-emerald-50 dark:bg-emerald-950/50 flex items-center justify-center text-emerald-500">
-                    <WhatsAppOfficialIcon className="w-5 h-5 text-emerald-500" />
+                  <div className="w-10 h-10 rounded-xl bg-emerald-50 dark:bg-emerald-950/50 flex items-center justify-center text-emerald-600 dark:text-emerald-500">
+                    <WhatsAppOfficialIcon className="w-5 h-5 text-emerald-600 dark:text-emerald-500" />
                   </div>
                   <div>
                     <p className="text-xs text-zinc-500 dark:text-zinc-400 font-medium">WhatsApp / Teléfono</p>
@@ -187,10 +187,10 @@ export function ContactSection({ onOpenCV }: ContactSectionProps = {}) {
                 <div className="flex items-center gap-1.5">
                   <button
                     onClick={() => handleCopy(PERSONAL_INFO.phone, 'phone')}
-                    className="p-2 rounded-full bg-zinc-100 dark:bg-zinc-700 text-zinc-700 dark:text-zinc-200 hover:bg-zinc-200 dark:hover:bg-zinc-600 hover:text-zinc-950 dark:hover:text-white transition-colors cursor-pointer shadow-xs"
+                    className="p-2 rounded-full bg-zinc-200 dark:bg-zinc-700 text-zinc-700 dark:text-zinc-200 hover:bg-zinc-300 dark:hover:bg-zinc-600 hover:text-zinc-950 dark:hover:text-white transition-colors cursor-pointer shadow-xs"
                     title="Copiar teléfono"
                   >
-                    {copiedField === 'phone' ? <Check className="w-4 h-4 text-zinc-950 dark:text-white" /> : <Copy className="w-4 h-4" />}
+                    {copiedField === 'phone' ? <Check className="w-4 h-4 text-emerald-600 dark:text-white" /> : <Copy className="w-4 h-4" />}
                   </button>
                   <a
                     href={PERSONAL_INFO.whatsappUrl}
@@ -205,9 +205,9 @@ export function ContactSection({ onOpenCV }: ContactSectionProps = {}) {
               </div>
 
               {/* Email Item */}
-              <div className="flex items-center justify-between p-4 rounded-2xl bg-white dark:bg-zinc-800 shadow-sm">
+              <div className="flex items-center justify-between p-4 rounded-2xl bg-zinc-50 dark:bg-zinc-800 border border-zinc-200/80 dark:border-transparent shadow-xs">
                 <div className="flex items-center gap-3">
-                  <div className="w-10 h-10 rounded-xl bg-zinc-100 dark:bg-zinc-700 flex items-center justify-center text-zinc-950 dark:text-white">
+                  <div className="w-10 h-10 rounded-xl bg-zinc-200 dark:bg-zinc-700 flex items-center justify-center text-zinc-950 dark:text-white">
                     <Mail className="w-5 h-5" />
                   </div>
                   <div className="max-w-[180px] sm:max-w-[200px] truncate">
@@ -218,10 +218,10 @@ export function ContactSection({ onOpenCV }: ContactSectionProps = {}) {
                 <div className="flex items-center gap-1.5">
                   <button
                     onClick={() => handleCopy(PERSONAL_INFO.email, 'email')}
-                    className="p-2 rounded-full bg-zinc-100 dark:bg-zinc-700 text-zinc-700 dark:text-zinc-200 hover:bg-zinc-200 dark:hover:bg-zinc-600 hover:text-zinc-950 dark:hover:text-white transition-colors cursor-pointer shadow-xs"
+                    className="p-2 rounded-full bg-zinc-200 dark:bg-zinc-700 text-zinc-700 dark:text-zinc-200 hover:bg-zinc-300 dark:hover:bg-zinc-600 hover:text-zinc-950 dark:hover:text-white transition-colors cursor-pointer shadow-xs"
                     title="Copiar correo"
                   >
-                    {copiedField === 'email' ? <Check className="w-4 h-4 text-zinc-950 dark:text-white" /> : <Copy className="w-4 h-4" />}
+                    {copiedField === 'email' ? <Check className="w-4 h-4 text-emerald-600 dark:text-white" /> : <Copy className="w-4 h-4" />}
                   </button>
                   <a
                     href={`mailto:${PERSONAL_INFO.email}`}
@@ -234,8 +234,8 @@ export function ContactSection({ onOpenCV }: ContactSectionProps = {}) {
               </div>
 
               {/* Location */}
-              <div className="p-4 rounded-2xl bg-white dark:bg-zinc-800 shadow-sm flex items-center gap-3">
-                <div className="w-10 h-10 rounded-xl bg-zinc-100 dark:bg-zinc-700 flex items-center justify-center text-zinc-950 dark:text-white shrink-0">
+              <div className="p-4 rounded-2xl bg-zinc-50 dark:bg-zinc-800 border border-zinc-200/80 dark:border-transparent shadow-xs flex items-center gap-3">
+                <div className="w-10 h-10 rounded-xl bg-zinc-200 dark:bg-zinc-700 flex items-center justify-center text-zinc-950 dark:text-white shrink-0">
                   <MapPin className="w-5 h-5" />
                 </div>
                 <div>
@@ -267,11 +267,11 @@ export function ContactSection({ onOpenCV }: ContactSectionProps = {}) {
 
           {/* Right Column: Contact Form */}
           <div className="lg:col-span-7">
-            <div className="p-7 sm:p-9 rounded-3xl bg-zinc-50 dark:bg-zinc-900 shadow-md relative">
+            <div className="p-7 sm:p-9 rounded-3xl bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 shadow-md relative">
               
               {isSubmitted ? (
                 <div className="p-10 text-center space-y-4 animate-in fade-in zoom-in-95 duration-300">
-                  <div className="w-16 h-16 rounded-full bg-zinc-100 dark:bg-zinc-800 flex items-center justify-center text-zinc-950 dark:text-white mx-auto shadow-sm">
+                  <div className="w-16 h-16 rounded-full bg-emerald-100 dark:bg-zinc-800 flex items-center justify-center text-emerald-600 dark:text-white mx-auto shadow-sm">
                     <CheckCircle2 className="w-10 h-10" />
                   </div>
                   <h3 className="text-2xl font-extrabold text-zinc-950 dark:text-white">
@@ -301,7 +301,7 @@ export function ContactSection({ onOpenCV }: ContactSectionProps = {}) {
                       href={generateWhatsAppDirectUrl()}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="px-5 py-2.5 rounded-full bg-zinc-200 dark:bg-zinc-800 hover:bg-zinc-300 dark:hover:bg-zinc-700 text-zinc-950 dark:text-zinc-100 font-bold text-xs transition-colors shadow-xs"
+                      className="px-5 py-2.5 rounded-full bg-zinc-100 dark:bg-zinc-800 hover:bg-zinc-200 dark:hover:bg-zinc-700 text-zinc-950 dark:text-zinc-100 font-bold text-xs transition-colors shadow-xs"
                     >
                       Continuar en WhatsApp
                     </a>
@@ -309,7 +309,7 @@ export function ContactSection({ onOpenCV }: ContactSectionProps = {}) {
                 </div>
               ) : (
                 <form id="contact-form" onSubmit={handleSubmit} className="space-y-4">
-                  <div className="pb-3 mb-4">
+                  <div className="pb-3 mb-4 border-b border-zinc-100 dark:border-zinc-800/80">
                     <h3 className="text-lg font-bold text-zinc-950 dark:text-white">
                       Formulario de Contacto Profesional
                     </h3>
@@ -334,11 +334,11 @@ export function ContactSection({ onOpenCV }: ContactSectionProps = {}) {
                         value={formData.name}
                         onChange={handleChange}
                         onBlur={handleBlur}
-                        className={`w-full px-4 py-2.5 rounded-2xl text-xs bg-white dark:bg-zinc-800 ${
+                        className={`w-full px-4 py-2.5 rounded-2xl text-xs bg-zinc-50 dark:bg-zinc-800 border border-zinc-200 dark:border-zinc-700 ${
                           errors.name 
                             ? 'ring-2 ring-red-500/50' 
                             : 'focus:ring-2 focus:ring-zinc-400'
-                        } text-zinc-950 dark:text-white placeholder-zinc-400 dark:placeholder-zinc-500 focus:outline-none shadow-sm`}
+                        } text-zinc-950 dark:text-white placeholder-zinc-400 dark:placeholder-zinc-500 focus:outline-none shadow-xs`}
                       />
                       {errors.name && (
                         <p className="text-[11px] text-red-600 dark:text-red-400 flex items-center gap-1 mt-1 font-medium">
@@ -361,11 +361,11 @@ export function ContactSection({ onOpenCV }: ContactSectionProps = {}) {
                         value={formData.email}
                         onChange={handleChange}
                         onBlur={handleBlur}
-                        className={`w-full px-4 py-2.5 rounded-2xl text-xs bg-white dark:bg-zinc-800 ${
+                        className={`w-full px-4 py-2.5 rounded-2xl text-xs bg-zinc-50 dark:bg-zinc-800 border border-zinc-200 dark:border-zinc-700 ${
                           errors.email 
                             ? 'ring-2 ring-red-500/50' 
                             : 'focus:ring-2 focus:ring-zinc-400'
-                        } text-zinc-950 dark:text-white placeholder-zinc-400 dark:placeholder-zinc-500 focus:outline-none shadow-sm`}
+                        } text-zinc-950 dark:text-white placeholder-zinc-400 dark:placeholder-zinc-500 focus:outline-none shadow-xs`}
                       />
                       {errors.email && (
                         <p className="text-[11px] text-red-600 dark:text-red-400 flex items-center gap-1 mt-1 font-medium">
@@ -392,7 +392,7 @@ export function ContactSection({ onOpenCV }: ContactSectionProps = {}) {
                         placeholder="Ej. Grupo Empresarial / Agencia"
                         value={formData.company}
                         onChange={handleChange}
-                        className="w-full px-4 py-2.5 rounded-2xl text-xs bg-white dark:bg-zinc-800 text-zinc-950 dark:text-white placeholder-zinc-400 dark:placeholder-zinc-500 focus:outline-none focus:ring-2 focus:ring-zinc-400 shadow-sm"
+                        className="w-full px-4 py-2.5 rounded-2xl text-xs bg-zinc-50 dark:bg-zinc-800 border border-zinc-200 dark:border-zinc-700 text-zinc-950 dark:text-white placeholder-zinc-400 dark:placeholder-zinc-500 focus:outline-none focus:ring-2 focus:ring-zinc-400 shadow-xs"
                       />
                     </div>
 
@@ -406,7 +406,7 @@ export function ContactSection({ onOpenCV }: ContactSectionProps = {}) {
                         name="areaOfInterest"
                         value={formData.areaOfInterest}
                         onChange={handleChange}
-                        className="w-full px-4 py-2.5 rounded-2xl text-xs bg-white dark:bg-zinc-800 text-zinc-950 dark:text-white focus:outline-none focus:ring-2 focus:ring-zinc-400 cursor-pointer shadow-sm"
+                        className="w-full px-4 py-2.5 rounded-2xl text-xs bg-zinc-50 dark:bg-zinc-800 border border-zinc-200 dark:border-zinc-700 text-zinc-950 dark:text-white focus:outline-none focus:ring-2 focus:ring-zinc-400 cursor-pointer shadow-xs"
                       >
                         <option value="Marketing Digital & Pautas">Marketing Digital & Pautas (Meta / Google)</option>
                         <option value="Desarrollo Web & Software">Desarrollo Web & Software (Next.js / Cloud)</option>
@@ -434,11 +434,11 @@ export function ContactSection({ onOpenCV }: ContactSectionProps = {}) {
                       value={formData.subject}
                       onChange={handleChange}
                       onBlur={handleBlur}
-                      className={`w-full px-4 py-2.5 rounded-2xl text-xs bg-white dark:bg-zinc-800 ${
+                      className={`w-full px-4 py-2.5 rounded-2xl text-xs bg-zinc-50 dark:bg-zinc-800 border border-zinc-200 dark:border-zinc-700 ${
                         errors.subject 
                           ? 'ring-2 ring-red-500/50' 
-                          : 'focus:ring-2 focus:ring-zinc-400'
-                      } text-zinc-950 dark:text-white placeholder-zinc-400 dark:placeholder-zinc-500 focus:outline-none shadow-sm`}
+                            : 'focus:ring-2 focus:ring-zinc-400'
+                      } text-zinc-950 dark:text-white placeholder-zinc-400 dark:placeholder-zinc-500 focus:outline-none shadow-xs`}
                     />
                     {errors.subject && (
                       <p className="text-[11px] text-red-600 dark:text-red-400 flex items-center gap-1 mt-1 font-medium">
@@ -461,11 +461,11 @@ export function ContactSection({ onOpenCV }: ContactSectionProps = {}) {
                       value={formData.message}
                       onChange={handleChange}
                       onBlur={handleBlur}
-                      className={`w-full px-4 py-2.5 rounded-2xl text-xs bg-white dark:bg-zinc-800 ${
+                      className={`w-full px-4 py-2.5 rounded-2xl text-xs bg-zinc-50 dark:bg-zinc-800 border border-zinc-200 dark:border-zinc-700 ${
                         errors.message 
                           ? 'ring-2 ring-red-500/50' 
                           : 'focus:ring-2 focus:ring-zinc-400'
-                      } text-zinc-950 dark:text-white placeholder-zinc-400 dark:placeholder-zinc-500 focus:outline-none resize-none shadow-sm`}
+                      } text-zinc-950 dark:text-white placeholder-zinc-400 dark:placeholder-zinc-500 focus:outline-none resize-none shadow-xs`}
                     />
                     {errors.message && (
                       <p className="text-[11px] text-red-600 dark:text-red-400 flex items-center gap-1 mt-1 font-medium">
@@ -507,3 +507,5 @@ export function ContactSection({ onOpenCV }: ContactSectionProps = {}) {
     </BlurFadeSection>
   );
 }
+
+export default ContactSection;

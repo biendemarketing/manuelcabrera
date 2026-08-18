@@ -34,64 +34,64 @@ interface ExperienceTheme {
 const EXPERIENCE_THEMES: Record<string, ExperienceTheme> = {
   'lati-k-publicidad': {
     id: 'lati-k-publicidad',
-    gradient: 'from-[#eab308] via-[#ca8a04] to-[#09090b]', // Dorado con negro
-    tabBg: 'bg-[#181404] hover:bg-[#2c2207]',
+    gradient: 'from-[#eab308] via-[#ca8a04] to-[#09090b]',
+    tabBg: 'bg-amber-50 dark:bg-[#181404] hover:bg-amber-100 dark:hover:bg-[#2c2207]',
     activeColor: '#eab308',
     monogram: 'LK'
   },
   'master-creative': {
     id: 'master-creative',
     gradient: 'from-[#7e22ce] via-[#6b21a8] to-[#09090b]',
-    tabBg: 'bg-[#140b22] hover:bg-[#221038]',
+    tabBg: 'bg-purple-50 dark:bg-[#140b22] hover:bg-purple-100 dark:hover:bg-[#221038]',
     activeColor: '#7e22ce',
     monogram: 'MC'
   },
   'jirm-consulting': {
     id: 'jirm-consulting',
-    gradient: 'from-[#1e40af] via-[#1e3a8a] to-[#020617]', // Azul oscuro
-    tabBg: 'bg-[#060c1c] hover:bg-[#0d1633]',
+    gradient: 'from-[#1e40af] via-[#1e3a8a] to-[#020617]',
+    tabBg: 'bg-blue-50 dark:bg-[#060c1c] hover:bg-blue-100 dark:hover:bg-[#0d1633]',
     activeColor: '#1e40af',
     monogram: 'JC'
   },
   'habilitic': {
     id: 'habilitic',
-    gradient: 'from-[#06b6d4] via-[#0891b2] to-[#0f172a]', // Turquesa con azul oscuro
-    tabBg: 'bg-[#04161c] hover:bg-[#07242d]',
+    gradient: 'from-[#06b6d4] via-[#0891b2] to-[#0f172a]',
+    tabBg: 'bg-cyan-50 dark:bg-[#04161c] hover:bg-cyan-100 dark:hover:bg-[#07242d]',
     activeColor: '#06b6d4',
     monogram: 'HB'
   },
   'laboratorios-sintesis': {
     id: 'laboratorios-sintesis',
     gradient: 'from-[#3b82f6] via-[#2563eb] to-[#0f172a]',
-    tabBg: 'bg-[#0a1128] hover:bg-[#121f42]',
+    tabBg: 'bg-blue-50 dark:bg-[#0a1128] hover:bg-blue-100 dark:hover:bg-[#121f42]',
     activeColor: '#3b82f6',
     monogram: 'LS'
   },
   'print-solution': {
     id: 'print-solution',
-    gradient: 'from-[#f97316] via-[#ea580c] to-[#09090b]', // Naranja con negro
-    tabBg: 'bg-[#1a0c04] hover:bg-[#2c1507]',
+    gradient: 'from-[#f97316] via-[#ea580c] to-[#09090b]',
+    tabBg: 'bg-orange-50 dark:bg-[#1a0c04] hover:bg-orange-100 dark:hover:bg-[#2c1507]',
     activeColor: '#f97316',
     monogram: 'PS'
   },
   'club-med-punta-cana': {
     id: 'club-med-punta-cana',
-    gradient: 'from-[#0284c7] via-[#0369a1] to-[#075985]', // Azul
-    tabBg: 'bg-[#051726] hover:bg-[#0a253d]',
+    gradient: 'from-[#0284c7] via-[#0369a1] to-[#075985]',
+    tabBg: 'bg-sky-50 dark:bg-[#051726] hover:bg-sky-100 dark:hover:bg-[#0a253d]',
     activeColor: '#0284c7',
     monogram: 'CM'
   },
   'big-print-decora-group': {
     id: 'big-print-decora-group',
-    gradient: 'from-[#dc2626] via-[#b91c1c] to-[#1e3a8a]', // Rojo dominante con azul
-    tabBg: 'bg-[#220707] hover:bg-[#380e0e]',
+    gradient: 'from-[#dc2626] via-[#b91c1c] to-[#1e3a8a]',
+    tabBg: 'bg-rose-50 dark:bg-[#220707] hover:bg-rose-100 dark:hover:bg-[#380e0e]',
     activeColor: '#ef4444',
     monogram: 'BP'
   },
   'bien-de-marketing': {
     id: 'bien-de-marketing',
-    gradient: 'from-[#9333ea] via-[#6b21a8] to-[#09090b]', // Negro con morado
-    tabBg: 'bg-[#13071c] hover:bg-[#220c30]',
+    gradient: 'from-[#9333ea] via-[#6b21a8] to-[#09090b]',
+    tabBg: 'bg-purple-50 dark:bg-[#13071c] hover:bg-purple-100 dark:hover:bg-[#220c30]',
     activeColor: '#9333ea',
     monogram: 'BM'
   }
@@ -132,28 +132,28 @@ export function ExperienceSection() {
   };
 
   return (
-    <BlurFadeSection id="experiencia" className="py-24 sm:py-32 bg-zinc-950 text-white relative w-full overflow-hidden">
+    <BlurFadeSection id="experiencia" className="py-24 sm:py-32 bg-zinc-50 dark:bg-zinc-950 text-zinc-900 dark:text-white relative w-full overflow-hidden transition-colors duration-300">
       {/* Background Ambience */}
-      <div className="absolute top-0 inset-x-0 h-32 bg-gradient-to-b from-zinc-950 via-zinc-950/80 to-transparent pointer-events-none z-10" />
-      <div className="absolute bottom-0 inset-x-0 h-36 bg-gradient-to-t from-zinc-950 via-zinc-950/80 to-transparent pointer-events-none z-10" />
-      <div className="absolute -left-40 top-1/3 w-96 h-96 bg-indigo-900/10 rounded-full blur-3xl pointer-events-none" />
-      <div className="absolute -right-40 bottom-1/3 w-96 h-96 bg-purple-900/10 rounded-full blur-3xl pointer-events-none" />
+      <div className="absolute top-0 inset-x-0 h-32 bg-gradient-to-b from-zinc-50 dark:from-zinc-950 via-zinc-50/80 dark:via-zinc-950/80 to-transparent pointer-events-none z-10" />
+      <div className="absolute bottom-0 inset-x-0 h-36 bg-gradient-to-t from-zinc-50 dark:from-zinc-950 via-zinc-50/80 dark:via-zinc-950/80 to-transparent pointer-events-none z-10" />
+      <div className="absolute -left-40 top-1/3 w-96 h-96 bg-indigo-500/10 dark:bg-indigo-900/10 rounded-full blur-3xl pointer-events-none" />
+      <div className="absolute -right-40 bottom-1/3 w-96 h-96 bg-purple-500/10 dark:bg-purple-900/10 rounded-full blur-3xl pointer-events-none" />
 
       <div className="w-full px-4 sm:px-8 md:px-12 lg:px-16 xl:px-20 2xl:px-28 relative z-20">
         
         {/* Section Header with Autoplay Indicator & Controls */}
         <BlurFadeDiv className="flex flex-col sm:flex-row sm:items-end justify-between gap-6 mb-12 sm:mb-16">
           <div className="space-y-3 max-w-2xl">
-            <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-zinc-900 border border-zinc-800 text-indigo-400 text-xs font-bold uppercase tracking-widest shadow-xs">
-              <Briefcase className="w-3.5 h-3.5 text-indigo-400" />
+            <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 text-indigo-600 dark:text-indigo-400 text-xs font-bold uppercase tracking-widest shadow-xs">
+              <Briefcase className="w-3.5 h-3.5 text-indigo-600 dark:text-indigo-400" />
               <span>Evolución & Trayectoria Profesional</span>
             </div>
 
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-white tracking-tight">
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-zinc-900 dark:text-white tracking-tight">
               Experiencia Laboral
             </h2>
 
-            <p className="text-sm sm:text-base text-zinc-400 font-normal leading-relaxed">
+            <p className="text-sm sm:text-base text-zinc-600 dark:text-zinc-400 font-normal leading-relaxed">
               Más de 11 años de trayectoria continua: desde los orígenes en preprensa y agencias de publicidad, hasta la dirección estratégica, desarrollo de software y liderazgo de proyectos internacionales.
             </p>
           </div>
@@ -163,17 +163,17 @@ export function ExperienceSection() {
             {/* Play/Pause Toggle */}
             <button
               onClick={() => setIsPaused((prev) => !prev)}
-              className="p-3 rounded-full bg-zinc-900 hover:bg-zinc-800 text-zinc-300 hover:text-white border border-zinc-800 transition-all cursor-pointer active:scale-90"
+              className="p-3 rounded-full bg-white dark:bg-zinc-900 hover:bg-zinc-100 dark:hover:bg-zinc-800 text-zinc-700 dark:text-zinc-300 hover:text-black dark:hover:text-white border border-zinc-200 dark:border-zinc-800 transition-all cursor-pointer active:scale-90 shadow-sm"
               title={isPaused ? "Reanudar reproducción automática" : "Pausar reproducción automática"}
               aria-label={isPaused ? "Reanudar" : "Pausar"}
             >
-              {isPaused ? <Play className="w-4 h-4 text-emerald-400 fill-emerald-400" /> : <Pause className="w-4 h-4 text-zinc-300" />}
+              {isPaused ? <Play className="w-4 h-4 text-emerald-600 dark:text-emerald-400 fill-current" /> : <Pause className="w-4 h-4" />}
             </button>
 
             {/* Prev Arrow */}
             <button
               onClick={handlePrev}
-              className="p-3 rounded-full bg-zinc-900 hover:bg-zinc-800 text-zinc-300 hover:text-white border border-zinc-800 transition-all cursor-pointer active:scale-90"
+              className="p-3 rounded-full bg-white dark:bg-zinc-900 hover:bg-zinc-100 dark:hover:bg-zinc-800 text-zinc-700 dark:text-zinc-300 hover:text-black dark:hover:text-white border border-zinc-200 dark:border-zinc-800 transition-all cursor-pointer active:scale-90 shadow-sm"
               title="Experiencia anterior"
               aria-label="Experiencia anterior"
             >
@@ -183,7 +183,7 @@ export function ExperienceSection() {
             {/* Next Arrow */}
             <button
               onClick={handleNext}
-              className="p-3 rounded-full bg-zinc-900 hover:bg-zinc-800 text-zinc-300 hover:text-white border border-zinc-800 transition-all cursor-pointer active:scale-90"
+              className="p-3 rounded-full bg-white dark:bg-zinc-900 hover:bg-zinc-100 dark:hover:bg-zinc-800 text-zinc-700 dark:text-zinc-300 hover:text-black dark:hover:text-white border border-zinc-200 dark:border-zinc-800 transition-all cursor-pointer active:scale-90 shadow-sm"
               title="Siguiente experiencia"
               aria-label="Siguiente experiencia"
             >
@@ -304,29 +304,29 @@ export function ExperienceSection() {
                 );
               }
 
-              // Collapsed Tab Strip (Inactive Panel - Borderless)
+              // Collapsed Tab Strip (Inactive Panel)
               return (
                 <motion.button
                   key={job.id}
                   layoutId={`exp-card-${job.id}`}
                   onClick={() => setActiveIndex(idx)}
                   transition={{ type: "spring", stiffness: 260, damping: 28 }}
-                  className={`w-20 rounded-3xl p-4 ${theme.tabBg} border-0 outline-none text-zinc-400 hover:text-white flex flex-col items-center justify-between cursor-pointer transition-colors duration-200 overflow-hidden group shadow-lg`}
+                  className={`w-20 rounded-3xl p-4 ${theme.tabBg} border border-zinc-200/80 dark:border-transparent outline-none text-zinc-600 dark:text-zinc-400 hover:text-zinc-950 dark:hover:text-white flex flex-col items-center justify-between cursor-pointer transition-colors duration-200 overflow-hidden group shadow-md dark:shadow-lg`}
                   title={job.company}
                   aria-label={`Ver experiencia en ${job.company}`}
                 >
                   {/* Top Monogram */}
-                  <div className="w-10 h-10 rounded-xl bg-zinc-900/90 group-hover:bg-zinc-800 border-0 flex items-center justify-center font-bold text-xs text-white transition-colors">
+                  <div className="w-10 h-10 rounded-xl bg-white dark:bg-zinc-900/90 group-hover:bg-zinc-100 dark:group-hover:bg-zinc-800 border border-zinc-200 dark:border-transparent flex items-center justify-center font-bold text-xs text-zinc-900 dark:text-white transition-colors shadow-xs">
                     {theme.monogram}
                   </div>
 
                   {/* Vertical Company Label */}
-                  <div className="my-auto py-4 [writing-mode:vertical-rl] rotate-180 text-xs font-bold uppercase tracking-wider text-zinc-400 group-hover:text-white transition-colors truncate max-h-[300px]">
+                  <div className="my-auto py-4 [writing-mode:vertical-rl] rotate-180 text-xs font-bold uppercase tracking-wider text-zinc-700 dark:text-zinc-400 group-hover:text-zinc-950 dark:group-hover:text-white transition-colors truncate max-h-[300px]">
                     {job.company}
                   </div>
 
                   {/* Bottom Year */}
-                  <span className="text-[10px] font-mono text-zinc-400 font-semibold group-hover:text-white">
+                  <span className="text-[10px] font-mono text-zinc-500 dark:text-zinc-400 font-semibold group-hover:text-zinc-950 dark:group-hover:text-white">
                     {job.period.split(' ')[0]}
                   </span>
                 </motion.button>
@@ -335,7 +335,7 @@ export function ExperienceSection() {
 
           </div>
 
-          {/* RESPONSIVE VIEW (Mobile & Tablet < 1024px - Borderless) */}
+          {/* RESPONSIVE VIEW (Mobile & Tablet < 1024px) */}
           <div 
             onMouseEnter={() => setIsPaused(true)}
             onMouseLeave={() => setIsPaused(false)}
@@ -351,10 +351,10 @@ export function ExperienceSection() {
                   <button
                     key={job.id}
                     onClick={() => setActiveIndex(idx)}
-                    className={`flex items-center gap-2 px-4 py-2.5 rounded-2xl shrink-0 transition-all font-bold text-xs cursor-pointer border-0 ${
+                    className={`flex items-center gap-2 px-4 py-2.5 rounded-2xl shrink-0 transition-all font-bold text-xs cursor-pointer border ${
                       isSelected
-                        ? `bg-gradient-to-r ${theme.gradient} text-white shadow-md`
-                        : 'bg-zinc-900 text-zinc-400 hover:text-white border-0'
+                        ? `bg-gradient-to-r ${theme.gradient} text-white shadow-md border-transparent`
+                        : 'bg-white dark:bg-zinc-900 text-zinc-700 dark:text-zinc-400 hover:text-zinc-950 dark:hover:text-white border-zinc-200 dark:border-zinc-800'
                     }`}
                   >
                     <span className="font-mono">{theme.monogram}</span>
@@ -431,23 +431,23 @@ export function ExperienceSection() {
         </BlurFadeDiv>
 
         {/* Verifiable References Subsection - Full Width & Modern Design */}
-        <BlurFadeDiv delay={0.25} className="mt-20 pt-10 border-t border-zinc-800/80 space-y-6 w-full max-w-[1700px] mx-auto">
+        <BlurFadeDiv delay={0.25} className="mt-20 pt-10 border-t border-zinc-200 dark:border-zinc-800/80 space-y-6 w-full max-w-[1700px] mx-auto">
           <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
             <div className="flex items-center gap-2.5">
-              <div className="w-9 h-9 rounded-xl bg-indigo-950/80 border border-indigo-800/40 flex items-center justify-center text-indigo-400 shadow-xs">
+              <div className="w-9 h-9 rounded-xl bg-indigo-50 dark:bg-indigo-950/80 border border-indigo-200 dark:border-indigo-800/40 flex items-center justify-center text-indigo-600 dark:text-indigo-400 shadow-xs">
                 <Users className="w-4 h-4" />
               </div>
               <div>
-                <h3 className="text-lg sm:text-xl font-black text-white uppercase tracking-wider">
+                <h3 className="text-lg sm:text-xl font-black text-zinc-900 dark:text-white uppercase tracking-wider">
                   Referencias Profesionales Verificables
                 </h3>
-                <p className="text-xs text-zinc-400">
+                <p className="text-xs text-zinc-600 dark:text-zinc-400">
                   Contactos directos de directivos, gerentes y ejecutivos con quienes he colaborado
                 </p>
               </div>
             </div>
 
-            <span className="text-xs font-mono font-bold text-zinc-400 hidden sm:block">
+            <span className="text-xs font-mono font-bold text-zinc-500 dark:text-zinc-400 hidden sm:block">
               {REFERENCES.length} Contactos Profesionales
             </span>
           </div>
@@ -467,20 +467,20 @@ export function ExperienceSection() {
               return (
                 <div
                   key={idx}
-                  className="p-5 sm:p-6 rounded-3xl bg-gradient-to-br from-zinc-900/90 via-zinc-900/80 to-zinc-950 hover:bg-zinc-900 border-0 flex flex-col justify-between space-y-4 shadow-xl hover:shadow-2xl transition-all duration-300 group"
+                  className="p-5 sm:p-6 rounded-3xl bg-white dark:bg-gradient-to-br dark:from-zinc-900/90 dark:via-zinc-900/80 dark:to-zinc-950 hover:bg-zinc-50 dark:hover:bg-zinc-900 border border-zinc-200/90 dark:border-zinc-800/80 flex flex-col justify-between space-y-4 shadow-md dark:shadow-xl hover:shadow-xl dark:hover:shadow-2xl transition-all duration-300 group"
                 >
                   <div className="space-y-3.5">
                     
                     {/* Header: Monogram Avatar + Role Badge */}
                     <div className="flex items-center justify-between gap-2">
-                      <div className="w-10 h-10 rounded-2xl bg-zinc-950 border border-zinc-800/80 flex items-center justify-center font-black text-xs text-white shadow-xs group-hover:scale-105 transition-transform">
+                      <div className="w-10 h-10 rounded-2xl bg-zinc-100 dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800/80 flex items-center justify-center font-black text-xs text-zinc-900 dark:text-white shadow-xs group-hover:scale-105 transition-transform">
                         {initials}
                       </div>
 
                       <span className={`text-[10px] uppercase font-extrabold tracking-wider px-2.5 py-0.5 rounded-full ${
                         isCEO 
-                          ? 'bg-purple-950/70 border border-purple-800/50 text-purple-300' 
-                          : 'bg-indigo-950/70 border border-indigo-800/50 text-indigo-300'
+                          ? 'bg-purple-100 dark:bg-purple-950/70 border border-purple-200 dark:border-purple-800/50 text-purple-700 dark:text-purple-300' 
+                          : 'bg-indigo-100 dark:bg-indigo-950/70 border border-indigo-200 dark:border-indigo-800/50 text-indigo-700 dark:text-indigo-300'
                       }`}>
                         {ref.role}
                       </span>
@@ -488,11 +488,11 @@ export function ExperienceSection() {
 
                     {/* Name & Company */}
                     <div>
-                      <h4 className="text-base font-black text-white group-hover:text-purple-300 transition-colors leading-snug">
+                      <h4 className="text-base font-black text-zinc-900 dark:text-white group-hover:text-purple-600 dark:group-hover:text-purple-300 transition-colors leading-snug">
                         {ref.name}
                       </h4>
-                      <p className="text-xs text-zinc-400 mt-1 flex items-center gap-1.5 font-medium">
-                        <Building2 className="w-3.5 h-3.5 text-zinc-500 shrink-0" />
+                      <p className="text-xs text-zinc-600 dark:text-zinc-400 mt-1 flex items-center gap-1.5 font-medium">
+                        <Building2 className="w-3.5 h-3.5 text-zinc-400 dark:text-zinc-500 shrink-0" />
                         <span className="truncate">{ref.company}</span>
                       </p>
                     </div>
@@ -500,22 +500,22 @@ export function ExperienceSection() {
                   </div>
 
                   {/* Phone Call & Quick Copy Bar */}
-                  <div className="pt-3 flex items-center justify-between border-t border-zinc-800/70">
+                  <div className="pt-3 flex items-center justify-between border-t border-zinc-100 dark:border-zinc-800/70">
                     <a
                       href={`tel:${ref.phone.replace(/\s+/g, '')}`}
-                      className="inline-flex items-center gap-2 text-xs font-mono font-bold text-zinc-300 hover:text-white transition-colors"
+                      className="inline-flex items-center gap-2 text-xs font-mono font-bold text-zinc-700 hover:text-black dark:text-zinc-300 dark:hover:text-white transition-colors"
                     >
-                      <Phone className="w-3.5 h-3.5 text-indigo-400" />
+                      <Phone className="w-3.5 h-3.5 text-indigo-600 dark:text-indigo-400" />
                       <span>{ref.phone}</span>
                     </a>
 
                     <button
                       onClick={() => handleCopyPhone(ref.phone)}
-                      className="p-1.5 rounded-xl bg-zinc-800 hover:bg-zinc-700 text-zinc-300 hover:text-white transition-colors cursor-pointer shadow-xs active:scale-90"
+                      className="p-1.5 rounded-xl bg-zinc-100 hover:bg-zinc-200 dark:bg-zinc-800 dark:hover:bg-zinc-700 text-zinc-700 dark:text-zinc-300 hover:text-black dark:hover:text-white transition-colors cursor-pointer shadow-xs active:scale-90"
                       title="Copiar número de teléfono"
                     >
                       {copiedPhone === ref.phone ? (
-                        <Check className="w-3.5 h-3.5 text-emerald-400" />
+                        <Check className="w-3.5 h-3.5 text-emerald-600 dark:text-emerald-400" />
                       ) : (
                         <Copy className="w-3.5 h-3.5" />
                       )}

@@ -60,25 +60,25 @@ function InteractiveServiceCard({ service }: { service: ServiceItem }) {
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
       onMouseMove={handleMouseMove}
-      className="relative group p-6 sm:p-7 rounded-3xl bg-white dark:bg-zinc-900 shadow-md border-0 flex flex-col justify-between hover:shadow-2xl transition-all duration-300 cursor-default"
+      className="relative group p-6 sm:p-7 rounded-3xl bg-white dark:bg-zinc-900 border border-zinc-200/90 dark:border-0 shadow-md dark:shadow-xl flex flex-col justify-between hover:shadow-2xl transition-all duration-300 cursor-default"
     >
-      {/* 1. Offset Floating Stroke with White to Black Gradient on Hover */}
+      {/* 1. Offset Floating Stroke on Hover */}
       <div 
         className="absolute -inset-2 sm:-inset-2.5 rounded-[32px] p-[1.5px] opacity-0 group-hover:opacity-100 transition-all duration-300 pointer-events-none -z-10"
         style={{
-          background: 'linear-gradient(135deg, rgba(255,255,255,0.95) 0%, rgba(255,255,255,0.25) 35%, rgba(0,0,0,0.85) 100%)',
+          background: 'linear-gradient(135deg, rgba(99,102,241,0.6) 0%, rgba(168,85,247,0.3) 35%, rgba(0,0,0,0.4) 100%)',
           WebkitMask: 'linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0)',
           WebkitMaskComposite: 'xor',
           maskComposite: 'exclude',
         }}
       />
 
-      {/* 2. Interactive Cursor Spotlight / Focus Glow Following Pointer */}
+      {/* 2. Interactive Cursor Spotlight */}
       {isHovered && (
         <div
           className="absolute inset-0 rounded-3xl pointer-events-none transition-opacity duration-200 overflow-hidden"
           style={{
-            background: `radial-gradient(350px circle at ${mousePos.x}px ${mousePos.y}px, rgba(255,255,255,0.09), transparent 70%)`,
+            background: `radial-gradient(350px circle at ${mousePos.x}px ${mousePos.y}px, rgba(99,102,241,0.08), transparent 70%)`,
           }}
         />
       )}
@@ -141,7 +141,7 @@ function InteractiveSpotlightPortrait({ src, alt }: { src: string; alt: string }
         className="absolute inset-0 w-full h-full object-cover object-[100%_top] scale-[1.38] origin-[88%_28%] grayscale contrast-[1.25] brightness-[0.88] transition-transform duration-700 ease-out border-0 outline-none pointer-events-none"
       />
 
-      {/* 2. Top Layer: Vivid Color Revealed by Smooth Natural Spotlight Mask (No Stroke) */}
+      {/* 2. Top Layer: Vivid Color Revealed by Smooth Natural Spotlight Mask */}
       {/* eslint-disable-next-line @next/next/no-img-element */}
       <img
         src={src}
@@ -215,24 +215,24 @@ export function AboutBiography({ onOpenCV }: AboutBiographyProps) {
   ];
 
   const hobbiesWithIcons = [
-    { name: "Leer libros & Aprender", icon: BookOpen, color: "text-amber-400", glow: "group-hover:drop-shadow-[0_0_18px_rgba(251,191,36,0.9)]" },
-    { name: "Pesca deportiva", icon: Fish, color: "text-cyan-400", glow: "group-hover:drop-shadow-[0_0_18px_rgba(34,211,238,0.9)]" },
-    { name: "Natación", icon: Compass, color: "text-blue-400", glow: "group-hover:drop-shadow-[0_0_18px_rgba(96,165,250,0.9)]" },
-    { name: "Videojuegos & 3D", icon: Gamepad2, color: "text-purple-400", glow: "group-hover:drop-shadow-[0_0_18px_rgba(192,132,252,0.9)]" },
-    { name: "Cocina creativa", icon: Utensils, color: "text-rose-400", glow: "group-hover:drop-shadow-[0_0_18px_rgba(251,113,133,0.9)]" },
-    { name: "Ejercicio físico", icon: Activity, color: "text-emerald-400", glow: "group-hover:drop-shadow-[0_0_18px_rgba(52,211,153,0.9)]" },
-    { name: "Senderismo al aire libre", icon: Mountain, color: "text-lime-400", glow: "group-hover:drop-shadow-[0_0_18px_rgba(163,230,53,0.9)]" },
+    { name: "Leer libros & Aprender", icon: BookOpen, color: "text-amber-500", glow: "group-hover:drop-shadow-[0_0_18px_rgba(251,191,36,0.9)]" },
+    { name: "Pesca deportiva", icon: Fish, color: "text-cyan-500", glow: "group-hover:drop-shadow-[0_0_18px_rgba(34,211,238,0.9)]" },
+    { name: "Natación", icon: Compass, color: "text-blue-500", glow: "group-hover:drop-shadow-[0_0_18px_rgba(96,165,250,0.9)]" },
+    { name: "Videojuegos & 3D", icon: Gamepad2, color: "text-purple-500", glow: "group-hover:drop-shadow-[0_0_18px_rgba(192,132,252,0.9)]" },
+    { name: "Cocina creativa", icon: Utensils, color: "text-rose-500", glow: "group-hover:drop-shadow-[0_0_18px_rgba(251,113,133,0.9)]" },
+    { name: "Ejercicio físico", icon: Activity, color: "text-emerald-500", glow: "group-hover:drop-shadow-[0_0_18px_rgba(52,211,153,0.9)]" },
+    { name: "Senderismo al aire libre", icon: Mountain, color: "text-lime-600 dark:text-lime-400", glow: "group-hover:drop-shadow-[0_0_18px_rgba(163,230,53,0.9)]" },
   ];
 
   return (
-    <BlurFadeSection id="sobre-mi" className="pt-24 sm:pt-36 pb-20 sm:pb-24 bg-zinc-100/70 dark:bg-zinc-950 relative w-full border-0">
+    <BlurFadeSection id="sobre-mi" className="pt-24 sm:pt-36 pb-20 sm:pb-24 bg-zinc-50 dark:bg-zinc-950 relative w-full border-0 transition-colors duration-300">
       <div className="w-full px-4 sm:px-8 md:px-12 lg:px-16 xl:px-20 2xl:px-28">
         
         {/* 1. Section Header & Bio with Clean Spotlight B&W to Color Portrait */}
         <BlurFadeDiv className="w-full mb-14 sm:mb-16">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
             
-            {/* Left Column: Interactive Spotlight Portrait (B&W default, Color on hover spotlight, closely cropped) */}
+            {/* Left Column: Interactive Spotlight Portrait */}
             <div className="lg:col-span-5 xl:col-span-4 flex justify-center lg:justify-start">
               <InteractiveSpotlightPortrait 
                 src={PERSONAL_INFO.heroBgPhoto}
@@ -242,7 +242,7 @@ export function AboutBiography({ onOpenCV }: AboutBiographyProps) {
 
             {/* Right Column: Bio Description */}
             <div className="lg:col-span-7 xl:col-span-8 space-y-6 text-left">
-              <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-zinc-900 border border-zinc-800 text-indigo-400 text-xs font-bold uppercase tracking-widest mb-1 shadow-sm">
+              <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 text-indigo-600 dark:text-indigo-400 text-xs font-bold uppercase tracking-widest mb-1 shadow-sm">
                 <span>Perfil Profesional</span>
               </div>
 
@@ -250,7 +250,7 @@ export function AboutBiography({ onOpenCV }: AboutBiographyProps) {
                 Sobre Mí
               </h2>
 
-              <div className="space-y-5 text-sm sm:text-base lg:text-lg text-zinc-800 dark:text-zinc-200 leading-relaxed font-normal">
+              <div className="space-y-5 text-sm sm:text-base lg:text-lg text-zinc-700 dark:text-zinc-200 leading-relaxed font-normal">
                 <p>
                   Tengo <strong className="text-zinc-950 dark:text-white font-bold">29 años de edad</strong> y acumulo más de <strong className="text-zinc-950 dark:text-white font-bold">11 años de experiencia profesional continua</strong> trabajando en reconocidas agencias publicitarias, talleres de preprensa e imprentas de gran formato, así como consultor estratégico y freelancer independiente en proyectos de alto nivel para marcas de <strong className="text-zinc-950 dark:text-white font-bold">República Dominicana, Puerto Rico, Estados Unidos y Europa</strong>.
                 </p>
@@ -268,7 +268,7 @@ export function AboutBiography({ onOpenCV }: AboutBiographyProps) {
           </div>
         </BlurFadeDiv>
 
-        {/* 2. Intereses & Hobbies Personales (Sin fondos, iconos grandes con hover glow y texto debajo) */}
+        {/* 2. Intereses & Hobbies Personales */}
         <BlurFadeDiv delay={0.12} className="mb-14 space-y-4">
           <div className="flex items-center gap-2 mb-3">
             <Heart className="w-4 h-4 text-rose-500" />
@@ -298,10 +298,10 @@ export function AboutBiography({ onOpenCV }: AboutBiographyProps) {
           </div>
         </BlurFadeDiv>
 
-        {/* 3. Aptitudes Profesionales (Magic Bento con Iconify, Spotlight, Tilt y sin estrellitas) */}
+        {/* 3. Aptitudes Profesionales (Magic Bento) */}
         <BlurFadeDiv delay={0.15} className="mb-14 space-y-4">
           <div className="flex items-center gap-2 mb-2">
-            <Award className="w-4 h-4 text-purple-400" />
+            <Award className="w-4 h-4 text-purple-600 dark:text-purple-400" />
             <h3 className="text-xs sm:text-sm font-black uppercase tracking-wider text-zinc-950 dark:text-white">
               Aptitudes Profesionales
             </h3>
@@ -318,7 +318,7 @@ export function AboutBiography({ onOpenCV }: AboutBiographyProps) {
           />
         </BlurFadeDiv>
 
-        {/* 4. Marcas Personales & Proyectos Propios (Clean - Sin contenedor de fondo) */}
+        {/* 4. Marcas Personales & Proyectos Propios */}
         <BlurFadeDiv delay={0.18} className="mb-14 space-y-4">
           <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-2">
             <div className="flex items-center gap-2">
@@ -336,17 +336,17 @@ export function AboutBiography({ onOpenCV }: AboutBiographyProps) {
             {PERSONAL_BRANDS.map((brand) => (
               <div
                 key={brand.name}
-                className="group flex flex-col justify-between p-5 rounded-2xl bg-zinc-900/80 hover:bg-zinc-900 border-0 transition-all shadow-xs"
+                className="group flex flex-col justify-between p-5 rounded-2xl bg-white dark:bg-zinc-900/80 hover:bg-zinc-50 dark:hover:bg-zinc-900 border border-zinc-200/90 dark:border-0 transition-all shadow-sm dark:shadow-xs"
               >
                 <div className="flex items-center justify-between gap-2 mb-2.5">
-                  <span className="text-sm font-black text-white group-hover:text-purple-300 transition-colors">
+                  <span className="text-sm font-black text-zinc-900 dark:text-white group-hover:text-purple-600 dark:group-hover:text-purple-300 transition-colors">
                     {brand.name}
                   </span>
-                  <span className="text-[10px] uppercase font-bold text-zinc-300 px-2.5 py-0.5 rounded-full bg-zinc-800 shrink-0">
+                  <span className="text-[10px] uppercase font-bold text-zinc-700 dark:text-zinc-300 px-2.5 py-0.5 rounded-full bg-zinc-100 dark:bg-zinc-800 border border-zinc-200 dark:border-transparent shrink-0">
                     {brand.category}
                   </span>
                 </div>
-                <p className="text-xs text-zinc-400 font-normal line-clamp-2 leading-relaxed">
+                <p className="text-xs text-zinc-600 dark:text-zinc-400 font-normal line-clamp-2 leading-relaxed">
                   {brand.tagline}
                 </p>
               </div>
@@ -354,7 +354,7 @@ export function AboutBiography({ onOpenCV }: AboutBiographyProps) {
           </div>
         </BlurFadeDiv>
 
-        {/* 5. Especialidades & Servicios Principales con Spotlight Interactivo y Trazo Flotante */}
+        {/* 5. Especialidades & Servicios Principales */}
         <BlurFadeDiv delay={0.2} className="mb-14">
           <div className="flex items-center gap-2 mb-5">
             <TrendingUp className="w-4 h-4 text-zinc-700 dark:text-zinc-300" />

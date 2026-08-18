@@ -67,7 +67,7 @@ export function DecoraCard3D({
           onMouseMove={handleMouseMove}
           onMouseLeave={handleMouseLeave}
           onClick={toggleFlip}
-          className="relative w-full aspect-[1050/600] max-w-[620px] rounded-2xl sm:rounded-3xl cursor-pointer group shadow-[0_30px_90px_rgba(0,0,0,0.8)] transition-all duration-300 hover:shadow-[0_40px_100px_rgba(99,102,241,0.25)]"
+          className="relative w-full aspect-[1050/600] max-w-[620px] rounded-2xl sm:rounded-3xl cursor-pointer group shadow-[0_30px_90px_rgba(0,0,0,0.5)] dark:shadow-[0_30px_90px_rgba(0,0,0,0.8)] transition-all duration-300 hover:shadow-[0_40px_100px_rgba(99,102,241,0.25)]"
           style={{
             transformStyle: 'preserve-3d',
             transform: `rotateX(${rotateX}deg) rotateY(${rotateY + (isFlipped ? 180 : 0)}deg)`,
@@ -76,7 +76,7 @@ export function DecoraCard3D({
         >
           {/* FRONT FACE (Lado Frontal) */}
           <div
-            className="absolute inset-0 rounded-2xl sm:rounded-3xl overflow-hidden border border-zinc-700/80 bg-zinc-950 shadow-2xl"
+            className="absolute inset-0 rounded-2xl sm:rounded-3xl overflow-hidden border border-zinc-300 dark:border-zinc-700/80 bg-zinc-950 shadow-2xl"
             style={{
               backfaceVisibility: 'hidden',
               WebkitBackfaceVisibility: 'hidden',
@@ -108,7 +108,7 @@ export function DecoraCard3D({
 
           {/* BACK FACE (Lado Trasero) */}
           <div
-            className="absolute inset-0 rounded-2xl sm:rounded-3xl overflow-hidden border border-zinc-700/80 bg-zinc-950 shadow-2xl"
+            className="absolute inset-0 rounded-2xl sm:rounded-3xl overflow-hidden border border-zinc-300 dark:border-zinc-700/80 bg-zinc-950 shadow-2xl"
             style={{
               backfaceVisibility: 'hidden',
               WebkitBackfaceVisibility: 'hidden',
@@ -154,15 +154,15 @@ export function DecoraCard3D({
         {onOpenLightbox && (
           <button
             onClick={() => onOpenLightbox(isFlipped ? 1 : 0)}
-            className="inline-flex items-center gap-1.5 px-4 py-2.5 rounded-full bg-zinc-900 hover:bg-zinc-800 text-zinc-200 border border-zinc-800 text-xs sm:text-sm font-bold shadow-md transition-all cursor-pointer"
+            className="inline-flex items-center gap-1.5 px-4 py-2.5 rounded-full bg-white dark:bg-zinc-900 hover:bg-zinc-100 dark:hover:bg-zinc-800 text-zinc-900 dark:text-zinc-200 border border-zinc-200 dark:border-zinc-800 text-xs sm:text-sm font-bold shadow-md transition-all cursor-pointer"
           >
-            <ZoomIn className="w-3.5 h-3.5 text-indigo-400" />
+            <ZoomIn className="w-3.5 h-3.5 text-indigo-600 dark:text-indigo-400" />
             <span>Pantalla Completa HD</span>
           </button>
         )}
 
-        <span className="text-[11px] sm:text-xs text-zinc-400 font-medium px-2 flex items-center gap-1">
-          <Sparkles className="w-3.5 h-3.5 text-amber-400" />
+        <span className="text-[11px] sm:text-xs text-zinc-600 dark:text-zinc-400 font-medium px-2 flex items-center gap-1">
+          <Sparkles className="w-3.5 h-3.5 text-amber-500" />
           <span>Pasa el cursor o haz clic para girar en 3D</span>
         </span>
       </div>

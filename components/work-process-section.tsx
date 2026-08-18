@@ -45,9 +45,9 @@ const PROCESS_STEPS: ProcessStep[] = [
     ],
     tools: ['User Research', 'Google Analytics', 'Auditoría UX', 'Market Analysis'],
     icon: Search,
-    color: 'text-indigo-400',
-    glowColor: 'rgba(99, 102, 241, 0.4)',
-    badgeBg: 'bg-indigo-950/60 border-indigo-700/50 text-indigo-300'
+    color: 'text-indigo-600 dark:text-indigo-400',
+    glowColor: 'rgba(99, 102, 241, 0.3)',
+    badgeBg: 'bg-indigo-100 dark:bg-indigo-950/60 border-indigo-200 dark:border-indigo-700/50 text-indigo-700 dark:text-indigo-300'
   },
   {
     number: '02',
@@ -63,9 +63,9 @@ const PROCESS_STEPS: ProcessStep[] = [
     ],
     tools: ['Meta Ads Strategy', 'Funnels de Conversión', 'KPI Frameworks', 'Google Ads'],
     icon: Target,
-    color: 'text-purple-400',
-    glowColor: 'rgba(168, 85, 247, 0.4)',
-    badgeBg: 'bg-purple-950/60 border-purple-700/50 text-purple-300'
+    color: 'text-purple-600 dark:text-purple-400',
+    glowColor: 'rgba(168, 85, 247, 0.3)',
+    badgeBg: 'bg-purple-100 dark:bg-purple-950/60 border-purple-200 dark:border-purple-700/50 text-purple-700 dark:text-purple-300'
   },
   {
     number: '03',
@@ -81,9 +81,9 @@ const PROCESS_STEPS: ProcessStep[] = [
     ],
     tools: ['Figma', 'Miro', 'Storyboarding', 'Copywriting Creativo'],
     icon: Lightbulb,
-    color: 'text-cyan-400',
-    glowColor: 'rgba(34, 211, 238, 0.4)',
-    badgeBg: 'bg-cyan-950/60 border-cyan-700/50 text-cyan-300'
+    color: 'text-cyan-600 dark:text-cyan-400',
+    glowColor: 'rgba(34, 211, 238, 0.3)',
+    badgeBg: 'bg-cyan-100 dark:bg-cyan-950/60 border-cyan-200 dark:border-cyan-700/50 text-cyan-700 dark:text-cyan-300'
   },
   {
     number: '04',
@@ -99,9 +99,9 @@ const PROCESS_STEPS: ProcessStep[] = [
     ],
     tools: ['Figma', 'Adobe Illustrator', 'Photoshop', 'Blender / Cinema 4D'],
     icon: Palette,
-    color: 'text-rose-400',
-    glowColor: 'rgba(251, 113, 133, 0.4)',
-    badgeBg: 'bg-rose-950/60 border-rose-700/50 text-rose-300'
+    color: 'text-rose-600 dark:text-rose-400',
+    glowColor: 'rgba(251, 113, 133, 0.3)',
+    badgeBg: 'bg-rose-100 dark:bg-rose-950/60 border-rose-200 dark:border-rose-700/50 text-rose-700 dark:text-rose-300'
   },
   {
     number: '05',
@@ -117,9 +117,9 @@ const PROCESS_STEPS: ProcessStep[] = [
     ],
     tools: ['Next.js', 'React', 'TypeScript', 'Node.js', 'PostgreSQL', 'OpenAI / Gemini'],
     icon: Code2,
-    color: 'text-emerald-400',
-    glowColor: 'rgba(52, 211, 153, 0.4)',
-    badgeBg: 'bg-emerald-950/60 border-emerald-700/50 text-emerald-300'
+    color: 'text-emerald-600 dark:text-emerald-400',
+    glowColor: 'rgba(52, 211, 153, 0.3)',
+    badgeBg: 'bg-emerald-100 dark:bg-emerald-950/60 border-emerald-200 dark:border-emerald-700/50 text-emerald-700 dark:text-emerald-300'
   },
   {
     number: '06',
@@ -135,9 +135,9 @@ const PROCESS_STEPS: ProcessStep[] = [
     ],
     tools: ['Vercel / Cloud Run', 'CI/CD Pipelines', 'QA Testing', 'Conversion Optimization'],
     icon: Rocket,
-    color: 'text-amber-400',
-    glowColor: 'rgba(251, 191, 36, 0.4)',
-    badgeBg: 'bg-amber-950/60 border-amber-700/50 text-amber-300'
+    color: 'text-amber-600 dark:text-amber-400',
+    glowColor: 'rgba(251, 191, 36, 0.3)',
+    badgeBg: 'bg-amber-100 dark:bg-amber-950/60 border-amber-200 dark:border-amber-700/50 text-amber-800 dark:text-amber-300'
   }
 ];
 
@@ -149,8 +149,8 @@ function StepCard({ step, index }: { step: ProcessStep; index: number }) {
     <div className="relative flex flex-col md:flex-row items-center w-full my-8 sm:my-12">
       
       {/* Central Node Indicator */}
-      <div className="hidden md:flex absolute left-1/2 -translate-x-1/2 w-12 h-12 rounded-2xl bg-zinc-950 border border-zinc-800 shadow-xl items-center justify-center z-20 group">
-        <div className={`w-4 h-4 rounded-lg bg-zinc-800 flex items-center justify-center font-mono text-[10px] font-black text-white group-hover:scale-110 transition-transform ${step.color}`}>
+      <div className="hidden md:flex absolute left-1/2 -translate-x-1/2 w-12 h-12 rounded-2xl bg-white dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 shadow-md items-center justify-center z-20 group">
+        <div className={`w-4 h-4 rounded-lg bg-zinc-100 dark:bg-zinc-800 flex items-center justify-center font-mono text-[10px] font-black group-hover:scale-110 transition-transform ${step.color}`}>
           <div className="w-2 h-2 rounded-full bg-current" />
         </div>
       </div>
@@ -162,7 +162,7 @@ function StepCard({ step, index }: { step: ProcessStep; index: number }) {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: '-60px' }}
           transition={{ duration: 0.6, delay: 0.1 }}
-          className="relative p-6 sm:p-8 md:p-9 rounded-3xl bg-zinc-900/90 border-0 shadow-2xl overflow-hidden group hover:bg-zinc-900 transition-all duration-300 text-left"
+          className="relative p-6 sm:p-8 md:p-9 rounded-3xl bg-white dark:bg-zinc-900/90 border border-zinc-200/90 dark:border-zinc-800/80 shadow-lg dark:shadow-2xl overflow-hidden group hover:bg-zinc-50 dark:hover:bg-zinc-900 transition-all duration-300 text-left"
         >
           {/* Subtle Ambient Radial Glow */}
           <div 
@@ -173,42 +173,42 @@ function StepCard({ step, index }: { step: ProcessStep; index: number }) {
           {/* Header: Phase badge + Step Number */}
           <div className="flex items-center justify-between gap-3 mb-5">
             <div className="flex items-center gap-3">
-              <div className={`w-11 h-11 rounded-2xl ${step.badgeBg} flex items-center justify-center shadow-md`}>
+              <div className={`w-11 h-11 rounded-2xl ${step.badgeBg} flex items-center justify-center shadow-sm border`}>
                 <IconComponent className={`w-5 h-5 ${step.color}`} />
               </div>
               <div>
-                <span className="text-[10px] font-mono font-bold uppercase tracking-wider text-zinc-400 block">
+                <span className="text-[10px] font-mono font-bold uppercase tracking-wider text-zinc-500 dark:text-zinc-400 block">
                   {step.phase}
                 </span>
-                <h4 className="text-xl sm:text-2xl font-black text-white tracking-tight">
+                <h4 className="text-xl sm:text-2xl font-black text-zinc-900 dark:text-white tracking-tight">
                   {step.number} — {step.title}
                 </h4>
               </div>
             </div>
 
-            <span className="text-3xl font-black font-mono text-zinc-800 group-hover:text-zinc-700 transition-colors select-none">
+            <span className="text-3xl font-black font-mono text-zinc-200 dark:text-zinc-800 group-hover:text-zinc-300 dark:group-hover:text-zinc-700 transition-colors select-none">
               {step.number}
             </span>
           </div>
 
           {/* Subtitle */}
-          <p className="text-xs sm:text-sm font-semibold text-zinc-300 mb-3">
+          <p className="text-xs sm:text-sm font-semibold text-zinc-800 dark:text-zinc-300 mb-3">
             {step.subtitle}
           </p>
 
           {/* Description */}
-          <p className="text-xs sm:text-sm text-zinc-400 leading-relaxed font-normal mb-5">
+          <p className="text-xs sm:text-sm text-zinc-600 dark:text-zinc-400 leading-relaxed font-normal mb-5">
             {step.description}
           </p>
 
           {/* Deliverables Checklist */}
-          <div className="space-y-2 pt-4 border-t border-zinc-800/80 mb-5">
-            <span className="text-[10px] font-mono uppercase tracking-wider text-zinc-400 font-bold block">
+          <div className="space-y-2 pt-4 border-t border-zinc-100 dark:border-zinc-800/80 mb-5">
+            <span className="text-[10px] font-mono uppercase tracking-wider text-zinc-500 dark:text-zinc-400 font-bold block">
               Entregables Clave:
             </span>
             <ul className="space-y-1.5">
               {step.deliverables.map((item, i) => (
-                <li key={i} className="text-xs text-zinc-300 flex items-start gap-2">
+                <li key={i} className="text-xs text-zinc-700 dark:text-zinc-300 flex items-start gap-2">
                   <CheckCircle2 className={`w-3.5 h-3.5 mt-0.5 shrink-0 ${step.color}`} />
                   <span>{item}</span>
                 </li>
@@ -217,11 +217,11 @@ function StepCard({ step, index }: { step: ProcessStep; index: number }) {
           </div>
 
           {/* Tools & Frameworks Pills */}
-          <div className="flex flex-wrap gap-1.5 pt-3 border-t border-zinc-800/60">
+          <div className="flex flex-wrap gap-1.5 pt-3 border-t border-zinc-100 dark:border-zinc-800/60">
             {step.tools.map((tool, tIdx) => (
               <span
                 key={tIdx}
-                className="text-[11px] font-medium px-2.5 py-1 rounded-full bg-zinc-950 text-zinc-300 shadow-2xs"
+                className="text-[11px] font-medium px-2.5 py-1 rounded-full bg-zinc-100 dark:bg-zinc-950 text-zinc-800 dark:text-zinc-300 border border-zinc-200 dark:border-transparent shadow-2xs"
               >
                 {tool}
               </span>
@@ -250,45 +250,45 @@ export function WorkProcessSection() {
   const lineHeight = useTransform(smoothProgress, [0, 1], ['0%', '100%']);
 
   return (
-    <BlurFadeSection id="proceso" className="py-24 sm:py-32 bg-zinc-950 text-white relative w-full overflow-hidden">
+    <BlurFadeSection id="proceso" className="py-24 sm:py-32 bg-white dark:bg-zinc-950 text-zinc-900 dark:text-white relative w-full overflow-hidden transition-colors duration-300">
       {/* Background Ambience Glow */}
-      <div className="absolute top-1/3 -left-48 w-96 h-96 bg-purple-900/15 rounded-full blur-3xl pointer-events-none" />
-      <div className="absolute bottom-1/3 -right-48 w-96 h-96 bg-indigo-900/15 rounded-full blur-3xl pointer-events-none" />
+      <div className="absolute top-1/3 -left-48 w-96 h-96 bg-purple-500/10 dark:bg-purple-900/15 rounded-full blur-3xl pointer-events-none" />
+      <div className="absolute bottom-1/3 -right-48 w-96 h-96 bg-indigo-500/10 dark:bg-indigo-900/15 rounded-full blur-3xl pointer-events-none" />
 
       <div className="w-full px-4 sm:px-8 md:px-12 lg:px-16 xl:px-20 2xl:px-28 relative z-20">
         
         {/* Section Header */}
-        <BlurFadeDiv className="flex flex-col items-center text-center max-w-3xl mx-auto mb-16 sm:mb-20">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-zinc-900 border border-zinc-800 text-indigo-400 text-xs font-bold uppercase tracking-widest mb-4 shadow-sm">
-            <GitCommit className="w-3.5 h-3.5 text-indigo-400" />
-            <span>Metodología & Flujo de Trabajo</span>
+        <BlurFadeDiv className="flex flex-col items-center text-center max-w-4xl mx-auto mb-16 sm:mb-20">
+          <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-zinc-100 dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 text-indigo-600 dark:text-indigo-400 text-xs font-bold uppercase tracking-widest mb-4 shadow-sm">
+            <GitCommit className="w-3.5 h-3.5 text-indigo-600 dark:text-indigo-400" />
+            <span>Metodología & Ejecución</span>
           </div>
 
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-white tracking-tight">
-            Proceso de Trabajo
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-zinc-900 dark:text-white tracking-tight">
+            Mi Proceso de Trabajo
           </h2>
 
-          <p className="text-sm sm:text-base lg:text-lg text-zinc-400 mt-4 leading-relaxed font-normal">
-            Una metodología ágil, estructurada y sin fricciones de <strong className="text-white font-bold">6 etapas clave</strong> orientada a transformar objetivos comerciales en soluciones digitales rentables de impacto comprobado.
+          <p className="text-sm sm:text-base lg:text-lg text-zinc-600 dark:text-zinc-400 mt-4 leading-relaxed max-w-2xl font-normal">
+            Un flujo estructurado en 6 etapas iterativas que combina análisis de negocio, creatividad visual, desarrollo full-stack y optimización de conversión.
           </p>
         </BlurFadeDiv>
 
-        {/* TIMELINE CONTAINER WITH VERTICAL CONNECTING SCROLL LINE */}
-        <div ref={containerRef} className="relative w-full max-w-5xl mx-auto">
+        {/* Timeline Roadmap */}
+        <div ref={containerRef} className="relative w-full max-w-6xl mx-auto">
           
-          {/* Base Background Track Line (Desktop Center) */}
-          <div className="hidden md:block absolute left-1/2 -translate-x-1/2 top-4 bottom-4 w-1 bg-zinc-900 rounded-full" />
+          {/* Vertical Center Line Guide */}
+          <div className="hidden md:block absolute left-1/2 -translate-x-1/2 top-4 bottom-4 w-0.5 bg-zinc-200 dark:bg-zinc-800 z-10">
+            {/* Animated filling line */}
+            <motion.div
+              style={{ height: lineHeight }}
+              className="w-full bg-gradient-to-b from-indigo-500 via-purple-500 to-amber-500 rounded-full"
+            />
+          </div>
 
-          {/* Active Glowing Scroll Progress Line */}
-          <motion.div
-            style={{ height: lineHeight }}
-            className="hidden md:block absolute left-1/2 -translate-x-1/2 top-4 w-1 bg-gradient-to-b from-indigo-500 via-purple-500 to-cyan-400 rounded-full shadow-[0_0_15px_rgba(168,85,247,0.8)] z-10 origin-top"
-          />
-
-          {/* Steps List */}
-          <div className="space-y-6 md:space-y-0">
-            {PROCESS_STEPS.map((step, index) => (
-              <StepCard key={step.number} step={step} index={index} />
+          {/* Process Step Cards */}
+          <div className="space-y-4 md:space-y-0">
+            {PROCESS_STEPS.map((step, idx) => (
+              <StepCard key={step.number} step={step} index={idx} />
             ))}
           </div>
 

@@ -58,7 +58,7 @@ function AnimatedStatItem({
 
   return (
     <div 
-      className="group relative flex flex-col items-center text-center p-4 sm:p-5 rounded-2xl sm:rounded-3xl bg-white dark:bg-zinc-900 shadow-md transition-all duration-300 hover:shadow-lg cursor-default border-0"
+      className="group relative flex flex-col items-center text-center p-4 sm:p-5 rounded-2xl sm:rounded-3xl bg-white dark:bg-zinc-900 border border-zinc-200/90 dark:border-0 shadow-md dark:shadow-lg transition-all duration-300 hover:shadow-xl cursor-default"
     >
       <span className="text-2xl sm:text-3xl lg:text-4xl font-black tracking-tight text-zinc-950 dark:text-white mb-1 group-hover:scale-105 transition-transform">
         {displayValue}
@@ -79,7 +79,7 @@ export function StatsCounterSection() {
   return (
     <BlurFadeSection 
       id="metricas-impacto" 
-      className="py-10 bg-zinc-50 dark:bg-zinc-950 relative w-full border-0"
+      className="py-10 bg-zinc-50 dark:bg-zinc-950 relative w-full border-0 transition-colors duration-300"
     >
       <div className="w-full px-4 sm:px-8 md:px-12 lg:px-16 xl:px-20 2xl:px-28">
         <div className="flex items-center justify-between mb-6">
@@ -108,3 +108,5 @@ export function StatsCounterSection() {
     </BlurFadeSection>
   );
 }
+
+export default StatsCounterSection;

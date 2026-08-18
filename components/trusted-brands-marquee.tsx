@@ -25,25 +25,25 @@ export function TrustedBrandsMarquee() {
   return (
     <BlurFadeSection 
       id="marcas-que-confian"
-      className="py-16 sm:py-20 bg-zinc-950 text-white relative w-full border-y border-zinc-800/80 overflow-hidden"
+      className="py-16 sm:py-20 bg-zinc-100 dark:bg-zinc-950 text-zinc-900 dark:text-white relative w-full border-y border-zinc-200 dark:border-zinc-800/80 overflow-hidden transition-colors duration-300"
     >
       {/* Background Ambient Glow */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-32 bg-indigo-900/10 rounded-full blur-3xl pointer-events-none" />
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-32 bg-indigo-500/10 dark:bg-indigo-900/10 rounded-full blur-3xl pointer-events-none" />
 
       <div className="w-full px-4 sm:px-8 md:px-12 lg:px-16 xl:px-20 2xl:px-28 relative z-10">
         
         {/* Centered Header */}
         <div className="flex flex-col items-center justify-center text-center max-w-3xl mx-auto mb-10 sm:mb-12 space-y-3">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-zinc-900 border border-zinc-800 text-indigo-400 text-xs font-bold uppercase tracking-widest shadow-xs">
-            <Building2 className="w-3.5 h-3.5 text-indigo-400" />
+          <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 text-indigo-600 dark:text-indigo-400 text-xs font-bold uppercase tracking-widest shadow-xs">
+            <Building2 className="w-3.5 h-3.5 text-indigo-600 dark:text-indigo-400" />
             <span>Marcas & Empresas que Confían</span>
           </div>
 
-          <h3 className="text-2xl sm:text-3xl lg:text-4xl font-black text-white tracking-tight">
+          <h3 className="text-2xl sm:text-3xl lg:text-4xl font-black text-zinc-900 dark:text-white tracking-tight">
             Marcas que Respaldan Mi Trayectoria
           </h3>
 
-          <p className="text-xs sm:text-sm font-semibold text-zinc-400">
+          <p className="text-xs sm:text-sm font-semibold text-zinc-600 dark:text-zinc-400">
             Publicidad • Software • Branding • Marketing Digital • Producción
           </p>
         </div>
@@ -59,7 +59,7 @@ export function TrustedBrandsMarquee() {
                   key={`${brand.name}-${i}`}
                   className="flex flex-col items-center justify-center text-center gap-3 shrink-0 px-4 cursor-default group"
                 >
-                  {/* LOGO ARRIBA (GRANDE, TRANSPARENTE, IMPACTANTE) */}
+                  {/* LOGO ARRIBA */}
                   <div className="h-16 sm:h-20 flex items-center justify-center transition-transform duration-200 group-hover:scale-110">
                     {brand.name.includes('Didusa') ? (
                       <Link 
@@ -75,7 +75,7 @@ export function TrustedBrandsMarquee() {
                         className="inline-flex items-center justify-center"
                         title="Ver colección oficial de gorras Tridente Club Med"
                       >
-                        <ClubMedLogo className="h-8 sm:h-11 w-auto text-white" />
+                        <ClubMedLogo className="h-8 sm:h-11 w-auto text-zinc-950 dark:text-white" />
                       </Link>
                     ) : brand.name.includes('Corambar') ? (
                       <Link 
@@ -83,7 +83,7 @@ export function TrustedBrandsMarquee() {
                         className="inline-flex items-center justify-center"
                         title="Ver diseño de logotipo e identidad de Corambar Realty Group"
                       >
-                        <CorambarLogo className="h-14 sm:h-20 w-auto text-white" />
+                        <CorambarLogo className="h-14 sm:h-20 w-auto text-zinc-950 dark:text-white" />
                       </Link>
                     ) : brand.name.includes('Big Print') ? (
                       <Link 
@@ -91,7 +91,7 @@ export function TrustedBrandsMarquee() {
                         className="inline-flex items-center justify-center"
                         title="Ver brochure corporativo de Big Print Punta Cana"
                       >
-                        <BigPrintLogo className="h-10 sm:h-14 w-auto text-white" />
+                        <BigPrintLogo className="h-10 sm:h-14 w-auto text-zinc-950 dark:text-white" />
                       </Link>
                     ) : brand.name.includes('CAMI') ? (
                       <Link 
@@ -99,7 +99,7 @@ export function TrustedBrandsMarquee() {
                         className="inline-flex items-center justify-center"
                         title="Ver diseño publicitario y flyers de CAMI Instituto"
                       >
-                        <CamiLogo className="h-9 sm:h-12 w-auto text-white" />
+                        <CamiLogo className="h-9 sm:h-12 w-auto text-zinc-950 dark:text-white" />
                       </Link>
                     ) : brand.name.includes('Fancy') ? (
                       <Link 
@@ -107,7 +107,7 @@ export function TrustedBrandsMarquee() {
                         className="inline-flex items-center justify-center"
                         title="Ver diseño web, streaming y branding de Fancy RD Radio"
                       >
-                        <FancyRdLogo className="h-9 sm:h-12 w-auto text-white" />
+                        <FancyRdLogo className="h-9 sm:h-12 w-auto text-zinc-950 dark:text-white" />
                       </Link>
                     ) : brand.name.includes('FacturaDO') ? (
                       <Link 
@@ -115,7 +115,7 @@ export function TrustedBrandsMarquee() {
                         className="inline-flex items-center justify-center"
                         title="Ver plataforma SaaS de FacturaDO"
                       >
-                        <FacturaDoLogo className="h-8 sm:h-11 w-auto text-white" />
+                        <FacturaDoLogo className="h-8 sm:h-11 w-auto text-zinc-950 dark:text-white" />
                       </Link>
                     ) : brand.name.includes('Waooo') ? (
                       <Link 
@@ -123,8 +123,8 @@ export function TrustedBrandsMarquee() {
                         className="inline-flex items-center justify-center gap-2 group-hover:scale-105 transition-transform"
                         title="Ver desarrollo web y reservas de Waooo Tours & Adventures"
                       >
-                        <div className="text-white font-black text-lg sm:text-2xl tracking-wider uppercase flex items-center gap-2">
-                          <span className="w-3 h-3 rounded-full bg-cyan-400 inline-block shadow-sm" />
+                        <div className="text-zinc-950 dark:text-white font-black text-lg sm:text-2xl tracking-wider uppercase flex items-center gap-2">
+                          <span className="w-3 h-3 rounded-full bg-cyan-500 inline-block shadow-sm" />
                           <span>WAOOO★ TOURS</span>
                         </div>
                       </Link>
@@ -134,7 +134,7 @@ export function TrustedBrandsMarquee() {
                         className="inline-flex items-center justify-center"
                         title="Ver desarrollo web, SEO y redes sociales de Decora Group Punta Cana"
                       >
-                        <DecoraGroupLogo className="h-9 sm:h-12 w-32 sm:w-44 text-white" />
+                        <DecoraGroupLogo className="h-9 sm:h-12 w-32 sm:w-44 text-zinc-950 dark:text-white" />
                       </Link>
                     ) : (
                       <Link 
@@ -142,7 +142,7 @@ export function TrustedBrandsMarquee() {
                         className="inline-flex items-center justify-center"
                         title="Ver diseño de logotipo e identidad de Latik"
                       >
-                        <LatikLogo className="h-14 sm:h-20 w-auto text-white" />
+                        <LatikLogo className="h-14 sm:h-20 w-auto text-zinc-950 dark:text-white" />
                       </Link>
                     )}
                   </div>
@@ -153,11 +153,11 @@ export function TrustedBrandsMarquee() {
                       href={brandUrl} 
                       className="hover:underline"
                     >
-                      <span className="text-sm font-black text-white whitespace-nowrap group-hover:text-purple-300 transition-colors">
+                      <span className="text-sm font-black text-zinc-900 dark:text-white whitespace-nowrap group-hover:text-purple-600 dark:group-hover:text-purple-300 transition-colors">
                         {brand.name}
                       </span>
                     </Link>
-                    <span className="text-[11px] font-medium text-zinc-400 whitespace-nowrap truncate max-w-[180px] mt-0.5">
+                    <span className="text-[11px] font-medium text-zinc-500 dark:text-zinc-400 whitespace-nowrap truncate max-w-[180px] mt-0.5">
                       {brand.industry}
                     </span>
                   </div>

@@ -70,42 +70,42 @@ export function ProjectsGallery() {
   const nextProject = getSlideProject(1);
 
   return (
-    <BlurFadeSection id="proyectos" className="py-24 sm:py-32 bg-zinc-950 text-white relative w-full overflow-hidden">
+    <BlurFadeSection id="proyectos" className="py-24 sm:py-32 bg-zinc-50 dark:bg-zinc-950 text-zinc-900 dark:text-white relative w-full overflow-hidden transition-colors duration-300">
       {/* Background Studio Ambience */}
-      <div className="absolute top-0 inset-x-0 h-32 bg-gradient-to-b from-zinc-950 via-zinc-950/80 to-transparent pointer-events-none z-10" />
-      <div className="absolute bottom-0 inset-x-0 h-36 bg-gradient-to-t from-zinc-950 via-zinc-950/80 to-transparent pointer-events-none z-10" />
-      <div className="absolute -left-40 top-1/2 w-96 h-96 bg-indigo-900/10 rounded-full blur-3xl pointer-events-none" />
-      <div className="absolute -right-40 top-1/2 w-96 h-96 bg-purple-900/10 rounded-full blur-3xl pointer-events-none" />
+      <div className="absolute top-0 inset-x-0 h-32 bg-gradient-to-b from-zinc-50 dark:from-zinc-950 via-zinc-50/80 dark:via-zinc-950/80 to-transparent pointer-events-none z-10" />
+      <div className="absolute bottom-0 inset-x-0 h-36 bg-gradient-to-t from-zinc-50 dark:from-zinc-950 via-zinc-50/80 dark:via-zinc-950/80 to-transparent pointer-events-none z-10" />
+      <div className="absolute -left-40 top-1/2 w-96 h-96 bg-indigo-500/10 dark:bg-indigo-900/10 rounded-full blur-3xl pointer-events-none" />
+      <div className="absolute -right-40 top-1/2 w-96 h-96 bg-purple-500/10 dark:bg-purple-900/10 rounded-full blur-3xl pointer-events-none" />
 
       <div className="w-full px-2 sm:px-4 md:px-6 lg:px-8 relative z-20">
         
         {/* Section Header */}
         <BlurFadeDiv className="flex flex-col items-center text-center max-w-4xl mx-auto mb-10 sm:mb-12">
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-zinc-900 border border-zinc-800 text-indigo-400 text-xs font-bold uppercase tracking-widest mb-4 shadow-sm">
-            <FolderKanban className="w-3.5 h-3.5 text-indigo-400" />
+          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 text-indigo-600 dark:text-indigo-400 text-xs font-bold uppercase tracking-widest mb-4 shadow-sm">
+            <FolderKanban className="w-3.5 h-3.5 text-indigo-600 dark:text-indigo-400" />
             <span>Portafolio Seleccionado</span>
           </div>
 
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-white tracking-tight">
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-zinc-900 dark:text-white tracking-tight">
             Casos de Éxito & Proyectos Destacados
           </h2>
 
-          <p className="text-sm sm:text-base lg:text-lg text-zinc-400 mt-4 leading-relaxed max-w-2xl font-normal">
+          <p className="text-sm sm:text-base lg:text-lg text-zinc-600 dark:text-zinc-400 mt-4 leading-relaxed max-w-2xl font-normal">
             Soluciones reales y de alto impacto: desarrollo web, diseño de interfaces, renders 3D para la industria médica, packaging comercial y campañas de gran formato.
           </p>
         </BlurFadeDiv>
 
         {/* Category Filter Pills */}
         <BlurFadeDiv delay={0.08} className="flex items-center justify-center mb-10 sm:mb-14">
-          <div className="flex flex-wrap items-center justify-center gap-2 p-1.5 bg-zinc-900/90 border border-zinc-800/80 rounded-2xl shadow-lg backdrop-blur-md">
+          <div className="flex flex-wrap items-center justify-center gap-2 p-1.5 bg-white dark:bg-zinc-900/90 border border-zinc-200 dark:border-zinc-800/80 rounded-2xl shadow-md dark:shadow-lg backdrop-blur-md">
             {categories.map((cat) => (
               <button
                 key={cat.id}
                 onClick={() => setSelectedCategory(cat.id)}
                 className={`px-4 py-2 rounded-xl text-xs font-bold transition-all cursor-pointer ${
                   selectedCategory === cat.id
-                    ? 'bg-white text-zinc-950 shadow-md'
-                    : 'text-zinc-400 hover:text-white hover:bg-zinc-800/60'
+                    ? 'bg-zinc-900 text-white dark:bg-white dark:text-zinc-950 shadow-md'
+                    : 'text-zinc-600 dark:text-zinc-400 hover:text-zinc-950 dark:hover:text-white hover:bg-zinc-100 dark:hover:bg-zinc-800/60'
                 }`}
               >
                 {cat.label}
@@ -114,7 +114,7 @@ export function ProjectsGallery() {
           </div>
         </BlurFadeDiv>
 
-        {/* APPLE TV+ CINEMATIC BILLBOARD SLIDER (Complete Cards with Smooth Edge Gradient Fades) */}
+        {/* APPLE TV+ CINEMATIC BILLBOARD SLIDER */}
         {filteredProjects.length > 0 && currentProject && (
           <div 
             onMouseEnter={() => setIsPaused(true)}
@@ -124,15 +124,15 @@ export function ProjectsGallery() {
             {/* Billboard Presentation Track Container */}
             <div className="relative w-full flex items-center justify-center gap-4 sm:gap-6 lg:gap-8 overflow-hidden py-4">
               
-              {/* Left & Right Smooth Edge Fade Masks for Seamless Web Dissolve */}
-              <div className="pointer-events-none absolute left-0 inset-y-0 w-16 sm:w-28 lg:w-44 bg-gradient-to-r from-zinc-950 via-zinc-950/80 to-transparent z-30" />
-              <div className="pointer-events-none absolute right-0 inset-y-0 w-16 sm:w-28 lg:w-44 bg-gradient-to-l from-zinc-950 via-zinc-950/80 to-transparent z-30" />
+              {/* Left & Right Smooth Edge Fade Masks */}
+              <div className="pointer-events-none absolute left-0 inset-y-0 w-16 sm:w-28 lg:w-44 bg-gradient-to-r from-zinc-50 dark:from-zinc-950 via-zinc-50/80 dark:via-zinc-950/80 to-transparent z-30" />
+              <div className="pointer-events-none absolute right-0 inset-y-0 w-16 sm:w-28 lg:w-44 bg-gradient-to-l from-zinc-50 dark:from-zinc-950 via-zinc-50/80 dark:via-zinc-950/80 to-transparent z-30" />
 
               {/* Left Peek (Complete Previous Project Card) */}
               {prevProject && (
                 <button
                   onClick={handlePrev}
-                  className="hidden md:flex flex-col justify-between w-[22vw] lg:w-[24vw] xl:w-[25vw] max-w-sm h-[440px] sm:h-[480px] md:h-[520px] lg:h-[560px] rounded-3xl sm:rounded-[36px] overflow-hidden relative opacity-55 hover:opacity-90 transition-all duration-300 cursor-pointer shrink-0 border border-zinc-800/80 shadow-2xl group scale-95 hover:scale-[0.98]"
+                  className="hidden md:flex flex-col justify-between w-[22vw] lg:w-[24vw] xl:w-[25vw] max-w-sm h-[440px] sm:h-[480px] md:h-[520px] lg:h-[560px] rounded-3xl sm:rounded-[36px] overflow-hidden relative opacity-55 hover:opacity-90 transition-all duration-300 cursor-pointer shrink-0 border border-zinc-200 dark:border-zinc-800/80 shadow-xl group scale-95 hover:scale-[0.98]"
                   aria-label={`Ver proyecto anterior: ${prevProject.title}`}
                 >
                   <div className={`absolute inset-0 bg-gradient-to-br ${prevProject.gradient || 'from-zinc-900 to-black'}`} />
@@ -155,7 +155,7 @@ export function ProjectsGallery() {
 
                   {/* Left Peek Bottom Content */}
                   <div className="relative z-10 p-6 text-left space-y-1">
-                    <span className="text-xs font-semibold text-zinc-400">{prevProject.client}</span>
+                    <span className="text-xs font-semibold text-zinc-300">{prevProject.client}</span>
                     <h4 className="text-base sm:text-lg font-black text-white uppercase truncate drop-shadow-sm">{prevProject.title}</h4>
                   </div>
                 </button>
@@ -164,7 +164,7 @@ export function ProjectsGallery() {
               {/* Main Center Active Billboard Slide (Full-Bleed Cover) */}
               <Link
                 href={`/proyectos/${currentProject.id}`}
-                className="relative w-full md:w-[66vw] lg:w-[60vw] xl:w-[56vw] max-w-4xl h-[480px] sm:h-[520px] md:h-[560px] lg:h-[580px] rounded-3xl sm:rounded-[36px] overflow-hidden shadow-2xl border border-zinc-800 bg-zinc-950 flex flex-col justify-between group cursor-pointer shrink-0 z-20"
+                className="relative w-full md:w-[66vw] lg:w-[60vw] xl:w-[56vw] max-w-4xl h-[480px] sm:h-[520px] md:h-[560px] lg:h-[580px] rounded-3xl sm:rounded-[36px] overflow-hidden shadow-2xl border border-zinc-200 dark:border-zinc-800 bg-zinc-950 flex flex-col justify-between group cursor-pointer shrink-0 z-20"
               >
                 {/* Full-Bleed Artwork with object-cover object-top */}
                 <AnimatePresence mode="wait">
@@ -253,7 +253,7 @@ export function ProjectsGallery() {
               {nextProject && (
                 <button
                   onClick={handleNext}
-                  className="hidden md:flex flex-col justify-between w-[22vw] lg:w-[24vw] xl:w-[25vw] max-w-sm h-[440px] sm:h-[480px] md:h-[520px] lg:h-[560px] rounded-3xl sm:rounded-[36px] overflow-hidden relative opacity-55 hover:opacity-90 transition-all duration-300 cursor-pointer shrink-0 border border-zinc-800/80 shadow-2xl group scale-95 hover:scale-[0.98]"
+                  className="hidden md:flex flex-col justify-between w-[22vw] lg:w-[24vw] xl:w-[25vw] max-w-sm h-[440px] sm:h-[480px] md:h-[520px] lg:h-[560px] rounded-3xl sm:rounded-[36px] overflow-hidden relative opacity-55 hover:opacity-90 transition-all duration-300 cursor-pointer shrink-0 border border-zinc-200 dark:border-zinc-800/80 shadow-xl group scale-95 hover:scale-[0.98]"
                   aria-label={`Ver siguiente proyecto: ${nextProject.title}`}
                 >
                   <div className={`absolute inset-0 bg-gradient-to-br ${nextProject.gradient || 'from-zinc-900 to-black'}`} />
@@ -276,7 +276,7 @@ export function ProjectsGallery() {
 
                   {/* Right Peek Bottom Content */}
                   <div className="relative z-10 p-6 text-left space-y-1">
-                    <span className="text-xs font-semibold text-zinc-400">{nextProject.client}</span>
+                    <span className="text-xs font-semibold text-zinc-300">{nextProject.client}</span>
                     <h4 className="text-base sm:text-lg font-black text-white uppercase truncate drop-shadow-sm">{nextProject.title}</h4>
                   </div>
                 </button>
@@ -284,20 +284,20 @@ export function ProjectsGallery() {
 
             </div>
 
-            {/* APPLE TV+ BOTTOM CONTROLS: Center Dots & Right Play/Pause Buttons */}
+            {/* APPLE TV+ BOTTOM CONTROLS */}
             <div className="w-full max-w-4xl mt-8 px-4 flex items-center justify-between">
               
               {/* Left Arrow */}
               <button
                 onClick={handlePrev}
-                className="p-2.5 rounded-full bg-zinc-900 hover:bg-zinc-800 text-zinc-300 hover:text-white border border-zinc-800 transition-all cursor-pointer active:scale-90"
+                className="p-2.5 rounded-full bg-white dark:bg-zinc-900 hover:bg-zinc-100 dark:hover:bg-zinc-800 text-zinc-700 dark:text-zinc-300 hover:text-black dark:hover:text-white border border-zinc-200 dark:border-zinc-800 transition-all cursor-pointer active:scale-90 shadow-sm"
                 title="Proyecto anterior"
                 aria-label="Proyecto anterior"
               >
                 <ChevronLeft className="w-4 h-4" />
               </button>
 
-              {/* Center Pagination Dots (Active dot expands into pill) */}
+              {/* Center Pagination Dots */}
               <div className="flex items-center gap-1.5 sm:gap-2">
                 {filteredProjects.map((_, dotIdx) => {
                   const isActive = dotIdx === activeIndex;
@@ -307,8 +307,8 @@ export function ProjectsGallery() {
                       onClick={() => setActiveIndex(dotIdx)}
                       className={`h-1.5 rounded-full transition-all duration-300 cursor-pointer ${
                         isActive 
-                          ? 'w-7 sm:w-8 bg-white shadow-xs' 
-                          : 'w-1.5 sm:w-2 bg-zinc-700 hover:bg-zinc-500'
+                          ? 'w-7 sm:w-8 bg-zinc-900 dark:bg-white shadow-xs' 
+                          : 'w-1.5 sm:w-2 bg-zinc-300 dark:bg-zinc-700 hover:bg-zinc-400 dark:hover:bg-zinc-500'
                       }`}
                       aria-label={`Ir al proyecto ${dotIdx + 1}`}
                     />
@@ -320,20 +320,20 @@ export function ProjectsGallery() {
               <div className="flex items-center gap-2">
                 <button
                   onClick={() => setIsPaused((prev) => !prev)}
-                  className="p-2.5 rounded-full bg-zinc-900 hover:bg-zinc-800 text-zinc-300 hover:text-white border border-zinc-800 transition-all cursor-pointer active:scale-90"
+                  className="p-2.5 rounded-full bg-white dark:bg-zinc-900 hover:bg-zinc-100 dark:hover:bg-zinc-800 text-zinc-700 dark:text-zinc-300 hover:text-black dark:hover:text-white border border-zinc-200 dark:border-zinc-800 transition-all cursor-pointer active:scale-90 shadow-sm"
                   title={isPaused ? "Reanudar slider" : "Pausar slider"}
                   aria-label={isPaused ? "Reanudar" : "Pausar"}
                 >
                   {isPaused ? (
-                    <Play className="w-4 h-4 text-emerald-400 fill-emerald-400" />
+                    <Play className="w-4 h-4 text-emerald-600 dark:text-emerald-400 fill-current" />
                   ) : (
-                    <Pause className="w-4 h-4 text-zinc-300" />
+                    <Pause className="w-4 h-4" />
                   )}
                 </button>
 
                 <button
                   onClick={handleNext}
-                  className="p-2.5 rounded-full bg-zinc-900 hover:bg-zinc-800 text-zinc-300 hover:text-white border border-zinc-800 transition-all cursor-pointer active:scale-90"
+                  className="p-2.5 rounded-full bg-white dark:bg-zinc-900 hover:bg-zinc-100 dark:hover:bg-zinc-800 text-zinc-700 dark:text-zinc-300 hover:text-black dark:hover:text-white border border-zinc-200 dark:border-zinc-800 transition-all cursor-pointer active:scale-90 shadow-sm"
                   title="Siguiente proyecto"
                   aria-label="Siguiente proyecto"
                 >
@@ -350,3 +350,5 @@ export function ProjectsGallery() {
     </BlurFadeSection>
   );
 }
+
+export default ProjectsGallery;
