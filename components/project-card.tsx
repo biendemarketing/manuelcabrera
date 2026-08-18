@@ -43,135 +43,101 @@ export function ProjectCard({ project, onSelect }: ProjectCardProps) {
         <div className="absolute inset-0 bg-[radial-gradient(#ffffff_1px,transparent_1px)] [background-size:16px_16px] opacity-5 pointer-events-none" />
 
         {/* Dynamic Visual Mockup Representation */}
-        <div className="relative z-10 w-full h-full flex items-center justify-center transition-transform duration-500 group-hover:scale-105">
+        <div className="relative z-10 w-full h-full flex items-center justify-center transition-transform duration-500 group-hover:scale-103">
           
-          {/* Didusa Real Project Browser with Real Image & Vector SVG Logo */}
-          {project.id === 'didusa-srl-jamaica' ? (
-            <div className="w-full max-w-[280px] h-48 rounded-xl bg-zinc-900 border border-zinc-700/60 shadow-2xl flex flex-col overflow-hidden">
-              <div className="bg-zinc-950 px-3 py-1.5 flex items-center gap-1.5 border-b border-zinc-800">
-                <span className="w-2 h-2 rounded-full bg-red-500/80 inline-block" />
-                <span className="w-2 h-2 rounded-full bg-yellow-500/80 inline-block" />
-                <span className="w-2 h-2 rounded-full bg-green-500/80 inline-block" />
-                <div className="flex-1 bg-zinc-900 rounded-md px-2 py-0.5 text-[8px] text-zinc-300 truncate text-center mx-1 flex items-center justify-center gap-1">
-                  <Globe className="w-2.5 h-2.5 text-zinc-400" />
-                  <span>didusasrl.com</span>
+          {/* 1. WEB PROJECTS (Realistic Mini Mac Laptop Mockup with Real Screenshot) */}
+          {(project.category === 'web' || project.mockupType === 'browser' || project.websiteUrl || project.id === 'didusa-srl-jamaica' || project.id === 'facturadord-sistema-facturacion-nomina') ? (
+            <div className="w-full max-w-[270px] sm:max-w-[290px] flex flex-col items-center select-none shadow-2xl">
+              {/* Screen Bezel */}
+              <div className="w-full rounded-t-lg overflow-hidden border border-zinc-700/80 bg-zinc-950 flex flex-col">
+                {/* Safari Bar */}
+                <div className="bg-zinc-950 px-2.5 py-1 flex items-center justify-between border-b border-zinc-800">
+                  <div className="flex items-center gap-1">
+                    <span className="w-1.5 h-1.5 rounded-full bg-rose-500/90 inline-block" />
+                    <span className="w-1.5 h-1.5 rounded-full bg-amber-500/90 inline-block" />
+                    <span className="w-1.5 h-1.5 rounded-full bg-emerald-500/90 inline-block" />
+                  </div>
+                  <div className="flex-1 max-w-[130px] bg-zinc-900 rounded px-2 py-0.5 text-[8px] font-mono text-zinc-300 truncate text-center mx-auto flex items-center justify-center gap-1 border border-zinc-800">
+                    <Globe className="w-2 h-2 text-zinc-400 shrink-0" />
+                    <span className="truncate">{project.websiteUrl ? project.websiteUrl.replace('https://', '').replace(/\/$/, '') : `${project.id.split('-')[0]}.com`}</span>
+                  </div>
                 </div>
-              </div>
-              <div className="relative flex-1 bg-zinc-950 overflow-hidden flex items-center justify-center group/screen">
-                {project.image ? (
-                  <div className="relative w-full h-full">
+                {/* Screen Canvas */}
+                <div className="relative w-full h-32 sm:h-36 bg-zinc-950 overflow-hidden">
+                  {project.image ? (
                     <Image
                       src={project.image}
-                      alt="Didusa SRL Web Portal"
+                      alt={project.title}
                       fill
-                      className="object-cover object-top"
-                      referrerPolicy="no-referrer"
+                      unoptimized
+                      className="object-cover object-top transition-transform duration-500 group-hover:scale-105"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-zinc-950 via-zinc-950/40 to-transparent" />
-                    <div className="absolute bottom-2 left-2 right-2 flex items-center justify-between p-1.5 rounded-lg bg-zinc-950/80 backdrop-blur-md border border-zinc-800">
-                      <DidusaLogo className="h-4 w-16 bg-white dark:bg-white" />
-                      <span className="text-[8px] font-bold text-zinc-300 uppercase tracking-wider">HVAC & Aislamiento</span>
+                  ) : (
+                    <div className="p-3 text-center my-auto flex flex-col items-center justify-center h-full">
+                      <p className="text-[10px] font-black text-white uppercase">{project.title}</p>
+                      <p className="text-[8px] text-zinc-400 mt-0.5">High Performance Web</p>
                     </div>
-                  </div>
-                ) : (
-                  <div className="p-3 text-center">
-                    <DidusaLogo className="h-6 w-24 bg-white dark:bg-white mx-auto mb-1" />
-                    <p className="text-[10px] font-bold text-white">didusasrl.com</p>
-                  </div>
-                )}
+                  )}
+                </div>
+              </div>
+              {/* Laptop Base */}
+              <div className="w-[102%] -mt-[1px] h-2 rounded-b-md bg-gradient-to-b from-zinc-700 to-zinc-900 border-t border-zinc-600/60 shadow-lg flex items-start justify-center">
+                <div className="w-10 h-0.5 rounded-b-xs bg-zinc-900/90" />
               </div>
             </div>
-          ) : project.mockupType === 'mobile' ? (
-            /* Mobile Phone Mockup */
-            <div className="w-48 h-full rounded-2xl bg-zinc-950 shadow-2xl p-2.5 flex flex-col justify-between overflow-hidden">
-              <div className="flex items-center justify-between px-2 pt-1">
-                <div className="w-4 h-4 rounded-full bg-zinc-700 flex items-center justify-center text-[8px] font-black text-white">MC</div>
-                <div className="w-12 h-2 rounded-full bg-zinc-800" />
-                <span className="text-[9px] text-zinc-300 font-mono">13:48</span>
-              </div>
-              <div className="bg-zinc-900 rounded-xl p-3 my-auto text-center">
-                <p className="text-[10px] font-bold text-white">Banca Móvil</p>
-                <p className="text-[8px] text-zinc-300 mt-0.5 font-mono">RD$60,539.14</p>
-                <div className="grid grid-cols-3 gap-1 mt-2">
-                  <span className="bg-zinc-800 rounded p-1 text-[7px] text-zinc-200 font-semibold">Transferir</span>
-                  <span className="bg-zinc-800 rounded p-1 text-[7px] text-zinc-200 font-semibold">Pagar</span>
-                  <span className="bg-zinc-800 rounded p-1 text-[7px] text-zinc-200 font-semibold">QR</span>
+          ) : project.mockupType === 'flyer-grid' || project.category === 'marketing' ? (
+            /* 2. MARKETING & SOCIAL MEDIA FLYERS */
+            <div className="relative w-44 sm:w-48 aspect-square rounded-2xl overflow-hidden border border-zinc-800 bg-zinc-950 shadow-2xl p-1.5 flex items-center justify-center">
+              {project.image ? (
+                <Image
+                  src={project.image}
+                  alt={project.title}
+                  fill
+                  unoptimized
+                  className="object-cover rounded-xl transition-transform duration-500 group-hover:scale-105"
+                />
+              ) : (
+                <div className="text-center p-3">
+                  <p className="text-xs font-black text-white">{project.title}</p>
+                  <p className="text-[9px] text-zinc-400">Social Media Campaign</p>
                 </div>
-              </div>
-              <div className="h-1 w-16 bg-zinc-700 rounded-full mx-auto" />
+              )}
             </div>
-          ) : project.mockupType === 'packaging' ? (
-            /* Packaging Box / Can */
-            <div className="relative flex items-center justify-center gap-3">
-              <div className="w-24 h-40 rounded-2xl bg-gradient-to-b from-zinc-800 to-zinc-900 shadow-2xl p-2.5 flex flex-col items-center justify-between text-center transform -rotate-3 group-hover:rotate-0 transition-transform">
-                <span className="text-[8px] uppercase tracking-widest text-zinc-300 font-bold">3D Render</span>
-                <div className="my-auto">
-                  <div className="w-8 h-8 rounded-full bg-zinc-700 mx-auto mb-1 flex items-center justify-center text-white text-[10px] font-black">
-                    LS
-                  </div>
-                  <p className="text-[10px] font-extrabold text-white leading-tight">{project.title.split(' ')[0]}</p>
-                  <p className="text-[8px] text-zinc-300">Pharma 4K</p>
+          ) : project.mockupType === 'brochure' || project.category === 'print' ? (
+            /* 3. BROCHURE & EDITORIAL */
+            <div className="relative w-56 sm:w-60 aspect-[4/3] rounded-2xl overflow-hidden border border-zinc-800 bg-zinc-950 shadow-2xl p-2 flex items-center justify-center">
+              {project.image ? (
+                <Image
+                  src={project.image}
+                  alt={project.title}
+                  fill
+                  unoptimized
+                  className="object-contain p-1 transition-transform duration-500 group-hover:scale-105"
+                />
+              ) : (
+                <div className="text-center p-3">
+                  <p className="text-xs font-black text-white">{project.title}</p>
+                  <p className="text-[9px] text-zinc-400">Brochure 300 DPI</p>
                 </div>
-                <span className="text-[7px] text-zinc-400 font-semibold">Catálogo</span>
-              </div>
-              <div className="w-24 h-32 rounded-xl bg-gradient-to-tr from-zinc-750 to-zinc-900 shadow-xl p-2 flex flex-col justify-between text-center transform rotate-6 group-hover:rotate-0 transition-transform">
-                <span className="text-[7px] text-zinc-300 font-semibold">Packaging</span>
-                <p className="text-[9px] font-bold text-zinc-100">{project.client.split(' ')[0]}</p>
-                <div className="h-1 w-8 bg-zinc-600 rounded-full mx-auto" />
-              </div>
-            </div>
-          ) : project.mockupType === 'billboard' ? (
-            /* Billboard / Large Format Display */
-            <div className="w-64 h-36 rounded-xl bg-zinc-900 shadow-2xl p-3 flex flex-col justify-between overflow-hidden relative">
-              <div className="relative z-10 flex items-center justify-between">
-                <span className="text-[8px] font-black tracking-widest text-white uppercase bg-zinc-800 px-2 py-0.5 rounded">Outdoor Ad</span>
-                <span className="text-[8px] text-zinc-300 font-bold">Gran Formato</span>
-              </div>
-              <div className="relative z-10 my-auto text-left">
-                <p className="text-sm font-black text-white tracking-tight uppercase leading-tight">{project.title}</p>
-                <p className="text-[9px] text-zinc-300 font-medium">{project.subtitle}</p>
-              </div>
-              <div className="relative z-10 flex items-center justify-between text-[8px] text-zinc-300 pt-1">
-                <span>{project.client}</span>
-                <span className="font-bold text-zinc-200">Billboard 3D</span>
-              </div>
-            </div>
-          ) : project.mockupType === 'browser' ? (
-            /* Browser / Web UI Mockup */
-            <div className="w-60 h-36 rounded-xl bg-zinc-950 shadow-2xl flex flex-col overflow-hidden">
-              <div className="bg-zinc-900 px-3 py-1.5 flex items-center gap-1.5">
-                <span className="w-2 h-2 rounded-full bg-zinc-600 inline-block" />
-                <span className="w-2 h-2 rounded-full bg-zinc-600 inline-block" />
-                <span className="w-2 h-2 rounded-full bg-zinc-600 inline-block" />
-                <div className="flex-1 max-w-[120px] bg-zinc-800 rounded-md px-2 py-0.5 text-[8px] text-zinc-300 truncate text-center mx-auto">
-                  {project.title.toLowerCase().replace(/\s+/g, '')}.com
-                </div>
-              </div>
-              <div className="p-3 flex-1 flex flex-col justify-between bg-zinc-900/60">
-                <div className="flex items-center justify-between">
-                  <span className="text-[10px] font-bold text-white tracking-wider uppercase">{project.title.split(' ')[0]}</span>
-                  <span className="text-[8px] text-zinc-300">Web Portal</span>
-                </div>
-                <div className="text-center my-auto">
-                  <p className="text-xs font-black text-white uppercase tracking-widest">{project.subtitle}</p>
-                  <p className="text-[8px] text-zinc-300 mt-0.5">High Performance UI</p>
-                </div>
-                <div className="h-1.5 w-12 bg-zinc-700 rounded-full mx-auto" />
-              </div>
+              )}
             </div>
           ) : (
-            /* Flyer Grid / Urban Social Media */
-            <div className="grid grid-cols-2 gap-2 w-52 h-40">
-              <div className="rounded-xl bg-zinc-900 p-2.5 flex flex-col justify-between overflow-hidden shadow-lg relative">
-                <span className="text-[7px] font-bold text-zinc-300 uppercase">Urban Music</span>
-                <p className="text-[9px] font-black text-white leading-tight">{project.title.split(' ')[0]}</p>
-                <div className="w-full h-1 bg-zinc-700 rounded-full" />
-              </div>
-              <div className="rounded-xl bg-zinc-850 p-2.5 flex flex-col justify-between overflow-hidden shadow-lg relative">
-                <span className="text-[7px] font-bold text-zinc-300 uppercase">Social Ad</span>
-                <p className="text-[9px] font-black text-white leading-tight">Instagram 1:1</p>
-                <div className="w-full h-1 bg-zinc-700 rounded-full" />
-              </div>
+            /* 4. BRANDING & GENERAL SHOWCASE */
+            <div className="relative w-48 sm:w-52 aspect-square rounded-2xl overflow-hidden border border-zinc-800 bg-zinc-950/80 shadow-2xl p-4 flex items-center justify-center">
+              {project.image ? (
+                <Image
+                  src={project.image}
+                  alt={project.title}
+                  fill
+                  unoptimized
+                  className="object-contain p-2 transition-transform duration-500 group-hover:scale-105"
+                />
+              ) : (
+                <div className="text-center p-3">
+                  <p className="text-xs font-black text-white">{project.title}</p>
+                  <p className="text-[9px] text-zinc-400">{project.categoryLabel}</p>
+                </div>
+              )}
             </div>
           )}
 
