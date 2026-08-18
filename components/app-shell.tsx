@@ -2,6 +2,7 @@
 
 import React, { useState } from 'react';
 import dynamic from 'next/dynamic';
+import { usePathname } from 'next/navigation';
 import { Navbar } from './navbar';
 import { Footer } from './footer';
 import { IntroSplash } from './intro-splash';
@@ -14,6 +15,16 @@ const CVModal = dynamic(
 
 export function AppShell({ children }: { children: React.ReactNode }) {
   const [cvModalOpen, setCvModalOpen] = useState(false);
+  const pathname = usePathname();
+  const isCVPage = pathname === '/cv';
+
+  if (isCVPage) {
+    return (
+      <div className="min-h-screen w-full bg-zinc-100 dark:bg-zinc-950 text-zinc-900 dark:text-zinc-100">
+        <main className="w-full">{children}</main>
+      </div>
+    );
+  }
 
   return (
     <IntroProvider>

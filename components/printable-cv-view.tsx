@@ -17,10 +17,7 @@ import {
   Sun, 
   Moon, 
   Sliders, 
-  Check, 
-  Sparkles,
-  Layers,
-  FileText
+  Sparkles
 } from 'lucide-react';
 import { 
   PERSONAL_INFO, 
@@ -39,8 +36,6 @@ export function PrintableCVView() {
   const [paperFormat, setPaperFormat] = useState<'letter' | 'a4' | 'legal' | 'auto'>('letter');
   // Layout density: 'normal' or 'compact'
   const [density, setDensity] = useState<'normal' | 'compact'>('normal');
-  // Show/Hide photo option
-  const [showPhoto, setShowPhoto] = useState<boolean>(true);
 
   const handlePrint = () => {
     window.print();
@@ -68,18 +63,18 @@ export function PrintableCVView() {
         : 'bg-zinc-100 text-zinc-900'
     }`}>
       
-      {/* ── TOP FLOATING CONTROL TOOLBAR (Hidden during @media print) ── */}
+      {/* ── TOP FLOATING CONTROL TOOLBAR (Oculta automáticamente en @media print) ── */}
       <header className="sticky top-0 z-50 w-full bg-zinc-900/90 backdrop-blur-md border-b border-zinc-800 text-white shadow-xl print:hidden">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 py-3 flex flex-wrap items-center justify-between gap-3">
           
-          {/* Left: Back Link & Logo */}
+          {/* Left: Back Link & Title */}
           <div className="flex items-center gap-3">
             <Link
               href="/"
               className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-zinc-800 hover:bg-zinc-700 text-zinc-200 text-xs font-bold transition-all"
             >
               <ArrowLeft className="w-3.5 h-3.5" />
-              <span>Volver al Inicio</span>
+              <span>Volver al Portafolio</span>
             </Link>
             <div className="hidden sm:flex items-center gap-2 pl-2 border-l border-zinc-700">
               <ManuelCabreraLogo className="h-5 w-auto text-white" />
@@ -111,14 +106,14 @@ export function PrintableCVView() {
                     ? 'bg-zinc-950 text-white border border-zinc-700 shadow-sm' 
                     : 'text-zinc-400 hover:text-white'
                 }`}
-                title="Modo Oscuro (Para visualización digital o PDF oscuro)"
+                title="Modo Oscuro (Para PDF oscuro de lujo)"
               >
                 <Moon className="w-3 h-3" />
                 <span>Oscuro</span>
               </button>
             </div>
 
-            {/* Paper Size Selector */}
+            {/* Paper Size Selector (8.5x11, A4, Legal, Fluido) */}
             <div className="hidden md:flex items-center bg-zinc-800 px-2 py-1 rounded-xl border border-zinc-700 gap-1">
               <span className="text-[10px] uppercase font-bold text-zinc-400 mr-1">Tamaño:</span>
               <button
@@ -158,23 +153,10 @@ export function PrintableCVView() {
                   ? 'bg-purple-600 text-white border-purple-500' 
                   : 'bg-zinc-800 text-zinc-300 border-zinc-700 hover:bg-zinc-700'
               }`}
-              title="Compactar espaciados para reducir número de páginas"
+              title="Compactar espaciados"
             >
               <Sliders className="w-3 h-3" />
               <span>{density === 'compact' ? 'Compacto' : 'Espaciado Normal'}</span>
-            </button>
-
-            {/* Toggle Photo */}
-            <button
-              onClick={() => setShowPhoto((prev) => !prev)}
-              className={`hidden sm:flex items-center gap-1 px-2.5 py-1.5 rounded-xl border text-[11px] font-bold transition-all cursor-pointer ${
-                showPhoto 
-                  ? 'bg-zinc-800 text-emerald-400 border-emerald-500/30' 
-                  : 'bg-zinc-800 text-zinc-400 border-zinc-700'
-              }`}
-              title="Mostrar u ocultar foto de perfil"
-            >
-              <span>{showPhoto ? '✓ Con Foto' : 'Sin Foto'}</span>
             </button>
 
           </div>
@@ -205,82 +187,94 @@ export function PrintableCVView() {
           }}
         >
           
-          {/* 1. HEADER CON FOTO DE PORTADA, LOGO Y DATOS DE CONTACTO */}
-          <header className={`border-b pb-6 ${density === 'compact' ? 'mb-4' : 'mb-6'} ${
-            printTheme === 'dark' ? 'border-zinc-800' : 'border-zinc-200'
-          }`} style={{ breakInside: 'avoid', pageBreakInside: 'avoid' }}>
-            <div className="flex flex-col sm:flex-row items-center sm:items-start justify-between gap-6">
+          {/* 1. PORTADA A TODO EL ANCHO DISPONIBLE CON INFO DE PERFIL A LA IZQUIERDA */}
+          <div 
+            className="relative w-full rounded-2xl sm:rounded-3xl overflow-hidden mb-6 shadow-xl border border-zinc-200/80 dark:border-zinc-800 min-h-[220px] sm:min-h-[260px] md:min-h-[280px] flex flex-col justify-end p-5 sm:p-8 md:p-10"
+            style={{ breakInside: 'avoid', pageBreakInside: 'avoid' }}
+          >
+            {/* Foto de Portada de Fondo a Todo el Ancho */}
+            {PERSONAL_INFO.heroBgPhoto && (
+              <Image
+                src={PERSONAL_INFO.heroBgPhoto}
+                alt={PERSONAL_INFO.name}
+                fill
+                priority
+                sizes="(max-width: 1200px) 100vw, 1000px"
+                className="object-cover object-center select-none"
+              />
+            )}
+
+            {/* Gradiente de Alto Contraste para Máxima Legibilidad sobre la Portada */}
+            <div className="absolute inset-0 bg-gradient-to-r from-black/95 via-black/75 to-black/30 pointer-events-none" />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-transparent to-black/20 pointer-events-none" />
+
+            {/* Contenido de Perfil Alineado a la Izquierda Encima de la Portada */}
+            <div className="relative z-10 w-full max-w-2xl space-y-3 text-left">
               
-              {/* Left Column: Photo & Name */}
-              <div className="flex flex-col sm:flex-row items-center sm:items-start gap-4 sm:gap-5 text-center sm:text-left">
-                
-                {/* Profile Photo */}
-                {showPhoto && PERSONAL_INFO.heroBgPhoto && (
-                  <div className="relative w-24 h-24 sm:w-28 sm:h-28 rounded-2xl overflow-hidden border-2 border-indigo-500/40 shadow-xl bg-zinc-950 shrink-0">
-                    <Image
-                      src={PERSONAL_INFO.heroBgPhoto}
-                      alt={PERSONAL_INFO.name}
-                      fill
-                      priority
-                      sizes="120px"
-                      className="object-cover object-top"
-                    />
-                  </div>
-                )}
-
-                {/* Name, Role & Badges */}
-                <div className="space-y-1">
-                  <div className="flex flex-wrap items-center justify-center sm:justify-start gap-2">
-                    <h1 className="text-2xl sm:text-3xl md:text-4xl font-black uppercase tracking-tight text-zinc-950 dark:text-white">
-                      {PERSONAL_INFO.name}
-                    </h1>
-                  </div>
-
-                  <p className="text-xs sm:text-sm font-bold text-indigo-600 dark:text-indigo-400">
-                    Director Creativo • Marketing Digital, UI/UX & Desarrollo Web
-                  </p>
-
-                  <div className="flex flex-wrap items-center justify-center sm:justify-start gap-1.5 pt-1 text-[11px] font-semibold text-zinc-500 dark:text-zinc-400">
-                    <span className="px-2 py-0.5 rounded-md bg-zinc-100 dark:bg-zinc-800 font-mono font-bold text-zinc-700 dark:text-zinc-300">
-                      {PERSONAL_INFO.experienceYears} de Experiencia
-                    </span>
-                    <span>•</span>
-                    <span>{PERSONAL_INFO.age}</span>
-                    <span>•</span>
-                    <span className="text-emerald-600 dark:text-emerald-400 font-bold">
-                      {PERSONAL_INFO.availability}
-                    </span>
-                  </div>
+              {/* Badge & Logo Monogram */}
+              <div className="flex items-center gap-2">
+                <div className="px-2.5 py-1 rounded-lg bg-white/15 backdrop-blur-md border border-white/25 inline-flex items-center gap-1.5 shadow-sm">
+                  <ManuelCabreraLogo className="h-3.5 w-auto text-white" />
+                  <span className="text-[10px] font-black uppercase tracking-widest text-white">
+                    Perfil Profesional
+                  </span>
                 </div>
 
+                <span className="px-2.5 py-1 rounded-lg bg-emerald-500/20 backdrop-blur-md border border-emerald-400/30 text-[10px] font-bold text-emerald-300 uppercase tracking-wider">
+                  {PERSONAL_INFO.availability}
+                </span>
               </div>
 
-              {/* Right Column: Contact Details */}
-              <div className="flex flex-col items-center sm:items-end gap-1.5 text-xs text-zinc-600 dark:text-zinc-300 text-center sm:text-right shrink-0">
-                <div className="flex items-center gap-1.5 font-bold">
-                  <Phone className="w-3.5 h-3.5 text-indigo-500 shrink-0" />
-                  <a href={`tel:${PERSONAL_INFO.phone}`} className="hover:underline">
+              {/* Nombre Principal */}
+              <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-black uppercase tracking-tight text-white drop-shadow-md">
+                {PERSONAL_INFO.name}
+              </h1>
+
+              {/* Cargo & Subtítulo */}
+              <p className="text-xs sm:text-sm md:text-base font-bold text-indigo-300 tracking-wide drop-shadow-sm">
+                Director Creativo • Marketing Digital, UI/UX & Desarrollo Web
+              </p>
+
+              {/* Chips de Experiencia & Datos Clave */}
+              <div className="flex flex-wrap items-center gap-2 pt-1 text-[11px] font-semibold text-zinc-200">
+                <span className="px-2.5 py-0.5 rounded-md bg-white/15 backdrop-blur-md border border-white/20 font-mono font-bold text-white">
+                  {PERSONAL_INFO.experienceYears} de Experiencia
+                </span>
+                <span>•</span>
+                <span>{PERSONAL_INFO.age}</span>
+                <span>•</span>
+                <span>República Dominicana</span>
+              </div>
+
+              {/* Barra de Contacto Integrada Sobre la Portada */}
+              <div className="flex flex-wrap items-center gap-x-4 gap-y-2 pt-2 text-xs text-zinc-100 font-medium">
+                <div className="flex items-center gap-1.5 font-bold bg-black/40 backdrop-blur-md px-2.5 py-1 rounded-lg border border-white/10">
+                  <Phone className="w-3.5 h-3.5 text-indigo-400 shrink-0" />
+                  <a href={`tel:${PERSONAL_INFO.phone}`} className="hover:underline text-white">
                     {PERSONAL_INFO.phoneFormatted}
                   </a>
                 </div>
-                <div className="flex items-center gap-1.5 font-semibold">
-                  <Mail className="w-3.5 h-3.5 text-indigo-500 shrink-0" />
-                  <a href={`mailto:${PERSONAL_INFO.email}`} className="hover:underline">
+
+                <div className="flex items-center gap-1.5 font-semibold bg-black/40 backdrop-blur-md px-2.5 py-1 rounded-lg border border-white/10">
+                  <Mail className="w-3.5 h-3.5 text-indigo-400 shrink-0" />
+                  <a href={`mailto:${PERSONAL_INFO.email}`} className="hover:underline text-white">
                     {PERSONAL_INFO.email}
                   </a>
                 </div>
-                <div className="flex items-center gap-1.5">
-                  <Globe className="w-3.5 h-3.5 text-indigo-500 shrink-0" />
-                  <span className="font-mono text-[11px] font-bold">https://manuelcabrera.pro</span>
+
+                <div className="flex items-center gap-1.5 bg-black/40 backdrop-blur-md px-2.5 py-1 rounded-lg border border-white/10">
+                  <Globe className="w-3.5 h-3.5 text-indigo-400 shrink-0" />
+                  <span className="font-mono text-[11px] font-bold text-white">https://manuelcabrera.pro</span>
                 </div>
-                <div className="flex items-center gap-1.5 text-zinc-500 dark:text-zinc-400 text-[11px]">
-                  <MapPin className="w-3.5 h-3.5 text-indigo-500 shrink-0" />
-                  <span>{PERSONAL_INFO.location}</span>
+
+                <div className="flex items-center gap-1.5 bg-black/40 backdrop-blur-md px-2.5 py-1 rounded-lg border border-white/10 text-[11px]">
+                  <MapPin className="w-3.5 h-3.5 text-indigo-400 shrink-0" />
+                  <span className="text-zinc-200">{PERSONAL_INFO.location}</span>
                 </div>
               </div>
 
             </div>
-          </header>
+          </div>
 
           {/* 2. RESUMEN PROFESIONAL & FILOSOFÍA */}
           <section className={`border-b pb-5 ${density === 'compact' ? 'mb-4' : 'mb-6'} ${
@@ -443,12 +437,6 @@ export function PrintableCVView() {
               ))}
             </div>
           </section>
-
-          {/* Footer watermark note */}
-          <footer className="mt-8 pt-4 border-t border-zinc-200 dark:border-zinc-800/80 flex items-center justify-between text-[10px] text-zinc-500 dark:text-zinc-400 font-medium">
-            <span>Manuel Cabrera • Portafolio: https://manuelcabrera.pro</span>
-            <span>Documento Oficial Generado en Línea • 2026</span>
-          </footer>
 
         </div>
       </main>

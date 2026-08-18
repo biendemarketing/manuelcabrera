@@ -104,54 +104,78 @@ export function CVModal({ isOpen, onClose }: CVModalProps) {
         {/* Printable Resume Content */}
         <div className="p-6 sm:p-10 space-y-8 text-zinc-800 dark:text-zinc-200 print:text-black print:bg-white">
           
-          {/* Resume Header with Profile Photo */}
-          <div className="pb-6 border-b border-zinc-200 dark:border-zinc-800">
-            <div className="flex flex-col sm:flex-row items-center sm:items-start justify-between gap-6">
-              
-              <div className="flex flex-col sm:flex-row items-center sm:items-start gap-4 text-center sm:text-left">
-                {PERSONAL_INFO.heroBgPhoto && (
-                  <div className="relative w-20 h-20 sm:w-24 sm:h-24 rounded-2xl overflow-hidden border-2 border-indigo-500/40 shadow-lg bg-zinc-950 shrink-0">
-                    <Image
-                      src={PERSONAL_INFO.heroBgPhoto}
-                      alt={PERSONAL_INFO.name}
-                      fill
-                      priority
-                      sizes="96px"
-                      className="object-cover object-top"
-                    />
-                  </div>
-                )}
-                <div>
-                  <h1 className="text-2xl sm:text-3xl font-black text-zinc-900 dark:text-white tracking-tight uppercase">
-                    {PERSONAL_INFO.name}
-                  </h1>
-                  <p className="text-xs sm:text-sm font-bold text-indigo-600 dark:text-indigo-400 mt-0.5 uppercase tracking-wide">
-                    Director Creativo • Marketing Digital, UI/UX & Desarrollo Web
-                  </p>
-                  <p className="text-[11px] text-zinc-500 dark:text-zinc-400 mt-1">
-                    {PERSONAL_INFO.experienceYears} de Experiencia • {PERSONAL_INFO.age} • {PERSONAL_INFO.availability}
-                  </p>
+          {/* 1. PORTADA A TODO EL ANCHO CON INFORMACIÓN A LA IZQUIERDA */}
+          <div className="relative w-full rounded-2xl sm:rounded-3xl overflow-hidden mb-6 shadow-xl border border-zinc-200/80 dark:border-zinc-800 min-h-[220px] sm:min-h-[250px] flex flex-col justify-end p-5 sm:p-7">
+            {PERSONAL_INFO.heroBgPhoto && (
+              <Image
+                src={PERSONAL_INFO.heroBgPhoto}
+                alt={PERSONAL_INFO.name}
+                fill
+                priority
+                sizes="(max-width: 1000px) 100vw, 900px"
+                className="object-cover object-center select-none"
+              />
+            )}
+
+            <div className="absolute inset-0 bg-gradient-to-r from-black/95 via-black/75 to-black/30 pointer-events-none" />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-transparent to-black/20 pointer-events-none" />
+
+            <div className="relative z-10 w-full max-w-xl space-y-2 text-left">
+              <div className="flex items-center gap-2">
+                <div className="px-2 py-0.5 rounded-md bg-white/15 backdrop-blur-md border border-white/20 inline-flex items-center gap-1.5 shadow-sm">
+                  <ManuelCabreraLogo className="h-3 w-auto text-white" />
+                  <span className="text-[9px] font-black uppercase tracking-widest text-white">
+                    Perfil Profesional
+                  </span>
+                </div>
+                <span className="px-2 py-0.5 rounded-md bg-emerald-500/20 backdrop-blur-md border border-emerald-400/30 text-[9px] font-bold text-emerald-300 uppercase">
+                  {PERSONAL_INFO.availability}
+                </span>
+              </div>
+
+              <h1 className="text-2xl sm:text-3xl font-black uppercase tracking-tight text-white drop-shadow-md">
+                {PERSONAL_INFO.name}
+              </h1>
+
+              <p className="text-xs sm:text-sm font-bold text-indigo-300 drop-shadow-sm">
+                Director Creativo • Marketing Digital, UI/UX & Desarrollo Web
+              </p>
+
+              <div className="flex flex-wrap items-center gap-2 pt-0.5 text-[10px] font-semibold text-zinc-200">
+                <span className="px-2 py-0.5 rounded-md bg-white/15 backdrop-blur-md border border-white/20 font-mono font-bold text-white">
+                  {PERSONAL_INFO.experienceYears} de Experiencia
+                </span>
+                <span>•</span>
+                <span>{PERSONAL_INFO.age}</span>
+                <span>•</span>
+                <span>República Dominicana</span>
+              </div>
+
+              <div className="flex flex-wrap items-center gap-x-3 gap-y-1.5 pt-1 text-[11px] text-zinc-100 font-medium">
+                <div className="flex items-center gap-1 font-bold bg-black/40 backdrop-blur-md px-2 py-0.5 rounded-md border border-white/10">
+                  <Phone className="w-3 h-3 text-indigo-400" />
+                  <a href={`tel:${PERSONAL_INFO.phone}`} className="hover:underline text-white">
+                    {PERSONAL_INFO.phoneFormatted}
+                  </a>
+                </div>
+
+                <div className="flex items-center gap-1 font-semibold bg-black/40 backdrop-blur-md px-2 py-0.5 rounded-md border border-white/10">
+                  <Mail className="w-3 h-3 text-indigo-400" />
+                  <a href={`mailto:${PERSONAL_INFO.email}`} className="hover:underline text-white">
+                    {PERSONAL_INFO.email}
+                  </a>
+                </div>
+
+                <div className="flex items-center gap-1 bg-black/40 backdrop-blur-md px-2 py-0.5 rounded-md border border-white/10 text-[10px]">
+                  <MapPin className="w-3 h-3 text-indigo-400" />
+                  <span className="text-zinc-200">{PERSONAL_INFO.location}</span>
                 </div>
               </div>
-
-              <div className="space-y-1.5 text-xs text-zinc-600 dark:text-zinc-400 font-medium text-center sm:text-right shrink-0">
-                <p className="flex items-center justify-center sm:justify-end gap-2 font-bold">
-                  <Phone className="w-3.5 h-3.5 text-indigo-500" />
-                  <span>{PERSONAL_INFO.phoneFormatted}</span>
-                </p>
-                <p className="flex items-center justify-center sm:justify-end gap-2">
-                  <Mail className="w-3.5 h-3.5 text-indigo-500" />
-                  <span>{PERSONAL_INFO.email}</span>
-                </p>
-                <p className="flex items-center justify-center sm:justify-end gap-2">
-                  <MapPin className="w-3.5 h-3.5 text-indigo-500" />
-                  <span>{PERSONAL_INFO.location}</span>
-                </p>
-              </div>
             </div>
+          </div>
 
             {/* Profile Summary */}
-            <div className="mt-4 pt-3">
+            <div className="mt-4 pt-3 border-b border-zinc-200 dark:border-zinc-800 pb-5">
               <h2 className="text-xs font-bold uppercase tracking-wider text-zinc-900 dark:text-white mb-1">
                 Sobre Mí & Perfil Profesional
               </h2>
@@ -159,7 +183,6 @@ export function CVModal({ isOpen, onClose }: CVModalProps) {
                 {PERSONAL_INFO.aboutSummary}
               </p>
             </div>
-          </div>
 
           {/* Work Experience */}
           <div className="space-y-4">
