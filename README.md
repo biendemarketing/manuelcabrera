@@ -2,9 +2,11 @@
 
 <div align="center">
 
-![Manuel Cabrera Banner](public/brands/bigprint-logo.svg)
+<img src="public/manuelcabreralogo.svg" alt="Manuel Cabrera Logo" width="180" />
 
-### **Marketing Digital • Diseño UI/UX • Desarrollo Web • Branding & Identidad • Renders 3D**
+<br />
+
+### **Marketing Digital • Diseño UI/UX • Desarrollo Web • Branding & Identidad • Renders 3D • IA**
 
 [![Next.js](https://img.shields.io/badge/Next.js-15-black?style=for-the-badge&logo=next.js)](https://nextjs.org/)
 [![React](https://img.shields.io/badge/React-19-blue?style=for-the-badge&logo=react)](https://react.dev/)
@@ -12,7 +14,7 @@
 [![TailwindCSS](https://img.shields.io/badge/Tailwind_CSS-3.4-38B2AC?style=for-the-badge&logo=tailwind-css)](https://tailwindcss.com/)
 [![License](https://img.shields.io/badge/License-MIT-purple?style=for-the-badge)](LICENSE)
 
-**[🌐 Ver Portafolio en Vivo](http://localhost:3000)** • **[📂 Recopilación de Proyectos](http://localhost:3000/#recopilacion-proyectos)** • **[📫 Contacto Directo](#-contacto)**
+**[🌐 Ver Portafolio en Vivo (manuelcabrera.pro)](https://manuelcabrera.pro)** • **[📂 Recopilación de Proyectos](https://manuelcabrera.pro/recopilacion)** • **[📫 Contacto Directo](https://manuelcabrera.pro/contacto)**
 
 </div>
 
@@ -44,7 +46,7 @@ Especializado en la creación y escalamiento de marcas comerciales, gestión de 
 
 ## ⚡ Características Principales del Portafolio
 
-* **🎬 Recopilación de Proyectos en Slider Ultra HD 2K:** Presentación fluida y automatizada de láminas en alta resolución con barra de carga reactiva y transiciones suaves.
+* **🎬 Recopilación de Proyectos en Slider Ultra HD 2K:** Presentación fluida y automatizada de 70 láminas en alta resolución con barra de carga reactiva y transiciones suaves.
 * **🖼️ Visor de Cuadrícula & Lightbox Modal:** Galería interactiva con filtrado instantáneo por categorías (*Branding, Web, Redes Sociales, Impresión, 3D, Fotografía*), buscador en tiempo real y zoom HD.
 * **✨ Estética Moderna en Modo Oscuro:** Interfaz optimizada con micro-animaciones, glassmorphism, gradientes HSL y tipografía contemporánea.
 * **📱 100% Responsivo & Optimizado:** Experiencia impecable adaptada para dispositivos móviles, tablets y monitores ultrawide.
@@ -55,8 +57,8 @@ Especializado en la creación y escalamiento de marcas comerciales, gestión de 
 ## 🛠️ Stack Tecnológico & Herramientas
 
 ### Desarrollo & Software
-* **Frontend:** Next.js (App Router), React, TypeScript, Tailwind CSS, Lucide Icons, Framer Motion.
-* **Backend & Infraestructura:** Node.js, Next.js API Routes, Vercel Cloud, Hosting SSL/DNS.
+* **Frontend:** Next.js 15 (App Router), React 19, TypeScript, Tailwind CSS, Lucide Icons, Motion (Framer Motion).
+* **Backend & Infraestructura:** Node.js, Next.js API Routes, Vercel Edge Network, Hosting SSL/DNS.
 * **Integraciones:** Facturación Electrónica DGII (e-CF), Algoritmos de Nómina TSS (SUIR Plus), HTML5 Streaming Audio.
 
 ### Suite Creativa & Marketing
@@ -101,9 +103,13 @@ Abre [http://localhost:3000](http://localhost:3000) en tu navegador para ver la 
 ## 📬 Contacto Profesional
 
 * **Nombre:** Manuel Cabrera
-* **Email:** [biendemarketing@gmail.com](mailto:biendemarketing@gmail.com)
-* **Ubicación:** Punta Cana / Santo Domingo, República Dominicana
-* **WhatsApp / Teléfono:** Disponible bajo solicitud
+* **Email Principal:** [manuelcabrerasinfo@gmail.com](mailto:manuelcabrerasinfo@gmail.com)
+* **Email Secundario:** [sedphotord@gmail.com](mailto:sedphotord@gmail.com)
+* **WhatsApp / Teléfono:** [+1 (849) 635-2835](https://wa.me/18496352835)
+* **Instagram Personal:** [@manuelgraphics](https://instagram.com/manuelgraphics)
+* **Instagram Fotografía:** [@sedphoto_](https://instagram.com/sedphoto_)
+* **Ubicación:** Verón, Punta Cana, La Altagracia, República Dominicana
+* **Web Oficial:** [https://manuelcabrera.pro](https://manuelcabrera.pro)
 
 ---
 
