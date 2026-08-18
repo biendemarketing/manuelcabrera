@@ -189,9 +189,8 @@ export function ProjectsGallery() {
                       />
                     )}
 
-                    {/* Dark Vignette Overlay for Crisp Readability */}
-                    <div className="absolute inset-0 bg-gradient-to-t from-black via-black/55 to-transparent" />
-                    <div className="absolute inset-0 bg-gradient-to-r from-black/90 via-black/40 to-transparent" />
+                    {/* Light/Clean Vignette Overlay so artwork is fully appreciated */}
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/25 to-transparent" />
                   </motion.div>
                 </AnimatePresence>
 
@@ -210,7 +209,7 @@ export function ProjectsGallery() {
                   </div>
                 </div>
 
-                {/* Bottom Overlay: Client, Big Bold Title, Description & Action Button */}
+                {/* Bottom Overlay: Client, Title, Description & Action Button */}
                 <AnimatePresence mode="wait">
                   <motion.div
                     key={`content-${currentProject.id}`}
@@ -218,22 +217,22 @@ export function ProjectsGallery() {
                     animate={{ opacity: 1, y: 0 }}
                     exit={{ opacity: 0, y: -15 }}
                     transition={{ duration: 0.4 }}
-                    className="relative z-20 p-6 sm:p-10 space-y-4 max-w-2xl text-left"
+                    className="relative z-20 p-6 sm:p-8 space-y-3 max-w-2xl text-left"
                   >
                     {/* Year & Client */}
-                    <div className="flex items-center gap-2 text-xs sm:text-sm font-semibold text-zinc-300">
+                    <div className="flex items-center gap-2 text-xs font-semibold text-zinc-300">
                       <span className="text-indigo-400 font-bold">{currentProject.client}</span>
                       <span>•</span>
                       <span>{currentProject.year}</span>
                     </div>
 
-                    {/* Main Title */}
-                    <h3 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-black text-white tracking-tight leading-tight uppercase drop-shadow-md">
+                    {/* Main Title (Reduced size) */}
+                    <h3 className="text-xl sm:text-2xl md:text-3xl font-black text-white tracking-tight leading-snug uppercase drop-shadow-md">
                       {currentProject.title}
                     </h3>
 
                     {/* 2-Line Impact Description */}
-                    <p className="text-xs sm:text-sm md:text-base text-zinc-200 font-normal leading-relaxed line-clamp-2 max-w-xl drop-shadow-sm">
+                    <p className="text-xs sm:text-sm text-zinc-200 font-normal leading-relaxed line-clamp-2 max-w-xl drop-shadow-sm">
                       {currentProject.description}
                     </p>
 

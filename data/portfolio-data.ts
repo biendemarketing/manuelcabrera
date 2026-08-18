@@ -364,7 +364,7 @@ export const SKILL_CARDS: SkillCard[] = [
       "Analítica con Google Analytics 4, medición de ROAS y KPIs comerciales"
     ],
     toolsUsed: ["Meta Ads Manager", "Google Ads", "Google Analytics 4", "Mailchimp", "Metricool", "Slack", "Linear"],
-    highlights: ["Visa del Norte (+45% pedidos)", "Trapbowton Music Ads (+500K Views)", "LUMA Salud Visual (+300 citas)", "JIRM Consulting"],
+    highlights: ["Decora Group Punta Cana (+120% leads)", "CAMI Instituto (+40% matrículas)", "LUMA Salud Visual (+300 citas)", "JIRM Consulting"],
     colorClass: "from-zinc-800 to-zinc-900 border-zinc-700 text-zinc-100"
   },
   {
@@ -383,7 +383,7 @@ export const SKILL_CARDS: SkillCard[] = [
       "Guías de estilo para aplicaciones digitales y físicas"
     ],
     toolsUsed: ["Adobe Illustrator", "Photoshop", "InDesign", "Midjourney AI", "Figma"],
-    highlights: ["Miel Norteña", "Gumo Focus Drink", "Bar C Barcelona", "Forever Mane Haircare"],
+    highlights: ["Miel Norteña", "Gumo Focus Drink", "Bar C Barcelona", "Latik & Corambar Realty"],
     colorClass: "from-zinc-800 to-zinc-900 border-zinc-700 text-zinc-100"
   },
   {
@@ -402,7 +402,7 @@ export const SKILL_CARDS: SkillCard[] = [
       "Design systems modulares y componentes accesibles de alto rendimiento"
     ],
     toolsUsed: ["Figma", "Next.js", "TypeScript", "Tailwind CSS", "PostgreSQL", "Supabase", "VS Code", "Cursor"],
-    highlights: ["Banco BHD Mobile App UI", "Carlotta Fashion Web", "Visa Pork Cuts Landing"],
+    highlights: ["Banco BHD Mobile App UI", "Carlotta Fashion Web", "FacturaDO Nómina TSS"],
     colorClass: "from-zinc-800 to-zinc-900 border-zinc-700 text-zinc-100"
   },
   {
@@ -459,7 +459,7 @@ export const SKILL_CARDS: SkillCard[] = [
       "Mockups realistas para empaques y presentaciones a clientes"
     ],
     toolsUsed: ["Cinema 4D", "Blender 3D", "Photoshop", "After Effects"],
-    highlights: ["Immuglo IV Bottle 3D", "Laboratorios Síntesis Line", "Gasolinera Petronan"],
+    highlights: ["Immuglo IV Bottle 3D", "Laboratorios Síntesis Line", "Stand Comercial & Mupis 3D"],
     colorClass: "from-zinc-800 to-zinc-900 border-zinc-700 text-zinc-100"
   },
   {
@@ -1083,103 +1083,6 @@ export const PROJECTS: Project[] = [
       { label: "Portales Web", value: "2 Dominios" },
       { label: "Correos", value: "@didusasrl.com" },
       { label: "Sector", value: "HVAC & Aislamiento" }
-    ]
-  },
-  {
-    id: "visa-del-norte-campaign",
-    title: "Visa del Norte - Campaña Integral & Mupis",
-    subtitle: "Marketing Omnicanal, Packaging To-Go, Vallas Urbanas & Landing Page",
-    category: "print",
-    categoryLabel: "Marketing & Gran Formato",
-    client: "Visa del Norte",
-    year: "2020 - 2023",
-    description: "Estrategia integral de marketing y comunicación visual para cortes de carne premium: Visa To Go, Línea Cortes Gold, Portafolio Oro y Vino, y Landing Page promocional 'Cortes de Cerdo Americano'. Diseño de paradas de autobús, empaques térmicos y piezas festivas.",
-    challenge: "Transmitir la máxima calidad gastronómica de cortes como Rib Eye, Tomahawk y Arrachera tanto en medios físicos de gran escala como en digital para disparar las ventas.",
-    solution: "Composiciones fotográficas de alto impacto con fuego, texturas de parrilla, tipografías robustas de asador y cajas de regalo de edición especial con pauta geolocalizada.",
-    deliverables: ["Paradas de Autobús / Mupis", "Bolsas Kraft To-Go", "Cajas de Regalo Oro y Platinum", "Landing Page Web & Pauta"],
-    tools: ["Meta Ads", "Adobe Photoshop", "Illustrator", "Adobe XD"],
-    colorPalette: ["#DC2626", "#B91C1C", "#1C1917", "#F59E0B"],
-    gradient: "from-zinc-900 via-zinc-850 to-black",
-    featured: true,
-    mockupType: "billboard",
-    accentColor: "#DC2626",
-    stats: [
-      { label: "Campañas", value: "5 Temporadas" },
-      { label: "Mupis & Vallas", value: "Gran Formato" },
-      { label: "Conversión", value: "+45% Pedidos" }
-    ]
-  },
-  {
-    id: "petronan-gas-station-3d",
-    title: "Petronan - Fachada & Canopia 3D",
-    subtitle: "Modelado Arquitectónico y Visualización Comercial Diurna/Nocturna",
-    category: "3d-render",
-    categoryLabel: "Modelado 3D & Fachadas",
-    client: "Petronan Combustibles",
-    year: "2021",
-    description: "Modelado 3D y renderizado de la estructura principal, canopia de despacho e iluminación nocturna para las estaciones de servicio Petronan.",
-    challenge: "Presentar a los inversionistas la apariencia real de la estructura con los colores corporativos y el impacto visual de las luminarias LED de noche.",
-    solution: "Modelado tridimensional en perspectiva con cálculo de luminiscencia en plafones y señalética de marca en las vigas perimetrales.",
-    deliverables: ["Render Diurno", "Render Nocturno Iluminado", "Planos de Aplicación de Marca"],
-    tools: ["Blender 3D", "Cinema 4D", "Photoshop"],
-    colorPalette: ["#EF4444", "#2563EB", "#FACC15", "#1E293B"],
-    gradient: "from-zinc-900 via-zinc-850 to-zinc-950",
-    featured: true,
-    mockupType: "billboard",
-    accentColor: "#EF4444",
-    stats: [
-      { label: "Tipo", value: "Fachada 3D" },
-      { label: "Modos", value: "Día & Noche" },
-      { label: "Escala", value: "Arquitectura" }
-    ]
-  },
-  {
-    id: "trapbowton-music-ads",
-    title: "Trapbowton - Campañas Urbanas & Ads",
-    subtitle: "Estrategia Publicitaria & Creatividades para Grandes Exponentes Urbanos",
-    category: "social-media",
-    categoryLabel: "Marketing & Redes Sociales",
-    client: "Trapbowton / Artistas de Género Urbano",
-    year: "2022 - 2023",
-    description: "Diseño y pauta de portadas digitales, carruseles de Instagram y anuncios de alto rendimiento para figuras del género urbano como DJ Adoni, Don Miguelo, Santiago Matías (Alofoke) y Nicky Jam.",
-    challenge: "Captar la atención en feeds veloces con tipografías contundentes, retoque dramático e iluminación de alto impacto para maximizar reproducciones y venta de boletos.",
-    solution: "Contrastes intensos, silueteado de alta definición y composición dinámica enfocada en maximizar el CTR y el engagement de los seguidores.",
-    deliverables: ["Posts de Instagram 1:1", "Historias 9:16", "Banners para Eventos", "Campañas de Pauta Pagada"],
-    tools: ["Meta Ads", "Photoshop", "Lightroom", "After Effects"],
-    colorPalette: ["#FF003C", "#111827", "#3B82F6", "#FFFFFF"],
-    gradient: "from-zinc-900 via-zinc-850 to-black",
-    featured: true,
-    mockupType: "flyer-grid",
-    accentColor: "#FF003C",
-    stats: [
-      { label: "Artistas", value: "Top Urbanos" },
-      { label: "Alcance", value: "+500K Views" },
-      { label: "Formato", value: "Social Ads" }
-    ]
-  },
-
-  {
-    id: "forever-mane-haircare",
-    title: "Forever Mane - Línea Capilar Profesional",
-    subtitle: "Diseño de Marca & Packaging Cosmético Profesional",
-    category: "branding",
-    categoryLabel: "Branding & Packaging",
-    client: "Forever Mane Dominicana",
-    year: "2022",
-    description: "Línea completa de empaques para tratamiento capilar a base de jengibre, coco y romero: Shampoo 32 Oz, Mascarilla 16 Oz, Gota de Brillo, Leaving y Laciador. Creación del logotipo de silueta femenina y contraste con fondos negros elegantes.",
-    challenge: "Dar una apariencia de salón de belleza de lujo a una línea de productos naturales para el cabello.",
-    solution: "Fondo negro texturizado de alto contraste con tipografía serif sofisticada, medallón dorado y fotografías de ingredientes naturales en la base.",
-    deliverables: ["Diseño de 5 Envases", "Etiquetas de Advertencia & Modo de Uso", "Renders de Colección", "Banners Publicitarios"],
-    tools: ["Adobe Photoshop", "Illustrator"],
-    colorPalette: ["#EAB308", "#18181B", "#CA8A04", "#FFFFFF"],
-    gradient: "from-zinc-900 via-zinc-850 to-zinc-950",
-    featured: false,
-    mockupType: "packaging",
-    accentColor: "#EAB308",
-    stats: [
-      { label: "Productos", value: "5 Presentaciones" },
-      { label: "Acabado", value: "Gold Foil Effect" },
-      { label: "Mercado", value: "Cuidado Capilar" }
     ]
   }
 ];
