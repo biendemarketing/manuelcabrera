@@ -443,7 +443,7 @@ export function PrintableCVView() {
       <style jsx global>{`
         @media print {
           @page {
-            size: ${paperFormat === 'a4' ? 'A4 portrait' : paperFormat === 'legal' ? 'legal portrait' : '8.5in 11in portrait'};
+            size: ${paperFormat === 'a4' ? 'A4 portrait' : '8.5in 11in portrait'};
             margin: 10mm 10mm 10mm 10mm;
           }
           

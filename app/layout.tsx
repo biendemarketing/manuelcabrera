@@ -570,11 +570,64 @@ const professionalServiceJsonLd = {
   },
   sameAs: [
     'https://github.com/biendemarketing',
-    'https://www.instagram.com/biendemarketing',
+    'https://manuelcabrera.pro',
   ],
   priceRange: '$$',
   currenciesAccepted: 'USD, DOP',
   paymentAccepted: 'Transferencia, PayPal, Efectivo',
+};
+
+// ─── Google Sitelinks Schema (SiteNavigationElement) ─────────────────────────
+// Enables expanded nested search results on Google (like Upwork)
+const sitelinksJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'ItemList',
+  '@id': `${SITE_URL}/#sitelinks`,
+  name: 'Manuel Cabrera — Secciones Principales & Portafolio',
+  itemListElement: [
+    {
+      '@type': 'SiteNavigationElement',
+      position: 1,
+      name: 'Proyectos & Casos de Éxito',
+      description: 'Explora proyectos destacados de Marketing Digital, Desarrollo Web, Branding y Modelado 3D.',
+      url: `${SITE_URL}/proyectos`,
+    },
+    {
+      '@type': 'SiteNavigationElement',
+      position: 2,
+      name: 'Sobre Mí & Biografía',
+      description: 'Conoce la trayectoria de Manuel Cabrera, Director Creativo con más de 11 años de experiencia.',
+      url: `${SITE_URL}/sobre-mi`,
+    },
+    {
+      '@type': 'SiteNavigationElement',
+      position: 3,
+      name: 'Currículum Vitae (CV Imprimible)',
+      description: 'CV oficial imprimible en formato carta 8.5x11 y exportable a PDF con historial y habilidades.',
+      url: `${SITE_URL}/cv`,
+    },
+    {
+      '@type': 'SiteNavigationElement',
+      position: 4,
+      name: 'Contacto Directo',
+      description: 'Inicia un proyecto o cotización vía WhatsApp directo (+1 849-635-2835) o correo electrónico.',
+      url: `${SITE_URL}/contacto`,
+    },
+    {
+      '@type': 'SiteNavigationElement',
+      position: 5,
+      name: 'Habilidades & Inteligencia Artificial',
+      description: 'Especialidades en Meta Ads, Google Ads, Next.js, UI/UX, Blender 3D, Preprensa e IA Generativa.',
+      url: `${SITE_URL}/habilidades`,
+    },
+    {
+      '@type': 'SiteNavigationElement',
+      position: 6,
+      name: 'Experiencia Laboral',
+      description: 'Historial profesional de más de una década en agencias de publicidad y dirección de marcas.',
+      url: `${SITE_URL}/experiencia`,
+    },
+  ],
 };
 
 export default function RootLayout({
