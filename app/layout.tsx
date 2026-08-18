@@ -139,8 +139,8 @@ const personJsonLd = {
     width: 1200,
     height: 630,
   },
-  email: 'biendemarketing@gmail.com',
-  telephone: '+18295627014',
+  email: 'manuelcabrerasinfo@gmail.com',
+  telephone: '+18496352835',
   sameAs: [
     'https://github.com/biendemarketing',
     'https://www.instagram.com/biendemarketing',
@@ -220,8 +220,8 @@ const professionalServiceJsonLd = {
   url: SITE_URL,
   image: `${SITE_URL}/opengraph.png`,
   logo: `${SITE_URL}/manuelcabreralogo.svg`,
-  telephone: '+18295627014',
-  email: 'biendemarketing@gmail.com',
+  telephone: '+18496352835',
+  email: 'manuelcabrerasinfo@gmail.com',
   address: {
     '@type': 'PostalAddress',
     streetAddress: 'Verón',
@@ -300,7 +300,7 @@ export default function RootLayout({
         <meta property="og:image:alt" content="Manuel Cabrera — Director Creativo, Marketing Digital & Portafolio Profesional" />
 
         {/* ── WhatsApp / Facebook specific ── */}
-        <meta property="og:phone_number" content="+18295627014" />
+        <meta property="og:phone_number" content="+18496352835" />
 
         {/* ── Geo / Local SEO meta tags ── */}
         <meta name="geo.region" content="DO-LA" />

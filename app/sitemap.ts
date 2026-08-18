@@ -6,7 +6,7 @@ const BASE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://manuelcabrera.pro'
 export default function sitemap(): MetadataRoute.Sitemap {
   const currentDate = new Date().toISOString();
 
-  // Static main pages — ordered by priority
+  // Static main pages — ordered by hierarchy and priority
   const staticRoutes: MetadataRoute.Sitemap = [
     {
       url: BASE_URL,
@@ -24,10 +24,22 @@ export default function sitemap(): MetadataRoute.Sitemap {
       url: `${BASE_URL}/sobre-mi`,
       lastModified: currentDate,
       changeFrequency: 'monthly',
-      priority: 0.85,
+      priority: 0.9,
     },
     {
       url: `${BASE_URL}/contacto`,
+      lastModified: currentDate,
+      changeFrequency: 'monthly',
+      priority: 0.9,
+    },
+    {
+      url: `${BASE_URL}/experiencia`,
+      lastModified: currentDate,
+      changeFrequency: 'monthly',
+      priority: 0.85,
+    },
+    {
+      url: `${BASE_URL}/formacion`,
       lastModified: currentDate,
       changeFrequency: 'monthly',
       priority: 0.85,
@@ -42,13 +54,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
       url: `${BASE_URL}/habilidades`,
       lastModified: currentDate,
       changeFrequency: 'monthly',
-      priority: 0.75,
+      priority: 0.8,
     },
     {
       url: `${BASE_URL}/software`,
       lastModified: currentDate,
       changeFrequency: 'monthly',
-      priority: 0.7,
+      priority: 0.75,
     },
   ];
 

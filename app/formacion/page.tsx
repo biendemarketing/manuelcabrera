@@ -1,9 +1,44 @@
-'use client';
-
 import React from 'react';
 import Link from 'next/link';
+import type { Metadata } from 'next';
 import { EducationSection } from '@/components/education-section';
 import { ArrowLeft, Briefcase, ArrowRight } from 'lucide-react';
+
+const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://manuelcabrera.pro';
+
+export const metadata: Metadata = {
+  title: 'Formación Académica & Certificaciones',
+  description: 'Educación y certificaciones de Manuel Cabrera: Licenciatura en Publicidad (Mención Diseño Gráfico Publicitario - UASD), Diplomados en Administración de Empresas, Marketing Digital, Google Ads, Meta Ads y Desarrollo Web.',
+  keywords: [
+    'Formación académica Manuel Cabrera',
+    'Licenciatura publicidad UASD',
+    'Certificaciones marketing digital',
+    'Diplomados diseño gráfico',
+    'Educación profesional',
+  ],
+  alternates: {
+    canonical: '/formacion',
+  },
+  openGraph: {
+    title: 'Formación Académica & Certificaciones | Manuel Cabrera',
+    description: 'Licenciatura en Publicidad (UASD) y certificaciones internacionales en Marketing Digital, Gestión Empresarial y Desarrollo Web.',
+    url: `${SITE_URL}/formacion`,
+    images: [
+      {
+        url: `${SITE_URL}/opengraph.png`,
+        width: 1200,
+        height: 630,
+        alt: 'Formación Académica de Manuel Cabrera',
+      },
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Formación Académica | Manuel Cabrera',
+    description: 'Licenciatura en Publicidad (UASD) y certificaciones en Marketing y Diseño.',
+    images: [`${SITE_URL}/opengraph.png`],
+  },
+};
 
 export default function FormacionPage() {
   return (

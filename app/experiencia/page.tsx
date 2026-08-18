@@ -1,9 +1,47 @@
-'use client';
-
 import React from 'react';
 import Link from 'next/link';
+import type { Metadata } from 'next';
 import { ExperienceSection } from '@/components/experience-section';
 import { ArrowLeft, GraduationCap, ArrowRight } from 'lucide-react';
+
+const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://manuelcabrera.pro';
+
+export const metadata: Metadata = {
+  title: 'Experiencia Laboral & Trayectoria Profesional',
+  description: 'Más de 11 años de trayectoria profesional de Manuel Cabrera: Big Print Punta Cana, Club Med, Decora Group, Master Creative, CAMI, Didusa SRL y consultoría para marcas en República Dominicana y el Caribe.',
+  keywords: [
+    'Experiencia laboral Manuel Cabrera',
+    'Director creativo trayectoria',
+    'Especialista marketing digital experiencia',
+    'Big Print Punta Cana',
+    'Club Med Punta Cana',
+    'Decora Group',
+    'Master Creative',
+    'Curriculum vitae creativo',
+  ],
+  alternates: {
+    canonical: '/experiencia',
+  },
+  openGraph: {
+    title: 'Experiencia Laboral | Manuel Cabrera',
+    description: '+11 años de liderazgo creativo, marketing digital y desarrollo web en empresas líderes de República Dominicana.',
+    url: `${SITE_URL}/experiencia`,
+    images: [
+      {
+        url: `${SITE_URL}/opengraph.png`,
+        width: 1200,
+        height: 630,
+        alt: 'Experiencia Laboral de Manuel Cabrera',
+      },
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Experiencia Laboral | Manuel Cabrera',
+    description: '+11 años de liderazgo creativo, marketing digital y desarrollo web.',
+    images: [`${SITE_URL}/opengraph.png`],
+  },
+};
 
 export default function ExperienciaPage() {
   return (
