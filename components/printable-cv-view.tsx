@@ -1,11 +1,8 @@
 'use client';
 
-import React, { useState } from 'react';
+import React from 'react';
 import Image from 'next/image';
-import Link from 'next/link';
 import { 
-  Printer, 
-  ArrowLeft, 
   Mail, 
   Phone, 
   MapPin, 
@@ -14,9 +11,6 @@ import {
   GraduationCap, 
   Award, 
   Wrench, 
-  Sun, 
-  Moon, 
-  Sliders, 
   User,
   CheckCircle2
 } from 'lucide-react';
@@ -30,170 +24,32 @@ import {
 import { ManuelCabreraLogo } from '@/components/logo';
 
 export function PrintableCVView() {
-  // Theme state: 'light' or 'dark'
-  const [printTheme, setPrintTheme] = useState<'light' | 'dark'>('light');
-  // Paper size format: 'full' (ancho completo), 'letter' (8.5x11), 'a4'
-  const [paperFormat, setPaperFormat] = useState<'full' | 'letter' | 'a4'>('full');
-  // Layout density: 'normal' or 'compact'
-  const [density, setDensity] = useState<'normal' | 'compact'>('normal');
-
-  const handlePrint = () => {
-    window.print();
-  };
-
-  // Dimensions classes based on paperFormat for screen preview
-  const getContainerWidth = () => {
-    switch (paperFormat) {
-      case 'letter':
-        return 'max-w-[880px]'; // standard 8.5" proportion
-      case 'a4':
-        return 'max-w-[820px]';
-      case 'full':
-      default:
-        return 'w-full max-w-5xl 2xl:max-w-6xl';
-    }
-  };
-
   return (
-    <div className={`min-h-screen w-full transition-colors duration-300 ${
-      printTheme === 'dark' 
-        ? 'bg-zinc-950 text-zinc-100' 
-        : 'bg-white text-zinc-950'
-    }`}>
+    <div className="min-h-screen w-full bg-zinc-950 text-zinc-100 selection:bg-zinc-800 selection:text-white print:bg-white print:text-black">
       
-      {/* ── TOP FLOATING CONTROL TOOLBAR (Oculta automáticamente en @media print) ── */}
-      <header className="sticky top-0 z-50 w-full bg-zinc-900/95 backdrop-blur-md text-white shadow-md print:hidden">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 py-3 flex flex-wrap items-center justify-between gap-3">
-          
-          {/* Left: Back Link & Title */}
-          <div className="flex items-center gap-3">
-            <Link
-              href="/"
-              className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-zinc-800 hover:bg-zinc-700 text-zinc-200 text-xs font-bold transition-all"
-            >
-              <ArrowLeft className="w-3.5 h-3.5" />
-              <span>Volver al Portafolio</span>
-            </Link>
-            <div className="hidden sm:flex items-center gap-2 pl-2 border-l border-zinc-700">
-              <ManuelCabreraLogo className="h-5 w-auto text-white" />
-              <span className="text-xs font-black uppercase tracking-wider text-zinc-300">CV Imprimible</span>
-            </div>
-          </div>
-
-          {/* Center: Controls for Theme, Paper Size & Density */}
-          <div className="flex flex-wrap items-center gap-2 sm:gap-3 text-xs">
-            
-            {/* Theme Toggle (Light / Dark) */}
-            <div className="flex items-center bg-zinc-800 p-1 rounded-xl border border-zinc-700">
-              <button
-                onClick={() => setPrintTheme('light')}
-                className={`flex items-center gap-1 px-2.5 py-1 rounded-lg font-bold transition-all cursor-pointer ${
-                  printTheme === 'light' 
-                    ? 'bg-white text-zinc-950 shadow-sm' 
-                    : 'text-zinc-400 hover:text-white'
-                }`}
-                title="Modo Claro (Recomendado para imprimir en papel blanco)"
-              >
-                <Sun className="w-3 h-3" />
-                <span>Claro</span>
-              </button>
-              <button
-                onClick={() => setPrintTheme('dark')}
-                className={`flex items-center gap-1 px-2.5 py-1 rounded-lg font-bold transition-all cursor-pointer ${
-                  printTheme === 'dark' 
-                    ? 'bg-zinc-950 text-white border border-zinc-700 shadow-sm' 
-                    : 'text-zinc-400 hover:text-white'
-                }`}
-                title="Modo Oscuro (Para PDF oscuro de lujo)"
-              >
-                <Moon className="w-3 h-3" />
-                <span>Oscuro</span>
-              </button>
-            </div>
-
-            {/* Paper Size Selector (Ancho Completo, 8.5x11, A4) */}
-            <div className="hidden md:flex items-center bg-zinc-800 px-2 py-1 rounded-xl border border-zinc-700 gap-1">
-              <span className="text-[10px] uppercase font-bold text-zinc-400 mr-1">Vista:</span>
-              <button
-                onClick={() => setPaperFormat('full')}
-                className={`px-2 py-0.5 rounded-md font-bold transition-all cursor-pointer text-[11px] ${
-                  paperFormat === 'full' ? 'bg-indigo-600 text-white' : 'text-zinc-400 hover:text-zinc-200'
-                }`}
-                title="Abarcar todo el ancho disponible de la pantalla"
-              >
-                Ancho Completo
-              </button>
-              <button
-                onClick={() => setPaperFormat('letter')}
-                className={`px-2 py-0.5 rounded-md font-bold transition-all cursor-pointer text-[11px] ${
-                  paperFormat === 'letter' ? 'bg-indigo-600 text-white' : 'text-zinc-400 hover:text-zinc-200'
-                }`}
-                title="Tamaño Carta Estándar (8.5 x 11 pulgadas)"
-              >
-                8.5×11 (Carta)
-              </button>
-              <button
-                onClick={() => setPaperFormat('a4')}
-                className={`px-2 py-0.5 rounded-md font-bold transition-all cursor-pointer text-[11px] ${
-                  paperFormat === 'a4' ? 'bg-indigo-600 text-white' : 'text-zinc-400 hover:text-zinc-200'
-                }`}
-                title="Formato Internacional A4 (210 x 297 mm)"
-              >
-                A4
-              </button>
-            </div>
-
-            {/* Density Toggle */}
-            <button
-              onClick={() => setDensity((prev) => prev === 'normal' ? 'compact' : 'normal')}
-              className={`hidden lg:flex items-center gap-1 px-3 py-1.5 rounded-xl border text-[11px] font-bold transition-all cursor-pointer ${
-                density === 'compact' 
-                  ? 'bg-purple-600 text-white border-purple-500' 
-                  : 'bg-zinc-800 text-zinc-300 border-zinc-700 hover:bg-zinc-700'
-              }`}
-              title="Compactar espaciados"
-            >
-              <Sliders className="w-3 h-3" />
-              <span>{density === 'compact' ? 'Compacto' : 'Espaciado Normal'}</span>
-            </button>
-
-          </div>
-
-          {/* Right: Print / Export Button */}
-          <button
-            onClick={handlePrint}
-            className="inline-flex items-center gap-2 px-5 py-2 rounded-full bg-gradient-to-r from-indigo-600 via-purple-600 to-indigo-600 hover:from-indigo-500 hover:to-purple-500 text-white font-extrabold text-xs shadow-lg hover:scale-105 active:scale-95 transition-all cursor-pointer border border-indigo-400/40"
-          >
-            <Printer className="w-4 h-4" />
-            <span>Imprimir / Guardar en PDF</span>
-          </button>
-
-        </div>
-      </header>
-
-      {/* ── SEAMLESS CV CONTENT (Sin sombras de contenedor artificial ni cajas flotantes) ── */}
-      <main className="w-full py-8 sm:py-12 px-4 sm:px-8 md:px-12 flex justify-center print:p-0 print:m-0 print:w-full">
+      {/* ── SEAMLESS FULL-WIDTH CV DOCUMENT (Zero Visible Buttons) ── */}
+      <main className="w-full py-6 sm:py-10 md:py-12 px-4 sm:px-8 md:px-14 lg:px-20 max-w-7xl mx-auto print:p-0 print:m-0 print:max-w-none print:w-full">
         <div 
           id="cv-printable-sheet"
-          className={`w-full ${getContainerWidth()} transition-all duration-300 print:max-w-none print:w-full`}
+          className="w-full transition-all duration-300 print:p-0 print:m-0"
           style={{
             pageBreakInside: 'auto',
           }}
         >
           
-          {/* 1. PORTADA A TODO EL ANCHO CON ENFOQUE SUPERIOR COMPLETO */}
+          {/* 1. PORTADA A TODO EL ANCHO CON ENFOQUE SUPERIOR PERFECTO */}
           <div 
-            className="relative w-full rounded-2xl sm:rounded-3xl overflow-hidden mb-8 shadow-lg min-h-[290px] sm:min-h-[340px] md:min-h-[370px] flex flex-col justify-end p-6 sm:p-8 md:p-10"
+            className="relative w-full rounded-2xl sm:rounded-3xl overflow-hidden mb-8 shadow-lg min-h-[300px] sm:min-h-[360px] md:min-h-[400px] flex flex-col justify-end p-6 sm:p-10 md:p-12 print:min-h-[260px] print:p-6 print:rounded-2xl"
             style={{ breakInside: 'avoid', pageBreakInside: 'avoid' }}
           >
-            {/* Foto de Portada con Enfoque Top para que el rostro y cabeza salgan completos */}
+            {/* Foto de Portada con Enfoque Top */}
             {PERSONAL_INFO.heroBgPhoto && (
               <Image
                 src={PERSONAL_INFO.heroBgPhoto}
                 alt={PERSONAL_INFO.name}
                 fill
                 priority
-                sizes="(max-width: 1200px) 100vw, 1200px"
+                sizes="(max-width: 1400px) 100vw, 1400px"
                 className="object-cover object-top select-none"
               />
             )}
@@ -205,7 +61,7 @@ export function PrintableCVView() {
             {/* Contenido de Perfil Alineado a la Izquierda Encima de la Portada */}
             <div className="relative z-10 w-full max-w-2xl space-y-3 text-left">
               
-              {/* Badge & Logo Monogram (Sin texto de disponibilidad) */}
+              {/* Badge & Logo Monogram */}
               <div className="flex items-center gap-2">
                 <div className="px-3 py-1 rounded-lg bg-white/20 backdrop-blur-md inline-flex items-center gap-1.5 shadow-sm">
                   <ManuelCabreraLogo className="h-3.5 w-auto text-white" />
@@ -216,7 +72,7 @@ export function PrintableCVView() {
               </div>
 
               {/* Nombre Principal */}
-              <h1 className="text-3xl sm:text-4xl md:text-5xl font-black uppercase tracking-tight text-white drop-shadow-md">
+              <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black uppercase tracking-tight text-white drop-shadow-md">
                 {PERSONAL_INFO.name}
               </h1>
 
@@ -266,24 +122,16 @@ export function PrintableCVView() {
             </div>
           </div>
 
-          {/* 2. RESUMEN PROFESIONAL & FILOSOFÍA (Alto Contraste) */}
-          <section className={`pb-6 ${density === 'compact' ? 'mb-4' : 'mb-8'}`} style={{ breakInside: 'avoid', pageBreakInside: 'avoid' }}>
-            <h2 className={`text-xs font-black uppercase tracking-wider mb-3 flex items-center gap-1.5 ${
-              printTheme === 'dark' ? 'text-indigo-400' : 'text-indigo-700'
-            }`}>
+          {/* 2. RESUMEN PROFESIONAL & FILOSOFÍA */}
+          <section className="pb-6 mb-8 print:mb-6" style={{ breakInside: 'avoid', pageBreakInside: 'avoid' }}>
+            <h2 className="text-xs font-black uppercase tracking-wider text-indigo-400 print:text-indigo-800 mb-3 flex items-center gap-1.5">
               <User className="w-4 h-4" />
               <span>Perfil Profesional & Filosofía de Trabajo</span>
             </h2>
-            <p className={`text-sm sm:text-base font-normal leading-relaxed text-justify ${
-              printTheme === 'dark' ? 'text-zinc-100' : 'text-zinc-950'
-            }`}>
+            <p className="text-sm sm:text-base font-normal leading-relaxed text-justify text-zinc-100 print:text-black">
               {PERSONAL_INFO.aboutSummary}
             </p>
-            <div className={`mt-3 p-4 rounded-xl border-l-4 ${
-              printTheme === 'dark' 
-                ? 'bg-zinc-900 border-indigo-400 text-zinc-200' 
-                : 'bg-zinc-100 border-indigo-600 text-zinc-950'
-            }`}>
+            <div className="mt-3 p-4 rounded-xl border-l-4 bg-zinc-900 border-indigo-400 text-zinc-200 print:bg-zinc-100 print:border-indigo-600 print:text-black">
               <p className="text-xs sm:text-sm font-semibold italic">
                 &quot;{PERSONAL_INFO.designPhilosophy}&quot;
               </p>
@@ -291,10 +139,8 @@ export function PrintableCVView() {
           </section>
 
           {/* 3. FORMACIÓN ACADÉMICA & DIPLOMADOS ── PRIMERO QUE LO LABORAL ── */}
-          <section className={`pb-6 ${density === 'compact' ? 'mb-4' : 'mb-8'}`} style={{ breakInside: 'avoid', pageBreakInside: 'avoid' }}>
-            <h2 className={`text-xs font-black uppercase tracking-wider mb-4 flex items-center gap-1.5 ${
-              printTheme === 'dark' ? 'text-indigo-400' : 'text-indigo-700'
-            }`}>
+          <section className="pb-6 mb-8 print:mb-6" style={{ breakInside: 'avoid', pageBreakInside: 'avoid' }}>
+            <h2 className="text-xs font-black uppercase tracking-wider text-indigo-400 print:text-indigo-800 mb-4 flex items-center gap-1.5">
               <GraduationCap className="w-4 h-4" />
               <span>Formación Académica & Diplomados</span>
             </h2>
@@ -303,24 +149,16 @@ export function PrintableCVView() {
               {EDUCATION_ITEMS.map((edu) => (
                 <div 
                   key={edu.id} 
-                  className={`p-5 rounded-2xl ${
-                    printTheme === 'dark' ? 'bg-zinc-900 text-zinc-100' : 'bg-zinc-100 text-zinc-950'
-                  }`}
+                  className="p-5 rounded-2xl bg-zinc-900 text-zinc-100 print:bg-zinc-100 print:text-black"
                   style={{ breakInside: 'avoid', pageBreakInside: 'avoid' }}
                 >
-                  <p className={`font-black text-sm sm:text-base ${
-                    printTheme === 'dark' ? 'text-white' : 'text-black'
-                  }`}>
+                  <p className="font-black text-sm sm:text-base text-white print:text-black">
                     {edu.degree}
                   </p>
-                  <p className={`font-bold text-xs sm:text-sm mt-1 ${
-                    printTheme === 'dark' ? 'text-indigo-400' : 'text-indigo-700'
-                  }`}>
+                  <p className="font-bold text-xs sm:text-sm mt-1 text-indigo-400 print:text-indigo-800">
                     {edu.institution}
                   </p>
-                  <p className={`text-xs font-mono font-bold mt-1.5 ${
-                    printTheme === 'dark' ? 'text-zinc-400' : 'text-zinc-700'
-                  }`}>
+                  <p className="text-xs font-mono font-bold mt-1.5 text-zinc-400 print:text-zinc-700">
                     {edu.period} • {edu.statusLabel}
                   </p>
                 </div>
@@ -329,51 +167,35 @@ export function PrintableCVView() {
           </section>
 
           {/* 4. EXPERIENCIA LABORAL & TRAYECTORIA PROFESIONAL ── DESPUÉS DE LA FORMACIÓN ── */}
-          <section className={`pb-6 ${density === 'compact' ? 'mb-4' : 'mb-8'}`}>
-            <h2 className={`text-xs font-black uppercase tracking-wider mb-4 flex items-center gap-1.5 ${
-              printTheme === 'dark' ? 'text-indigo-400' : 'text-indigo-700'
-            }`} style={{ breakInside: 'avoid', pageBreakInside: 'avoid' }}>
+          <section className="pb-6 mb-8 print:mb-6">
+            <h2 className="text-xs font-black uppercase tracking-wider text-indigo-400 print:text-indigo-800 mb-4 flex items-center gap-1.5" style={{ breakInside: 'avoid', pageBreakInside: 'avoid' }}>
               <Briefcase className="w-4 h-4" />
               <span>Experiencia Laboral & Trayectoria Profesional</span>
             </h2>
 
-            <div className={`space-y-${density === 'compact' ? '4' : '5'}`}>
+            <div className="space-y-4 sm:space-y-5">
               {WORK_EXPERIENCES.map((exp) => (
                 <div 
                   key={exp.id} 
-                  className={`p-5 sm:p-6 rounded-2xl transition-colors ${
-                    printTheme === 'dark' 
-                      ? 'bg-zinc-900 text-zinc-100' 
-                      : 'bg-zinc-100 text-zinc-950'
-                  }`}
+                  className="p-5 sm:p-6 rounded-2xl bg-zinc-900 text-zinc-100 print:bg-zinc-100 print:text-black"
                   style={{ breakInside: 'avoid', pageBreakInside: 'avoid' }}
                 >
                   <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-1.5 mb-2">
                     <div>
-                      <h3 className={`text-base sm:text-lg font-black ${
-                        printTheme === 'dark' ? 'text-white' : 'text-black'
-                      }`}>
+                      <h3 className="text-base sm:text-lg font-black text-white print:text-black">
                         {exp.role}
                       </h3>
-                      <p className={`text-xs sm:text-sm font-bold ${
-                        printTheme === 'dark' ? 'text-indigo-400' : 'text-indigo-700'
-                      }`}>
-                        {exp.company} • <span className={`font-semibold ${
-                          printTheme === 'dark' ? 'text-zinc-300' : 'text-zinc-800'
-                        }`}>{exp.location}</span>
+                      <p className="text-xs sm:text-sm font-bold text-indigo-400 print:text-indigo-800">
+                        {exp.company} • <span className="font-semibold text-zinc-300 print:text-zinc-800">{exp.location}</span>
                       </p>
                     </div>
-                    <span className={`text-xs font-black font-mono px-3 py-1 rounded-full w-fit shadow-xs ${
-                      printTheme === 'dark' ? 'bg-zinc-800 text-white' : 'bg-zinc-200 text-black'
-                    }`}>
+                    <span className="text-xs font-black font-mono px-3 py-1 rounded-full w-fit shadow-xs bg-zinc-800 text-white print:bg-zinc-200 print:text-black">
                       {exp.period}
                     </span>
                   </div>
 
-                  {/* Responsabilidades con máximo contraste */}
-                  <ul className={`mt-3 space-y-1.5 text-xs sm:text-sm list-disc list-inside font-medium ${
-                    printTheme === 'dark' ? 'text-zinc-200' : 'text-zinc-950'
-                  }`}>
+                  {/* Responsabilidades */}
+                  <ul className="mt-3 space-y-1.5 text-xs sm:text-sm list-disc list-inside font-medium text-zinc-200 print:text-black">
                     {exp.responsibilities.map((resp, idx) => (
                       <li key={idx} className="leading-relaxed">
                         <span>{resp}</span>
@@ -381,16 +203,12 @@ export function PrintableCVView() {
                     ))}
                   </ul>
 
-                  {/* Skills tags limpios */}
+                  {/* Skills tags */}
                   <div className="flex flex-wrap gap-1.5 mt-4 pt-3">
                     {exp.skills.map((skill, sIdx) => (
                       <span
                         key={sIdx}
-                        className={`text-[11px] font-bold px-2.5 py-1 rounded-lg ${
-                          printTheme === 'dark' 
-                            ? 'bg-zinc-800 text-zinc-200' 
-                            : 'bg-zinc-200 text-zinc-950'
-                        }`}
+                        className="text-[11px] font-bold px-2.5 py-1 rounded-lg bg-zinc-800 text-zinc-200 print:bg-zinc-200 print:text-black"
                       >
                         {skill}
                       </span>
@@ -402,67 +220,49 @@ export function PrintableCVView() {
           </section>
 
           {/* 5. SOFTWARE, HERRAMIENTAS & TECNOLOGÍAS DOMINADAS */}
-          <section className={`pb-6 ${density === 'compact' ? 'mb-4' : 'mb-8'}`} style={{ breakInside: 'avoid', pageBreakInside: 'avoid' }}>
-            <h2 className={`text-xs font-black uppercase tracking-wider mb-3 flex items-center gap-1.5 ${
-              printTheme === 'dark' ? 'text-indigo-400' : 'text-indigo-700'
-            }`}>
+          <section className="pb-6 mb-8 print:mb-6" style={{ breakInside: 'avoid', pageBreakInside: 'avoid' }}>
+            <h2 className="text-xs font-black uppercase tracking-wider text-indigo-400 print:text-indigo-800 mb-3 flex items-center gap-1.5">
               <Wrench className="w-4 h-4" />
               <span>Software, Herramientas & Tecnologías Dominadas (+100)</span>
             </h2>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 text-xs">
-              <div className={`p-4 rounded-2xl ${printTheme === 'dark' ? 'bg-zinc-900' : 'bg-zinc-100'}`}>
-                <p className={`font-black text-sm mb-1.5 flex items-center gap-1 ${
-                  printTheme === 'dark' ? 'text-white' : 'text-black'
-                }`}>
-                  <CheckCircle2 className={`w-3.5 h-3.5 ${printTheme === 'dark' ? 'text-indigo-400' : 'text-indigo-700'}`} />
+              <div className="p-4 rounded-2xl bg-zinc-900 print:bg-zinc-100">
+                <p className="font-black text-sm mb-1.5 flex items-center gap-1 text-white print:text-black">
+                  <CheckCircle2 className="w-3.5 h-3.5 text-indigo-400 print:text-indigo-800" />
                   <span>Diseño & UI/UX</span>
                 </p>
-                <p className={`text-xs font-medium leading-relaxed ${
-                  printTheme === 'dark' ? 'text-zinc-300' : 'text-zinc-900'
-                }`}>
+                <p className="text-xs font-medium leading-relaxed text-zinc-300 print:text-black">
                   Photoshop, Illustrator, InDesign, Figma, Adobe XD, Acrobat Pro.
                 </p>
               </div>
 
-              <div className={`p-4 rounded-2xl ${printTheme === 'dark' ? 'bg-zinc-900' : 'bg-zinc-100'}`}>
-                <p className={`font-black text-sm mb-1.5 flex items-center gap-1 ${
-                  printTheme === 'dark' ? 'text-white' : 'text-black'
-                }`}>
-                  <CheckCircle2 className={`w-3.5 h-3.5 ${printTheme === 'dark' ? 'text-indigo-400' : 'text-indigo-700'}`} />
+              <div className="p-4 rounded-2xl bg-zinc-900 print:bg-zinc-100">
+                <p className="font-black text-sm mb-1.5 flex items-center gap-1 text-white print:text-black">
+                  <CheckCircle2 className="w-3.5 h-3.5 text-indigo-400 print:text-indigo-800" />
                   <span>Marketing & Ads</span>
                 </p>
-                <p className={`text-xs font-medium leading-relaxed ${
-                  printTheme === 'dark' ? 'text-zinc-300' : 'text-zinc-900'
-                }`}>
+                <p className="text-xs font-medium leading-relaxed text-zinc-300 print:text-black">
                   Meta Ads Manager, Google Ads, GA4, TikTok Ads, SEO/SEM, Embudos.
                 </p>
               </div>
 
-              <div className={`p-4 rounded-2xl ${printTheme === 'dark' ? 'bg-zinc-900' : 'bg-zinc-100'}`}>
-                <p className={`font-black text-sm mb-1.5 flex items-center gap-1 ${
-                  printTheme === 'dark' ? 'text-white' : 'text-black'
-                }`}>
-                  <CheckCircle2 className={`w-3.5 h-3.5 ${printTheme === 'dark' ? 'text-indigo-400' : 'text-indigo-700'}`} />
+              <div className="p-4 rounded-2xl bg-zinc-900 print:bg-zinc-100">
+                <p className="font-black text-sm mb-1.5 flex items-center gap-1 text-white print:text-black">
+                  <CheckCircle2 className="w-3.5 h-3.5 text-indigo-400 print:text-indigo-800" />
                   <span>Software & Web</span>
                 </p>
-                <p className={`text-xs font-medium leading-relaxed ${
-                  printTheme === 'dark' ? 'text-zinc-300' : 'text-zinc-900'
-                }`}>
+                <p className="text-xs font-medium leading-relaxed text-zinc-300 print:text-black">
                   TypeScript, Next.js, React, Node.js, PostgreSQL, Supabase, Tailwind.
                 </p>
               </div>
 
-              <div className={`p-4 rounded-2xl ${printTheme === 'dark' ? 'bg-zinc-900' : 'bg-zinc-100'}`}>
-                <p className={`font-black text-sm mb-1.5 flex items-center gap-1 ${
-                  printTheme === 'dark' ? 'text-white' : 'text-black'
-                }`}>
-                  <CheckCircle2 className={`w-3.5 h-3.5 ${printTheme === 'dark' ? 'text-indigo-400' : 'text-indigo-700'}`} />
+              <div className="p-4 rounded-2xl bg-zinc-900 print:bg-zinc-100">
+                <p className="font-black text-sm mb-1.5 flex items-center gap-1 text-white print:text-black">
+                  <CheckCircle2 className="w-3.5 h-3.5 text-indigo-400 print:text-indigo-800" />
                   <span>3D, Video & IA</span>
                 </p>
-                <p className={`text-xs font-medium leading-relaxed ${
-                  printTheme === 'dark' ? 'text-zinc-300' : 'text-zinc-900'
-                }`}>
+                <p className="text-xs font-medium leading-relaxed text-zinc-300 print:text-black">
                   Blender 3D, Cinema 4D, Gemini Pro, ChatGPT, Claude, Midjourney.
                 </p>
               </div>
@@ -471,9 +271,7 @@ export function PrintableCVView() {
 
           {/* 6. REFERENCIAS PROFESIONALES */}
           <section className="pt-2" style={{ breakInside: 'avoid', pageBreakInside: 'avoid' }}>
-            <h2 className={`text-xs font-black uppercase tracking-wider mb-3 flex items-center gap-1.5 ${
-              printTheme === 'dark' ? 'text-indigo-400' : 'text-indigo-700'
-            }`}>
+            <h2 className="text-xs font-black uppercase tracking-wider text-indigo-400 print:text-indigo-800 mb-3 flex items-center gap-1.5">
               <Award className="w-4 h-4" />
               <span>Referencias Comerciales & Profesionales</span>
             </h2>
@@ -482,13 +280,13 @@ export function PrintableCVView() {
               {REFERENCES.map((ref, idx) => (
                 <div 
                   key={idx} 
-                  className={`p-4 rounded-2xl ${printTheme === 'dark' ? 'bg-zinc-900' : 'bg-zinc-100'}`}
+                  className="p-4 rounded-2xl bg-zinc-900 print:bg-zinc-100"
                   style={{ breakInside: 'avoid', pageBreakInside: 'avoid' }}
                 >
-                  <p className={`font-black text-sm truncate ${printTheme === 'dark' ? 'text-white' : 'text-black'}`}>{ref.name}</p>
-                  <p className={`font-bold text-xs truncate ${printTheme === 'dark' ? 'text-indigo-400' : 'text-indigo-700'}`}>{ref.role}</p>
-                  <p className={`text-xs truncate font-semibold ${printTheme === 'dark' ? 'text-zinc-300' : 'text-zinc-800'}`}>{ref.company}</p>
-                  <p className={`font-black font-mono text-xs mt-1.5 ${printTheme === 'dark' ? 'text-zinc-200' : 'text-zinc-950'}`}>{ref.phone}</p>
+                  <p className="font-black text-sm truncate text-white print:text-black">{ref.name}</p>
+                  <p className="font-bold text-xs truncate text-indigo-400 print:text-indigo-800">{ref.role}</p>
+                  <p className="text-xs truncate font-semibold text-zinc-300 print:text-zinc-800">{ref.company}</p>
+                  <p className="font-black font-mono text-xs mt-1.5 text-zinc-200 print:text-black">{ref.phone}</p>
                 </div>
               ))}
             </div>
@@ -497,19 +295,28 @@ export function PrintableCVView() {
         </div>
       </main>
 
-      {/* ── CSS PRINT RULES (Garantiza impresión perfecta sin cortes de página) ── */}
+      {/* ── CSS PRINT RULES (Márgenes perfectos de 15mm para que nada toque los bordes) ── */}
       <style jsx global>{`
         @media print {
           @page {
-            size: ${paperFormat === 'a4' ? 'A4 portrait' : '8.5in 11in portrait'};
-            margin: 10mm 10mm 10mm 10mm;
+            size: 8.5in 11in portrait;
+            margin: 15mm 15mm 15mm 15mm !important;
           }
           
-          body {
-            background-color: ${printTheme === 'dark' ? '#09090b' : '#ffffff'} !important;
-            color: ${printTheme === 'dark' ? '#f4f4f5' : '#000000'} !important;
+          html, body {
+            background-color: #ffffff !important;
+            color: #000000 !important;
             -webkit-print-color-adjust: exact !important;
             print-color-adjust: exact !important;
+            margin: 0 !important;
+            padding: 0 !important;
+          }
+
+          main {
+            padding: 0 !important;
+            margin: 0 !important;
+            max-width: 100% !important;
+            width: 100% !important;
           }
 
           #cv-printable-sheet {
