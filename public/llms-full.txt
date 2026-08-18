@@ -1,0 +1,66 @@
+# Manuel Cabrera — Documentación Completa del Portafolio Profesional
+
+> Manuel Cabrera es un Director Creativo, Diseñador Gráfico Senior, Estratega de Marketing Digital y Desarrollador Full-Stack radicado en Verón, Punta Cana, República Dominicana. Con más de 11 años de experiencia, ha liderado proyectos de branding corporativo, desarrollo de plataformas web SaaS, campañas de alto rendimiento en Meta Ads y Google Ads, modelado 3D y producción de gran formato para clientes corporativos de hotelería, construcción, medicina y retail.
+
+- URL de Producción: https://manuelcabrera.vercel.app/
+- Contacto Directo: +1 (829) 562-7014 / biendemarketing@gmail.com
+- Repositorio GitHub: https://github.com/biendemarketing/manuelcabrera
+
+---
+
+## 1. Servicios y Capacidades
+
+### Marketing Digital & Performance
+- Planificación y ejecución de campañas de conversión masiva en Meta Ads Manager (Facebook e Instagram).
+- Campañas de Search, Display y Remarketing en Google Ads.
+- Arquitectura de SEO Local y On-page para posicionamiento orgánico en Google (Punta Cana, Bávaro, Santo Domingo).
+- Embudos de ventas B2B y B2C, copywriting persuasivo y analítica de conversión con Google Analytics 4 y Pixel de Meta.
+
+### Diseño Gráfico, Identidad & Gran Formato
+- Creación de identidad visual corporativa, sistemas de diseño y logotipos vectoriales.
+- Diagramación editorial de catálogos y brochures corporativos en preprensa CMYK (300 DPI) para imprenta offset y digital.
+- Señalética comercial, rotulación vehicular integral, vallas de carretera y diseño de stands para ferias y convenciones.
+
+### Desarrollo Web & UI/UX Design
+- Diseño de interfaces modernas con Figma, Adobe XD y Photoshop.
+- Desarrollo full-stack con Next.js 15, React 19, TypeScript, Tailwind CSS, Framer Motion y arquitecturas escalables.
+- Despliegue en infraestructuras Cloud (Vercel, AWS, Google Cloud) con CDN global, SSL y tiempos de carga ultrarrápidos.
+
+### Modelado 3D & Render Hiperrealista
+- Renderizado de empaques de productos (farmacéuticos, cosméticos, bebidas) con Cinema 4D, Octane Render y Blender.
+- Visualización de vallas publicitarias en 3D con integración fotográfica en entornos urbanos y hoteleros.
+
+---
+
+## 2. Portafolio de Casos de Éxito
+
+1. **Big Print Punta Cana — Web Corporativa & Marketing**
+   - Portal web responsivo en bigprintpuntacana.com con catálogo digital de servicios de impresión, hosting dedicado y SEO local.
+   - Campañas activas en Meta Ads orientadas al sector hotelero y empresarial.
+
+2. **Big Print Punta Cana — Brochure Corporativo de 2 Cuerpos**
+   - Diseño y diagramación técnica de catálogo de servicios para vallas, gigantografías, rotulación y letras 3D.
+
+3. **Decora Group Punta Cana — Portal Web, SEO & Ads**
+   - Sitio web corporativo para tienda de diseño interior, pisos, revestimientos y acabados arquitectónicos en Bávaro.
+
+4. **Fancy RD Radio — Portal Web & Branding**
+   - Plataforma web con reproductor de radio en streaming continuo y diseño de marca visual y variantes cromáticas.
+
+5. **FacturaDO — Software SaaS de Facturación Electrónica**
+   - Diseño UI/UX completo para plataforma de facturación electrónica y gestión de nóminas para pymes en RD.
+
+6. **Didusa SRL — Soluciones de Aislamiento & HVAC**
+   - Portal corporativo institucional para empresa de climatización industrial y aislamiento térmico con operaciones en RD y Jamaica.
+
+7. **Club Med Punta Cana — Gorras Tridente Merchandising**
+   - 16 variantes cromáticas de gorras oficiales con bordado tridimensional para la cadena de resorts Club Med.
+
+8. **CAMI Instituto — Campaña de Flyers y Social Media**
+   - 14 piezas publicitarias de captación de alumnos para carreras técnicas de la salud.
+
+9. **Latik — Identidad Visual**
+   - Branding para estudio de arte corporal y tatuajes en Punta Cana.
+
+10. **Corambar — Identidad Corporativa**
+    - Identidad y piezas de gran formato para empresa de ingeniería y construcción en Higüey.

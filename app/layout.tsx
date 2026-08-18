@@ -1,4 +1,4 @@
-import type { Metadata } from 'next';
+import type { Metadata, Viewport } from 'next';
 import { DM_Sans, Inter } from 'next/font/google';
 import './globals.css';
 import { ThemeProvider } from '@/components/theme-provider';
@@ -20,6 +20,13 @@ const inter = Inter({
 
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://manuelcabrera.vercel.app';
 
+export const viewport: Viewport = {
+  themeColor: '#09090b',
+  width: 'device-width',
+  initialScale: 1,
+  maximumScale: 5,
+};
+
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: {
@@ -39,7 +46,9 @@ export const metadata: Metadata = {
     'Fancy RD Radio',
     'Big Print Punta Cana',
     'Modelado 3D Cinema 4D Blender',
-    'Portafolio Creativo 2026'
+    'Portafolio Creativo 2026',
+    'Director Creativo',
+    'Full Stack Developer'
   ],
   authors: [{ name: 'Manuel Cabrera', url: SITE_URL }],
   creator: 'Manuel Cabrera',
@@ -54,15 +63,19 @@ export const metadata: Metadata = {
     siteName: 'Manuel Cabrera — Portafolio Profesional',
     images: [
       {
-        url: '/opengraph.png',
+        url: `${SITE_URL}/opengraph.png`,
+        secureUrl: `${SITE_URL}/opengraph.png`,
         width: 1896,
         height: 888,
+        type: 'image/png',
         alt: 'Manuel Cabrera — Marketing Digital, UI/UX & Portafolio Creativo',
       },
       {
-        url: '/og-image.png',
+        url: `${SITE_URL}/og-image.png`,
+        secureUrl: `${SITE_URL}/og-image.png`,
         width: 1896,
         height: 888,
+        type: 'image/png',
         alt: 'Manuel Cabrera Portafolio',
       },
     ],
@@ -73,17 +86,29 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'Manuel Cabrera | Marketing, UI/UX & Portafolio Creativo',
     description: 'Estratega de Marketing Digital, Diseñador Gráfico Senior, UI/UX & Full-Stack Web Developer. Punta Cana, República Dominicana.',
-    images: ['/opengraph.png'],
+    images: [`${SITE_URL}/opengraph.png`],
     creator: '@biendemarketing',
   },
   icons: {
     icon: [
+      { url: '/favicon.ico', sizes: 'any' },
       { url: '/favicon.svg', type: 'image/svg+xml' },
-      { url: '/icon.svg', type: 'image/svg+xml' }
+      { url: '/favicon-32x32.png', type: 'image/png', sizes: '32x32' },
+      { url: '/favicon-16x16.png', type: 'image/png', sizes: '16x16' }
     ],
-    shortcut: '/favicon.svg',
-    apple: '/favicon.svg',
+    shortcut: '/favicon.ico',
+    apple: [
+      { url: '/apple-touch-icon.png', sizes: '180x180', type: 'image/png' },
+      { url: '/apple-icon.png', sizes: '180x180', type: 'image/png' }
+    ],
+    other: [
+      {
+        rel: 'apple-touch-icon-precomposed',
+        url: '/apple-touch-icon.png',
+      },
+    ],
   },
+  manifest: '/site.webmanifest',
   robots: {
     index: true,
     follow: true,
@@ -134,6 +159,14 @@ export default function RootLayout({
   return (
     <html lang="es" className={`dark ${dmSans.variable} ${inter.variable}`} suppressHydrationWarning>
       <head>
+        <link rel="icon" href="/favicon.ico" sizes="any" />
+        <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+        <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+        <link rel="manifest" href="/site.webmanifest" />
+        <meta property="og:image:secure_url" content={`${SITE_URL}/opengraph.png`} />
+        <meta property="og:image:type" content="image/png" />
+        <meta property="og:image:width" content="1896" />
+        <meta property="og:image:height" content="888" />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}

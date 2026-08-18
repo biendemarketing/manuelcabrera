@@ -1,0 +1,49 @@
+# Manuel Cabrera — Marketing Digital, UI/UX & Portafolio Creativo
+
+> Portafolio profesional oficial de Manuel Cabrera. Director Creativo, Estratega de Marketing Digital, Diseñador Gráfico Senior, Desarrollador Web Full-Stack y Especialista en Modelado 3D con más de 11 años de trayectoria profesional en República Dominicana (Punta Cana, Bávaro, Santo Domingo).
+
+- Sitio web oficial: https://manuelcabrera.vercel.app/
+- Ubicación: Verón, Punta Cana, La Altagracia, República Dominicana
+- Teléfono / WhatsApp: +1 (829) 562-7014
+- Correo Electrónico: biendemarketing@gmail.com
+- GitHub: https://github.com/biendemarketing
+- Instagram: https://www.instagram.com/biendemarketing
+
+## Especialidades Principales
+
+1. **Marketing Digital & Estrategia Publicitaria**:
+   - Gestión y optimización avanzada de campañas de conversión en Meta Ads (Facebook & Instagram Ads) y Google Ads.
+   - Growth Marketing, embudos de ventas, SEO local y analítica web.
+
+2. **Diseño Gráfico & Branding Corporativo**:
+   - Identidad visual completa, logotipos vectoriales, manuales de marca, diseño publicitario para eventos masivos y hotelería.
+   - Preprensa industrial, gigantografía, señalética comercial y gran formato.
+
+3. **Diseño UI/UX & Desarrollo Web**:
+   - Interfaces modernas con Next.js, React, TypeScript, Tailwind CSS, animaciones fluidas y micro-interacciones.
+   - Sistemas de gestión SaaS, portales corporativos, e-commerce y facturación electrónica.
+
+4. **Modelado 3D & Render Hiperrealista**:
+   - Visualización arquitectónica, packaging de productos farmacéuticos/cosméticos, stands publicitarios y animaciones 3D.
+
+## Proyectos Destacados en el Portafolio
+
+- **Big Print Punta Cana — Web & Marketing**: Portal corporativo oficial (bigprintpuntacana.com), catálogo interactivo, infraestructura cloud, SEO local y campañas de Meta Ads.
+- **Big Print Punta Cana — Brochure Corporativo**: Diagramación editorial de 2 cuerpos en alta resolución (CMYK 300 DPI) para soluciones gráficas y vallas en Punta Cana.
+- **Decora Group Punta Cana — Web, SEO & Ads**: Plataforma digital, catálogo comercial, posicionamiento en Google y captación de clientes de construcción e interiorismo.
+- **Fancy RD Radio — Portal Web & Branding**: Portal web de streaming radial, desarrollo de identidad de marca, isotipos vectoriales y catálogo cromático.
+- **FacturaDO — Plataforma SaaS de Facturación y Nómina**: Diseño de arquitectura UI/UX y frontend interactivo para facturación electrónica empresarial en RD.
+- **Didusa SRL — Soluciones Industriales & HVAC**: Portal web institucional y estrategia gráfica para proyectos en República Dominicana y Jamaica.
+- **Club Med Punta Cana — Merchandising Tridente**: Colección oficial de gorras bordadas 3D con 16 variantes cromáticas para boutiques exclusivas.
+- **CAMI Instituto — Campaña Publicitaria Social Media**: 14 piezas publicitarias únicas de alta conversión para diplomados y cursos técnicos de enfermería.
+- **Latik — Identidad Visual de Marca**: Branding integral para estudio de tatuajes y arte corporal en Punta Cana.
+- **Corambar — Identidad Corporativa & Gran Formato**: Imagen de marca para constructora y desarrolladora inmobiliaria en Higüey y Bávaro.
+
+## Secciones del Sitio
+
+- [Inicio](https://manuelcabrera.vercel.app/): Presentación ejecutiva, slider de proyectos en ultra alta definición 2K y resumen de casos de éxito.
+- [Proyectos](https://manuelcabrera.vercel.app/proyectos): Galería completa categorizada de proyectos con mockups interactivos en Mac y iPhone 14 Pro Max.
+- [Recopilación Histórica](https://manuelcabrera.vercel.app/recopilacion): 65 diapositivas en Ultra HD que recopilan más de una década de trabajo visual.
+- [Sobre Mí](https://manuelcabrera.vercel.app/sobre-mi): Biografía profesional, trayectoria y filosofía de diseño.
+- [Habilidades](https://manuelcabrera.vercel.app/habilidades): Resumen de competencias técnicas en diseño, código y marketing.
+- [Software & Herramientas](https://manuelcabrera.vercel.app/software): Suite de programas dominados (Adobe Creative Cloud, Cinema 4D, Blender, Next.js, Meta Ads Manager, etc.).

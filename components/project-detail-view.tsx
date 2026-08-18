@@ -308,93 +308,232 @@ export function ProjectDetailView({
         {/* ADAPTIVE VISUAL SHOWCASE ACCORDING TO PROJECT CATEGORY / TYPE */}
         {/* ------------------------------------------------------------- */}
 
-        {/* 1. WEB PROJECTS VIEW (Mac Laptop & iPhone 14 Pro Max Device Mockups) */}
+        {/* 1. WEB PROJECTS VIEW (Side-by-Side Mac Laptop & iPhone 14 Pro Max Dual Showcase) */}
         {isWebProject && webImages.length > 0 && (() => {
           const desktopImgs = webImages.filter(
             (img) => !img.src.includes('mobile') && !img.src.includes('instagram') && !img.src.includes('phone')
           );
-          const mobileImgs = webImages.filter(
-            (img) => img.src.includes('mobile') || img.src.includes('instagram') || img.src.includes('phone')
+          const webMobileImgs = webImages.filter(
+            (img) => (img.src.includes('mobile') || img.src.includes('phone')) && !img.src.includes('instagram')
           );
+          const instagramImgs = galleryImages.filter((img) => img.src.includes('instagram'));
+
+          const hasBoth = desktopImgs.length > 0 && webMobileImgs.length > 0;
 
           return (
-            <div className="mb-14 space-y-10">
-              {/* Desktop Showcase (Mac Laptop Mockup) */}
-              {desktopImgs.length > 0 && (
-                <div className="space-y-4">
-                  <div className="flex flex-wrap items-center justify-between gap-2">
-                    <h2 className="text-sm font-black uppercase tracking-wider text-white flex items-center gap-2">
-                      <Monitor className="w-4 h-4 text-blue-400" />
-                      <span>Versión de Escritorio — Mockup Mac / Laptop</span>
+            <div className="mb-16 space-y-16">
+              {/* Dual Web Showcase */}
+              <div className="space-y-6">
+                {/* Header Bar */}
+                <div className="flex flex-wrap items-center justify-between gap-3 pb-3 border-b border-zinc-800/80">
+                  <div className="flex items-center gap-2">
+                    <Monitor className="w-4 h-4 text-blue-400" />
+                    <h2 className="text-sm font-black uppercase tracking-wider text-white">
+                      {hasBoth ? "Despliegue Responsivo — Mac Laptop & iPhone 14 Pro Max" : desktopImgs.length > 0 ? "Versión de Escritorio — Mac Laptop" : "Versión Móvil — iPhone 14 Pro Max"}
                     </h2>
-                    {project.websiteUrl && (
-                      <a 
-                        href={project.websiteUrl} 
-                        target="_blank" 
-                        rel="noopener noreferrer" 
-                        className="text-xs font-bold text-blue-400 hover:underline inline-flex items-center gap-1"
-                      >
-                        <span>{project.websiteUrl.replace('https://', '').replace(/\/$/, '')}</span>
-                        <ExternalLink className="w-3 h-3" />
-                      </a>
-                    )}
                   </div>
-
-                  <div className={`grid grid-cols-1 ${desktopImgs.length > 1 ? 'lg:grid-cols-2' : 'w-full'} gap-8`}>
-                    {desktopImgs.map((img, idx) => {
-                      const origIdx = galleryImages.findIndex(g => g.src === img.src);
-                      const clickIdx = origIdx >= 0 ? origIdx : idx;
-                      return (
-                        <MacLaptopMockup
-                          key={idx}
-                          src={img.src}
-                          alt={img.alt}
-                          title={img.title}
-                          url={project.websiteUrl}
-                          onOpenLightbox={() => openLightbox(clickIdx)}
-                          priority={idx === 0}
-                        />
-                      );
-                    })}
-                  </div>
+                  {project.websiteUrl && (
+                    <a 
+                      href={project.websiteUrl} 
+                      target="_blank" 
+                      rel="noopener noreferrer" 
+                      className="font-bold text-blue-400 hover:underline inline-flex items-center gap-1.5 text-xs"
+                    >
+                      <Globe className="w-3.5 h-3.5" />
+                      <span>{project.websiteUrl.replace('https://', '').replace(/\/$/, '')}</span>
+                      <ExternalLink className="w-3 h-3" />
+                    </a>
+                  )}
                 </div>
-              )}
 
-              {/* Mobile & Instagram Showcase (iPhone 14 Pro Max Mockup) */}
-              {mobileImgs.length > 0 && (
-                <div className="space-y-4 pt-4">
-                  <div className="flex flex-wrap items-center justify-between gap-2">
-                    <h2 className="text-sm font-black uppercase tracking-wider text-white flex items-center gap-2">
-                      <Smartphone className="w-4 h-4 text-pink-400" />
-                      <span>Versión Móvil & Redes Sociales — Mockup iPhone 14 Pro Max</span>
-                    </h2>
+                {/* Layout: Side-by-Side when both exist */}
+                {hasBoth ? (
+                  <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-center">
+                    {/* Left Column: Mac Laptop Desktop View */}
+                    <div className="lg:col-span-8 flex flex-col gap-6">
+                      {desktopImgs.map((img, idx) => {
+                        const origIdx = galleryImages.findIndex(g => g.src === img.src);
+                        const clickIdx = origIdx >= 0 ? origIdx : idx;
+                        return (
+                          <MacLaptopMockup
+                            key={idx}
+                            src={img.src}
+                            alt={img.alt}
+                            title={img.title}
+                            url={project.websiteUrl}
+                            onOpenLightbox={() => openLightbox(clickIdx)}
+                            priority={idx === 0}
+                          />
+                        );
+                      })}
+                    </div>
+
+                    {/* Right Column: iPhone 14 Pro Max Web Mobile View (Height-Aligned) */}
+                    <div className="lg:col-span-4 flex justify-center items-center">
+                      {webMobileImgs.map((img, idx) => {
+                        const origIdx = galleryImages.findIndex(g => g.src === img.src);
+                        const clickIdx = origIdx >= 0 ? origIdx : idx;
+                        return (
+                          <IPhone14ProMaxMockup
+                            key={idx}
+                            src={img.src}
+                            alt={img.alt}
+                            title={img.title}
+                            onOpenLightbox={() => openLightbox(clickIdx)}
+                          />
+                        );
+                      })}
+                    </div>
+                  </div>
+                ) : (
+                  /* Fallback when only Desktop or only Mobile exists */
+                  <div>
+                    {desktopImgs.length > 0 && (
+                      <div className={`grid grid-cols-1 ${desktopImgs.length > 1 ? 'lg:grid-cols-2' : 'max-w-4xl mx-auto'} gap-8`}>
+                        {desktopImgs.map((img, idx) => {
+                          const origIdx = galleryImages.findIndex(g => g.src === img.src);
+                          const clickIdx = origIdx >= 0 ? origIdx : idx;
+                          return (
+                            <MacLaptopMockup
+                              key={idx}
+                              src={img.src}
+                              alt={img.alt}
+                              title={img.title}
+                              url={project.websiteUrl}
+                              onOpenLightbox={() => openLightbox(clickIdx)}
+                              priority={idx === 0}
+                            />
+                          );
+                        })}
+                      </div>
+                    )}
+
+                    {webMobileImgs.length > 0 && (
+                      <div className="flex flex-wrap justify-center gap-8">
+                        {webMobileImgs.map((img, idx) => {
+                          const origIdx = galleryImages.findIndex(g => g.src === img.src);
+                          const clickIdx = origIdx >= 0 ? origIdx : idx;
+                          return (
+                            <IPhone14ProMaxMockup
+                              key={idx}
+                              src={img.src}
+                              alt={img.alt}
+                              title={img.title}
+                              onOpenLightbox={() => openLightbox(clickIdx)}
+                            />
+                          );
+                        })}
+                      </div>
+                    )}
+                  </div>
+                )}
+              </div>
+
+              {/* DEDICATED SOCIAL MEDIA & INSTAGRAM FEED SECTION */}
+              {(instagramImgs.length > 0 || project.instagramUrl) && (
+                <div className="rounded-3xl p-6 sm:p-8 lg:p-10 border border-zinc-800/90 bg-gradient-to-b from-zinc-900/90 via-zinc-950 to-black shadow-2xl space-y-8">
+                  {/* Section Header */}
+                  <div className="flex flex-wrap items-center justify-between gap-4 pb-4 border-b border-zinc-800">
+                    <div className="space-y-1">
+                      <div className="flex items-center gap-2">
+                        <span className="p-1.5 rounded-lg bg-pink-500/20 text-pink-400 border border-pink-500/30">
+                          <Instagram className="w-4 h-4" />
+                        </span>
+                        <h2 className="text-base sm:text-lg font-black uppercase tracking-wide text-white">
+                          Estrategia en Redes Sociales & Feed de Instagram
+                        </h2>
+                      </div>
+                      <p className="text-xs sm:text-sm text-zinc-400 font-medium">
+                        Diseño de cuadrícula 3x3, catálogo digital interactivo, historias destacadas y campañas publicitarias en Meta Ads.
+                      </p>
+                    </div>
+
                     {project.instagramUrl && (
-                      <a 
-                        href={project.instagramUrl} 
-                        target="_blank" 
-                        rel="noopener noreferrer" 
-                        className="text-xs font-bold text-pink-400 hover:underline inline-flex items-center gap-1"
+                      <a
+                        href={project.instagramUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-gradient-to-r from-pink-600 to-purple-600 hover:from-pink-500 hover:to-purple-500 text-white text-xs font-bold shadow-lg transition-all active:scale-95 cursor-pointer"
                       >
-                        <span>{project.instagramHandle || 'Instagram'}</span>
+                        <Instagram className="w-3.5 h-3.5" />
+                        <span>Ver Perfil {project.instagramHandle || '@Instagram'}</span>
                         <ExternalLink className="w-3 h-3" />
                       </a>
                     )}
                   </div>
 
-                  <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 justify-items-center sm:justify-items-start">
-                    {mobileImgs.map((img, idx) => {
-                      const origIdx = galleryImages.findIndex(g => g.src === img.src);
-                      const clickIdx = origIdx >= 0 ? origIdx : idx;
-                      return (
-                        <IPhone14ProMaxMockup
-                          key={idx}
-                          src={img.src}
-                          alt={img.alt}
-                          title={img.title}
-                          onOpenLightbox={() => openLightbox(clickIdx)}
-                        />
-                      );
-                    })}
+                  {/* 2-Column Content: Strategy Deliverables (Left) + Centered iPhone Mockup (Right) */}
+                  <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
+                    {/* Left Column: Scope & Work Details */}
+                    <div className="lg:col-span-7 space-y-6">
+                      <div className="space-y-3">
+                        <h3 className="text-xs font-black uppercase tracking-wider text-pink-400">
+                          Trabajo Realizado & Gestión de Marca
+                        </h3>
+                        <p className="text-xs sm:text-sm text-zinc-300 leading-relaxed">
+                          Se estructuró una presencia digital orientada a la conversión y captación corporativa para cadenas hoteleras, constructoras y comercios en la región este. La estrategia abarcó desde la curaduría fotográfica industrial hasta la segmentación de anuncios pagados en Meta Ads.
+                        </p>
+                      </div>
+
+                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        <div className="p-3.5 rounded-2xl bg-zinc-900/80 border border-zinc-800 space-y-1.5">
+                          <div className="flex items-center gap-2 text-xs font-bold text-white">
+                            <span className="w-2 h-2 rounded-full bg-pink-400" />
+                            <span>Feed 3x3 Cohesivo</span>
+                          </div>
+                          <p className="text-[11px] text-zinc-400 leading-normal">
+                            Diagramación visual de publicaciones fijas y carruseles con acabados de impresión, vallas y rotulación.
+                          </p>
+                        </div>
+
+                        <div className="p-3.5 rounded-2xl bg-zinc-900/80 border border-zinc-800 space-y-1.5">
+                          <div className="flex items-center gap-2 text-xs font-bold text-white">
+                            <span className="w-2 h-2 rounded-full bg-purple-400" />
+                            <span>Historias Destacadas</span>
+                          </div>
+                          <p className="text-[11px] text-zinc-400 leading-normal">
+                            Portadas vectoriales categorizadas por servicios: Gran Formato, Vallas, Letras 3D y Material POP.
+                          </p>
+                        </div>
+
+                        <div className="p-3.5 rounded-2xl bg-zinc-900/80 border border-zinc-800 space-y-1.5">
+                          <div className="flex items-center gap-2 text-xs font-bold text-white">
+                            <span className="w-2 h-2 rounded-full bg-blue-400" />
+                            <span>Campañas Meta Ads</span>
+                          </div>
+                          <p className="text-[11px] text-zinc-400 leading-normal">
+                            Anuncios de alta conversión segmentados en Punta Cana, Bávaro e Higüey para captación de clientes B2B.
+                          </p>
+                        </div>
+
+                        <div className="p-3.5 rounded-2xl bg-zinc-900/80 border border-zinc-800 space-y-1.5">
+                          <div className="flex items-center gap-2 text-xs font-bold text-white">
+                            <span className="w-2 h-2 rounded-full bg-emerald-400" />
+                            <span>Integración Web & WhatsApp</span>
+                          </div>
+                          <p className="text-[11px] text-zinc-400 leading-normal">
+                            Embudos directos de contacto desde Instagram hacia cotizaciones automáticas en WhatsApp Business.
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+
+                    {/* Right Column: Centered iPhone 14 Pro Max with Instagram Feed */}
+                    <div className="lg:col-span-5 flex justify-center items-center">
+                      {instagramImgs.map((img, idx) => {
+                        const origIdx = galleryImages.findIndex(g => g.src === img.src);
+                        const clickIdx = origIdx >= 0 ? origIdx : idx;
+                        return (
+                          <IPhone14ProMaxMockup
+                            key={idx}
+                            src={img.src}
+                            alt={img.alt}
+                            title={img.title || `${project.title} — Feed de Instagram`}
+                            onOpenLightbox={() => openLightbox(clickIdx)}
+                          />
+                        );
+                      })}
+                    </div>
                   </div>
                 </div>
               )}
