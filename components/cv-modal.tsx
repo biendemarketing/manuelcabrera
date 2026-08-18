@@ -22,7 +22,6 @@ import {
   PERSONAL_INFO, 
   WORK_EXPERIENCES, 
   EDUCATION_ITEMS, 
-  TECHNICAL_COURSES, 
   SOFTWARE_TOOLS, 
   REFERENCES 
 } from '@/data/portfolio-data';
@@ -61,7 +60,7 @@ export function CVModal({ isOpen, onClose }: CVModalProps) {
       onClick={onClose}
     >
       <div 
-        className="relative w-full max-w-5xl max-h-[92vh] bg-white dark:bg-zinc-900 rounded-3xl shadow-2xl overflow-y-auto my-auto flex flex-col animate-in zoom-in-95 duration-200"
+        className="relative w-full max-w-5xl max-h-[92vh] bg-white dark:bg-zinc-900 rounded-3xl shadow-2xl overflow-y-auto my-auto flex flex-col animate-in zoom-in-95 duration-200 text-zinc-950 dark:text-zinc-100"
         onClick={(e) => e.stopPropagation()}
       >
         {/* Modal Top Control Bar */}
@@ -130,9 +129,6 @@ export function CVModal({ isOpen, onClose }: CVModalProps) {
                     Perfil Profesional
                   </span>
                 </div>
-                <span className="px-2.5 py-1 rounded-md bg-emerald-500/30 backdrop-blur-md text-[9px] font-bold text-emerald-300 uppercase">
-                  {PERSONAL_INFO.availability}
-                </span>
               </div>
 
               <h1 className="text-2xl sm:text-3xl md:text-4xl font-black uppercase tracking-tight text-white drop-shadow-md">
@@ -178,7 +174,7 @@ export function CVModal({ isOpen, onClose }: CVModalProps) {
 
           {/* Profile Summary */}
           <div className="mt-4 pt-3 pb-4">
-            <h2 className="text-xs font-black uppercase tracking-wider text-indigo-600 dark:text-indigo-400 mb-1.5 flex items-center gap-1.5">
+            <h2 className="text-xs font-black uppercase tracking-wider text-indigo-700 dark:text-indigo-400 mb-1.5 flex items-center gap-1.5">
               <User className="w-3.5 h-3.5" />
               <span>Sobre Mí & Perfil Profesional</span>
             </h2>
@@ -187,31 +183,48 @@ export function CVModal({ isOpen, onClose }: CVModalProps) {
             </p>
           </div>
 
-          {/* Work Experience */}
+          {/* 2. FORMACIÓN ACADÉMICA ── PRIMERO QUE LO LABORAL ── */}
+          <div className="space-y-3">
+            <h2 className="text-xs font-black uppercase tracking-wider text-indigo-700 dark:text-indigo-400 flex items-center gap-1.5 pb-1">
+              <GraduationCap className="w-3.5 h-3.5" />
+              <span>Formación Académica & Diplomados</span>
+            </h2>
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs">
+              {EDUCATION_ITEMS.map((edu) => (
+                <div key={edu.id} className="p-4 rounded-2xl bg-zinc-100 dark:bg-zinc-800/60 text-zinc-950 dark:text-zinc-100">
+                  <p className="font-black text-black dark:text-white text-sm">{edu.degree}</p>
+                  <p className="text-indigo-700 dark:text-indigo-400 font-bold text-xs mt-0.5">{edu.institution}</p>
+                  <p className="text-zinc-700 dark:text-zinc-300 text-[11px] font-mono font-semibold mt-1">{edu.period} • {edu.statusLabel}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* 3. EXPERIENCIA LABORAL ── DESPUÉS DE LA FORMACIÓN ── */}
           <div className="space-y-4">
-            <h2 className="text-xs font-black uppercase tracking-wider text-indigo-600 dark:text-indigo-400 flex items-center gap-1.5 pb-1">
+            <h2 className="text-xs font-black uppercase tracking-wider text-indigo-700 dark:text-indigo-400 flex items-center gap-1.5 pb-1">
               <Briefcase className="w-3.5 h-3.5" />
-              <span>Experiencia Laboral</span>
+              <span>Experiencia Laboral & Trayectoria</span>
             </h2>
 
             <div className="space-y-4">
               {WORK_EXPERIENCES.map((exp) => (
-                <div key={exp.id} className="p-4 sm:p-5 rounded-2xl bg-zinc-100/80 dark:bg-zinc-800/40 text-zinc-950 dark:text-zinc-100">
+                <div key={exp.id} className="p-4 sm:p-5 rounded-2xl bg-zinc-100 dark:bg-zinc-800/60 text-zinc-950 dark:text-zinc-100">
                   <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-1 mb-2">
                     <div>
-                      <h3 className="text-base font-black text-zinc-950 dark:text-white">
+                      <h3 className="text-base font-black text-black dark:text-white">
                         {exp.role}
                       </h3>
                       <p className="text-xs font-bold text-indigo-700 dark:text-indigo-400">
-                        {exp.company} • <span className="text-zinc-700 dark:text-zinc-300 font-semibold">{exp.location}</span>
+                        {exp.company} • <span className="text-zinc-800 dark:text-zinc-300 font-semibold">{exp.location}</span>
                       </p>
                     </div>
-                    <span className="text-xs font-black font-mono px-3 py-1 rounded-full bg-zinc-200 dark:bg-zinc-700 text-zinc-950 dark:text-white w-fit shadow-xs">
+                    <span className="text-xs font-black font-mono px-3 py-1 rounded-full bg-zinc-200 dark:bg-zinc-700 text-black dark:text-white w-fit shadow-xs">
                       {exp.period}
                     </span>
                   </div>
 
-                  <ul className="mt-2.5 space-y-1 text-xs text-zinc-900 dark:text-zinc-200 list-disc list-inside font-medium">
+                  <ul className="mt-2.5 space-y-1 text-xs text-zinc-950 dark:text-zinc-200 list-disc list-inside font-medium">
                     {exp.responsibilities.map((resp, idx) => (
                       <li key={idx} className="leading-relaxed">
                         <span>{resp}</span>
@@ -221,7 +234,7 @@ export function CVModal({ isOpen, onClose }: CVModalProps) {
 
                   <div className="flex flex-wrap gap-1 mt-3">
                     {exp.skills.map((skill, sIdx) => (
-                      <span key={sIdx} className="text-[10px] font-bold px-2.5 py-0.5 rounded-lg bg-zinc-200/90 dark:bg-zinc-700/80 text-zinc-900 dark:text-zinc-100 shadow-xs">
+                      <span key={sIdx} className="text-[10px] font-bold px-2.5 py-0.5 rounded-lg bg-zinc-200 dark:bg-zinc-700 text-zinc-950 dark:text-zinc-100 shadow-xs">
                         {skill}
                       </span>
                     ))}
@@ -233,60 +246,43 @@ export function CVModal({ isOpen, onClose }: CVModalProps) {
 
           {/* Software Tools */}
           <div className="space-y-3">
-            <h2 className="text-xs font-black uppercase tracking-wider text-indigo-600 dark:text-indigo-400 flex items-center gap-1.5 pb-1">
+            <h2 className="text-xs font-black uppercase tracking-wider text-indigo-700 dark:text-indigo-400 flex items-center gap-1.5 pb-1">
               <Wrench className="w-3.5 h-3.5" />
               <span>Software & Habilidades Técnicas</span>
             </h2>
             <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 text-xs">
-              <div className="p-3 rounded-2xl bg-zinc-100/80 dark:bg-zinc-800/40">
-                <p className="font-black text-zinc-950 dark:text-white text-xs mb-1">Diseño & UI/UX</p>
-                <p className="text-[10px] text-zinc-800 dark:text-zinc-300 font-medium">Photoshop, Illustrator, InDesign, Figma, Adobe XD, Acrobat Pro.</p>
+              <div className="p-3.5 rounded-2xl bg-zinc-100 dark:bg-zinc-800/60">
+                <p className="font-black text-black dark:text-white text-xs mb-1">Diseño & UI/UX</p>
+                <p className="text-[11px] text-zinc-900 dark:text-zinc-300 font-medium">Photoshop, Illustrator, InDesign, Figma, Adobe XD, Acrobat Pro.</p>
               </div>
-              <div className="p-3 rounded-2xl bg-zinc-100/80 dark:bg-zinc-800/40">
-                <p className="font-black text-zinc-950 dark:text-white text-xs mb-1">Marketing & Ads</p>
-                <p className="text-[10px] text-zinc-800 dark:text-zinc-300 font-medium">Meta Ads Manager, Google Ads, GA4, TikTok Ads, SEO/SEM.</p>
+              <div className="p-3.5 rounded-2xl bg-zinc-100 dark:bg-zinc-800/60">
+                <p className="font-black text-black dark:text-white text-xs mb-1">Marketing & Ads</p>
+                <p className="text-[11px] text-zinc-900 dark:text-zinc-300 font-medium">Meta Ads Manager, Google Ads, GA4, TikTok Ads, SEO/SEM.</p>
               </div>
-              <div className="p-3 rounded-2xl bg-zinc-100/80 dark:bg-zinc-800/40">
-                <p className="font-black text-zinc-950 dark:text-white text-xs mb-1">Software & Web</p>
-                <p className="text-[10px] text-zinc-800 dark:text-zinc-300 font-medium">TypeScript, Next.js, React, Node.js, PostgreSQL, Tailwind.</p>
+              <div className="p-3.5 rounded-2xl bg-zinc-100 dark:bg-zinc-800/60">
+                <p className="font-black text-black dark:text-white text-xs mb-1">Software & Web</p>
+                <p className="text-[11px] text-zinc-900 dark:text-zinc-300 font-medium">TypeScript, Next.js, React, Node.js, PostgreSQL, Tailwind.</p>
               </div>
-              <div className="p-3 rounded-2xl bg-zinc-100/80 dark:bg-zinc-800/40">
-                <p className="font-black text-zinc-950 dark:text-white text-xs mb-1">3D, Video & IA</p>
-                <p className="text-[10px] text-zinc-800 dark:text-zinc-300 font-medium">Blender 3D, Cinema 4D, Gemini Pro, ChatGPT, Midjourney.</p>
+              <div className="p-3.5 rounded-2xl bg-zinc-100 dark:bg-zinc-800/60">
+                <p className="font-black text-black dark:text-white text-xs mb-1">3D, Video & IA</p>
+                <p className="text-[11px] text-zinc-900 dark:text-zinc-300 font-medium">Blender 3D, Cinema 4D, Gemini Pro, ChatGPT, Midjourney.</p>
               </div>
-            </div>
-          </div>
-
-          {/* Education */}
-          <div className="space-y-3">
-            <h2 className="text-xs font-black uppercase tracking-wider text-indigo-600 dark:text-indigo-400 flex items-center gap-1.5 pb-1">
-              <GraduationCap className="w-3.5 h-3.5" />
-              <span>Formación Académica</span>
-            </h2>
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs">
-              {EDUCATION_ITEMS.map((edu) => (
-                <div key={edu.id} className="p-3.5 rounded-2xl bg-zinc-100/80 dark:bg-zinc-800/40">
-                  <p className="font-black text-zinc-950 dark:text-white text-xs">{edu.degree}</p>
-                  <p className="text-indigo-700 dark:text-indigo-400 font-bold text-[11px] mt-0.5">{edu.institution}</p>
-                  <p className="text-zinc-700 dark:text-zinc-300 text-[10px] font-mono font-semibold mt-1">{edu.period} • {edu.statusLabel}</p>
-                </div>
-              ))}
             </div>
           </div>
 
           {/* References */}
           <div className="space-y-3">
-            <h2 className="text-xs font-black uppercase tracking-wider text-indigo-600 dark:text-indigo-400 flex items-center gap-1.5 pb-1">
+            <h2 className="text-xs font-black uppercase tracking-wider text-indigo-700 dark:text-indigo-400 flex items-center gap-1.5 pb-1">
               <Award className="w-3.5 h-3.5" />
-              <span>Referencias Profesionales</span>
+              <span>Referencias Comerciales & Profesionales</span>
             </h2>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-2.5 text-xs">
               {REFERENCES.map((ref, idx) => (
-                <div key={idx} className="p-3 rounded-2xl bg-zinc-100/80 dark:bg-zinc-800/40">
-                  <p className="font-black text-zinc-950 dark:text-white text-xs truncate">{ref.name}</p>
+                <div key={idx} className="p-3.5 rounded-2xl bg-zinc-100 dark:bg-zinc-800/60">
+                  <p className="font-black text-black dark:text-white text-xs truncate">{ref.name}</p>
                   <p className="text-indigo-700 dark:text-indigo-400 font-bold text-[11px] truncate">{ref.role}</p>
-                  <p className="text-zinc-800 dark:text-zinc-300 text-[10px] truncate font-medium">{ref.company}</p>
-                  <p className="text-zinc-950 dark:text-zinc-100 font-bold font-mono text-xs mt-1">{ref.phone}</p>
+                  <p className="text-zinc-800 dark:text-zinc-300 text-[11px] truncate font-medium">{ref.company}</p>
+                  <p className="text-black dark:text-zinc-100 font-bold font-mono text-xs mt-1">{ref.phone}</p>
                 </div>
               ))}
             </div>
@@ -296,7 +292,7 @@ export function CVModal({ isOpen, onClose }: CVModalProps) {
 
         {/* Modal Bottom CTA */}
         <div className="p-6 bg-zinc-50 dark:bg-zinc-950 rounded-b-3xl flex flex-col sm:flex-row items-center justify-between gap-4">
-          <p className="text-xs text-zinc-600 dark:text-zinc-400 font-medium">
+          <p className="text-xs text-zinc-700 dark:text-zinc-400 font-medium">
             Documento oficial actualizado para contratación y servicios 2026.
           </p>
           <div className="flex items-center gap-3">

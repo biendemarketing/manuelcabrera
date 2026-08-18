@@ -50,7 +50,7 @@ export function PrintableCVView() {
         return 'max-w-[820px]';
       case 'full':
       default:
-        return 'w-full max-w-6xl 2xl:max-w-7xl';
+        return 'w-full max-w-5xl 2xl:max-w-6xl';
     }
   };
 
@@ -58,11 +58,11 @@ export function PrintableCVView() {
     <div className={`min-h-screen w-full transition-colors duration-300 ${
       printTheme === 'dark' 
         ? 'bg-zinc-950 text-zinc-100' 
-        : 'bg-zinc-100 text-zinc-950'
+        : 'bg-white text-zinc-950'
     }`}>
       
       {/* ── TOP FLOATING CONTROL TOOLBAR (Oculta automáticamente en @media print) ── */}
-      <header className="sticky top-0 z-50 w-full bg-zinc-900/95 backdrop-blur-md text-white shadow-xl print:hidden">
+      <header className="sticky top-0 z-50 w-full bg-zinc-900/95 backdrop-blur-md text-white shadow-md print:hidden">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 py-3 flex flex-wrap items-center justify-between gap-3">
           
           {/* Left: Back Link & Title */}
@@ -171,26 +171,22 @@ export function PrintableCVView() {
         </div>
       </header>
 
-      {/* ── PRINTABLE CV SHEET CONTAINER (Sin bordes duros) ── */}
-      <main className="w-full py-6 sm:py-10 px-2 sm:px-4 flex justify-center print:p-0 print:m-0 print:w-full">
+      {/* ── SEAMLESS CV CONTENT (Sin sombras de contenedor artificial ni cajas flotantes) ── */}
+      <main className="w-full py-8 sm:py-12 px-4 sm:px-8 md:px-12 flex justify-center print:p-0 print:m-0 print:w-full">
         <div 
           id="cv-printable-sheet"
-          className={`w-full ${getContainerWidth()} shadow-2xl rounded-2xl sm:rounded-3xl p-6 sm:p-10 md:p-12 transition-all duration-300 print:shadow-none print:rounded-none print:p-0 print:max-w-none print:w-full ${
-            printTheme === 'dark'
-              ? 'bg-zinc-900 text-zinc-100'
-              : 'bg-white text-zinc-950'
-          }`}
+          className={`w-full ${getContainerWidth()} transition-all duration-300 print:max-w-none print:w-full`}
           style={{
             pageBreakInside: 'auto',
           }}
         >
           
-          {/* 1. PORTADA A TODO EL ANCHO CON ENCUADRE SUPERIOR PERFECTO (Sin corte de rostro) */}
+          {/* 1. PORTADA A TODO EL ANCHO CON ENFOQUE SUPERIOR COMPLETO */}
           <div 
-            className="relative w-full rounded-2xl sm:rounded-3xl overflow-hidden mb-8 shadow-xl min-h-[280px] sm:min-h-[320px] md:min-h-[360px] flex flex-col justify-end p-6 sm:p-8 md:p-10"
+            className="relative w-full rounded-2xl sm:rounded-3xl overflow-hidden mb-8 shadow-lg min-h-[290px] sm:min-h-[340px] md:min-h-[370px] flex flex-col justify-end p-6 sm:p-8 md:p-10"
             style={{ breakInside: 'avoid', pageBreakInside: 'avoid' }}
           >
-            {/* Foto de Portada con Enfoque Top/Upper para que la cabeza y rostro salgan completos */}
+            {/* Foto de Portada con Enfoque Top para que el rostro y cabeza salgan completos */}
             {PERSONAL_INFO.heroBgPhoto && (
               <Image
                 src={PERSONAL_INFO.heroBgPhoto}
@@ -209,7 +205,7 @@ export function PrintableCVView() {
             {/* Contenido de Perfil Alineado a la Izquierda Encima de la Portada */}
             <div className="relative z-10 w-full max-w-2xl space-y-3 text-left">
               
-              {/* Badge & Logo Monogram */}
+              {/* Badge & Logo Monogram (Sin texto de disponibilidad) */}
               <div className="flex items-center gap-2">
                 <div className="px-3 py-1 rounded-lg bg-white/20 backdrop-blur-md inline-flex items-center gap-1.5 shadow-sm">
                   <ManuelCabreraLogo className="h-3.5 w-auto text-white" />
@@ -217,10 +213,6 @@ export function PrintableCVView() {
                     Perfil Profesional
                   </span>
                 </div>
-
-                <span className="px-3 py-1 rounded-lg bg-emerald-500/30 backdrop-blur-md text-[10px] font-black text-emerald-300 uppercase tracking-wider">
-                  {PERSONAL_INFO.availability}
-                </span>
               </div>
 
               {/* Nombre Principal */}
@@ -274,25 +266,73 @@ export function PrintableCVView() {
             </div>
           </div>
 
-          {/* 2. RESUMEN PROFESIONAL & FILOSOFÍA (Alto Contraste y Sin Bordes Duros) */}
+          {/* 2. RESUMEN PROFESIONAL & FILOSOFÍA (Alto Contraste) */}
           <section className={`pb-6 ${density === 'compact' ? 'mb-4' : 'mb-8'}`} style={{ breakInside: 'avoid', pageBreakInside: 'avoid' }}>
-            <h2 className="text-xs font-black uppercase tracking-wider text-indigo-600 dark:text-indigo-400 mb-3 flex items-center gap-1.5">
+            <h2 className={`text-xs font-black uppercase tracking-wider mb-3 flex items-center gap-1.5 ${
+              printTheme === 'dark' ? 'text-indigo-400' : 'text-indigo-700'
+            }`}>
               <User className="w-4 h-4" />
               <span>Perfil Profesional & Filosofía de Trabajo</span>
             </h2>
-            <p className="text-sm sm:text-base text-zinc-950 dark:text-zinc-100 font-normal leading-relaxed text-justify">
+            <p className={`text-sm sm:text-base font-normal leading-relaxed text-justify ${
+              printTheme === 'dark' ? 'text-zinc-100' : 'text-zinc-950'
+            }`}>
               {PERSONAL_INFO.aboutSummary}
             </p>
-            <div className="mt-3 p-4 rounded-xl bg-zinc-100 dark:bg-zinc-800/60 border-l-4 border-indigo-600 dark:border-indigo-400">
-              <p className="text-xs sm:text-sm text-zinc-900 dark:text-zinc-200 font-semibold italic">
+            <div className={`mt-3 p-4 rounded-xl border-l-4 ${
+              printTheme === 'dark' 
+                ? 'bg-zinc-900 border-indigo-400 text-zinc-200' 
+                : 'bg-zinc-100 border-indigo-600 text-zinc-950'
+            }`}>
+              <p className="text-xs sm:text-sm font-semibold italic">
                 &quot;{PERSONAL_INFO.designPhilosophy}&quot;
               </p>
             </div>
           </section>
 
-          {/* 3. EXPERIENCIA LABORAL & TRAYECTORIA (Cards limpias sin bordes duros) */}
+          {/* 3. FORMACIÓN ACADÉMICA & DIPLOMADOS ── PRIMERO QUE LO LABORAL ── */}
+          <section className={`pb-6 ${density === 'compact' ? 'mb-4' : 'mb-8'}`} style={{ breakInside: 'avoid', pageBreakInside: 'avoid' }}>
+            <h2 className={`text-xs font-black uppercase tracking-wider mb-4 flex items-center gap-1.5 ${
+              printTheme === 'dark' ? 'text-indigo-400' : 'text-indigo-700'
+            }`}>
+              <GraduationCap className="w-4 h-4" />
+              <span>Formación Académica & Diplomados</span>
+            </h2>
+
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs">
+              {EDUCATION_ITEMS.map((edu) => (
+                <div 
+                  key={edu.id} 
+                  className={`p-5 rounded-2xl ${
+                    printTheme === 'dark' ? 'bg-zinc-900 text-zinc-100' : 'bg-zinc-100 text-zinc-950'
+                  }`}
+                  style={{ breakInside: 'avoid', pageBreakInside: 'avoid' }}
+                >
+                  <p className={`font-black text-sm sm:text-base ${
+                    printTheme === 'dark' ? 'text-white' : 'text-black'
+                  }`}>
+                    {edu.degree}
+                  </p>
+                  <p className={`font-bold text-xs sm:text-sm mt-1 ${
+                    printTheme === 'dark' ? 'text-indigo-400' : 'text-indigo-700'
+                  }`}>
+                    {edu.institution}
+                  </p>
+                  <p className={`text-xs font-mono font-bold mt-1.5 ${
+                    printTheme === 'dark' ? 'text-zinc-400' : 'text-zinc-700'
+                  }`}>
+                    {edu.period} • {edu.statusLabel}
+                  </p>
+                </div>
+              ))}
+            </div>
+          </section>
+
+          {/* 4. EXPERIENCIA LABORAL & TRAYECTORIA PROFESIONAL ── DESPUÉS DE LA FORMACIÓN ── */}
           <section className={`pb-6 ${density === 'compact' ? 'mb-4' : 'mb-8'}`}>
-            <h2 className="text-xs font-black uppercase tracking-wider text-indigo-600 dark:text-indigo-400 mb-4 flex items-center gap-1.5" style={{ breakInside: 'avoid', pageBreakInside: 'avoid' }}>
+            <h2 className={`text-xs font-black uppercase tracking-wider mb-4 flex items-center gap-1.5 ${
+              printTheme === 'dark' ? 'text-indigo-400' : 'text-indigo-700'
+            }`} style={{ breakInside: 'avoid', pageBreakInside: 'avoid' }}>
               <Briefcase className="w-4 h-4" />
               <span>Experiencia Laboral & Trayectoria Profesional</span>
             </h2>
@@ -301,42 +341,56 @@ export function PrintableCVView() {
               {WORK_EXPERIENCES.map((exp) => (
                 <div 
                   key={exp.id} 
-                  className={`p-5 rounded-2xl transition-colors ${
+                  className={`p-5 sm:p-6 rounded-2xl transition-colors ${
                     printTheme === 'dark' 
-                      ? 'bg-zinc-800/40 text-zinc-100' 
-                      : 'bg-zinc-100/80 text-zinc-950'
+                      ? 'bg-zinc-900 text-zinc-100' 
+                      : 'bg-zinc-100 text-zinc-950'
                   }`}
                   style={{ breakInside: 'avoid', pageBreakInside: 'avoid' }}
                 >
                   <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-1.5 mb-2">
                     <div>
-                      <h3 className="text-base sm:text-lg font-black text-zinc-950 dark:text-white">
+                      <h3 className={`text-base sm:text-lg font-black ${
+                        printTheme === 'dark' ? 'text-white' : 'text-black'
+                      }`}>
                         {exp.role}
                       </h3>
-                      <p className="text-xs sm:text-sm font-bold text-indigo-700 dark:text-indigo-400">
-                        {exp.company} • <span className="text-zinc-700 dark:text-zinc-300 font-semibold">{exp.location}</span>
+                      <p className={`text-xs sm:text-sm font-bold ${
+                        printTheme === 'dark' ? 'text-indigo-400' : 'text-indigo-700'
+                      }`}>
+                        {exp.company} • <span className={`font-semibold ${
+                          printTheme === 'dark' ? 'text-zinc-300' : 'text-zinc-800'
+                        }`}>{exp.location}</span>
                       </p>
                     </div>
-                    <span className="text-xs font-black font-mono px-3 py-1 rounded-full bg-zinc-200 dark:bg-zinc-700 text-zinc-950 dark:text-white w-fit shadow-xs">
+                    <span className={`text-xs font-black font-mono px-3 py-1 rounded-full w-fit shadow-xs ${
+                      printTheme === 'dark' ? 'bg-zinc-800 text-white' : 'bg-zinc-200 text-black'
+                    }`}>
                       {exp.period}
                     </span>
                   </div>
 
-                  {/* Responsabilidades con alto contraste */}
-                  <ul className="mt-3 space-y-1.5 text-xs sm:text-sm text-zinc-900 dark:text-zinc-200 list-disc list-inside">
+                  {/* Responsabilidades con máximo contraste */}
+                  <ul className={`mt-3 space-y-1.5 text-xs sm:text-sm list-disc list-inside font-medium ${
+                    printTheme === 'dark' ? 'text-zinc-200' : 'text-zinc-950'
+                  }`}>
                     {exp.responsibilities.map((resp, idx) => (
-                      <li key={idx} className="leading-relaxed font-medium">
+                      <li key={idx} className="leading-relaxed">
                         <span>{resp}</span>
                       </li>
                     ))}
                   </ul>
 
-                  {/* Skills tags sin bordes */}
-                  <div className="flex flex-wrap gap-1.5 mt-3.5 pt-3">
+                  {/* Skills tags limpios */}
+                  <div className="flex flex-wrap gap-1.5 mt-4 pt-3">
                     {exp.skills.map((skill, sIdx) => (
                       <span
                         key={sIdx}
-                        className="text-[11px] font-bold px-2.5 py-1 rounded-lg bg-zinc-200/90 dark:bg-zinc-700/80 text-zinc-900 dark:text-zinc-100 shadow-xs"
+                        className={`text-[11px] font-bold px-2.5 py-1 rounded-lg ${
+                          printTheme === 'dark' 
+                            ? 'bg-zinc-800 text-zinc-200' 
+                            : 'bg-zinc-200 text-zinc-950'
+                        }`}
                       >
                         {skill}
                       </span>
@@ -347,81 +401,79 @@ export function PrintableCVView() {
             </div>
           </section>
 
-          {/* 4. SOFTWARE, HERRAMIENTAS & INTELIGENCIA ARTIFICIAL (Cards sin bordes) */}
+          {/* 5. SOFTWARE, HERRAMIENTAS & TECNOLOGÍAS DOMINADAS */}
           <section className={`pb-6 ${density === 'compact' ? 'mb-4' : 'mb-8'}`} style={{ breakInside: 'avoid', pageBreakInside: 'avoid' }}>
-            <h2 className="text-xs font-black uppercase tracking-wider text-indigo-600 dark:text-indigo-400 mb-3 flex items-center gap-1.5">
+            <h2 className={`text-xs font-black uppercase tracking-wider mb-3 flex items-center gap-1.5 ${
+              printTheme === 'dark' ? 'text-indigo-400' : 'text-indigo-700'
+            }`}>
               <Wrench className="w-4 h-4" />
               <span>Software, Herramientas & Tecnologías Dominadas (+100)</span>
             </h2>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 text-xs">
-              <div className="p-4 rounded-2xl bg-zinc-100/80 dark:bg-zinc-800/40">
-                <p className="font-black text-zinc-950 dark:text-white text-sm mb-1.5 flex items-center gap-1">
-                  <CheckCircle2 className="w-3.5 h-3.5 text-indigo-600 dark:text-indigo-400" />
+              <div className={`p-4 rounded-2xl ${printTheme === 'dark' ? 'bg-zinc-900' : 'bg-zinc-100'}`}>
+                <p className={`font-black text-sm mb-1.5 flex items-center gap-1 ${
+                  printTheme === 'dark' ? 'text-white' : 'text-black'
+                }`}>
+                  <CheckCircle2 className={`w-3.5 h-3.5 ${printTheme === 'dark' ? 'text-indigo-400' : 'text-indigo-700'}`} />
                   <span>Diseño & UI/UX</span>
                 </p>
-                <p className="text-xs text-zinc-800 dark:text-zinc-300 font-medium leading-relaxed">
+                <p className={`text-xs font-medium leading-relaxed ${
+                  printTheme === 'dark' ? 'text-zinc-300' : 'text-zinc-900'
+                }`}>
                   Photoshop, Illustrator, InDesign, Figma, Adobe XD, Acrobat Pro.
                 </p>
               </div>
 
-              <div className="p-4 rounded-2xl bg-zinc-100/80 dark:bg-zinc-800/40">
-                <p className="font-black text-zinc-950 dark:text-white text-sm mb-1.5 flex items-center gap-1">
-                  <CheckCircle2 className="w-3.5 h-3.5 text-indigo-600 dark:text-indigo-400" />
+              <div className={`p-4 rounded-2xl ${printTheme === 'dark' ? 'bg-zinc-900' : 'bg-zinc-100'}`}>
+                <p className={`font-black text-sm mb-1.5 flex items-center gap-1 ${
+                  printTheme === 'dark' ? 'text-white' : 'text-black'
+                }`}>
+                  <CheckCircle2 className={`w-3.5 h-3.5 ${printTheme === 'dark' ? 'text-indigo-400' : 'text-indigo-700'}`} />
                   <span>Marketing & Ads</span>
                 </p>
-                <p className="text-xs text-zinc-800 dark:text-zinc-300 font-medium leading-relaxed">
+                <p className={`text-xs font-medium leading-relaxed ${
+                  printTheme === 'dark' ? 'text-zinc-300' : 'text-zinc-900'
+                }`}>
                   Meta Ads Manager, Google Ads, GA4, TikTok Ads, SEO/SEM, Embudos.
                 </p>
               </div>
 
-              <div className="p-4 rounded-2xl bg-zinc-100/80 dark:bg-zinc-800/40">
-                <p className="font-black text-zinc-950 dark:text-white text-sm mb-1.5 flex items-center gap-1">
-                  <CheckCircle2 className="w-3.5 h-3.5 text-indigo-600 dark:text-indigo-400" />
+              <div className={`p-4 rounded-2xl ${printTheme === 'dark' ? 'bg-zinc-900' : 'bg-zinc-100'}`}>
+                <p className={`font-black text-sm mb-1.5 flex items-center gap-1 ${
+                  printTheme === 'dark' ? 'text-white' : 'text-black'
+                }`}>
+                  <CheckCircle2 className={`w-3.5 h-3.5 ${printTheme === 'dark' ? 'text-indigo-400' : 'text-indigo-700'}`} />
                   <span>Software & Web</span>
                 </p>
-                <p className="text-xs text-zinc-800 dark:text-zinc-300 font-medium leading-relaxed">
+                <p className={`text-xs font-medium leading-relaxed ${
+                  printTheme === 'dark' ? 'text-zinc-300' : 'text-zinc-900'
+                }`}>
                   TypeScript, Next.js, React, Node.js, PostgreSQL, Supabase, Tailwind.
                 </p>
               </div>
 
-              <div className="p-4 rounded-2xl bg-zinc-100/80 dark:bg-zinc-800/40">
-                <p className="font-black text-zinc-950 dark:text-white text-sm mb-1.5 flex items-center gap-1">
-                  <CheckCircle2 className="w-3.5 h-3.5 text-indigo-600 dark:text-indigo-400" />
+              <div className={`p-4 rounded-2xl ${printTheme === 'dark' ? 'bg-zinc-900' : 'bg-zinc-100'}`}>
+                <p className={`font-black text-sm mb-1.5 flex items-center gap-1 ${
+                  printTheme === 'dark' ? 'text-white' : 'text-black'
+                }`}>
+                  <CheckCircle2 className={`w-3.5 h-3.5 ${printTheme === 'dark' ? 'text-indigo-400' : 'text-indigo-700'}`} />
                   <span>3D, Video & IA</span>
                 </p>
-                <p className="text-xs text-zinc-800 dark:text-zinc-300 font-medium leading-relaxed">
+                <p className={`text-xs font-medium leading-relaxed ${
+                  printTheme === 'dark' ? 'text-zinc-300' : 'text-zinc-900'
+                }`}>
                   Blender 3D, Cinema 4D, Gemini Pro, ChatGPT, Claude, Midjourney.
                 </p>
               </div>
             </div>
           </section>
 
-          {/* 5. FORMACIÓN ACADÉMICA & CERTIFICACIONES (Cards sin bordes) */}
-          <section className={`pb-6 ${density === 'compact' ? 'mb-4' : 'mb-8'}`} style={{ breakInside: 'avoid', pageBreakInside: 'avoid' }}>
-            <h2 className="text-xs font-black uppercase tracking-wider text-indigo-600 dark:text-indigo-400 mb-3 flex items-center gap-1.5">
-              <GraduationCap className="w-4 h-4" />
-              <span>Formación Académica & Diplomados</span>
-            </h2>
-
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs">
-              {EDUCATION_ITEMS.map((edu) => (
-                <div 
-                  key={edu.id} 
-                  className="p-4 rounded-2xl bg-zinc-100/80 dark:bg-zinc-800/40"
-                  style={{ breakInside: 'avoid', pageBreakInside: 'avoid' }}
-                >
-                  <p className="font-black text-zinc-950 dark:text-white text-sm">{edu.degree}</p>
-                  <p className="text-indigo-700 dark:text-indigo-400 font-bold text-xs mt-0.5">{edu.institution}</p>
-                  <p className="text-zinc-700 dark:text-zinc-300 text-[11px] font-mono font-semibold mt-1">{edu.period} • {edu.statusLabel}</p>
-                </div>
-              ))}
-            </div>
-          </section>
-
-          {/* 6. REFERENCIAS PROFESIONALES (Cards sin bordes) */}
+          {/* 6. REFERENCIAS PROFESIONALES */}
           <section className="pt-2" style={{ breakInside: 'avoid', pageBreakInside: 'avoid' }}>
-            <h2 className="text-xs font-black uppercase tracking-wider text-indigo-600 dark:text-indigo-400 mb-3 flex items-center gap-1.5">
+            <h2 className={`text-xs font-black uppercase tracking-wider mb-3 flex items-center gap-1.5 ${
+              printTheme === 'dark' ? 'text-indigo-400' : 'text-indigo-700'
+            }`}>
               <Award className="w-4 h-4" />
               <span>Referencias Comerciales & Profesionales</span>
             </h2>
@@ -430,13 +482,13 @@ export function PrintableCVView() {
               {REFERENCES.map((ref, idx) => (
                 <div 
                   key={idx} 
-                  className="p-4 rounded-2xl bg-zinc-100/80 dark:bg-zinc-800/40"
+                  className={`p-4 rounded-2xl ${printTheme === 'dark' ? 'bg-zinc-900' : 'bg-zinc-100'}`}
                   style={{ breakInside: 'avoid', pageBreakInside: 'avoid' }}
                 >
-                  <p className="font-black text-zinc-950 dark:text-white text-sm truncate">{ref.name}</p>
-                  <p className="text-indigo-700 dark:text-indigo-400 font-bold text-xs truncate">{ref.role}</p>
-                  <p className="text-zinc-800 dark:text-zinc-300 text-xs truncate font-medium">{ref.company}</p>
-                  <p className="text-zinc-950 dark:text-zinc-100 font-bold font-mono text-xs mt-1.5">{ref.phone}</p>
+                  <p className={`font-black text-sm truncate ${printTheme === 'dark' ? 'text-white' : 'text-black'}`}>{ref.name}</p>
+                  <p className={`font-bold text-xs truncate ${printTheme === 'dark' ? 'text-indigo-400' : 'text-indigo-700'}`}>{ref.role}</p>
+                  <p className={`text-xs truncate font-semibold ${printTheme === 'dark' ? 'text-zinc-300' : 'text-zinc-800'}`}>{ref.company}</p>
+                  <p className={`font-black font-mono text-xs mt-1.5 ${printTheme === 'dark' ? 'text-zinc-200' : 'text-zinc-950'}`}>{ref.phone}</p>
                 </div>
               ))}
             </div>
@@ -455,7 +507,7 @@ export function PrintableCVView() {
           
           body {
             background-color: ${printTheme === 'dark' ? '#09090b' : '#ffffff'} !important;
-            color: ${printTheme === 'dark' ? '#f4f4f5' : '#18181b'} !important;
+            color: ${printTheme === 'dark' ? '#f4f4f5' : '#000000'} !important;
             -webkit-print-color-adjust: exact !important;
             print-color-adjust: exact !important;
           }
