@@ -77,8 +77,9 @@ export function Navbar({ onOpenCV }: NavbarProps) {
     { num: '07', name: 'Marcas', href: '/#marcas-que-confian' },
     { num: '08', name: 'Recopilación PDF', href: '/#recopilacion-proyectos' },
     { num: '09', name: 'Proyectos', href: '/proyectos' },
-    { num: '10', name: 'Software', href: '/#software' },
-    { num: '11', name: 'Contacto', href: '/#contacto' },
+    { num: '10', name: 'Currículum Vitae (CV)', href: '/cv' },
+    { num: '11', name: 'Software', href: '/#software' },
+    { num: '12', name: 'Contacto', href: '/#contacto' },
   ];
 
   const services = [

@@ -15,6 +15,7 @@ export function Footer() {
   const footerLinks = [
     { name: 'Inicio', href: '/' },
     { name: 'Proyectos', href: '/proyectos' },
+    { name: 'Currículum (CV)', href: '/cv' },
     { name: 'Habilidades', href: '/habilidades' },
     { name: 'Software & IA', href: '/software' },
     { name: 'Experiencia', href: '/experiencia' },

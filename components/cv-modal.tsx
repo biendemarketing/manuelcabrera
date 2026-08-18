@@ -1,6 +1,8 @@
 'use client';
 
 import React, { useEffect } from 'react';
+import Image from 'next/image';
+import Link from 'next/link';
 import { 
   X, 
   Printer, 
@@ -11,7 +13,8 @@ import {
   Briefcase, 
   GraduationCap, 
   Award, 
-  Wrench
+  Wrench,
+  ExternalLink
 } from 'lucide-react';
 import { 
   PERSONAL_INFO, 
@@ -72,6 +75,15 @@ export function CVModal({ isOpen, onClose }: CVModalProps) {
           </div>
 
           <div className="flex items-center gap-2">
+            <Link
+              href="/cv"
+              target="_blank"
+              className="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-full bg-indigo-600 hover:bg-indigo-500 text-white text-xs font-bold transition-all shadow-sm"
+              title="Abrir vista de impresión y exportación dedicada"
+            >
+              <ExternalLink className="w-3.5 h-3.5" />
+              <span className="hidden sm:inline">Vista Imprimible 8.5x11</span>
+            </Link>
             <button
               onClick={handlePrint}
               className="inline-flex items-center gap-1.5 px-4 py-2 rounded-full bg-zinc-800 hover:bg-zinc-700 text-zinc-200 text-xs font-semibold transition-colors cursor-pointer"
@@ -92,41 +104,59 @@ export function CVModal({ isOpen, onClose }: CVModalProps) {
         {/* Printable Resume Content */}
         <div className="p-6 sm:p-10 space-y-8 text-zinc-800 dark:text-zinc-200 print:text-black print:bg-white">
           
-          {/* Resume Header */}
-          <div className="pb-6">
-            <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
-              <div>
-                <h1 className="text-3xl sm:text-4xl font-extrabold text-zinc-900 dark:text-white tracking-tight uppercase">
-                  {PERSONAL_INFO.name}
-                </h1>
-                <p className="text-sm sm:text-base font-bold text-zinc-700 dark:text-zinc-300 mt-1 uppercase tracking-wide">
-                  Marketing Digital | Estrategia & Publicidad | Branding | UI/UX & 3D
-                </p>
+          {/* Resume Header with Profile Photo */}
+          <div className="pb-6 border-b border-zinc-200 dark:border-zinc-800">
+            <div className="flex flex-col sm:flex-row items-center sm:items-start justify-between gap-6">
+              
+              <div className="flex flex-col sm:flex-row items-center sm:items-start gap-4 text-center sm:text-left">
+                {PERSONAL_INFO.heroBgPhoto && (
+                  <div className="relative w-20 h-20 sm:w-24 sm:h-24 rounded-2xl overflow-hidden border-2 border-indigo-500/40 shadow-lg bg-zinc-950 shrink-0">
+                    <Image
+                      src={PERSONAL_INFO.heroBgPhoto}
+                      alt={PERSONAL_INFO.name}
+                      fill
+                      priority
+                      sizes="96px"
+                      className="object-cover object-top"
+                    />
+                  </div>
+                )}
+                <div>
+                  <h1 className="text-2xl sm:text-3xl font-black text-zinc-900 dark:text-white tracking-tight uppercase">
+                    {PERSONAL_INFO.name}
+                  </h1>
+                  <p className="text-xs sm:text-sm font-bold text-indigo-600 dark:text-indigo-400 mt-0.5 uppercase tracking-wide">
+                    Director Creativo • Marketing Digital, UI/UX & Desarrollo Web
+                  </p>
+                  <p className="text-[11px] text-zinc-500 dark:text-zinc-400 mt-1">
+                    {PERSONAL_INFO.experienceYears} de Experiencia • {PERSONAL_INFO.age} • {PERSONAL_INFO.availability}
+                  </p>
+                </div>
               </div>
 
-              <div className="space-y-1.5 text-xs text-zinc-600 dark:text-zinc-400 font-medium">
-                <p className="flex items-center gap-2">
-                  <Phone className="w-3.5 h-3.5 text-zinc-500" />
-                  <span>{PERSONAL_INFO.phone}</span>
+              <div className="space-y-1.5 text-xs text-zinc-600 dark:text-zinc-400 font-medium text-center sm:text-right shrink-0">
+                <p className="flex items-center justify-center sm:justify-end gap-2 font-bold">
+                  <Phone className="w-3.5 h-3.5 text-indigo-500" />
+                  <span>{PERSONAL_INFO.phoneFormatted}</span>
                 </p>
-                <p className="flex items-center gap-2">
-                  <Mail className="w-3.5 h-3.5 text-zinc-500" />
+                <p className="flex items-center justify-center sm:justify-end gap-2">
+                  <Mail className="w-3.5 h-3.5 text-indigo-500" />
                   <span>{PERSONAL_INFO.email}</span>
                 </p>
-                <p className="flex items-center gap-2">
-                  <MapPin className="w-3.5 h-3.5 text-zinc-500" />
+                <p className="flex items-center justify-center sm:justify-end gap-2">
+                  <MapPin className="w-3.5 h-3.5 text-indigo-500" />
                   <span>{PERSONAL_INFO.location}</span>
                 </p>
               </div>
             </div>
 
             {/* Profile Summary */}
-            <div className="mt-5 pt-4">
-              <h2 className="text-xs font-bold uppercase tracking-wider text-zinc-900 dark:text-white mb-1.5">
+            <div className="mt-4 pt-3">
+              <h2 className="text-xs font-bold uppercase tracking-wider text-zinc-900 dark:text-white mb-1">
                 Sobre Mí & Perfil Profesional
               </h2>
               <p className="text-xs sm:text-sm text-zinc-600 dark:text-zinc-300 leading-relaxed">
-                Tengo 29 años y cuento con más de 11 años de experiencia trabajando en empresas publicitarias y como consultor independiente Freelancer. Apasionado por el arte y sus diversas formas de expresión, combinando el equilibrio entre lo simple y lo intenso para comunicar con impacto. Capacidad comprobada para interpretar necesidades complejas y plasmarlas visualmente con los más altos estándares de calidad internacional.
+                {PERSONAL_INFO.aboutSummary}
               </p>
             </div>
           </div>
