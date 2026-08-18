@@ -5,7 +5,8 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { Project, PERSONAL_INFO } from '@/data/portfolio-data';
 import { DidusaLogo, DecoraGroupLogo, LatikLogo, CorambarLogo, ClubMedLogo, BigPrintLogo, CamiLogo, FancyRdLogo, FacturaDoLogo } from '@/components/logo';
-import { LightboxModal, LightboxImage } from '@/components/lightbox-modal';
+import { MacLaptopMockup, IPhone14ProMaxMockup } from '@/components/device-mockups';
+import { LightboxModal } from '@/components/lightbox-modal';
 import { 
   ArrowLeft, 
   ArrowRight, 
@@ -24,7 +25,9 @@ import {
   BookOpen,
   LayoutGrid,
   Instagram,
-  Radio
+  Radio,
+  Monitor,
+  Smartphone
 } from 'lucide-react';
 
 interface ProjectDetailViewProps {
@@ -305,98 +308,99 @@ export function ProjectDetailView({
         {/* ADAPTIVE VISUAL SHOWCASE ACCORDING TO PROJECT CATEGORY / TYPE */}
         {/* ------------------------------------------------------------- */}
 
-        {/* 1. WEB PROJECTS VIEW (Browser Mockup Frames with macOS Toolbar) */}
-        {isWebProject && webImages.length > 0 && (
-          <div className="mb-14 space-y-4">
-            <div className="flex flex-wrap items-center justify-between gap-2">
-              <h2 className="text-sm font-black uppercase tracking-wider text-white flex items-center gap-2">
-                <Maximize2 className="w-4 h-4 text-blue-400" />
-                <span>Portal Web Oficial & Despliegue en Producción</span>
-              </h2>
-              {project.websiteUrl && (
-                <a 
-                  href={project.websiteUrl} 
-                  target="_blank" 
-                  rel="noopener noreferrer" 
-                  className="text-xs font-bold text-blue-400 hover:underline inline-flex items-center gap-1"
-                >
-                  <span>{project.websiteUrl.replace('https://', '')}</span>
-                  <ExternalLink className="w-3 h-3" />
-                </a>
+        {/* 1. WEB PROJECTS VIEW (Mac Laptop & iPhone 14 Pro Max Device Mockups) */}
+        {isWebProject && webImages.length > 0 && (() => {
+          const desktopImgs = webImages.filter(
+            (img) => !img.src.includes('mobile') && !img.src.includes('instagram') && !img.src.includes('phone')
+          );
+          const mobileImgs = webImages.filter(
+            (img) => img.src.includes('mobile') || img.src.includes('instagram') || img.src.includes('phone')
+          );
+
+          return (
+            <div className="mb-14 space-y-10">
+              {/* Desktop Showcase (Mac Laptop Mockup) */}
+              {desktopImgs.length > 0 && (
+                <div className="space-y-4">
+                  <div className="flex flex-wrap items-center justify-between gap-2">
+                    <h2 className="text-sm font-black uppercase tracking-wider text-white flex items-center gap-2">
+                      <Monitor className="w-4 h-4 text-blue-400" />
+                      <span>Versión de Escritorio — Mockup Mac / Laptop</span>
+                    </h2>
+                    {project.websiteUrl && (
+                      <a 
+                        href={project.websiteUrl} 
+                        target="_blank" 
+                        rel="noopener noreferrer" 
+                        className="text-xs font-bold text-blue-400 hover:underline inline-flex items-center gap-1"
+                      >
+                        <span>{project.websiteUrl.replace('https://', '').replace(/\/$/, '')}</span>
+                        <ExternalLink className="w-3 h-3" />
+                      </a>
+                    )}
+                  </div>
+
+                  <div className={`grid grid-cols-1 ${desktopImgs.length > 1 ? 'lg:grid-cols-2' : 'w-full'} gap-8`}>
+                    {desktopImgs.map((img, idx) => {
+                      const origIdx = galleryImages.findIndex(g => g.src === img.src);
+                      const clickIdx = origIdx >= 0 ? origIdx : idx;
+                      return (
+                        <MacLaptopMockup
+                          key={idx}
+                          src={img.src}
+                          alt={img.alt}
+                          title={img.title}
+                          url={project.websiteUrl}
+                          onOpenLightbox={() => openLightbox(clickIdx)}
+                          priority={idx === 0}
+                        />
+                      );
+                    })}
+                  </div>
+                </div>
+              )}
+
+              {/* Mobile & Instagram Showcase (iPhone 14 Pro Max Mockup) */}
+              {mobileImgs.length > 0 && (
+                <div className="space-y-4 pt-4">
+                  <div className="flex flex-wrap items-center justify-between gap-2">
+                    <h2 className="text-sm font-black uppercase tracking-wider text-white flex items-center gap-2">
+                      <Smartphone className="w-4 h-4 text-pink-400" />
+                      <span>Versión Móvil & Redes Sociales — Mockup iPhone 14 Pro Max</span>
+                    </h2>
+                    {project.instagramUrl && (
+                      <a 
+                        href={project.instagramUrl} 
+                        target="_blank" 
+                        rel="noopener noreferrer" 
+                        className="text-xs font-bold text-pink-400 hover:underline inline-flex items-center gap-1"
+                      >
+                        <span>{project.instagramHandle || 'Instagram'}</span>
+                        <ExternalLink className="w-3 h-3" />
+                      </a>
+                    )}
+                  </div>
+
+                  <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 justify-items-center sm:justify-items-start">
+                    {mobileImgs.map((img, idx) => {
+                      const origIdx = galleryImages.findIndex(g => g.src === img.src);
+                      const clickIdx = origIdx >= 0 ? origIdx : idx;
+                      return (
+                        <IPhone14ProMaxMockup
+                          key={idx}
+                          src={img.src}
+                          alt={img.alt}
+                          title={img.title}
+                          onOpenLightbox={() => openLightbox(clickIdx)}
+                        />
+                      );
+                    })}
+                  </div>
+                </div>
               )}
             </div>
-
-            <div className={`grid grid-cols-1 ${webImages.length > 1 ? 'lg:grid-cols-2' : 'w-full'} gap-6`}>
-              {webImages.map((img, idx) => {
-                const origIdx = galleryImages.findIndex(g => g.src === img.src);
-                const clickIdx = origIdx >= 0 ? origIdx : idx;
-                return (
-                  <div 
-                    key={idx} 
-                    className="group/card rounded-3xl overflow-hidden border border-zinc-800 bg-zinc-900 shadow-2xl flex flex-col transition-all hover:border-zinc-700"
-                  >
-                    {/* Browser Toolbar with Quick Actions */}
-                    <div className="bg-zinc-950 px-4 py-2.5 flex items-center justify-between border-b border-zinc-800">
-                      <div className="flex items-center gap-1.5">
-                        <span className="w-2.5 h-2.5 rounded-full bg-red-500/80" />
-                        <span className="w-2.5 h-2.5 rounded-full bg-yellow-500/80" />
-                        <span className="w-2.5 h-2.5 rounded-full bg-green-500/80" />
-                      </div>
-                      <div className="flex items-center gap-1.5 px-3 py-1 rounded-md bg-zinc-900 text-[10px] font-mono text-zinc-300 border border-zinc-800">
-                        <Globe className="w-3 h-3 text-zinc-400" />
-                        <span>{img.linkUrl || `captura_${idx + 1}.webp`}</span>
-                      </div>
-                      <div className="flex items-center gap-2">
-                        <button
-                          onClick={() => openLightbox(clickIdx)}
-                          className="p-1.5 rounded bg-zinc-800 hover:bg-zinc-700 text-zinc-300 transition-colors cursor-pointer"
-                          title="Ver en pantalla completa"
-                          aria-label="Ampliar imagen"
-                        >
-                          <Maximize2 className="w-3.5 h-3.5" />
-                        </button>
-                      </div>
-                    </div>
-
-                    {/* High Quality WebP Image Preview Area */}
-                    <div 
-                      onClick={() => openLightbox(clickIdx)}
-                      className={`relative w-full ${webImages.length === 1 ? 'h-[450px] sm:h-[580px] lg:h-[680px]' : 'h-80 sm:h-96 md:h-[480px]'} bg-zinc-950 overflow-hidden cursor-pointer group/img flex items-center justify-center`}
-                    >
-                      <Image
-                        src={img.src}
-                        alt={img.alt}
-                        fill
-                        unoptimized
-                        className="object-cover object-top transition-transform duration-500 group-hover/img:scale-102"
-                      />
-
-                      {/* Hover Overlay */}
-                      <div className="absolute inset-0 bg-black/50 opacity-0 group-hover/img:opacity-100 transition-opacity duration-300 flex items-center justify-center backdrop-blur-xs">
-                        <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white text-zinc-950 font-black text-xs shadow-2xl transform translate-y-2 group-hover/img:translate-y-0 transition-transform">
-                          <ZoomIn className="w-4 h-4" />
-                          <span>Ver Captura Completa en HD</span>
-                        </span>
-                      </div>
-                    </div>
-                    
-                    {/* Clean Bottom Bar (WITHOUT DESCRIPTIONS) */}
-                    <div className="p-3.5 bg-zinc-950 border-t border-zinc-800 flex items-center justify-between px-4">
-                      <span className="text-xs font-bold text-zinc-200 truncate pr-2">{img.title}</span>
-                      <button
-                        onClick={() => openLightbox(clickIdx)}
-                        className="text-[11px] font-bold text-blue-400 hover:underline flex items-center gap-1 cursor-pointer shrink-0"
-                      >
-                        <ZoomIn className="w-3 h-3" />
-                        <span>Pantalla Completa HD</span>
-                      </button>
-                    </div>
-                  </div>
-                );
-              })}
-            </div>
-          </div>
-        )}
+          );
+        })()}
 
         {/* 1.1 FANCY RD LOGO & VISUAL IDENTITY GALLERY */}
         {isFancyRd && fancyLogos.length > 0 && (

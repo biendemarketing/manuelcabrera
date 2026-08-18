@@ -18,29 +18,63 @@ const inter = Inter({
   display: 'swap',
 });
 
+const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://manuelcabrera.vercel.app';
+
 export const metadata: Metadata = {
-  title: 'Manuel Cabrera | Marketing, UI/UX & Portafolio Creativo',
-  description: 'Portafolio profesional de Manuel Cabrera: Marketing Digital, Estrategia Publicitaria, Diseñador Gráfico Senior, UI/UX, Modelado 3D e IA con más de 11 años de experiencia. Ubicado en Verón, Punta Cana, República Dominicana.',
+  metadataBase: new URL(SITE_URL),
+  title: {
+    default: 'Manuel Cabrera | Marketing, UI/UX & Portafolio Creativo',
+    template: '%s | Manuel Cabrera',
+  },
+  description: 'Portafolio profesional de Manuel Cabrera: Marketing Digital, Estrategia Publicitaria en Meta Ads & Google Ads, Diseñador Gráfico Senior, UI/UX, Desarrollo Web, Modelado 3D e IA con más de 11 años de experiencia. Punta Cana y Santo Domingo, República Dominicana.',
   keywords: [
     'Manuel Cabrera',
-    'Marketing Digital',
-    'Estrategia Publicitaria',
-    'Diseñador Gráfico',
-    'UI/UX Designer',
-    'Punta Cana',
-    'Verón La Altagracia',
-    'Modelado 3D',
-    'Meta Ads Google Ads',
-    'Portafolio Creativo',
-    'Prompt Engineering IA'
+    'Marketing Digital Punta Cana',
+    'Estrategia Publicitaria Meta Ads',
+    'Diseñador Gráfico Senior República Dominicana',
+    'UI/UX Designer Santo Domingo',
+    'Desarrollo Web Next.js',
+    'FacturaDO Facturación Nómina',
+    'Decora Group Punta Cana',
+    'Fancy RD Radio',
+    'Big Print Punta Cana',
+    'Modelado 3D Cinema 4D Blender',
+    'Portafolio Creativo 2026'
   ],
-  authors: [{ name: 'Manuel Cabrera' }],
+  authors: [{ name: 'Manuel Cabrera', url: SITE_URL }],
   creator: 'Manuel Cabrera',
+  publisher: 'Manuel Cabrera',
+  alternates: {
+    canonical: '/',
+  },
   openGraph: {
     title: 'Manuel Cabrera | Marketing, UI/UX & Portafolio Creativo',
-    description: 'Más de 11 años de experiencia en Marketing Digital, Branding, UI/UX, Modelado 3D y Estrategia Publicitaria. Verón, Punta Cana, R.D.',
+    description: 'Más de 11 años de experiencia en Marketing Digital, Branding, UI/UX, Desarrollo Web, Modelado 3D y Campañas Meta Ads. Punta Cana / Santo Domingo, República Dominicana.',
+    url: SITE_URL,
+    siteName: 'Manuel Cabrera — Portafolio Profesional',
+    images: [
+      {
+        url: '/opengraph.png',
+        width: 1896,
+        height: 888,
+        alt: 'Manuel Cabrera — Marketing Digital, UI/UX & Portafolio Creativo',
+      },
+      {
+        url: '/og-image.png',
+        width: 1896,
+        height: 888,
+        alt: 'Manuel Cabrera Portafolio',
+      },
+    ],
     type: 'website',
     locale: 'es_DO',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Manuel Cabrera | Marketing, UI/UX & Portafolio Creativo',
+    description: 'Estratega de Marketing Digital, Diseñador Gráfico Senior, UI/UX & Full-Stack Web Developer. Punta Cana, República Dominicana.',
+    images: ['/opengraph.png'],
+    creator: '@biendemarketing',
   },
   icons: {
     icon: [
@@ -50,11 +84,46 @@ export const metadata: Metadata = {
     shortcut: '/favicon.svg',
     apple: '/favicon.svg',
   },
-  twitter: {
-    card: 'summary_large_image',
-    title: 'Manuel Cabrera | Marketing & Portafolio Creativo',
-    description: 'Estratega de Marketing Digital, Diseñador Gráfico Senior & UI/UX. Verón, Punta Cana.',
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-video-preview': -1,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+    },
   },
+};
+
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'Person',
+  name: 'Manuel Cabrera',
+  jobTitle: 'Director Creativo & Estratega de Marketing Digital / Full-Stack Developer',
+  url: SITE_URL,
+  image: `${SITE_URL}/opengraph.png`,
+  sameAs: [
+    'https://github.com/biendemarketing',
+    'https://www.instagram.com/biendemarketing'
+  ],
+  address: {
+    '@type': 'PostalAddress',
+    addressLocality: 'Punta Cana',
+    addressRegion: 'La Altagracia',
+    addressCountry: 'DO'
+  },
+  knowsAbout: [
+    'Marketing Digital',
+    'Meta Ads & Google Ads',
+    'UI/UX Design',
+    'Next.js & TypeScript',
+    'Branding & Identidad Corporativa',
+    'Modelado 3D & Gran Formato',
+    'SEO Local & Técnico'
+  ],
+  description: 'Portafolio profesional de Manuel Cabrera: Marketing Digital, Estrategia Publicitaria, UI/UX, Desarrollo Web y Modelado 3D con más de 11 años de experiencia en República Dominicana.'
 };
 
 export default function RootLayout({
@@ -65,6 +134,10 @@ export default function RootLayout({
   return (
     <html lang="es" className={`dark ${dmSans.variable} ${inter.variable}`} suppressHydrationWarning>
       <head>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
         <script
           dangerouslySetInnerHTML={{
             __html: `

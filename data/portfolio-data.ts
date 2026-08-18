@@ -773,9 +773,12 @@ export const PROJECTS: Project[] = [
     image: "/projects/bigprint-web/bigprint-web-hero.webp",
     galleryImages: [
       "/projects/bigprint-web/bigprint-web-desktop.webp",
-      "/projects/bigprint-web/bigprint-web-mobile.webp"
+      "/projects/bigprint-web/bigprint-web-mobile.webp",
+      "/projects/bigprint/bigprint-instagram-feed-capture.webp"
     ],
     websiteUrl: "https://bigprintpuntacana.com/",
+    instagramUrl: "https://www.instagram.com/bigprintpuntacanard",
+    instagramHandle: "@bigprintpuntacanard",
     hasCustomLogo: true,
     stats: [
       { label: "Portal Web", value: "bigprintpuntacana.com" },
