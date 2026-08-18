@@ -4,13 +4,25 @@ import React, { useState } from 'react';
 import dynamic from 'next/dynamic';
 import { HeroSection } from '@/components/hero-section';
 import { AboutBiography } from '@/components/about-biography';
-import { SkillsInteractive } from '@/components/skills-interactive';
-import { EducationSection } from '@/components/education-section';
-import { ExperienceSection } from '@/components/experience-section';
 import { ProjectsGallery } from '@/components/projects-gallery';
 import { ContactSection } from '@/components/contact-section';
 
-// Dynamic code-split components for fast FCP and tiny initial JS bundle
+// Dynamic code-split components for fast FCP, tiny initial JS bundle & low main-thread work
+const SkillsInteractive = dynamic(
+  () => import('@/components/skills-interactive').then((mod) => mod.SkillsInteractive),
+  { ssr: true }
+);
+
+const EducationSection = dynamic(
+  () => import('@/components/education-section').then((mod) => mod.EducationSection),
+  { ssr: true }
+);
+
+const ExperienceSection = dynamic(
+  () => import('@/components/experience-section').then((mod) => mod.ExperienceSection),
+  { ssr: true }
+);
+
 const WorkProcessSection = dynamic(
   () => import('@/components/work-process-section').then((mod) => mod.WorkProcessSection),
   { ssr: true }

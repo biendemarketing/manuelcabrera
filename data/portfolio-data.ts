@@ -175,7 +175,7 @@ export const PERSONAL_INFO = {
   instagramSecondary: "sedphoto_",
   location: "Verón, Punta Cana, La Altagracia, República Dominicana",
   availability: "Disponible para proyectos & Contratos Remotos",
-  heroBgPhoto: "https://res.cloudinary.com/dap38hi9l/image/upload/v1786984795/ChatGPT_Image_17_ago_2026__12_38_57_qhngy2.png",
+  heroBgPhoto: "https://res.cloudinary.com/dap38hi9l/image/upload/f_auto,q_auto:good,w_1080/v1786984795/ChatGPT_Image_17_ago_2026__12_38_57_qhngy2.png",
   aboutSummary: "Especialista en Marketing Digital, Diseño Gráfico, Desarrollo de Software y Web, Automatizaciones, Fotografía y Video e Inteligencia Artificial, con más de 11 años de trayectoria profesional continua creando soluciones integrales y tecnológicas de alto impacto.",
   designPhilosophy: "Priorizo la efectividad comercial del marketing unida a la sofisticación estética y tecnológica: cada solución debe captar atención, comunicar valor y generar resultados medibles para la empresa.",
   hobbies: ["Lectura & Aprendizaje Continuo", "Pesca deportiva", "Natación", "Videojuegos", "Cocina creativa", "Ejercicio físico", "Senderismo"],

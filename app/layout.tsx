@@ -288,9 +288,7 @@ export default function RootLayout({
         {/* ── Canonical domain (non-www → www redirect should be set in Vercel) ── */}
         <link rel="canonical" href={SITE_URL} />
 
-        {/* ── Preconnect to critical origins ── */}
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        {/* ── Preconnect to critical CDN origins ── */}
         <link rel="preconnect" href="https://res.cloudinary.com" crossOrigin="anonymous" />
         <link rel="dns-prefetch" href="https://res.cloudinary.com" />
 

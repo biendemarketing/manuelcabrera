@@ -334,9 +334,10 @@ export function SkillsInteractive() {
                             src={skill.image}
                             alt={skill.title}
                             fill
-                            sizes="(max-width: 768px) 260px, 320px"
+                            sizes="(max-width: 640px) 220px, (max-width: 768px) 260px, 290px"
                             className="object-cover object-center transition-transform duration-500 hover:scale-105"
-                            priority={isActive || Math.abs(offset) === 1}
+                            priority={isActive && index === 0}
+                            loading={isActive && index === 0 ? "eager" : "lazy"}
                           />
                         )}
 
