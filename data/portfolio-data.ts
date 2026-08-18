@@ -1306,10 +1306,10 @@ export const WORK_EXPERIENCES: WorkExperience[] = [
     statusLabel: "Finalizado",
     responsibilities: [
       "Supervisión administrativa integral: órdenes de compras, facturación, pagos y contabilidad.",
-      "Gestión humana, capacitación de personal de diseño y atención al cliente.",
+      "Capacitación técnica de equipo de diseño, atención corporativa al cliente y supervisión de proyectos.",
       "Estrategias de marketing omnicanal, asesoría a marcas y logística de proyectos."
     ],
-    skills: ["Marketing Omnicanal", "Administración", "Gestión Humana", "Contabilidad & Logística"]
+    skills: ["Marketing Omnicanal", "Administración", "Operaciones & Logística", "Contabilidad & Finanzas"]
   },
   {
     id: "lati-k-publicidad",
