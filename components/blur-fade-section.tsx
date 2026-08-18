@@ -16,9 +16,8 @@ interface BlurFadeSectionProps extends HTMLMotionProps<'section'> {
 export function BlurFadeSection({
   children,
   delay = 0,
-  duration = 0.7,
-  blur = '10px',
-  yOffset = 20,
+  duration = 0.5,
+  yOffset = 16,
   className = '',
   id,
   ...props
@@ -26,20 +25,14 @@ export function BlurFadeSection({
   return (
     <motion.section
       id={id}
-      initial={{ opacity: 0, y: yOffset, filter: `blur(${blur})` }}
-      whileInView={{ 
-        opacity: 1, 
-        y: 0, 
-        filter: 'blur(0px)',
-        transitionEnd: { filter: 'none' }
-      }}
-      viewport={{ once: true, margin: '-40px' }}
+      initial={{ opacity: 0, y: yOffset }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, margin: '-20px' }}
       transition={{
         duration,
         delay,
         ease: [0.16, 1, 0.3, 1],
       }}
-      style={{ willChange: 'opacity, transform' }}
       className={className}
       {...props}
     >
@@ -60,28 +53,21 @@ interface BlurFadeDivProps extends HTMLMotionProps<'div'> {
 export function BlurFadeDiv({
   children,
   delay = 0,
-  duration = 0.65,
-  blur = '8px',
-  yOffset = 16,
+  duration = 0.45,
+  yOffset = 12,
   className = '',
   ...props
 }: BlurFadeDivProps) {
   return (
     <motion.div
-      initial={{ opacity: 0, y: yOffset, filter: `blur(${blur})` }}
-      whileInView={{ 
-        opacity: 1, 
-        y: 0, 
-        filter: 'blur(0px)',
-        transitionEnd: { filter: 'none' }
-      }}
-      viewport={{ once: true, margin: '-30px' }}
+      initial={{ opacity: 0, y: yOffset }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, margin: '-15px' }}
       transition={{
         duration,
         delay,
         ease: [0.16, 1, 0.3, 1],
       }}
-      style={{ willChange: 'opacity, transform' }}
       className={className}
       {...props}
     >

@@ -95,7 +95,7 @@ export function MacLaptopMockup({
             alt={alt}
             fill
             priority={priority}
-            unoptimized
+            sizes="(max-width: 768px) 100vw, 800px"
             className="object-cover object-top transition-transform duration-500 group-hover/screen:scale-102"
           />
 
@@ -175,7 +175,7 @@ export function IPhone14ProMaxMockup({
             alt={alt}
             fill
             priority={priority}
-            unoptimized
+            sizes="(max-width: 640px) 250px, 280px"
             className="object-cover object-top transition-transform duration-500 group-hover/screen:scale-103"
           />
 

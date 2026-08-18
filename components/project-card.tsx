@@ -69,7 +69,7 @@ export function ProjectCard({ project, onSelect }: ProjectCardProps) {
                       src={project.image}
                       alt={project.title}
                       fill
-                      unoptimized
+                      sizes="(max-width: 640px) 270px, 300px"
                       className="object-cover object-top transition-transform duration-500 group-hover:scale-105"
                     />
                   ) : (
@@ -93,7 +93,7 @@ export function ProjectCard({ project, onSelect }: ProjectCardProps) {
                   src={project.image}
                   alt={project.title}
                   fill
-                  unoptimized
+                  sizes="(max-width: 640px) 180px, 200px"
                   className="object-cover rounded-xl transition-transform duration-500 group-hover:scale-105"
                 />
               ) : (
@@ -111,7 +111,7 @@ export function ProjectCard({ project, onSelect }: ProjectCardProps) {
                   src={project.image}
                   alt={project.title}
                   fill
-                  unoptimized
+                  sizes="(max-width: 640px) 240px, 260px"
                   className="object-contain p-1 transition-transform duration-500 group-hover:scale-105"
                 />
               ) : (
@@ -129,7 +129,7 @@ export function ProjectCard({ project, onSelect }: ProjectCardProps) {
                   src={project.image}
                   alt={project.title}
                   fill
-                  unoptimized
+                  sizes="(max-width: 640px) 200px, 220px"
                   className="object-contain p-2 transition-transform duration-500 group-hover:scale-105"
                 />
               ) : (
@@ -143,71 +143,68 @@ export function ProjectCard({ project, onSelect }: ProjectCardProps) {
 
         </div>
 
-        {/* Hover Action Overlay */}
-        <div className="absolute inset-0 bg-black/60 backdrop-blur-xs opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center gap-3 z-30 pointer-events-none">
-          <span className="inline-flex items-center gap-1.5 px-4 py-2 rounded-full bg-white text-zinc-950 font-black text-xs shadow-xl group-hover:scale-105 transition-transform">
-            <span>Abrir Página del Proyecto</span>
-            <ArrowUpRight className="w-3.5 h-3.5" />
-          </span>
+        {/* Floating Quick Action indicator */}
+        <div className="absolute bottom-3.5 right-3.5 z-20 w-8 h-8 rounded-full bg-white/10 backdrop-blur-md border border-white/20 flex items-center justify-center text-white opacity-0 group-hover:opacity-100 transition-all duration-300 transform translate-y-1 group-hover:translate-y-0 shadow-lg">
+          <ArrowUpRight className="w-4 h-4" />
         </div>
-
       </Link>
 
-      {/* Card Info Details */}
-      <div className="p-6 flex-1 flex flex-col justify-between">
-        <div>
-          <div className="flex items-center justify-between text-xs text-zinc-600 dark:text-zinc-400 mb-1.5">
-            <span className="font-bold">{project.client}</span>
+      {/* Card Info Section */}
+      <div className="p-6 flex flex-col justify-between flex-1 space-y-4">
+        
+        {/* Title and Client row */}
+        <div className="space-y-1.5">
+          <div className="flex items-center justify-between gap-2">
             <span className="text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded-full bg-zinc-100 dark:bg-zinc-800 text-zinc-600 dark:text-zinc-400">
-              {project.categoryLabel}
+              {project.year}
             </span>
-          </div>
-
-          <div className="flex items-center gap-2">
-            {project.id === 'didusa-srl-jamaica' && (
+            {project.id === 'didusa-srl-jamaica' ? (
+              <div className="h-4 w-auto flex items-center text-zinc-700 dark:text-zinc-300">
+                <DidusaLogo className="h-3.5 w-auto" />
+              </div>
+            ) : (
               <div className="p-1 rounded-lg bg-zinc-100 dark:bg-zinc-800 inline-flex items-center justify-center">
-                <DidusaLogo className="h-3.5 w-auto text-zinc-950 dark:text-white" />
+                <span className="text-[10px] font-black font-mono text-zinc-600 dark:text-zinc-300">MC</span>
               </div>
             )}
-            <Link href={`/proyectos/${project.id}`} className="hover:underline">
-              <h3 className="text-lg font-black text-zinc-950 dark:text-white group-hover:text-black dark:group-hover:text-white transition-colors line-clamp-1">
-                {project.title}
-              </h3>
-            </Link>
           </div>
-          
-          <p className="text-xs text-zinc-700 dark:text-zinc-300 font-semibold mt-0.5 line-clamp-1">
+
+          <h3 className="text-lg sm:text-xl font-bold text-zinc-950 dark:text-white tracking-tight group-hover:text-indigo-600 dark:group-hover:text-indigo-400 transition-colors">
+            <Link href={`/proyectos/${project.id}`} className="hover:underline">
+              {project.title}
+            </Link>
+          </h3>
+
+          <p className="text-xs text-zinc-600 dark:text-zinc-400 font-medium line-clamp-1">
             {project.subtitle}
           </p>
-
-          <p className="text-xs text-zinc-600 dark:text-zinc-400 mt-2.5 line-clamp-2 leading-relaxed font-normal">
-            {project.description}
-          </p>
-
-          {/* External Live Website Direct Button for Didusa and web projects */}
-          {project.websiteUrl && (
-            <div className="mt-3">
-              <a
-                href={project.websiteUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                onClick={(e) => e.stopPropagation()}
-                className="inline-flex items-center gap-1.5 text-xs font-bold text-blue-600 dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-300 underline underline-offset-4 transition-colors"
-              >
-                <Globe className="w-3.5 h-3.5" />
-                <span>Visitar {project.websiteUrl.replace('https://', '')}</span>
-                <ExternalLink className="w-3 h-3" />
-              </a>
-            </div>
-          )}
         </div>
 
-        {/* Tool Tags & Link CTA */}
-        <div className="mt-5 pt-3 flex items-center justify-between gap-2 border-t border-zinc-100 dark:border-zinc-800">
-          <div className="flex flex-wrap gap-1">
-            {project.tools.slice(0, 3).map((tool, i) => (
+        {/* Project Description (Brief 2 lines) */}
+        <p className="text-xs text-zinc-600 dark:text-zinc-400 leading-relaxed line-clamp-2">
+          {project.description}
+        </p>
+
+        {/* Live URL Link if available */}
+        {project.websiteUrl && (
+          <a
+            href={project.websiteUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-1.5 text-xs font-bold text-indigo-600 dark:text-indigo-400 hover:underline pt-1"
+          >
+            <Globe className="w-3.5 h-3.5" />
+            <span>Visitar Sitio Web Oficial</span>
+            <ExternalLink className="w-3 h-3 ml-0.5" />
+          </a>
+        )}
+
+        {/* Tools / Deliverables Tags */}
+        <div className="pt-3 border-t border-zinc-100 dark:border-zinc-800/80 flex items-center justify-between gap-2">
+          <div className="flex flex-wrap gap-1.5 overflow-hidden max-h-6">
+            {project.tools.slice(0, 3).map((tool, idx) => (
               <span
-                key={i}
+                key={idx}
                 className="text-[10px] font-bold px-2.5 py-0.5 rounded-full bg-zinc-100 dark:bg-zinc-800 text-zinc-800 dark:text-zinc-200 group-hover:bg-zinc-200 dark:group-hover:bg-zinc-700 group-hover:text-zinc-950 dark:group-hover:text-white transition-colors shadow-xs"
               >
                 {tool}
@@ -222,17 +219,14 @@ export function ProjectCard({ project, onSelect }: ProjectCardProps) {
 
           <Link
             href={`/proyectos/${project.id}`}
-            aria-label={`Ver página de ${project.title}`}
+            aria-label={`Ver detalles de ${project.title}`}
             className="p-2 rounded-full bg-zinc-100 dark:bg-zinc-800 text-zinc-800 dark:text-zinc-200 group-hover:bg-zinc-950 group-hover:text-white dark:group-hover:bg-white dark:group-hover:text-zinc-950 transition-colors shadow-xs"
           >
-            <ArrowUpRight className="w-4 h-4" />
+            <ArrowUpRight className="w-3.5 h-3.5" />
           </Link>
         </div>
 
       </div>
-
     </div>
   );
 }
-
-

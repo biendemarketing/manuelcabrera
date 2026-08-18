@@ -567,7 +567,7 @@ export function ProjectDetailView({
                         src={img.src}
                         alt={img.alt}
                         fill
-                        unoptimized
+                        sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 25vw"
                         className="object-contain p-4 transition-transform duration-500 group-hover:scale-105"
                       />
 
@@ -622,7 +622,7 @@ export function ProjectDetailView({
                       src={img.src}
                       alt={img.alt}
                       fill
-                      unoptimized
+                      sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 25vw"
                       className="object-contain p-2 transition-transform duration-500 group-hover:scale-110"
                     />
 
@@ -676,7 +676,7 @@ export function ProjectDetailView({
                       src={img.src}
                       alt={img.alt}
                       fill
-                      unoptimized
+                      sizes="(max-width: 1024px) 100vw, 50vw"
                       className="object-contain p-1 sm:p-2 transition-transform duration-500 group-hover:scale-103"
                     />
 
@@ -739,7 +739,7 @@ export function ProjectDetailView({
                       src={img.src}
                       alt={img.alt}
                       fill
-                      unoptimized
+                      sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 25vw"
                       className="object-cover transition-transform duration-500 group-hover:scale-105"
                     />
 
@@ -794,7 +794,7 @@ export function ProjectDetailView({
                       src={img.src}
                       alt={img.alt}
                       fill
-                      unoptimized
+                      sizes="(max-width: 768px) 100vw, 50vw"
                       className="object-contain p-4 sm:p-6 transition-transform duration-500 group-hover:scale-105"
                     />
 
@@ -857,7 +857,7 @@ export function ProjectDetailView({
                       src={img.src}
                       alt={img.alt}
                       fill
-                      unoptimized
+                      sizes="(max-width: 768px) 100vw, 50vw"
                       className="object-contain p-2 sm:p-4 transition-transform duration-500 group-hover:scale-105 drop-shadow-xl"
                     />
 

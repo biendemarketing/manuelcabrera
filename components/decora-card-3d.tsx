@@ -86,7 +86,7 @@ export function DecoraCard3D({
               src={frontImage}
               alt="Tarjeta de Presentación Decora Group - Frente"
               fill
-              unoptimized
+              sizes="(max-width: 640px) 100vw, 550px"
               priority
               className="object-cover object-center pointer-events-none"
             />
@@ -119,7 +119,7 @@ export function DecoraCard3D({
               src={backImage}
               alt="Tarjeta de Presentación Decora Group - Reverso"
               fill
-              unoptimized
+              sizes="(max-width: 640px) 100vw, 550px"
               priority
               className="object-cover object-center pointer-events-none"
             />
