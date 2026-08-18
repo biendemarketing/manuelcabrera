@@ -57,6 +57,8 @@ const DotField = memo(function DotField({
   const sizeRef = useRef({ w: 0, h: 0, offsetX: 0, offsetY: 0 });
   const glowOpacity = useRef(0);
   const engagement = useRef(0);
+  const isRunning = useRef(false);
+
   const propsRef = useRef({
     dotRadius,
     dotSpacing,
@@ -91,6 +93,8 @@ const DotField = memo(function DotField({
   const glowId = 'hero-dot-field-glow-gradient';
 
   useEffect(() => {
+    // Skip heavy RAF loops completely on touch devices with no mouse hover
+    const isTouch = typeof window !== 'undefined' && window.matchMedia('(hover: none)').matches;
     const canvas = canvasRef.current;
     const glowEl = glowRef.current;
     if (!canvas) return;
@@ -120,6 +124,29 @@ const DotField = memo(function DotField({
       dotsRef.current = dots;
     }
 
+    function drawStaticFrame(w: number, h: number) {
+      if (!ctx || w <= 0 || h <= 0) return;
+      const dots = dotsRef.current;
+      const len = dots.length;
+      const p = propsRef.current;
+      const rad = p.dotRadius / 2;
+
+      ctx.clearRect(0, 0, w, h);
+      const grad = ctx.createLinearGradient(0, 0, w, h);
+      grad.addColorStop(0, p.gradientFrom);
+      grad.addColorStop(1, p.gradientTo);
+      ctx.fillStyle = grad;
+
+      ctx.beginPath();
+      for (let i = 0; i < len; i++) {
+        const d = dots[i];
+        if (!d) continue;
+        ctx.moveTo(d.ax + rad, d.ay);
+        ctx.arc(d.ax, d.ay, rad, 0, TWO_PI);
+      }
+      ctx.fill();
+    }
+
     function doResize() {
       if (!canvas || !canvas.parentElement) return;
       const rect = canvas.parentElement.getBoundingClientRect();
@@ -140,11 +167,27 @@ const DotField = memo(function DotField({
       };
 
       buildDots(w, h);
+      drawStaticFrame(w, h);
     }
 
     function resize() {
       clearTimeout(resizeTimer);
-      resizeTimer = setTimeout(doResize, 100);
+      resizeTimer = setTimeout(doResize, 120);
+    }
+
+    if (isTouch) {
+      doResize();
+      window.addEventListener('resize', resize, { passive: true });
+      return () => {
+        clearTimeout(resizeTimer);
+        window.removeEventListener('resize', resize);
+      };
+    }
+
+    function startLoop() {
+      if (isRunning.current) return;
+      isRunning.current = true;
+      rafRef.current = requestAnimationFrame(tick);
     }
 
     function onMouseMove(e: MouseEvent) {
@@ -153,9 +196,10 @@ const DotField = memo(function DotField({
       const x = e.clientX - rect.left;
       const y = e.clientY - rect.top;
 
-      if (x >= -200 && x <= rect.width + 200 && y >= -200 && y <= rect.height + 200) {
+      if (x >= -150 && x <= rect.width + 150 && y >= -150 && y <= rect.height + 150) {
         mouseRef.current.x = x;
         mouseRef.current.y = y;
+        startLoop();
       } else {
         mouseRef.current.x = -9999;
         mouseRef.current.y = -9999;
@@ -173,8 +217,7 @@ const DotField = memo(function DotField({
       m.prevY = m.y;
     }
 
-    const speedInterval = setInterval(updateMouseSpeed, 20);
-
+    const speedInterval = setInterval(updateMouseSpeed, 35);
     let frameCount = 0;
 
     function tick() {
@@ -184,7 +227,6 @@ const DotField = memo(function DotField({
       const { w, h } = sizeRef.current;
       const p = propsRef.current;
       const len = dots.length;
-      const t = frameCount * 0.02;
 
       const isInside = m.x > -100 && m.x < w + 100 && m.y > -100 && m.y < h + 100;
       const targetEngagement = isInside ? Math.max(0.75, Math.min(m.speed / 3, 1)) : 0;
@@ -211,7 +253,6 @@ const DotField = memo(function DotField({
         const cr = p.cursorRadius;
         const crSq = cr * cr;
         const rad = p.dotRadius / 2;
-        const isBulge = p.bulgeOnly;
 
         ctx.beginPath();
 
@@ -224,88 +265,41 @@ const DotField = memo(function DotField({
 
           if (distSq < crSq && eng > 0.01) {
             const dist = Math.sqrt(distSq);
-            if (isBulge) {
-              const tDist = 1 - dist / cr;
-              const push = tDist * tDist * p.bulgeStrength * eng;
-              const angle = Math.atan2(dy, dx);
-              d.sx += (d.ax - Math.cos(angle) * push - d.sx) * 0.15;
-              d.sy += (d.ay - Math.sin(angle) * push - d.sy) * 0.15;
-            } else {
-              const angle = Math.atan2(dy, dx);
-              const move = (500 / dist) * (m.speed * p.cursorForce);
-              d.vx += Math.cos(angle) * -move;
-              d.vy += Math.sin(angle) * -move;
-            }
-          } else if (isBulge) {
+            const tDist = 1 - dist / cr;
+            const push = tDist * tDist * p.bulgeStrength * eng;
+            const angle = Math.atan2(dy, dx);
+            d.sx += (d.ax - Math.cos(angle) * push - d.sx) * 0.15;
+            d.sy += (d.ay - Math.sin(angle) * push - d.sy) * 0.15;
+          } else {
             d.sx += (d.ax - d.sx) * 0.1;
             d.sy += (d.ay - d.sy) * 0.1;
           }
 
-          if (!isBulge) {
-            d.vx *= 0.9;
-            d.vy *= 0.9;
-            d.x = d.ax + d.vx;
-            d.y = d.ay + d.vy;
-            d.sx += (d.x - d.sx) * 0.1;
-            d.sy += (d.y - d.sy) * 0.1;
-          }
-
-          let drawX = d.sx;
-          let drawY = d.sy;
-          if (p.waveAmplitude > 0) {
-            drawY += Math.sin(d.ax * 0.03 + t) * p.waveAmplitude;
-            drawX += Math.cos(d.ay * 0.03 + t * 0.7) * p.waveAmplitude * 0.5;
-          }
-
-          if (p.sparkle) {
-            const hash = ((i * 2654435761) ^ (frameCount >> 3)) >>> 0;
-            if ((hash % 100) < 3) {
-              ctx.moveTo(drawX + rad * 1.8, drawY);
-              ctx.arc(drawX, drawY, rad * 1.8, 0, TWO_PI);
-            } else {
-              ctx.moveTo(drawX + rad, drawY);
-              ctx.arc(drawX, drawY, rad, 0, TWO_PI);
-            }
-          } else {
-            ctx.moveTo(drawX + rad, drawY);
-            ctx.arc(drawX, drawY, rad, 0, TWO_PI);
-          }
+          ctx.moveTo(d.sx + rad, d.sy);
+          ctx.arc(d.sx, d.sy, rad, 0, TWO_PI);
         }
 
         ctx.fill();
       }
 
-      rafRef.current = requestAnimationFrame(tick);
-    }
-
-    let isVisible = true;
-    const observer = new IntersectionObserver(
-      (entries) => {
-        const entry = entries[0];
-        isVisible = entry?.isIntersecting ?? true;
-        if (isVisible && !rafRef.current) {
-          rafRef.current = requestAnimationFrame(tick);
-        } else if (!isVisible && rafRef.current) {
+      // Pause loop if mouse is outside and engagement is 0
+      if (!isInside && eng <= 0.001) {
+        isRunning.current = false;
+        if (rafRef.current) {
           cancelAnimationFrame(rafRef.current);
           rafRef.current = null;
         }
-      },
-      { threshold: 0.05 }
-    );
-    if (canvas) observer.observe(canvas);
+        return;
+      }
+
+      rafRef.current = requestAnimationFrame(tick);
+    }
 
     doResize();
-    window.addEventListener('resize', resize);
+    window.addEventListener('resize', resize, { passive: true });
     window.addEventListener('mousemove', onMouseMove, { passive: true });
-    rafRef.current = requestAnimationFrame(tick);
-
-    rebuildRef.current = () => {
-      const { w, h } = sizeRef.current;
-      if (w > 0 && h > 0) buildDots(w, h);
-    };
 
     return () => {
-      observer.disconnect();
       if (rafRef.current) cancelAnimationFrame(rafRef.current);
       clearInterval(speedInterval);
       clearTimeout(resizeTimer);
@@ -314,35 +308,23 @@ const DotField = memo(function DotField({
     };
   }, []);
 
-  useEffect(() => {
-    rebuildRef.current?.();
-  }, [dotRadius, dotSpacing]);
-
   return (
-    <div className={`dot-field-container ${className}`} style={style} {...rest}>
-      <canvas
-        ref={canvasRef}
-        style={{
-          position: 'absolute',
-          inset: 0,
-          width: '100%',
-          height: '100%',
-        }}
-      />
+    <div
+      className={`relative w-full h-full pointer-events-none overflow-hidden ${className}`}
+      style={style}
+      {...rest}
+    >
+      <canvas ref={canvasRef} className="absolute inset-0 w-full h-full pointer-events-none" />
       <svg
         ref={svgRef}
-        style={{
-          position: 'absolute',
-          inset: 0,
-          width: '100%',
-          height: '100%',
-          pointerEvents: 'none',
-        }}
+        className="absolute inset-0 w-full h-full pointer-events-none overflow-visible"
+        aria-hidden="true"
       >
         <defs>
           <radialGradient id={glowId}>
-            <stop offset="0%" stopColor={glowColor} />
-            <stop offset="100%" stopColor="transparent" />
+            <stop offset="0%" stopColor={glowColor} stopOpacity="0.4" />
+            <stop offset="50%" stopColor={glowColor} stopOpacity="0.15" />
+            <stop offset="100%" stopColor={glowColor} stopOpacity="0" />
           </radialGradient>
         </defs>
         <circle
@@ -351,14 +333,11 @@ const DotField = memo(function DotField({
           cy="-9999"
           r={glowRadius}
           fill={`url(#${glowId})`}
-          style={{ opacity: 0, willChange: 'opacity' }}
+          style={{ opacity: 0, transition: 'opacity 0.2s ease-out' }}
         />
       </svg>
     </div>
   );
 });
 
-DotField.displayName = 'DotField';
-
 export default DotField;
-export { DotField };

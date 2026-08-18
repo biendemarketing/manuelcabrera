@@ -1,8 +1,8 @@
 'use client';
 
-import React, { useRef } from 'react';
+import React from 'react';
 import Link from 'next/link';
-import { motion, useScroll, useTransform } from 'motion/react';
+import { motion } from 'motion/react';
 import { 
   Star, 
   Rocket, 
@@ -16,15 +16,17 @@ import {
 import { PERSONAL_INFO } from '@/data/portfolio-data';
 import { ManuelCabreraLogo } from './logo';
 import DotField from './DotField';
-import { useIntro } from './intro-context';
 
 interface HeroSectionProps {
   onOpenCV?: () => void;
 }
 
 export function HeroSection({ onOpenCV: _onOpenCV }: HeroSectionProps) {
-  const effectiveBgPhoto = PERSONAL_INFO.heroBgPhoto;
-  const { isIntroComplete } = useIntro();
+  // Ultra-fast optimized Cloudinary URL with auto-format (AVIF/WebP) and compression
+  const rawBg = PERSONAL_INFO.heroBgPhoto || '';
+  const effectiveBgPhoto = rawBg.includes('/image/upload/') && !rawBg.includes('/f_auto')
+    ? rawBg.replace('/image/upload/', '/image/upload/f_auto,q_auto,w_1200/')
+    : rawBg;
 
   return (
     <section 
@@ -32,39 +34,17 @@ export function HeroSection({ onOpenCV: _onOpenCV }: HeroSectionProps) {
       className="relative min-h-[100dvh] w-full flex flex-col justify-center bg-zinc-950 text-white transition-colors duration-300 border-none outline-none pt-20 pb-12 sm:py-0 [clip-path:inset(0)]"
     >
       {/* HERO BACKGROUND AMBIENT & FIXED PHOTO */}
-      <motion.div 
-        initial={{ opacity: 0, scale: 1.04 }}
-        animate={{ 
-          opacity: isIntroComplete ? 1 : 0, 
-          scale: isIntroComplete ? 1 : 1.04 
-        }}
-        transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
-        className="fixed inset-0 top-0 left-0 w-full h-full z-0 overflow-hidden border-none outline-none pointer-events-none"
-      >
+      <div className="fixed inset-0 top-0 left-0 w-full h-full z-0 overflow-hidden border-none outline-none pointer-events-none">
         {/* FULL HERO BACKGROUND PHOTO */}
         {effectiveBgPhoto && (
           <div className="absolute inset-0 top-0 w-full h-full overflow-hidden pointer-events-none border-none outline-none">
             {/* eslint-disable-next-line @next/next/no-img-element */}
-            <motion.img
+            <img
               src={effectiveBgPhoto}
               alt={PERSONAL_INFO.name}
-              initial={{ scale: 1.15, filter: "blur(12px)" }}
-              animate={{ 
-                scale: isIntroComplete ? [1.0, 1.08, 1.0] : 1.15,
-                filter: isIntroComplete ? "blur(0px)" : "blur(12px)"
-              }}
-              transition={{ 
-                scale: {
-                  duration: 18,
-                  repeat: Infinity,
-                  repeatType: "reverse",
-                  ease: "easeInOut"
-                },
-                filter: {
-                  duration: 1.4,
-                  ease: [0.16, 1, 0.3, 1]
-                }
-              }}
+              fetchPriority="high"
+              decoding="async"
+              loading="eager"
               className="w-full h-full object-cover object-[72%_top] sm:object-[80%_top] md:object-[86%_top] lg:object-[90%_top] opacity-95 sm:opacity-100 border-none outline-none ring-0 shadow-none will-change-transform"
             />
             {/* Dark Studio Directional Readability Mask */}
@@ -78,13 +58,8 @@ export function HeroSection({ onOpenCV: _onOpenCV }: HeroSectionProps) {
           <ManuelCabreraLogo className="w-[450px] sm:w-[650px] lg:w-[850px] h-auto text-white" />
         </div>
 
-        {/* INTERACTIVE DOTFIELD EFFECT OVERLAY */}
-        <motion.div 
-          initial={{ opacity: 0 }}
-          animate={{ opacity: isIntroComplete ? 1 : 0 }}
-          transition={{ duration: 1.4, delay: 0.1, ease: "easeOut" }}
-          className="absolute inset-0 w-full h-full pointer-events-auto opacity-75 dark:opacity-85 mix-blend-screen"
-        >
+        {/* INTERACTIVE DOTFIELD EFFECT OVERLAY (Lightweight & zero CPU on mobile) */}
+        <div className="absolute inset-0 w-full h-full pointer-events-auto opacity-75 dark:opacity-85 mix-blend-screen">
           <DotField
             dotRadius={1.5}
             dotSpacing={22}
@@ -100,11 +75,11 @@ export function HeroSection({ onOpenCV: _onOpenCV }: HeroSectionProps) {
             glowColor="#120F17"
             className="w-full h-full"
           />
-        </motion.div>
+        </div>
 
         {/* Subtle grid texture layer */}
         <div className="absolute inset-0 bg-[radial-gradient(#3f3f46_1px,transparent_1px)] [background-size:24px_24px] opacity-10 pointer-events-none border-none outline-none" />
-      </motion.div>
+      </div>
 
       {/* HERO MAIN CONTENT CONTAINER */}
       <div className="relative z-10 w-full px-5 sm:px-10 md:px-14 lg:px-20 xl:px-24 2xl:px-28 my-auto py-8 sm:py-12 border-none pointer-events-none">
@@ -112,13 +87,9 @@ export function HeroSection({ onOpenCV: _onOpenCV }: HeroSectionProps) {
           
           {/* Top Label: DIRECTOR CREATIVO with Purple Gradient Accent */}
           <motion.div
-            initial={{ opacity: 0, y: 20, filter: "blur(6px)" }}
-            animate={{ 
-              opacity: isIntroComplete ? 1 : 0, 
-              y: isIntroComplete ? 0 : 20, 
-              filter: isIntroComplete ? "blur(0px)" : "blur(6px)" 
-            }}
-            transition={{ duration: 0.8, delay: 0.15, ease: [0.16, 1, 0.3, 1] }}
+            initial={{ opacity: 0, y: 15 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.05, ease: [0.16, 1, 0.3, 1] }}
             className="flex flex-col items-start"
           >
             <span className="text-xs sm:text-sm font-bold uppercase tracking-[0.25em] text-indigo-400">
@@ -130,25 +101,17 @@ export function HeroSection({ onOpenCV: _onOpenCV }: HeroSectionProps) {
           {/* Main Headline: Manuel (White) + Cabrera (Purple/Indigo Gradient) */}
           <h1 className="text-6xl sm:text-7xl md:text-8xl lg:text-[7.25rem] xl:text-[8.5rem] font-black tracking-tight leading-[0.92] flex flex-col drop-shadow-md">
             <motion.span
-              initial={{ opacity: 0, y: 35, filter: "blur(8px)" }}
-              animate={{ 
-                opacity: isIntroComplete ? 1 : 0, 
-                y: isIntroComplete ? 0 : 35, 
-                filter: isIntroComplete ? "blur(0px)" : "blur(8px)" 
-              }}
-              transition={{ duration: 0.95, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
               className="text-white inline-block"
             >
               Manuel
             </motion.span>
             <motion.span
-              initial={{ opacity: 0, y: 35, filter: "blur(8px)" }}
-              animate={{ 
-                opacity: isIntroComplete ? 1 : 0, 
-                y: isIntroComplete ? 0 : 35, 
-                filter: isIntroComplete ? "blur(0px)" : "blur(8px)" 
-              }}
-              transition={{ duration: 0.95, delay: 0.45, ease: [0.16, 1, 0.3, 1] }}
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.18, ease: [0.16, 1, 0.3, 1] }}
               className="bg-clip-text text-transparent bg-gradient-to-r from-indigo-400 via-purple-400 to-indigo-300 inline-block"
             >
               Cabrera
@@ -157,13 +120,9 @@ export function HeroSection({ onOpenCV: _onOpenCV }: HeroSectionProps) {
 
           {/* Value Proposition Subtitle */}
           <motion.p
-            initial={{ opacity: 0, y: 20, filter: "blur(6px)" }}
-            animate={{ 
-              opacity: isIntroComplete ? 1 : 0, 
-              y: isIntroComplete ? 0 : 20, 
-              filter: isIntroComplete ? "blur(0px)" : "blur(6px)" 
-            }}
-            transition={{ duration: 0.85, delay: 0.6, ease: [0.16, 1, 0.3, 1] }}
+            initial={{ opacity: 0, y: 15 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.55, delay: 0.25, ease: [0.16, 1, 0.3, 1] }}
             className="text-sm sm:text-base lg:text-lg text-zinc-300 font-normal leading-relaxed max-w-lg"
           >
             Estratega. Diseñador. Desarrollador. Creador de experiencias digitales que generan impacto y resultados.
@@ -171,12 +130,9 @@ export function HeroSection({ onOpenCV: _onOpenCV }: HeroSectionProps) {
 
           {/* Call-to-Action Glowing Purple Button */}
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ 
-              opacity: isIntroComplete ? 1 : 0, 
-              y: isIntroComplete ? 0 : 20 
-            }}
-            transition={{ duration: 0.8, delay: 0.75, ease: [0.16, 1, 0.3, 1] }}
+            initial={{ opacity: 0, y: 15 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
             className="pt-2"
           >
             <Link
@@ -190,12 +146,9 @@ export function HeroSection({ onOpenCV: _onOpenCV }: HeroSectionProps) {
 
           {/* Quick Metrics / Stats Row - 4 Comprehensive Pillars */}
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ 
-              opacity: isIntroComplete ? 1 : 0, 
-              y: isIntroComplete ? 0 : 20 
-            }}
-            transition={{ duration: 0.85, delay: 0.9, ease: [0.16, 1, 0.3, 1] }}
+            initial={{ opacity: 0, y: 15 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.55, delay: 0.35, ease: [0.16, 1, 0.3, 1] }}
             className="pt-6 sm:pt-8 grid grid-cols-2 sm:grid-cols-4 gap-4 sm:gap-6 border-t border-zinc-800/60 w-full max-w-2xl"
           >
             {/* Stat 1: Experiencia */}
@@ -225,14 +178,14 @@ export function HeroSection({ onOpenCV: _onOpenCV }: HeroSectionProps) {
                   Herramientas
                 </span>
                 <span className="text-[9px] text-zinc-500 hidden sm:block">
-                  Marketing, Web e IA
+                  Design, Dev, 3D & AI
                 </span>
               </div>
             </div>
 
             {/* Stat 3: Proyectos */}
             <div className="flex items-start gap-2.5">
-              <Rocket className="w-5 h-5 text-cyan-400 shrink-0 stroke-[1.5] mt-0.5" />
+              <Rocket className="w-5 h-5 text-indigo-400 shrink-0 stroke-[1.5] mt-0.5" />
               <div>
                 <span className="text-base sm:text-lg lg:text-xl font-black text-white block leading-tight">
                   200+
@@ -241,14 +194,14 @@ export function HeroSection({ onOpenCV: _onOpenCV }: HeroSectionProps) {
                   Proyectos Realizados
                 </span>
                 <span className="text-[9px] text-zinc-500 hidden sm:block">
-                  Branding, Web & Video
+                  Campañas & Branding
                 </span>
               </div>
             </div>
 
             {/* Stat 4: Satisfacción */}
             <div className="flex items-start gap-2.5">
-              <Users className="w-5 h-5 text-emerald-400 shrink-0 stroke-[1.5] mt-0.5" />
+              <Users className="w-5 h-5 text-purple-400 shrink-0 stroke-[1.5] mt-0.5" />
               <div>
                 <span className="text-base sm:text-lg lg:text-xl font-black text-white block leading-tight">
                   100%
@@ -257,74 +210,49 @@ export function HeroSection({ onOpenCV: _onOpenCV }: HeroSectionProps) {
                   Satisfacción
                 </span>
                 <span className="text-[9px] text-zinc-500 hidden sm:block">
-                  Calidad y puntualidad
+                  Compromiso & Calidad
                 </span>
               </div>
-            </div>
-          </motion.div>
-
-          {/* Scroll Indicator */}
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: isIntroComplete ? 1 : 0 }}
-            transition={{ duration: 1, delay: 1.1 }}
-            className="pt-4 flex items-center gap-3"
-          >
-            <div className="w-5 h-8 rounded-full border border-zinc-600 flex items-start justify-center p-1">
-              <motion.div 
-                animate={{ y: [0, 8, 0] }} 
-                transition={{ duration: 1.5, repeat: Infinity, ease: 'easeInOut' }}
-                className="w-1.5 h-1.5 rounded-full bg-indigo-400" 
-              />
-            </div>
-            <div className="flex flex-col text-[9px] uppercase tracking-widest font-bold text-zinc-400 leading-tight">
-              <span>Scroll</span>
-              <span>Para Explorar</span>
             </div>
           </motion.div>
 
         </div>
       </div>
 
-      {/* FLOATING VERTICAL SOCIAL BAR (FAR RIGHT) */}
+      {/* FLOATING ACTION PILL: Direct Links to Social Media & Contact */}
       <motion.div
         initial={{ opacity: 0, x: 20 }}
-        animate={{ opacity: isIntroComplete ? 1 : 0, x: isIntroComplete ? 0 : 20 }}
-        transition={{ duration: 0.9, delay: 1.2, ease: [0.16, 1, 0.3, 1] }}
-        className="hidden md:flex fixed right-6 sm:right-8 bottom-12 z-30 flex-col items-center gap-4 pointer-events-auto"
+        animate={{ opacity: 1, x: 0 }}
+        transition={{ duration: 0.5, delay: 0.4 }}
+        className="hidden md:flex fixed right-8 top-1/2 -translate-y-1/2 z-40 flex-col items-center gap-3 p-2 rounded-full bg-zinc-900/80 backdrop-blur-md border border-zinc-800 shadow-2xl"
       >
-        <div className="w-px h-12 bg-gradient-to-t from-zinc-700 to-transparent" />
-        
         <a
-          href="https://linkedin.com"
+          href={PERSONAL_INFO.whatsappUrl}
           target="_blank"
           rel="noopener noreferrer"
-          className="p-2 text-zinc-400 hover:text-white transition-colors cursor-pointer"
-          title="LinkedIn"
-          aria-label="LinkedIn"
+          title="WhatsApp Directo"
+          className="p-2.5 rounded-full hover:bg-emerald-500/20 text-zinc-400 hover:text-emerald-400 transition-colors"
         >
-          <Linkedin className="w-4 h-4" />
+          <svg className="w-4 h-4 fill-current" viewBox="0 0 24 24">
+            <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/>
+          </svg>
         </a>
-
         <a
-          href="https://instagram.com"
+          href={`https://instagram.com/${PERSONAL_INFO.instagramPrimary}`}
           target="_blank"
           rel="noopener noreferrer"
-          className="p-2 text-zinc-400 hover:text-white transition-colors cursor-pointer"
           title="Instagram"
-          aria-label="Instagram"
+          className="p-2.5 rounded-full hover:bg-pink-500/20 text-zinc-400 hover:text-pink-400 transition-colors"
         >
           <Instagram className="w-4 h-4" />
         </a>
-
-        <a
-          href={`mailto:${PERSONAL_INFO.email}`}
-          className="p-2 text-zinc-400 hover:text-white transition-colors cursor-pointer"
-          title="Email"
-          aria-label="Email"
+        <Link
+          href="/#contacto"
+          title="Enviar Correo"
+          className="p-2.5 rounded-full hover:bg-indigo-500/20 text-zinc-400 hover:text-indigo-400 transition-colors"
         >
           <Mail className="w-4 h-4" />
-        </a>
+        </Link>
       </motion.div>
     </section>
   );
