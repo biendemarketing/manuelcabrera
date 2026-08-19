@@ -18,6 +18,7 @@ import {
   PERSONAL_INFO, 
   WORK_EXPERIENCES, 
   EDUCATION_ITEMS, 
+  TECHNICAL_COURSES,
   SOFTWARE_TOOLS, 
   REFERENCES 
 } from '@/data/portfolio-data';
@@ -101,7 +102,9 @@ export function PrintableCVView() {
 
                 <div className="flex items-center gap-1.5 bg-black/50 backdrop-blur-md px-3.5 py-1.5 rounded-lg">
                   <Globe className="w-3.5 h-3.5 text-indigo-400 shrink-0" />
-                  <span className="font-mono text-xs sm:text-sm font-bold text-white">https://manuelcabrera.pro</span>
+                  <a href="https://www.manuelcabrera.pro" target="_blank" rel="noopener noreferrer" className="hover:underline font-mono text-xs sm:text-sm font-bold text-white">
+                    www.manuelcabrera.pro
+                  </a>
                 </div>
 
                 <div className="flex items-center gap-1.5 bg-black/50 backdrop-blur-md px-3.5 py-1.5 rounded-lg text-xs sm:text-sm">
@@ -129,14 +132,14 @@ export function PrintableCVView() {
             </div>
           </section>
 
-          {/* 3. FORMACIÓN ACADÉMICA & DIPLOMADOS ── PRIMERO QUE LO LABORAL ── */}
+          {/* 3. FORMACIÓN ACADÉMICA, DIPLOMADOS & CURSOS TÉCNICOS ── PRIMERO QUE LO LABORAL ── */}
           <section className="w-full pb-6 mb-8 print:mb-6">
             <h2 className="text-xs font-black uppercase tracking-wider text-indigo-400 print:text-indigo-800 mb-4 flex items-center gap-1.5">
               <GraduationCap className="w-4 h-4" />
               <span>Formación Académica & Diplomados</span>
             </h2>
 
-            <div className="w-full grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 text-xs">
+            <div className="w-full grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 text-xs mb-6">
               {EDUCATION_ITEMS.map((edu) => (
                 <div 
                   key={edu.id} 
@@ -151,6 +154,33 @@ export function PrintableCVView() {
                   <p className="text-xs font-mono font-bold mt-1.5 text-zinc-400 print:text-zinc-700">
                     {edu.period} • {edu.statusLabel}
                   </p>
+                </div>
+              ))}
+            </div>
+
+            {/* Cursos Técnicos & Certificaciones Especializadas */}
+            <h3 className="text-xs font-black uppercase tracking-wider text-indigo-400 print:text-indigo-800 mb-3 flex items-center gap-1.5">
+              <Award className="w-4 h-4" />
+              <span>Cursos Técnicos & Certificaciones Especializadas (INFOTEP, IDAD, CETEP...)</span>
+            </h3>
+
+            <div className="w-full grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-3 text-xs">
+              {TECHNICAL_COURSES.map((course, cIdx) => (
+                <div 
+                  key={cIdx} 
+                  className="p-3.5 rounded-2xl bg-zinc-900 text-zinc-100 print:bg-zinc-100 print:text-black flex flex-col justify-between"
+                >
+                  <div>
+                    <p className="font-black text-xs text-white print:text-black leading-snug">
+                      {course.name}
+                    </p>
+                    <p className="text-indigo-400 print:text-indigo-800 text-[11px] font-bold mt-1">
+                      {course.institution}
+                    </p>
+                  </div>
+                  <span className="text-[10px] font-bold font-mono px-2 py-0.5 rounded-md bg-zinc-800 text-zinc-300 print:bg-zinc-200 print:text-black w-fit mt-2">
+                    {course.category}
+                  </span>
                 </div>
               ))}
             </div>

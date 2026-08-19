@@ -10,6 +10,7 @@ import {
   Mail, 
   Phone, 
   MapPin, 
+  Globe,
   Briefcase, 
   GraduationCap, 
   Award, 
@@ -22,6 +23,7 @@ import {
   PERSONAL_INFO, 
   WORK_EXPERIENCES, 
   EDUCATION_ITEMS, 
+  TECHNICAL_COURSES,
   SOFTWARE_TOOLS, 
   REFERENCES 
 } from '@/data/portfolio-data';
@@ -164,6 +166,13 @@ export function CVModal({ isOpen, onClose }: CVModalProps) {
                   </a>
                 </div>
 
+                <div className="flex items-center gap-1 bg-black/50 backdrop-blur-md px-2.5 py-1 rounded-md">
+                  <Globe className="w-3.5 h-3.5 text-indigo-400" />
+                  <a href="https://www.manuelcabrera.pro" target="_blank" rel="noopener noreferrer" className="hover:underline font-mono text-[11px] font-bold text-white">
+                    www.manuelcabrera.pro
+                  </a>
+                </div>
+
                 <div className="flex items-center gap-1 bg-black/50 backdrop-blur-md px-2.5 py-1 rounded-md text-xs">
                   <MapPin className="w-3.5 h-3.5 text-indigo-400" />
                   <span className="text-zinc-200">{PERSONAL_INFO.location}</span>
@@ -183,8 +192,8 @@ export function CVModal({ isOpen, onClose }: CVModalProps) {
             </p>
           </div>
 
-          {/* 2. FORMACIÓN ACADÉMICA ── PRIMERO QUE LO LABORAL ── */}
-          <div className="space-y-3">
+          {/* 2. FORMACIÓN ACADÉMICA, DIPLOMADOS & CURSOS TÉCNICOS ── PRIMERO QUE LO LABORAL ── */}
+          <div className="space-y-4">
             <h2 className="text-xs font-black uppercase tracking-wider text-indigo-700 dark:text-indigo-400 flex items-center gap-1.5 pb-1">
               <GraduationCap className="w-3.5 h-3.5" />
               <span>Formación Académica & Diplomados</span>
@@ -195,6 +204,25 @@ export function CVModal({ isOpen, onClose }: CVModalProps) {
                   <p className="font-black text-black dark:text-white text-sm">{edu.degree}</p>
                   <p className="text-indigo-700 dark:text-indigo-400 font-bold text-xs mt-0.5">{edu.institution}</p>
                   <p className="text-zinc-700 dark:text-zinc-300 text-[11px] font-mono font-semibold mt-1">{edu.period} • {edu.statusLabel}</p>
+                </div>
+              ))}
+            </div>
+
+            {/* Cursos Técnicos & Certificaciones */}
+            <h3 className="text-xs font-black uppercase tracking-wider text-indigo-700 dark:text-indigo-400 flex items-center gap-1.5 pt-2 pb-1">
+              <Award className="w-3.5 h-3.5" />
+              <span>Cursos Técnicos & Certificaciones (INFOTEP, IDAD, CETEP, CENTU...)</span>
+            </h3>
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-2.5 text-xs">
+              {TECHNICAL_COURSES.map((course, cIdx) => (
+                <div key={cIdx} className="p-3 rounded-2xl bg-zinc-100 dark:bg-zinc-800/60 text-zinc-950 dark:text-zinc-100 flex flex-col justify-between">
+                  <div>
+                    <p className="font-black text-xs text-black dark:text-white">{course.name}</p>
+                    <p className="text-indigo-700 dark:text-indigo-400 text-[11px] font-bold mt-0.5">{course.institution}</p>
+                  </div>
+                  <span className="text-[9px] font-bold font-mono px-2 py-0.5 rounded-md bg-zinc-200 dark:bg-zinc-700 text-zinc-800 dark:text-zinc-200 w-fit mt-1.5">
+                    {course.category}
+                  </span>
                 </div>
               ))}
             </div>

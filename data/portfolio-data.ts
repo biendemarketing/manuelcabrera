@@ -119,25 +119,11 @@ export interface ClientBrand {
 
 export const PERSONAL_BRANDS: PersonalBrand[] = [
   {
-    name: "Higgsend",
-    email: "higgsend@gmail.com",
-    tagline: "Gestión, Optimización e Integración de Herramientas Tecnológicas",
-    category: "Gestión Tecnológica",
-    iconName: "Cpu"
-  },
-  {
     name: "WillkSoft",
     email: "willksoft@gmail.com",
     tagline: "Arquitectura de Software, Cloud Solutions & Desarrollo Web",
     category: "Tecnología & SaaS",
     iconName: "Code"
-  },
-  {
-    name: "Elevate Enterprise Brands",
-    email: "elevateenterprisebrands@gmail.com",
-    tagline: "Holding Creativo, Consultoría Estratégica & Business Growth",
-    category: "Holding & Negocios",
-    iconName: "Briefcase"
   },
   {
     name: "Bien De Marketing",
