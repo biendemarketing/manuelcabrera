@@ -323,6 +323,24 @@ export function PrintableCVView() {
             max-width: 100% !important;
           }
 
+          /* 1. Evita que los títulos queden solos al final de una hoja */
+          h1, h2, h3, h4 {
+            break-after: avoid !important;
+            page-break-after: avoid !important;
+          }
+
+          /* 2. Evita que ninguna tarjeta ni bloque de información se corte por la mitad */
+          div[class*="rounded-2xl"], 
+          div[class*="rounded-3xl"], 
+          div[class*="p-4"], 
+          div[class*="p-5"], 
+          div[class*="p-6"], 
+          ul > li,
+          section > div {
+            break-inside: avoid !important;
+            page-break-inside: avoid !important;
+          }
+
           a {
             text-decoration: none !important;
             color: inherit !important;
