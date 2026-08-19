@@ -283,12 +283,12 @@ export function PrintableCVView() {
         </div>
       </main>
 
-      {/* ── CSS PRINT RULES (Flujo de impresión libre y natural sin restricciones forzadas) ── */}
+      {/* ── CSS PRINT RULES (Impresión libre sin restricciones de ancho ni márgenes fijos) ── */}
       <style jsx global>{`
         @media print {
           @page {
             size: auto;
-            margin: 12mm 12mm 12mm 12mm !important;
+            margin: 0;
           }
           
           html, body {
@@ -298,10 +298,12 @@ export function PrintableCVView() {
             print-color-adjust: exact !important;
             margin: 0 !important;
             padding: 0 !important;
+            width: 100% !important;
+            max-width: 100% !important;
           }
 
           main {
-            padding: 0 !important;
+            padding: 8mm !important;
             margin: 0 !important;
             max-width: 100% !important;
             width: 100% !important;
@@ -315,6 +317,10 @@ export function PrintableCVView() {
             border: none !important;
             box-shadow: none !important;
             background: transparent !important;
+          }
+
+          div, section, p, h1, h2, h3, ul, li {
+            max-width: 100% !important;
           }
 
           a {
