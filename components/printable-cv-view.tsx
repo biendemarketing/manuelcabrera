@@ -19,10 +19,10 @@ import {
   WORK_EXPERIENCES, 
   EDUCATION_ITEMS, 
   TECHNICAL_COURSES,
-  SOFTWARE_TOOLS, 
+  CV_SOFTWARE_SKILLS, 
   REFERENCES 
 } from '@/data/portfolio-data';
-import { ManuelCabreraLogo } from '@/components/logo';
+import { ManuelCabreraLogo, WhatsAppOfficialIcon } from '@/components/logo';
 
 export function PrintableCVView() {
   return (
@@ -88,8 +88,15 @@ export function PrintableCVView() {
               <div className="flex flex-wrap items-center gap-x-4 gap-y-2 pt-2 text-xs sm:text-sm text-white font-semibold">
                 <div className="flex items-center gap-1.5 bg-black/50 backdrop-blur-md px-3.5 py-1.5 rounded-lg">
                   <Phone className="w-3.5 h-3.5 text-indigo-400 shrink-0" />
-                  <a href={`tel:${PERSONAL_INFO.phone}`} className="hover:underline text-white font-bold">
-                    {PERSONAL_INFO.phoneFormatted}
+                  <a href={`tel:${PERSONAL_INFO.phoneRaw}`} className="hover:underline text-white font-bold">
+                    Tel: {PERSONAL_INFO.phoneFormatted}
+                  </a>
+                </div>
+
+                <div className="flex items-center gap-1.5 bg-black/50 backdrop-blur-md px-3.5 py-1.5 rounded-lg">
+                  <WhatsAppOfficialIcon className="w-3.5 h-3.5 text-emerald-400 shrink-0" />
+                  <a href={PERSONAL_INFO.whatsappUrl} target="_blank" rel="noopener noreferrer" className="hover:underline text-white font-bold">
+                    WS: {PERSONAL_INFO.whatsappFormatted}
                   </a>
                 </div>
 
@@ -238,53 +245,29 @@ export function PrintableCVView() {
             </div>
           </section>
 
-          {/* 5. SOFTWARE, HERRAMIENTAS & TECNOLOGÍAS DOMINADAS (A TODO EL ANCHO) */}
+          {/* 5. SISTEMAS, SOFTWARE Y HERRAMIENTAS DIGITALES (A TODO EL ANCHO - SIN LOGOS) */}
           <section className="w-full pb-6 mb-8 print:mb-6">
             <h2 className="text-xs font-black uppercase tracking-wider text-indigo-400 print:text-indigo-800 mb-3 flex items-center gap-1.5">
               <Wrench className="w-4 h-4" />
-              <span>Software, Herramientas & Tecnologías Dominadas (+100)</span>
+              <span>Sistemas, Software y Herramientas Digitales</span>
             </h2>
 
-            <div className="w-full grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 text-xs">
-              <div className="p-4 rounded-2xl bg-zinc-900 print:bg-zinc-100">
-                <p className="font-black text-sm mb-1.5 flex items-center gap-1 text-white print:text-black">
-                  <CheckCircle2 className="w-3.5 h-3.5 text-indigo-400 print:text-indigo-800" />
-                  <span>Diseño & UI/UX</span>
-                </p>
-                <p className="text-xs font-medium leading-relaxed text-zinc-300 print:text-black">
-                  Photoshop, Illustrator, InDesign, Figma, Adobe XD, Acrobat Pro.
-                </p>
-              </div>
-
-              <div className="p-4 rounded-2xl bg-zinc-900 print:bg-zinc-100">
-                <p className="font-black text-sm mb-1.5 flex items-center gap-1 text-white print:text-black">
-                  <CheckCircle2 className="w-3.5 h-3.5 text-indigo-400 print:text-indigo-800" />
-                  <span>Marketing & Ads</span>
-                </p>
-                <p className="text-xs font-medium leading-relaxed text-zinc-300 print:text-black">
-                  Meta Ads Manager, Google Ads, GA4, TikTok Ads, SEO/SEM, Embudos.
-                </p>
-              </div>
-
-              <div className="p-4 rounded-2xl bg-zinc-900 print:bg-zinc-100">
-                <p className="font-black text-sm mb-1.5 flex items-center gap-1 text-white print:text-black">
-                  <CheckCircle2 className="w-3.5 h-3.5 text-indigo-400 print:text-indigo-800" />
-                  <span>Software & Web</span>
-                </p>
-                <p className="text-xs font-medium leading-relaxed text-zinc-300 print:text-black">
-                  TypeScript, Next.js, React, Node.js, PostgreSQL, Supabase, Tailwind.
-                </p>
-              </div>
-
-              <div className="p-4 rounded-2xl bg-zinc-900 print:bg-zinc-100">
-                <p className="font-black text-sm mb-1.5 flex items-center gap-1 text-white print:text-black">
-                  <CheckCircle2 className="w-3.5 h-3.5 text-indigo-400 print:text-indigo-800" />
-                  <span>3D, Video & IA</span>
-                </p>
-                <p className="text-xs font-medium leading-relaxed text-zinc-300 print:text-black">
-                  Blender 3D, Cinema 4D, Gemini Pro, ChatGPT, Claude, Midjourney.
-                </p>
-              </div>
+            <div className="w-full grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-3 text-xs">
+              {CV_SOFTWARE_SKILLS.map((item, idx) => (
+                <div 
+                  key={idx} 
+                  className="p-3.5 sm:p-4 rounded-2xl bg-zinc-900 text-zinc-100 print:bg-zinc-100 print:text-black flex flex-col justify-between"
+                >
+                  <div>
+                    <p className="font-black text-xs sm:text-[13px] text-white print:text-black mb-1.5 leading-snug">
+                      {item.category}
+                    </p>
+                    <p className="text-xs font-medium leading-relaxed text-zinc-300 print:text-black">
+                      {item.tools}
+                    </p>
+                  </div>
+                </div>
+              ))}
             </div>
           </section>
 

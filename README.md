@@ -104,7 +104,8 @@ Abre [http://localhost:3000](http://localhost:3000) en tu navegador para ver la 
 
 * **Nombre:** Manuel Cabrera
 * **Email:** [manuelcabrerasinfo@gmail.com](mailto:manuelcabrerasinfo@gmail.com)
-* **WhatsApp / Teléfono:** [+1 (849) 635-2835](https://wa.me/18496352835)
+* **Teléfono:** [+1 (829) 871-2835](tel:+18298712835)
+* **WhatsApp Directo:** [+1 (849) 635-2835](https://wa.me/18496352835)
 * **Ubicación:** Verón, Punta Cana, La Altagracia, República Dominicana
 * **Web Oficial:** [https://manuelcabrera.pro](https://manuelcabrera.pro)
 

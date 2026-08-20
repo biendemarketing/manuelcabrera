@@ -15,18 +15,23 @@ import {
   Palette, 
   Box, 
   Video, 
-  Layers 
+  Layers,
+  Building2,
+  Workflow
 } from 'lucide-react';
 import { BlurFadeSection, BlurFadeDiv } from '@/components/blur-fade-section';
 
 const CATEGORY_ICONS: Record<string, React.ElementType> = {
-  'design': Palette,
+  'crm-erp': Building2,
+  'automation': Workflow,
+  'project-management': CheckSquare,
   'marketing': Megaphone,
-  'dev-cloud': Globe,
-  'ai': Cpu,
+  'design': Palette,
   'video-motion': Video,
+  'dev-cloud': Globe,
+  'productivity': Layers,
+  'ai': Cpu,
   '3d-modeling': Box,
-  'productivity': CheckSquare,
   'ides-tools': Code,
 };
 
@@ -39,13 +44,13 @@ export function SoftwareShowcase() {
         <BlurFadeDiv className="flex flex-col items-center text-center max-w-4xl mx-auto mb-14 sm:mb-16">
           <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white dark:bg-zinc-900/80 border border-zinc-200 dark:border-zinc-800 text-indigo-600 dark:text-indigo-400 text-xs font-bold uppercase tracking-wider mb-3.5 shadow-xs">
             <Layers className="w-3.5 h-3.5 text-indigo-600 dark:text-indigo-400" />
-            <span>Suite Técnica & Creativa</span>
+            <span>Suite Técnica, Empresarial & Creativa</span>
           </div>
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-zinc-900 dark:text-white tracking-tight">
-            Software & Herramientas
+            Sistemas, Software & Herramientas
           </h2>
           <p className="text-sm sm:text-base lg:text-lg text-zinc-600 dark:text-zinc-400 mt-3.5 leading-relaxed max-w-3xl font-normal">
-            Dominio profesional y exhaustivo organizado por áreas de especialización: Diseño Gráfico y UI/UX, Marketing Digital y Publicidad, Desarrollo de Software, Inteligencia Artificial, Edición de Video, Modelado 3D, Google Workspace, Microsoft Office e IDEs.
+            Dominio profesional y exhaustivo organizado por áreas: CRM y ERP, Facturación Electrónica, Automatización, Gestión de Proyectos, Marketing Digital, Diseño Gráfico, Edición de Video, Desarrollo Web y E-Commerce, Productividad e Inteligencia Artificial.
           </p>
         </BlurFadeDiv>
 

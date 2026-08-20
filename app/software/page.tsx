@@ -7,38 +7,38 @@ import { ArrowLeft, ArrowRight } from 'lucide-react';
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://manuelcabrera.pro';
 
 export const metadata: Metadata = {
-  title: 'Software & Herramientas Profesionales',
-  description: 'Suite completa de software dominado por Manuel Cabrera: Adobe Creative Suite (Illustrator, Photoshop, InDesign, After Effects, Premiere), Cinema 4D, Blender, Next.js, React, TypeScript, Figma, Meta Ads Manager, Google Ads y más de 40 herramientas profesionales.',
+  title: 'Sistemas, Software & Herramientas Digitales',
+  description: 'Suite completa de sistemas, CRM, ERP, automatización y software dominado por Manuel Cabrera: HubSpot, Salesforce, Zoho, Odoo, SAP, Microsoft Dynamics, Zapier, Make, Adobe Creative Cloud, Figma, WordPress, WooCommerce, Shopify, Next.js, React y más.',
   keywords: [
-    'Adobe Creative Suite Dominicana',
-    'Cinema 4D Blender 3D',
-    'Figma UI diseño',
-    'Next.js React TypeScript desarrollador',
-    'Meta Ads Manager Google Ads',
-    'Software diseño gráfico',
-    'Herramientas marketing digital',
-    'Suite profesional creativos',
+    'CRM HubSpot Salesforce Zoho',
+    'ERP Odoo SAP Microsoft Dynamics',
+    'Facturacion electronica e-CF',
+    'Automatizacion Zapier Make',
+    'Gestion de proyectos Trello Asana ClickUp Monday',
+    'Adobe Creative Suite Photoshop Illustrator',
+    'Desarrollo Web WordPress WooCommerce Shopify React Next.js',
+    'Productividad Microsoft Office Google Workspace',
   ],
   alternates: {
     canonical: '/software',
   },
   openGraph: {
-    title: 'Software & Herramientas | Manuel Cabrera',
-    description: '+40 herramientas profesionales: Adobe Creative Suite, Cinema 4D, Blender, Next.js, Figma, Meta Ads y más.',
+    title: 'Sistemas, Software & Herramientas | Manuel Cabrera',
+    description: 'Suite completa de sistemas empresariales, CRM, ERP, automatización, diseño, video y desarrollo web.',
     url: `${SITE_URL}/software`,
     images: [
       {
         url: `${SITE_URL}/opengraph.png`,
         width: 1200,
         height: 630,
-        alt: 'Software y herramientas profesionales de Manuel Cabrera',
+        alt: 'Sistemas, Software y herramientas profesionales de Manuel Cabrera',
       },
     ],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Software & Herramientas | Manuel Cabrera',
-    description: '+40 herramientas de diseño, desarrollo y marketing digital.',
+    title: 'Sistemas, Software & Herramientas | Manuel Cabrera',
+    description: 'Suite completa de sistemas empresariales, CRM, ERP, diseño y desarrollo.',
     images: [`${SITE_URL}/opengraph.png`],
   },
 };

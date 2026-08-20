@@ -16,7 +16,8 @@ import {
   FileDown,
   Clock, 
   AlertCircle, 
-  MessageSquare 
+  MessageSquare,
+  Phone
 } from 'lucide-react';
 import { WhatsAppOfficialIcon } from '@/components/logo';
 import { BlurFadeSection, BlurFadeDiv } from '@/components/blur-fade-section';
@@ -179,17 +180,17 @@ export function ContactSection({ onOpenCV }: ContactSectionProps = {}) {
                     <WhatsAppOfficialIcon className="w-5 h-5 text-emerald-600 dark:text-emerald-500" />
                   </div>
                   <div>
-                    <p className="text-xs text-zinc-500 dark:text-zinc-400 font-medium">WhatsApp / Teléfono</p>
-                    <p className="text-sm font-bold text-zinc-950 dark:text-white">{PERSONAL_INFO.phone}</p>
+                    <p className="text-xs text-zinc-500 dark:text-zinc-400 font-medium">WhatsApp Directo</p>
+                    <p className="text-sm font-bold text-zinc-950 dark:text-white">{PERSONAL_INFO.whatsappFormatted}</p>
                   </div>
                 </div>
                 <div className="flex items-center gap-1.5">
                   <button
-                    onClick={() => handleCopy(PERSONAL_INFO.phone, 'phone')}
+                    onClick={() => handleCopy(PERSONAL_INFO.whatsappFormatted, 'whatsapp')}
                     className="p-2 rounded-full bg-zinc-200 dark:bg-zinc-700 text-zinc-700 dark:text-zinc-200 hover:bg-zinc-300 dark:hover:bg-zinc-600 hover:text-zinc-950 dark:hover:text-white transition-colors cursor-pointer shadow-xs"
-                    title="Copiar teléfono"
+                    title="Copiar WhatsApp"
                   >
-                    {copiedField === 'phone' ? <Check className="w-4 h-4 text-emerald-600 dark:text-white" /> : <Copy className="w-4 h-4" />}
+                    {copiedField === 'whatsapp' ? <Check className="w-4 h-4 text-emerald-600 dark:text-white" /> : <Copy className="w-4 h-4" />}
                   </button>
                   <a
                     href={PERSONAL_INFO.whatsappUrl}
@@ -197,6 +198,35 @@ export function ContactSection({ onOpenCV }: ContactSectionProps = {}) {
                     rel="noopener noreferrer"
                     className="p-2 rounded-full bg-emerald-500 hover:bg-emerald-600 text-white transition-colors cursor-pointer shadow-xs"
                     title="Abrir WhatsApp"
+                  >
+                    <ArrowRight className="w-4 h-4" />
+                  </a>
+                </div>
+              </div>
+
+              {/* Phone / Call Item */}
+              <div className="flex items-center justify-between p-4 rounded-2xl bg-zinc-50 dark:bg-zinc-800 border border-zinc-200/80 dark:border-transparent shadow-xs">
+                <div className="flex items-center gap-3">
+                  <div className="w-10 h-10 rounded-xl bg-indigo-50 dark:bg-indigo-950/50 flex items-center justify-center text-indigo-600 dark:text-indigo-400">
+                    <Phone className="w-5 h-5 text-indigo-600 dark:text-indigo-400" />
+                  </div>
+                  <div>
+                    <p className="text-xs text-zinc-500 dark:text-zinc-400 font-medium">Teléfono / Llamadas</p>
+                    <p className="text-sm font-bold text-zinc-950 dark:text-white">{PERSONAL_INFO.phoneFormatted}</p>
+                  </div>
+                </div>
+                <div className="flex items-center gap-1.5">
+                  <button
+                    onClick={() => handleCopy(PERSONAL_INFO.phoneFormatted, 'phone')}
+                    className="p-2 rounded-full bg-zinc-200 dark:bg-zinc-700 text-zinc-700 dark:text-zinc-200 hover:bg-zinc-300 dark:hover:bg-zinc-600 hover:text-zinc-950 dark:hover:text-white transition-colors cursor-pointer shadow-xs"
+                    title="Copiar teléfono"
+                  >
+                    {copiedField === 'phone' ? <Check className="w-4 h-4 text-emerald-600 dark:text-white" /> : <Copy className="w-4 h-4" />}
+                  </button>
+                  <a
+                    href={`tel:${PERSONAL_INFO.phoneRaw}`}
+                    className="p-2 rounded-full bg-indigo-600 hover:bg-indigo-700 text-white transition-colors cursor-pointer shadow-xs"
+                    title="Llamar"
                   >
                     <ArrowRight className="w-4 h-4" />
                   </a>
@@ -259,7 +289,7 @@ export function ContactSection({ onOpenCV }: ContactSectionProps = {}) {
               className="w-full flex items-center justify-center gap-2.5 p-4 rounded-full bg-emerald-500 hover:bg-emerald-600 text-white font-bold text-sm shadow-md shadow-emerald-500/20 active:scale-95 transition-all cursor-pointer"
             >
               <WhatsAppOfficialIcon className="w-5 h-5 text-white" />
-              <span>Chatear por WhatsApp ({PERSONAL_INFO.phone})</span>
+              <span>Chatear por WhatsApp ({PERSONAL_INFO.whatsappFormatted})</span>
             </a>
 
           </div>

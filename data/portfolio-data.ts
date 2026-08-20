@@ -48,9 +48,57 @@ export interface SkillCard {
   image?: string;
 }
 
+export interface CVSoftwareCategory {
+  category: string;
+  tools: string;
+}
+
+export const CV_SOFTWARE_SKILLS: CVSoftwareCategory[] = [
+  {
+    category: "CRM y gestión de clientes",
+    tools: "HubSpot, Salesforce, Zoho CRM"
+  },
+  {
+    category: "ERP y gestión empresarial",
+    tools: "Odoo, SAP, Microsoft Dynamics"
+  },
+  {
+    category: "Facturación y administración",
+    tools: "Sistemas de facturación electrónica, cotizaciones, órdenes de compra, gestión de ventas, clientes e inventarios."
+  },
+  {
+    category: "Marketing y analítica",
+    tools: "HubSpot Marketing, Google Analytics, Meta Business Suite, Mailchimp"
+  },
+  {
+    category: "Gestión de proyectos",
+    tools: "Trello, Asana, ClickUp, Monday.com"
+  },
+  {
+    category: "Automatización",
+    tools: "Zapier, Make"
+  },
+  {
+    category: "Diseño gráfico",
+    tools: "Adobe Photoshop, Illustrator, InDesign, Figma, Canva, Adobe Creative Cloud"
+  },
+  {
+    category: "Edición de video y contenido audiovisual",
+    tools: "Adobe Premiere Pro, After Effects, Final Cut Pro, CapCut"
+  },
+  {
+    category: "Desarrollo y plataformas web",
+    tools: "WordPress, WooCommerce, Shopify, React, Firebase, Vercel"
+  },
+  {
+    category: "Productividad",
+    tools: "Microsoft Office, Google Workspace"
+  }
+];
+
 export interface SoftwareTool {
   name: string;
-  category: 'ai' | 'dev-cloud' | 'ides-tools' | 'productivity' | 'marketing' | 'design' | 'video-motion' | '3d-modeling';
+  category: 'crm-erp' | 'automation' | 'project-management' | 'marketing' | 'design' | 'video-motion' | 'dev-cloud' | 'productivity' | 'ai' | '3d-modeling' | 'ides-tools';
   categoryName: string;
   icon: string;
   level: number;
@@ -62,7 +110,7 @@ export interface SoftwareTool {
 }
 
 export interface SoftwareCategoryGroup {
-  id: 'ai' | 'dev-cloud' | 'ides-tools' | 'productivity' | 'marketing' | 'design' | 'video-motion' | '3d-modeling';
+  id: 'crm-erp' | 'automation' | 'project-management' | 'marketing' | 'design' | 'video-motion' | 'dev-cloud' | 'productivity' | 'ai' | '3d-modeling' | 'ides-tools';
   title: string;
   subtitle: string;
   iconName: string;
@@ -152,8 +200,12 @@ export const PERSONAL_INFO = {
   role: "Marketing Digital, Diseño Gráfico, Desarrollo de Software y Web, Automatizaciones, Fotografía, Video & IA",
   age: "29 años",
   experienceYears: "11 Años",
-  phone: "849-635-2835",
-  phoneFormatted: "+1 (849) 635-2835",
+  phone: "829-871-2835",
+  phoneFormatted: "+1 (829) 871-2835",
+  phoneRaw: "+18298712835",
+  whatsapp: "849-635-2835",
+  whatsappFormatted: "+1 (849) 635-2835",
+  whatsappRaw: "+18496352835",
   whatsappUrl: "https://wa.me/18496352835?text=Hola%20Manuel,%20vi%20tu%20portafolio%20profesional%20y%20me%20gustar%C3%ADa%20conversar%20sobre%20una%20oportunidad.",
   email: "manuelcabrerasinfo@gmail.com",
   location: "Verón, Punta Cana, La Altagracia, República Dominicana",
@@ -172,28 +224,34 @@ export const PERSONAL_INFO = {
 
 export const SOFTWARE_CATEGORY_GROUPS: SoftwareCategoryGroup[] = [
   {
-    id: 'design',
-    title: 'Diseño Gráfico, UI/UX & Identidad Visual',
-    subtitle: 'Herramientas líderes para interfaces interactivas, sistemas de diseño, maquetación editorial y diseño vectorial corporativo.',
-    iconName: 'Palette'
+    id: 'crm-erp',
+    title: 'CRM, ERP & Facturación Electrónica',
+    subtitle: 'Sistemas de gestión corporativa, administración de clientes CRM, ERP integral y facturación fiscal e-CF.',
+    iconName: 'Building2'
+  },
+  {
+    id: 'automation',
+    title: 'Automatización & Integraciones (Workflows)',
+    subtitle: 'Conexión de ecosistemas digitales, automatización de tareas repetitivas, webhooks y sincronización en tiempo real.',
+    iconName: 'Workflow'
+  },
+  {
+    id: 'project-management',
+    title: 'Gestión de Proyectos & Metodologías Ágiles',
+    subtitle: 'Tableros visuales, sprints Scrum, Kanban, seguimiento de objetivos y coordinación de equipos.',
+    iconName: 'CheckSquare'
   },
   {
     id: 'marketing',
     title: 'Marketing Digital & Analítica de Tráfico',
-    subtitle: 'Gestión y optimización de campañas publicitarias de alto rendimiento en Meta, Google y TikTok con analítica de conversiones.',
+    subtitle: 'Gestión de campañas de conversión masiva, pauta en Meta & Google Ads, email marketing automatizado y analítica GA4.',
     iconName: 'Megaphone'
   },
   {
-    id: 'dev-cloud',
-    title: 'Desarrollo de Software, Lenguajes & Bases de Datos',
-    subtitle: 'Lenguajes de programación modernos, bases de datos relacionales y NoSQL, APIs, cloud computing y despliegues de alto rendimiento.',
-    iconName: 'Globe'
-  },
-  {
-    id: 'ai',
-    title: 'Inteligencia Artificial & Modelos Generativos',
-    subtitle: 'Suite de IA generativa de vanguardia, ingeniería de prompts, LLMs y flujos de automatización para acelerar la producción de software, diseño y marketing.',
-    iconName: 'Cpu'
+    id: 'design',
+    title: 'Diseño Gráfico, UI/UX & Identidad Visual',
+    subtitle: 'Herramientas líderes para interfaces interactivas, sistemas de diseño, maquetación editorial y diseño vectorial corporativo.',
+    iconName: 'Palette'
   },
   {
     id: 'video-motion',
@@ -202,16 +260,28 @@ export const SOFTWARE_CATEGORY_GROUPS: SoftwareCategoryGroup[] = [
     iconName: 'Video'
   },
   {
-    id: '3d-modeling',
-    title: 'Modelado 3D, Texturizado & Renderizado',
-    subtitle: 'Modelado tridimensional fotorrealista para envases farmacéuticos, productos cosméticos, stands y visualización arquitectónica.',
-    iconName: 'Box'
+    id: 'dev-cloud',
+    title: 'Desarrollo de Software, Web & Plataformas',
+    subtitle: 'Lenguajes de programación modernos, React, Next.js, plataformas CMS (WordPress, WooCommerce, Shopify), bases de datos y cloud serverless.',
+    iconName: 'Globe'
   },
   {
     id: 'productivity',
     title: 'Productividad, Google Workspace & Microsoft Office',
-    subtitle: 'Suites ofimáticas completas en la nube y escritorio, plataformas de gestión ágil de proyectos y comunicación corporativa.',
-    iconName: 'CheckSquare'
+    subtitle: 'Suites ofimáticas completas en la nube y escritorio, hojas de cálculo avanzadas, contratos comerciales y comunicación ejecutiva.',
+    iconName: 'Layers'
+  },
+  {
+    id: 'ai',
+    title: 'Inteligencia Artificial & Modelos Generativos',
+    subtitle: 'Suite de IA generativa de vanguardia, ingeniería de prompts, LLMs y flujos de automatización para acelerar la producción de software, diseño y marketing.',
+    iconName: 'Cpu'
+  },
+  {
+    id: '3d-modeling',
+    title: 'Modelado 3D, Texturizado & Renderizado',
+    subtitle: 'Modelado tridimensional fotorrealista para envases farmacéuticos, productos cosméticos, stands y visualización arquitectónica.',
+    iconName: 'Box'
   },
   {
     id: 'ides-tools',
@@ -222,62 +292,102 @@ export const SOFTWARE_CATEGORY_GROUPS: SoftwareCategoryGroup[] = [
 ];
 
 export const SOFTWARE_TOOLS: SoftwareTool[] = [
-  // 1. DISEÑO GRÁFICO, UI/UX & IDENTIDAD VISUAL
-  // Adobe Creative Cloud Suite
-  { name: "Adobe Photoshop", category: "design", categoryName: "Edición & Retoque Pro", icon: "logos:adobe-photoshop", slug: "photoshop", level: 98, experience: "11 años", color: "#31A8FF", highlight: true, description: "Composición fotográfica, retoque comercial de pieles y arte publicitario." },
-  { name: "Adobe Illustrator", category: "design", categoryName: "Diseño Vectorial & Identidad", icon: "logos:adobe-illustrator", slug: "illustrator", level: 97, experience: "11 años", color: "#FF9A00", highlight: true, description: "Logotipos, packaging, tipografía vectorial y manuales de marca normativos." },
-  { name: "Adobe InDesign", category: "design", categoryName: "Editorial & Manuales de Marca", icon: "logos:adobe-indesign", slug: "indesign", level: 92, experience: "8+ años", color: "#FF3366", description: "Diagramación editorial multipágina, catálogos y preparación para imprenta." },
-  { name: "Adobe XD", category: "design", categoryName: "Prototipado de Interfaces", icon: "logos:adobe-xd", slug: "adobe-xd", level: 92, experience: "6+ años", color: "#FF61F6", description: "Flujos de pantallas y wireframes para aplicaciones y sitios web." },
-  { name: "Adobe Acrobat Pro", category: "design", categoryName: "Preprensa & Archivos Maestros", icon: "logos:adobe-acrobat", slug: "acrobat", level: 95, experience: "9+ años", color: "#FF0000", description: "Separación de color CMYK, marcas de corte y PDFs de alta resolución para plotters." },
-  // Figma
-  { name: "Figma", category: "design", categoryName: "UI/UX & Design Systems", icon: "logos:figma", slug: "figma", level: 95, experience: "6+ años", color: "#F24E1E", highlight: true, description: "Prototipado interactivo, auto-layout, componentes y handover de desarrollo." },
+  // 1. CRM, ERP & FACTURACIÓN ELECTRÓNICA
+  { name: "HubSpot CRM", category: "crm-erp", categoryName: "CRM & Pipeline de Ventas", icon: "logos:hubspot", slug: "hubspot-crm", level: 96, experience: "6+ años", color: "#FF7A59", highlight: true, description: "Gestión de contactos, automatización de embudos comerciales y seguimiento de leads." },
+  { name: "Salesforce CRM", category: "crm-erp", categoryName: "CRM Empresarial Global", icon: "logos:salesforce", slug: "salesforce", level: 92, experience: "5+ años", color: "#00A1E0", highlight: true, description: "Administración de cuentas corporativas, flujos de ventas y reportes ejecutivos." },
+  { name: "Zoho CRM", category: "crm-erp", categoryName: "Gestión Omnicanal de Clientes", icon: "logos:zoho", slug: "zoho-crm", level: 94, experience: "6+ años", color: "#E42528", description: "Automatización de ventas, marketing, soporte y flujos de trabajo multicanal." },
+  { name: "Odoo ERP", category: "crm-erp", categoryName: "ERP Modular de Gestión", icon: "simple-icons:odoo", slug: "odoo", level: 94, experience: "5+ años", color: "#714B67", highlight: true, description: "Gestión de compras, inventarios en tiempo real, ventas y contabilidad empresarial." },
+  { name: "SAP ERP", category: "crm-erp", categoryName: "ERP & Planificación Corporativa", icon: "logos:sap", slug: "sap", level: 90, experience: "4+ años", color: "#008FD3", description: "Estructuras de procesos empresariales, trazabilidad de operaciones y logística." },
+  { name: "Microsoft Dynamics 365", category: "crm-erp", categoryName: "ERP & CRM Integrado", icon: "logos:microsoft-icon", slug: "ms-dynamics", level: 92, experience: "5+ años", color: "#0078D4", description: "Soluciones de negocio unificadas, gestión financiera y operaciones en la nube." },
+  { name: "Sistemas de Facturación Electrónica (e-CF)", category: "crm-erp", categoryName: "Comprobantes Fiscales & e-CF", icon: "fluent-emoji-flat:receipt", slug: "facturacion-ecf", level: 98, experience: "6+ años", color: "#10B981", highlight: true, description: "Facturación electrónica DGII e-CF, cotizaciones, órdenes de compra y control de ventas." },
+  { name: "Gestión de Ventas, Clientes e Inventarios", category: "crm-erp", categoryName: "Control de Stock & Operaciones", icon: "vscode-icons:file-type-excel", slug: "ventas-inventarios", level: 96, experience: "8+ años", color: "#059669", description: "Control de existencias, punto de venta (POS), kardex, compras y márgenes de ganancia." },
 
-  // 2. MARKETING DIGITAL, ANALÍTICA DE TRÁFICO & PUBLICIDAD
-  // Meta
-  { name: "Meta Ads (Facebook & Instagram)", category: "marketing", categoryName: "Publicidad Digital & Campañas", icon: "logos:meta-icon", slug: "meta-ads", level: 97, experience: "8+ años", color: "#0668E1", highlight: true, description: "Segmentación de audiencias, pruebas A/B, píxel de conversión y ROAS." },
-  // Google Ads & Analytics
-  { name: "Google Ads", category: "marketing", categoryName: "Campañas Search, Display & YouTube", icon: "logos:google-ads", slug: "google-ads", level: 93, experience: "7+ años", color: "#4285F4", highlight: true, description: "Palabras clave de alta intención, anuncios de búsqueda y remarketing." },
-  { name: "Google Analytics 4 (GA4)", category: "marketing", categoryName: "Analítica & Embudos de Conversión", icon: "logos:google-analytics", slug: "ga4", level: 92, experience: "6+ años", color: "#E37400", highlight: true, description: "Eventos personalizados, mapas de comportamiento y atribución." },
-  // ByteDance
+  // 2. AUTOMATIZACIÓN & INTEGRACIONES (WORKFLOWS)
+  { name: "Zapier", category: "automation", categoryName: "Automatización No-Code", icon: "logos:zapier-icon", slug: "zapier", level: 96, experience: "6+ años", color: "#FF4A00", highlight: true, description: "Conexión de miles de apps, disparadores automáticos (triggers) y flujos multi-paso." },
+  { name: "Make (Integromat)", category: "automation", categoryName: "Workflows Visuales Complejos", icon: "logos:make", slug: "make", level: 94, experience: "5+ años", color: "#6D28D9", highlight: true, description: "Escenarios visuales avanzados, mapeo de datos JSON, webhooks y APIs." },
+
+  // 3. GESTIÓN DE PROYECTOS & METODOLOGÍAS ÁGILES
+  { name: "Trello", category: "project-management", categoryName: "Tableros Kanban Visuales", icon: "logos:trello", slug: "trello", level: 98, experience: "8+ años", color: "#0079BF", highlight: true, description: "Organización ágil de tareas por columnas, power-ups y automatizaciones Butler." },
+  { name: "Asana", category: "project-management", categoryName: "Gestión de Tareas & Hitos", icon: "logos:asana-icon", slug: "asana", level: 95, experience: "6+ años", color: "#F06A6A", highlight: true, description: "Cronogramas de proyectos, dependencias entre tareas y seguimiento de entregas." },
+  { name: "ClickUp", category: "project-management", categoryName: "Productividad Todo-en-Uno", icon: "logos:clickup-icon", slug: "clickup", level: 94, experience: "5+ años", color: "#7B68EE", highlight: true, description: "Espacios de trabajo unificados, sprints, documentos, metas y control de tiempo." },
+  { name: "Monday.com", category: "project-management", categoryName: "Work OS & Planificación", icon: "logos:monday-icon", slug: "monday", level: 92, experience: "4+ años", color: "#00CA72", description: "Tableros operativos, automatizaciones de estado y seguimiento de rendimiento de equipo." },
+  { name: "Notion", category: "project-management", categoryName: "Documentación & Wikis de Equipo", icon: "simple-icons:notion", slug: "notion", level: 96, experience: "6+ años", color: "#FFFFFF", highlight: true, description: "Bases de datos de proyectos, guías de estilo y roadmaps." },
+  { name: "Linear", category: "project-management", categoryName: "Gestión Ágil de Tareas & Sprints", icon: "simple-icons:linear", slug: "linear", level: 92, experience: "3+ años", color: "#FFFFFF", description: "Planificación de ciclos de software, priorización e incidencias técnicas." },
+  { name: "Slack", category: "project-management", categoryName: "Comunicación de Equipos Ágiles", icon: "logos:slack-icon", slug: "slack", level: 96, experience: "7+ años", color: "#4A154B", description: "Canales de trabajo, integraciones de bots, alertas y colaboración remota en tiempo real." },
+  { name: "Jira Software", category: "project-management", categoryName: "Gestión Scrum & Backlog", icon: "logos:jira", slug: "jira", level: 90, experience: "5+ años", color: "#0052CC", description: "Seguimiento de sprints ágiles, tableros de incidencias complejas y reportes burndown." },
+
+  // 4. MARKETING DIGITAL, ANALÍTICA DE TRÁFICO & PUBLICIDAD
+  { name: "HubSpot Marketing Hub", category: "marketing", categoryName: "Inbound Marketing & Leads", icon: "logos:hubspot", slug: "hubspot-marketing", level: 95, experience: "6+ años", color: "#FF7A59", highlight: true, description: "Campañas inbound, landing pages, formularios inteligentes y nutrición automatizada." },
+  { name: "Google Analytics 4 (GA4)", category: "marketing", categoryName: "Analítica & Embudos de Conversión", icon: "logos:google-analytics", slug: "ga4", level: 94, experience: "7+ años", color: "#E37400", highlight: true, description: "Eventos personalizados, mapas de comportamiento, comercio electrónico y atribución." },
+  { name: "Meta Business Suite & Ads", category: "marketing", categoryName: "Publicidad Facebook & Instagram", icon: "logos:meta-icon", slug: "meta-ads", level: 98, experience: "8+ años", color: "#0668E1", highlight: true, description: "Segmentación de audiencias, pruebas A/B, píxel de conversión, CAPI y ROAS." },
+  { name: "Mailchimp & Brevo", category: "marketing", categoryName: "Email Marketing & Automatización", icon: "logos:mailchimp-freddie", slug: "mailchimp", level: 94, experience: "7+ años", color: "#FFE01B", description: "Secuencias automáticas de bienvenida, newsletters segmentados y CRM de correos." },
+  { name: "Google Ads", category: "marketing", categoryName: "Campañas Search, Display & YouTube", icon: "logos:google-ads", slug: "google-ads", level: 94, experience: "7+ años", color: "#4285F4", highlight: true, description: "Palabras clave de alta intención, anuncios de búsqueda y remarketing." },
   { name: "TikTok Ads Manager", category: "marketing", categoryName: "Publicidad de Alto Rendimiento", icon: "simple-icons:tiktok", slug: "tiktok-ads", level: 90, experience: "4+ años", color: "#FFFFFF", description: "Anuncios nativos dinámicos y formatos de video vertical de engagement." },
-  // Email & Social Management
-  { name: "Mailchimp & Brevo", category: "marketing", categoryName: "Email Marketing & Automatización", icon: "logos:mailchimp-freddie", slug: "mailchimp", level: 92, experience: "6+ años", color: "#FFE01B", description: "Secuencias automáticas de bienvenida, newsletters y segmentación." },
   { name: "Metricool & Hootsuite", category: "marketing", categoryName: "Planificación & Reportes Social", icon: "logos:hootsuite", slug: "metricool", level: 95, experience: "7+ años", color: "#000000", description: "Programación multicanal, benchmarking de competencia y reportes de KPIs." },
 
-  // 3. DESARROLLO DE SOFTWARE, LENGUAJES & BASES DE DATOS
-  // Core Web & Languages
+  // 5. DISEÑO GRÁFICO, UI/UX & IDENTIDAD VISUAL
+  { name: "Adobe Photoshop", category: "design", categoryName: "Edición & Retoque Pro", icon: "logos:adobe-photoshop", slug: "photoshop", level: 98, experience: "11 años", color: "#31A8FF", highlight: true, description: "Composición fotográfica, retoque comercial de pieles y arte publicitario." },
+  { name: "Adobe Illustrator", category: "design", categoryName: "Diseño Vectorial & Identidad", icon: "logos:adobe-illustrator", slug: "illustrator", level: 98, experience: "11 años", color: "#FF9A00", highlight: true, description: "Logotipos, packaging, tipografía vectorial y manuales de marca normativos." },
+  { name: "Adobe InDesign", category: "design", categoryName: "Editorial & Manuales de Marca", icon: "logos:adobe-indesign", slug: "indesign", level: 94, experience: "8+ años", color: "#FF3366", description: "Diagramación editorial multipágina, catálogos y preparación para imprenta." },
+  { name: "Figma", category: "design", categoryName: "UI/UX & Design Systems", icon: "logos:figma", slug: "figma", level: 96, experience: "6+ años", color: "#F24E1E", highlight: true, description: "Prototipado interactivo, auto-layout, componentes y handover de desarrollo." },
+  { name: "Canva Pro", category: "design", categoryName: "Diseño Rápido & Kits de Marca", icon: "logos:canva", slug: "canva", level: 96, experience: "6+ años", color: "#00C4CC", description: "Creación ágil de piezas promocionales, kits de marca para equipos y contenido social." },
+  { name: "Adobe Creative Cloud", category: "design", categoryName: "Suite Creativa Completa", icon: "logos:adobe-icon", slug: "adobe-cc", level: 98, experience: "11 años", color: "#FF0000", highlight: true, description: "Ecosistema creativo unificado, librerías sincronizadas en la nube y activos vectoriales." },
+  { name: "Adobe XD", category: "design", categoryName: "Prototipado de Interfaces", icon: "logos:adobe-xd", slug: "adobe-xd", level: 92, experience: "6+ años", color: "#FF61F6", description: "Flujos de pantallas y wireframes para aplicaciones y sitios web." },
+  { name: "Adobe Acrobat Pro", category: "design", categoryName: "Preprensa & Archivos Maestros", icon: "logos:adobe-acrobat", slug: "acrobat", level: 95, experience: "9+ años", color: "#FF0000", description: "Separación de color CMYK, marcas de corte y PDFs de alta resolución para plotters." },
+
+  // 6. EDICIÓN DE VIDEO, MOTION GRAPHICS & AUDIO
+  { name: "Adobe Premiere Pro", category: "video-motion", categoryName: "Edición Audiovisual Comercial", icon: "logos:adobe-premiere", slug: "premiere", level: 95, experience: "8+ años", color: "#EA77FF", highlight: true, description: "Corte rítmico, corrección de color Lumetri, sincronización multicámara y formatos optimizados." },
+  { name: "Adobe After Effects", category: "video-motion", categoryName: "Motion Graphics & VFX Publicitarios", icon: "logos:adobe-after-effects", slug: "after-effects", level: 93, experience: "8+ años", color: "#9999FF", highlight: true, description: "Animación de logotipos, tipografías cinemáticas, intros de marca y efectos especiales." },
+  { name: "Final Cut Pro", category: "video-motion", categoryName: "Edición Pro & Renderizado Rápido", icon: "logos:final-cut-pro", slug: "final-cut-pro", level: 90, experience: "5+ años", color: "#3B82F6", description: "Edición cinematográfica fluida en macOS, timeline magnético y exportación optimizada." },
+  { name: "CapCut Pro", category: "video-motion", categoryName: "Edición Vertical Dinámica & Viral", icon: "simple-icons:capcut", slug: "capcut", level: 96, experience: "4+ años", color: "#FFFFFF", highlight: true, description: "Edición de ritmo rápido para TikTok, Instagram Reels y YouTube Shorts con subtitulado inteligente." },
+  { name: "DaVinci Resolve", category: "video-motion", categoryName: "Color Grading & Postproducción Pro", icon: "simple-icons:davinciresolve", slug: "davinci", level: 88, experience: "4+ años", color: "#E84D31", description: "Gradación de color avanzada con nodos, corrección tonal cinematográfica y postproducción." },
+  { name: "Adobe Audition", category: "video-motion", categoryName: "Masterización & Limpieza de Audio", icon: "logos:adobe-audition", slug: "audition", level: 88, experience: "5+ años", color: "#00E4BB", description: "Restauración de audio, eliminación de ruido de fondo, ecualización vocal y mezcla multitrack." },
+
+  // 7. DESARROLLO DE SOFTWARE, WEB & PLATAFORMAS E-COMMERCE
   { name: "TypeScript", category: "dev-cloud", categoryName: "Lenguaje Tipado para Web & API", icon: "logos:typescript-icon", slug: "typescript", level: 95, experience: "6+ años", color: "#3178C6", highlight: true, description: "Tipado estático robusto, interfaces escalables y arquitectura para frontend y backend." },
   { name: "JavaScript (ES6+)", category: "dev-cloud", categoryName: "Lenguaje de Programación Web", icon: "logos:javascript", slug: "javascript", level: 96, experience: "8+ años", color: "#F7DF1E", highlight: true, description: "Programación asíncrona, manipulación del DOM, closures y arquitecturas modulares." },
   { name: "HTML5 & CSS3 / Tailwind", category: "dev-cloud", categoryName: "Estructura Web & Estilos Modernos", icon: "logos:tailwindcss-icon", slug: "html5-tailwind", level: 99, experience: "11 años", color: "#06B6D4", highlight: true, description: "Etiquetado semántico, accesibilidad WCAG y diseño responsive con Tailwind CSS." },
+  { name: "React", category: "dev-cloud", categoryName: "Librería Frontend Moderna", icon: "logos:react", slug: "react", level: 96, experience: "6+ años", color: "#61DAFB", highlight: true, description: "Componentes reutilizables, hooks, virtual DOM y arquitecturas de interfaz reactivas." },
+  { name: "Next.js (App Router)", category: "dev-cloud", categoryName: "Framework React Full-Stack", icon: "simple-icons:nextdotjs", slug: "nextjs", level: 96, experience: "5+ años", color: "#FFFFFF", highlight: true, description: "Server Components, API Routes, SSR y optimización para producción." },
+  { name: "WordPress & Elementor", category: "dev-cloud", categoryName: "CMS & Portales Corporativos", icon: "logos:wordpress-icon", slug: "wordpress", level: 96, experience: "9+ años", color: "#21759B", highlight: true, description: "Desarrollo de sitios web corporativos y tiendas de alta velocidad." },
+  { name: "WooCommerce", category: "dev-cloud", categoryName: "E-Commerce Escalable en WordPress", icon: "logos:woocommerce-icon", slug: "woocommerce", level: 95, experience: "8+ años", color: "#96588A", highlight: true, description: "Tiendas online completas, pasarelas de pago, gestión de inventarios y cupones." },
+  { name: "Shopify", category: "dev-cloud", categoryName: "Plataforma E-Commerce Global", icon: "logos:shopify", slug: "shopify", level: 94, experience: "6+ años", color: "#7AB55C", highlight: true, description: "Configuración de tiendas de alto rendimiento, Liquid templating, checkout optimizado y apps." },
+  { name: "Firebase (Firestore)", category: "dev-cloud", categoryName: "Base de Datos en Tiempo Real NoSQL", icon: "logos:firebase", slug: "firebase", level: 92, experience: "5+ años", color: "#FFCA28", highlight: true, description: "Sincronización en vivo de documentos, autenticación y reglas de seguridad de datos." },
+  { name: "Vercel", category: "dev-cloud", categoryName: "Plataforma CI/CD & Serverless", icon: "simple-icons:vercel", slug: "vercel", level: 96, experience: "5+ años", color: "#FFFFFF", highlight: true, description: "Despliegues automáticos, analítica web y Serverless Functions." },
   { name: "Python", category: "dev-cloud", categoryName: "Backend, Scripts & IA", icon: "logos:python", slug: "python", level: 90, experience: "5+ años", color: "#3776AB", highlight: true, description: "Automatizaciones, scripting, procesamiento de datos y backend con FastAPI/Django." },
-  { name: "PHP & WordPress", category: "dev-cloud", categoryName: "Desarrollo Backend Dinámico", icon: "logos:php", slug: "php", level: 92, experience: "8+ años", color: "#777BB4", description: "Desarrollo backend dinámico, integración con CMS, APIs y bases de datos MySQL." },
+  { name: "PHP & Laravel / WP", category: "dev-cloud", categoryName: "Desarrollo Backend Dinámico", icon: "logos:php", slug: "php", level: 92, experience: "8+ años", color: "#777BB4", description: "Desarrollo backend dinámico, integración con CMS, APIs y bases de datos MySQL." },
   { name: "SQL", category: "dev-cloud", categoryName: "Consultas & Modelado de Datos", icon: "logos:mysql-icon", slug: "sql", level: 94, experience: "8+ años", color: "#4479A1", highlight: true, description: "Consultas complejas, joins indexados, optimización de esquemas y triggers." },
   { name: "Go (Golang)", category: "dev-cloud", categoryName: "Servicios Cloud & APIs Concurrencia", icon: "logos:go", slug: "golang", level: 84, experience: "3+ años", color: "#00ADD8", description: "Microservicios ultraveloces, concurrencia nativa con goroutines y APIs REST/gRPC." },
   { name: "Rust", category: "dev-cloud", categoryName: "Sistemas & Alto Rendimiento", icon: "simple-icons:rust", slug: "rust", level: 82, experience: "2+ años", color: "#FFFFFF", description: "Seguridad de memoria, concurrencia y desarrollo de microservicios de alto rendimiento." },
   { name: "C# / .NET", category: "dev-cloud", categoryName: "Servicios Empresariales & Backend", icon: "logos:c-sharp", slug: "csharp", level: 85, experience: "4+ años", color: "#239120", description: "Arquitecturas empresariales con .NET Core, APIs y servicios backend robustos." },
   { name: "C++", category: "dev-cloud", categoryName: "Lenguaje de Alto Rendimiento", icon: "logos:c-plusplus", slug: "cpp", level: 80, experience: "3+ años", color: "#00599C", description: "Algoritmos eficientes, programación orientada a objetos y estructuras de datos." },
-  { name: "Swift & Kotlin", category: "dev-cloud", categoryName: "Desarrollo Móvil iOS & Android", icon: "logos:swift", slug: "mobile-dev", level: 84, experience: "3+ años", color: "#F05138", description: "Desarrollo de interfaces y lógica para aplicaciones nativas y móviles." },
+  { name: "Swift & Kotlin (Mobile)", category: "dev-cloud", categoryName: "Desarrollo Móvil iOS & Android", icon: "logos:swift", slug: "mobile-dev", level: 84, experience: "3+ años", color: "#F05138", description: "Desarrollo de interfaces y lógica para aplicaciones nativas y móviles." },
   { name: "Bash & Linux Terminal", category: "dev-cloud", categoryName: "Automatización de Servidores", icon: "logos:bash-icon", slug: "bash-lang", level: 90, experience: "7+ años", color: "#4EAA25", description: "Scripts de despliegue, tareas programadas con cron y gestión de servidores Linux." },
-
-  // Bases de Datos & ORMs
   { name: "PostgreSQL", category: "dev-cloud", categoryName: "Base de Datos Relacional SQL", icon: "logos:postgresql", slug: "postgresql", level: 94, experience: "6+ años", color: "#4169E1", highlight: true, description: "Consultas avanzadas, RLS (Row Level Security), índices GiST/GIN y transacciones ACID." },
   { name: "Supabase (Postgres & Auth)", category: "dev-cloud", categoryName: "BaaS Postgres, Auth & Realtime", icon: "logos:supabase-icon", slug: "supabase", level: 95, experience: "4+ años", color: "#3ECF8E", highlight: true, description: "Postgres alojado en la nube con Edge Functions, almacenamiento de archivos y autenticación." },
-  { name: "MySQL & MariaDB", category: "dev-cloud", categoryName: "Bases de Datos Relacionales", icon: "logos:mysql", slug: "mysql", level: 94, experience: "8+ años", color: "#4479A1", highlight: true, description: "Gestión de bases de datos relacionales para aplicaciones web y sistemas de inventario." },
+  { name: "MySQL & MariaDB", category: "dev-cloud", categoryName: "Bases de Datos Relacionales", icon: "logos:mysql", slug: "mysql", level: 94, experience: "8+ años", color: "#4479A1", description: "Gestión de bases de datos relacionales para aplicaciones web y sistemas de inventario." },
   { name: "MongoDB", category: "dev-cloud", categoryName: "Base de Datos NoSQL en Documentos", icon: "logos:mongodb-icon", slug: "mongodb", level: 90, experience: "5+ años", color: "#47A248", description: "Esquemas flexibles JSON/BSON, agregaciones complejas y escalabilidad horizontal." },
   { name: "Redis", category: "dev-cloud", categoryName: "Base de Datos en Memoria & Caché", icon: "logos:redis", slug: "redis", level: 88, experience: "4+ años", color: "#DC382D", description: "Caché de alta velocidad, colas de mensajes y gestión de sesiones en tiempo real." },
   { name: "SQLite", category: "dev-cloud", categoryName: "Base de Datos Embebida Ligera", icon: "logos:sqlite", slug: "sqlite", level: 92, experience: "6+ años", color: "#003B57", description: "Persistencia local rápida sin servidor para aplicaciones móviles, utilidades y tests." },
-  { name: "Firebase (Firestore)", category: "dev-cloud", categoryName: "Base de Datos en Tiempo Real NoSQL", icon: "logos:firebase", slug: "firebase", level: 90, experience: "4+ años", color: "#FFCA28", description: "Sincronización en vivo de documentos, autenticación y reglas de seguridad de datos." },
   { name: "Prisma & Drizzle ORM", category: "dev-cloud", categoryName: "ORMs TypeScript Type-Safe", icon: "logos:prisma", slug: "prisma-drizzle", level: 92, experience: "4+ años", color: "#2D3748", description: "Migraciones automáticas, tipado estricto extremo y cliente de consultas moderno." },
-
-  // Frameworks & Infraestructura Cloud
-  { name: "Next.js (App Router)", category: "dev-cloud", categoryName: "Framework React Full-Stack", icon: "simple-icons:nextdotjs", slug: "nextjs", level: 96, experience: "5+ años", color: "#FFFFFF", highlight: true, description: "Server Components, API Routes, SSR y optimización para producción." },
-  { name: "Cloudflare", category: "dev-cloud", categoryName: "CDN, DNS, WAF & Edge Security", icon: "logos:cloudflare-icon", slug: "cloudflare", level: 92, experience: "5+ años", color: "#F38020", highlight: true, description: "Protección DDoS, SSL, WAF, enrutamiento rápido y Cloudflare Workers." },
-  { name: "Vercel", category: "dev-cloud", categoryName: "Plataforma CI/CD & Serverless", icon: "simple-icons:vercel", slug: "vercel", level: 95, experience: "5+ años", color: "#FFFFFF", highlight: true, description: "Despliegues automáticos, analítica web y Serverless Functions." },
+  { name: "Cloudflare", category: "dev-cloud", categoryName: "CDN, DNS, WAF & Edge Security", icon: "logos:cloudflare-icon", slug: "cloudflare", level: 92, experience: "5+ años", color: "#F38020", description: "Protección DDoS, SSL, WAF, enrutamiento rápido y Cloudflare Workers." },
   { name: "Hostinger", category: "dev-cloud", categoryName: "Hosting Cloud, VPS & SysAdmin", icon: "simple-icons:hostinger", slug: "hostinger", level: 95, experience: "7+ años", color: "#673AB7", description: "Configuración de servidores VPS, dominios, SSL y despliegues web." },
-  { name: "WordPress & Elementor", category: "dev-cloud", categoryName: "CMS & Portales Corporativos", icon: "logos:wordpress-icon", slug: "wordpress", level: 96, experience: "9+ años", color: "#21759B", description: "Desarrollo de sitios web corporativos y tiendas de alta velocidad." },
   { name: "GitHub & Git", category: "dev-cloud", categoryName: "Control de Versiones & Repositorios", icon: "simple-icons:github", slug: "github", level: 94, experience: "7+ años", color: "#FFFFFF", description: "Gestión de ramas, commits limpios y colaboración en equipo." },
 
-  // 4. INTELIGENCIA ARTIFICIAL & MODELOS GENERATIVOS (CONSOLIDADOS POR COMPAÑÍA SIN DUPLICADOS)
+  // 8. PRODUCTIVIDAD, GOOGLE WORKSPACE & MICROSOFT OFFICE
+  { name: "Microsoft 365 / Office Suite", category: "productivity", categoryName: "Suite Ofimática Empresarial", icon: "logos:microsoft-icon", slug: "microsoft-office", level: 98, experience: "11 años", color: "#D83B01", highlight: true, description: "Dominio exhaustivo del ecosistema Microsoft para reportes financieros, presentaciones y contratos legales." },
+  { name: "Microsoft Excel & Word", category: "productivity", categoryName: "Hojas de Cálculo & Documentos Pro", icon: "vscode-icons:file-type-excel", slug: "excel-word", level: 98, experience: "11 años", color: "#107C41", highlight: true, description: "Tablas dinámicas, fórmulas avanzadas y maquetación de contratos comerciales." },
+  { name: "Microsoft PowerPoint", category: "productivity", categoryName: "Presentaciones Corporativas de Ventas", icon: "vscode-icons:file-type-powerpoint", slug: "powerpoint", level: 97, experience: "11 años", color: "#C43E1C", description: "Diseño visual de diapositivas maestras, animaciones sutiles y portafolios ejecutivos para licitaciones." },
+  { name: "Microsoft Outlook & Teams", category: "productivity", categoryName: "Gestión de Correo & Comunicación", icon: "logos:microsoft-teams", slug: "outlook-teams", level: 95, experience: "10+ años", color: "#6264A7", description: "Manejo de cuentas corporativas Exchange y canales de trabajo en vivo." },
+  { name: "Microsoft OneDrive", category: "productivity", categoryName: "Sincronización Empresarial Segura", icon: "logos:microsoft-onedrive", slug: "onedrive", level: 94, experience: "8+ años", color: "#0078D4", description: "Respaldo continuo de proyectos, versiones históricas de archivos y sincronización multi-dispositivo." },
+  { name: "Google Workspace Suite", category: "productivity", categoryName: "Suite Cloud Corporativa Integral", icon: "logos:google-icon", slug: "google-workspace", level: 99, experience: "11 años", color: "#EA4335", highlight: true, description: "Administración integral de cuentas de empresa, dominios corporativos, flujos colaborativos y almacenamiento en la nube." },
+  { name: "Google Drive & Cloud", category: "productivity", categoryName: "Almacenamiento Cloud & Archivos", icon: "logos:google-drive", slug: "google-drive", level: 99, experience: "11 años", color: "#1FA463", description: "Organización de repositorios de marca, activos gráficos pesados y gestión de permisos compartidos." },
+  { name: "Google Docs & Sheets", category: "productivity", categoryName: "Documentos, Hojas de Cálculo & Datos", icon: "vscode-icons:file-type-excel", slug: "google-docs-sheets", level: 98, experience: "11 años", color: "#0F9D58", description: "Redacción de propuestas comerciales, briefs de diseño, fórmulas complejas y presupuestos." },
+  { name: "Google Slides & Forms", category: "productivity", categoryName: "Presentaciones Pitch & Encuestas", icon: "vscode-icons:file-type-powerpoint", slug: "google-slides-forms", level: 97, experience: "11 años", color: "#F4B400", description: "Diseño de presentaciones comerciales de alto impacto y captación de clientes." },
+  { name: "Gmail & Google Meet", category: "productivity", categoryName: "Correo Profesional & Videollamadas", icon: "logos:google-gmail", slug: "gmail-meet", level: 99, experience: "11 años", color: "#EA4335", description: "Gestión de comunicaciones corporativas, filtros avanzados y videoconferencias ejecutivas." },
+  { name: "Google Calendar", category: "productivity", categoryName: "Planificación & Agendas de Entrega", icon: "logos:google-calendar", slug: "google-calendar", level: 98, experience: "11 años", color: "#4285F4", description: "Organización de cronogramas de entrega, hitos de proyectos y sincronización horaria internacional." },
+
+  // 9. INTELIGENCIA ARTIFICIAL & MODELOS GENERATIVOS
   { name: "OpenAI (ChatGPT-4o & Codex)", category: "ai", categoryName: "LLMs, Canvas & Razonamiento", icon: "simple-icons:openai", slug: "openai", level: 98, experience: "4+ años", color: "#FFFFFF", highlight: true, description: "GPT-4o, razonamiento avanzado, Canvas y generación de contenido estratégico." },
   { name: "Google Gemini & AI Studio", category: "ai", categoryName: "Modelos Multimodales & Prototipado", icon: "logos:google-gemini", slug: "gemini", level: 98, experience: "3+ años", color: "#3B82F6", highlight: true, description: "Gemini 1.5/2.0 Pro & Flash, análisis multimodal y razonamiento lógico profundo." },
   { name: "Anthropic Claude 3.7 (Sonnet & MCP)", category: "ai", categoryName: "Arquitectura de Software & Agentes", icon: "logos:claude-icon", slug: "claude", level: 98, experience: "3+ años", color: "#D97706", highlight: true, description: "Claude 3.5 Sonnet / 3.7, arquitectura de software y análisis contextual extenso." },
@@ -287,49 +397,18 @@ export const SOFTWARE_TOOLS: SoftwareTool[] = [
   { name: "Perplexity AI", category: "ai", categoryName: "Investigación & Búsqueda Neuronal", icon: "simple-icons:perplexity", slug: "perplexity", level: 94, experience: "2+ años", color: "#FFFFFF", description: "Búsqueda avanzada con citas y análisis en tiempo real." },
   { name: "ElevenLabs AI", category: "ai", categoryName: "Síntesis de Voz & Audio IA", icon: "simple-icons:elevenlabs", slug: "elevenlabs", level: 93, experience: "2+ años", color: "#FFFFFF", description: "Clonación y generación de voz ultrarrealista para contenido publicitario." },
 
-  // 5. EDICIÓN DE VIDEO, MOTION GRAPHICS & AUDIO (AGRUPADOS POR COMPAÑÍA)
-  // Adobe Video Suite
-  { name: "Adobe Premiere Pro", category: "video-motion", categoryName: "Edición Audiovisual Comercial", icon: "logos:adobe-premiere", slug: "premiere", level: 94, experience: "8+ años", color: "#EA77FF", highlight: true, description: "Corte rítmico, corrección de color Lumetri, sincronización multicámara y formatos optimizados para difusión masiva." },
-  { name: "Adobe After Effects", category: "video-motion", categoryName: "Motion Graphics & VFX Publicitarios", icon: "logos:adobe-after-effects", slug: "after-effects", level: 92, experience: "8+ años", color: "#9999FF", highlight: true, description: "Animación de logotipos, tipografías cinemáticas, intros de marca y efectos especiales para comerciales de TV y redes." },
-  { name: "Adobe Audition", category: "video-motion", categoryName: "Masterización & Limpieza de Audio", icon: "logos:adobe-audition", slug: "audition", level: 88, experience: "5+ años", color: "#00E4BB", description: "Restauración de audio, eliminación de ruido de fondo, ecualización vocal y mezcla multitrack para locuciones publicitarias." },
-  // Blackmagic Design
-  { name: "DaVinci Resolve", category: "video-motion", categoryName: "Color Grading & Postproducción Pro", icon: "simple-icons:davinciresolve", slug: "davinci", level: 88, experience: "4+ años", color: "#E84D31", description: "Gradación de color avanzada con nodos, corrección tonal cinematográfica y postproducción de alta definición." },
-  // ByteDance
-  { name: "CapCut Pro", category: "video-motion", categoryName: "Edición Vertical Dinámica & Viral", icon: "simple-icons:capcut", slug: "capcut", level: 96, experience: "4+ años", color: "#FFFFFF", highlight: true, description: "Edición de ritmo rápido para TikTok, Instagram Reels y YouTube Shorts, subtitulado automático y efectos visuales de retención." },
-
-  // 6. MODELADO 3D, TEXTURIZADO & RENDERIZADO
+  // 10. MODELADO 3D, TEXTURIZADO & RENDERIZADO
   { name: "Cinema 4D & Octane", category: "3d-modeling", categoryName: "Modelado 3D & Render Fotorrealista", icon: "simple-icons:cinema4d", slug: "cinema4d", level: 90, experience: "6+ años", color: "#FFFFFF", highlight: true, description: "Renders fotorrealistas de productos farmacéuticos, cosméticos, botellas, materiales físicamente precisos e iluminación Octane." },
   { name: "Blender 3D", category: "3d-modeling", categoryName: "Modelado Poligonal & Cycles/Eevee", icon: "logos:blender", slug: "blender", level: 88, experience: "5+ años", color: "#F5792A", description: "Visualización arquitectónica de fachadas comerciales, estaciones de servicio, modelado volumétrico y renders con Cycles/Eevee." },
   { name: "KeyShot 3D", category: "3d-modeling", categoryName: "Renderizado Rápido de Producto", icon: "simple-icons:keyshot", slug: "keyshot", level: 86, experience: "4+ años", color: "#FFFFFF", description: "Mockups volumétricos de empaques, botellas médicas y displays para presentaciones ejecutivas a clientes." },
 
-  // 7. PRODUCTIVIDAD, GOOGLE WORKSPACE & MICROSOFT OFFICE (AGRUPADOS POR SUITE)
-  // Google Workspace
-  { name: "Google Workspace Suite", category: "productivity", categoryName: "Suite Cloud Corporativa Integral", icon: "logos:google-icon", slug: "google-workspace", level: 99, experience: "11 años", color: "#EA4335", highlight: true, description: "Administración integral de cuentas de empresa, dominios corporativos, flujos colaborativos y almacenamiento en la nube." },
-  { name: "Google Drive & Cloud", category: "productivity", categoryName: "Almacenamiento Cloud & Archivos", icon: "logos:google-drive", slug: "google-drive", level: 99, experience: "11 años", color: "#1FA463", description: "Organización de repositorios de marca, activos gráficos pesados y gestión de permisos compartidos." },
-  { name: "Google Docs & Sheets", category: "productivity", categoryName: "Documentos, Hojas de Cálculo & Datos", icon: "vscode-icons:file-type-excel", slug: "google-docs-sheets", level: 98, experience: "11 años", color: "#0F9D58", description: "Redacción de propuestas comerciales, briefs de diseño, fórmulas complejas y presupuestos." },
-  { name: "Google Slides & Forms", category: "productivity", categoryName: "Presentaciones Pitch & Encuestas", icon: "vscode-icons:file-type-powerpoint", slug: "google-slides-forms", level: 97, experience: "11 años", color: "#F4B400", description: "Diseño de presentaciones comerciales de alto impacto y captación de clientes." },
-  { name: "Gmail & Google Meet", category: "productivity", categoryName: "Correo Profesional & Videollamadas", icon: "logos:google-gmail", slug: "gmail-meet", level: 99, experience: "11 años", color: "#EA4335", description: "Gestión de comunicaciones corporativas, filtros avanzados y videoconferencias ejecutivas." },
-  { name: "Google Calendar", category: "productivity", categoryName: "Planificación & Agendas de Entrega", icon: "logos:google-calendar", slug: "google-calendar", level: 98, experience: "11 años", color: "#4285F4", description: "Organización de cronogramas de entrega, hitos de proyectos y sincronización horaria internacional." },
-
-  // Microsoft 365
-  { name: "Microsoft 365 / Office Suite", category: "productivity", categoryName: "Suite Ofimática Empresarial", icon: "logos:microsoft-icon", slug: "microsoft-office", level: 98, experience: "11 años", color: "#D83B01", highlight: true, description: "Dominio exhaustivo del ecosistema Microsoft para reportes financieros, presentaciones y contratos legales." },
-  { name: "Microsoft Excel & Word", category: "productivity", categoryName: "Hojas de Cálculo & Documentos Pro", icon: "vscode-icons:file-type-excel", slug: "excel-word", level: 98, experience: "11 años", color: "#107C41", highlight: true, description: "Tablas dinámicas, fórmulas avanzadas y maquetación de contratos comerciales." },
-  { name: "Microsoft PowerPoint", category: "productivity", categoryName: "Presentaciones Corporativas de Ventas", icon: "vscode-icons:file-type-powerpoint", slug: "powerpoint", level: 97, experience: "11 años", color: "#C43E1C", description: "Diseño visual de diapositivas maestras, animaciones sutiles y portafolios ejecutivos para licitaciones." },
-  { name: "Microsoft Outlook & Teams", category: "productivity", categoryName: "Gestión de Correo & Comunicación", icon: "logos:microsoft-teams", slug: "outlook-teams", level: 95, experience: "10+ años", color: "#6264A7", description: "Manejo de cuentas corporativas Exchange y canales de trabajo en vivo." },
-  { name: "Microsoft OneDrive", category: "productivity", categoryName: "Sincronización Empresarial Segura", icon: "logos:microsoft-onedrive", slug: "onedrive", level: 94, experience: "8+ años", color: "#0078D4", description: "Respaldo continuo de proyectos, versiones históricas de archivos y sincronización multi-dispositivo." },
-
-  // Gestión Ágil & Equipos
-  { name: "Slack", category: "productivity", categoryName: "Comunicación de Equipos Ágiles", icon: "logos:slack-icon", slug: "slack", level: 96, experience: "7+ años", color: "#4A154B", highlight: true, description: "Canales de trabajo, integraciones de bots, alertas y colaboración remota en tiempo real." },
-  { name: "Notion", category: "productivity", categoryName: "Documentación & Wikis de Equipo", icon: "simple-icons:notion", slug: "notion", level: 96, experience: "6+ años", color: "#FFFFFF", highlight: true, description: "Bases de datos de proyectos, guías de estilo y roadmaps." },
-  { name: "Linear", category: "productivity", categoryName: "Gestión Ágil de Tareas & Sprints", icon: "simple-icons:linear", slug: "linear", level: 92, experience: "3+ años", color: "#FFFFFF", highlight: true, description: "Planificación de ciclos de software, priorización e incidencias técnicas." },
-  { name: "Trello & Jira", category: "productivity", categoryName: "Tableros Kanban & Scrum", icon: "logos:trello", slug: "trello-jira", level: 94, experience: "8+ años", color: "#0079BF", description: "Seguimiento visual del flujo de trabajo y cumplimiento de plazos." },
-
-  // 8. IDES, EDITORES & HERRAMIENTAS DE DESARROLLO
+  // 11. IDES, EDITORES & HERRAMIENTAS DE DESARROLLO
   { name: "VS Code (Visual Studio Code)", category: "ides-tools", categoryName: "Editor Principal de Código", icon: "logos:visual-studio-code", slug: "vscode", level: 98, experience: "8+ años", color: "#007ACC", highlight: true, description: "Entorno completo con extensiones de depuración, snippets y linting." },
   { name: "WebStorm (JetBrains)", category: "ides-tools", categoryName: "IDE Profesional JavaScript", icon: "logos:webstorm", slug: "webstorm", level: 88, experience: "4+ años", color: "#00CDD7", description: "Refactorización avanzada y análisis de código estático profundo." },
   { name: "Postman API Client", category: "ides-tools", categoryName: "Pruebas & Documentación de APIs", icon: "logos:postman-icon", slug: "postman", level: 90, experience: "5+ años", color: "#FF6C37", description: "Pruebas de endpoints REST, simulación de respuestas y colecciones." },
   { name: "Docker Desktop", category: "ides-tools", categoryName: "Contenedores & Virtualización", icon: "logos:docker-icon", slug: "docker", level: 85, experience: "3+ años", color: "#2496ED", description: "Contenedores reproducibles para entornos de desarrollo y staging." },
   { name: "GitKraken & Git CLI", category: "ides-tools", categoryName: "Control de Versiones Gráfico & CLI", icon: "logos:gitkraken", slug: "gitkraken", level: 92, experience: "6+ años", color: "#179287", description: "Visualización de ramas complejas, resolución de conflictos y rebase interactivo." },
+  { name: "GitHub & Git", category: "ides-tools", categoryName: "Control de Versiones & Repositorios", icon: "simple-icons:github", slug: "github", level: 94, experience: "7+ años", color: "#FFFFFF", description: "Gestión de ramas, commits limpios y colaboración en equipo." },
   { name: "Terminal, Bash & Linux", category: "ides-tools", categoryName: "Línea de Comandos & Shell", icon: "logos:bash-icon", slug: "bash", level: 90, experience: "7+ años", color: "#4EAA25", description: "Comandos UNIX, automatizaciones y scripts de despliegue." },
 ];
 

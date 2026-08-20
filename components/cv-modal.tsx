@@ -24,10 +24,10 @@ import {
   WORK_EXPERIENCES, 
   EDUCATION_ITEMS, 
   TECHNICAL_COURSES,
-  SOFTWARE_TOOLS, 
+  CV_SOFTWARE_SKILLS, 
   REFERENCES 
 } from '@/data/portfolio-data';
-import { ManuelCabreraLogo } from '@/components/logo';
+import { ManuelCabreraLogo, WhatsAppOfficialIcon } from '@/components/logo';
 
 interface CVModalProps {
   isOpen: boolean;
@@ -153,28 +153,35 @@ export function CVModal({ isOpen, onClose }: CVModalProps) {
 
               <div className="flex flex-wrap items-center gap-x-3 gap-y-1.5 pt-1 text-xs text-white font-semibold">
                 <div className="flex items-center gap-1 bg-black/50 backdrop-blur-md px-2.5 py-1 rounded-md">
-                  <Phone className="w-3.5 h-3.5 text-indigo-400" />
-                  <a href={`tel:${PERSONAL_INFO.phone}`} className="hover:underline text-white font-bold">
-                    {PERSONAL_INFO.phoneFormatted}
+                  <Phone className="w-3.5 h-3.5 text-indigo-400 shrink-0" />
+                  <a href={`tel:${PERSONAL_INFO.phoneRaw}`} className="hover:underline text-white font-bold">
+                    Tel: {PERSONAL_INFO.phoneFormatted}
                   </a>
                 </div>
 
                 <div className="flex items-center gap-1 bg-black/50 backdrop-blur-md px-2.5 py-1 rounded-md">
-                  <Mail className="w-3.5 h-3.5 text-indigo-400" />
+                  <WhatsAppOfficialIcon className="w-3.5 h-3.5 text-emerald-400 shrink-0" />
+                  <a href={PERSONAL_INFO.whatsappUrl} target="_blank" rel="noopener noreferrer" className="hover:underline text-white font-bold">
+                    WS: {PERSONAL_INFO.whatsappFormatted}
+                  </a>
+                </div>
+
+                <div className="flex items-center gap-1 bg-black/50 backdrop-blur-md px-2.5 py-1 rounded-md">
+                  <Mail className="w-3.5 h-3.5 text-indigo-400 shrink-0" />
                   <a href={`mailto:${PERSONAL_INFO.email}`} className="hover:underline text-white font-semibold">
                     {PERSONAL_INFO.email}
                   </a>
                 </div>
 
                 <div className="flex items-center gap-1 bg-black/50 backdrop-blur-md px-2.5 py-1 rounded-md">
-                  <Globe className="w-3.5 h-3.5 text-indigo-400" />
+                  <Globe className="w-3.5 h-3.5 text-indigo-400 shrink-0" />
                   <a href="https://www.manuelcabrera.pro" target="_blank" rel="noopener noreferrer" className="hover:underline font-mono text-[11px] font-bold text-white">
                     www.manuelcabrera.pro
                   </a>
                 </div>
 
                 <div className="flex items-center gap-1 bg-black/50 backdrop-blur-md px-2.5 py-1 rounded-md text-xs">
-                  <MapPin className="w-3.5 h-3.5 text-indigo-400" />
+                  <MapPin className="w-3.5 h-3.5 text-indigo-400 shrink-0" />
                   <span className="text-zinc-200">{PERSONAL_INFO.location}</span>
                 </div>
               </div>
@@ -272,29 +279,28 @@ export function CVModal({ isOpen, onClose }: CVModalProps) {
             </div>
           </div>
 
-          {/* Software Tools */}
+          {/* Sistemas, Software y Herramientas Digitales (Sin Logos) */}
           <div className="space-y-3">
             <h2 className="text-xs font-black uppercase tracking-wider text-indigo-700 dark:text-indigo-400 flex items-center gap-1.5 pb-1">
               <Wrench className="w-3.5 h-3.5" />
-              <span>Software & Habilidades Técnicas</span>
+              <span>Sistemas, Software y Herramientas Digitales</span>
             </h2>
-            <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 text-xs">
-              <div className="p-3.5 rounded-2xl bg-zinc-100 dark:bg-zinc-800/60">
-                <p className="font-black text-black dark:text-white text-xs mb-1">Diseño & UI/UX</p>
-                <p className="text-[11px] text-zinc-900 dark:text-zinc-300 font-medium">Photoshop, Illustrator, InDesign, Figma, Adobe XD, Acrobat Pro.</p>
-              </div>
-              <div className="p-3.5 rounded-2xl bg-zinc-100 dark:bg-zinc-800/60">
-                <p className="font-black text-black dark:text-white text-xs mb-1">Marketing & Ads</p>
-                <p className="text-[11px] text-zinc-900 dark:text-zinc-300 font-medium">Meta Ads Manager, Google Ads, GA4, TikTok Ads, SEO/SEM.</p>
-              </div>
-              <div className="p-3.5 rounded-2xl bg-zinc-100 dark:bg-zinc-800/60">
-                <p className="font-black text-black dark:text-white text-xs mb-1">Software & Web</p>
-                <p className="text-[11px] text-zinc-900 dark:text-zinc-300 font-medium">TypeScript, Next.js, React, Node.js, PostgreSQL, Tailwind.</p>
-              </div>
-              <div className="p-3.5 rounded-2xl bg-zinc-100 dark:bg-zinc-800/60">
-                <p className="font-black text-black dark:text-white text-xs mb-1">3D, Video & IA</p>
-                <p className="text-[11px] text-zinc-900 dark:text-zinc-300 font-medium">Blender 3D, Cinema 4D, Gemini Pro, ChatGPT, Midjourney.</p>
-              </div>
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-2.5 text-xs">
+              {CV_SOFTWARE_SKILLS.map((item, idx) => (
+                <div 
+                  key={idx} 
+                  className="p-3.5 rounded-2xl bg-zinc-100 dark:bg-zinc-800/60 text-zinc-950 dark:text-zinc-100 flex flex-col justify-between"
+                >
+                  <div>
+                    <p className="font-black text-black dark:text-white text-xs mb-1 leading-snug">
+                      {item.category}
+                    </p>
+                    <p className="text-[11px] text-zinc-800 dark:text-zinc-300 font-medium leading-relaxed">
+                      {item.tools}
+                    </p>
+                  </div>
+                </div>
+              ))}
             </div>
           </div>
 
