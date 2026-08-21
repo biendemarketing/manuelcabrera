@@ -2,6 +2,7 @@
 
 import React from 'react';
 import Image from 'next/image';
+import Link from 'next/link';
 import { 
   Mail, 
   Phone, 
@@ -12,7 +13,8 @@ import {
   Award, 
   Wrench, 
   User,
-  CheckCircle2
+  Printer,
+  ArrowLeft
 } from 'lucide-react';
 import { 
   PERSONAL_INFO, 
@@ -25,10 +27,38 @@ import {
 import { ManuelCabreraLogo, WhatsAppOfficialIcon } from '@/components/logo';
 
 export function PrintableCVView() {
+  const handlePrint = () => {
+    window.print();
+  };
+
   return (
-    <div className="min-h-screen w-full bg-zinc-950 text-zinc-100 selection:bg-zinc-800 selection:text-white print:bg-white print:text-black">
+    <div className="min-h-screen w-full bg-zinc-50 text-zinc-900 selection:bg-zinc-200 selection:text-zinc-950 print:bg-white print:text-black">
       
-      {/* ── 100% FULL-WIDTH SEAMLESS CV (Ocupa todo el ancho disponible sin restricciones de contenedor) ── */}
+      {/* Barra superior de utilidades (Solo en pantalla, se oculta al imprimir) */}
+      <header className="sticky top-0 z-30 w-full bg-white/90 backdrop-blur-md border-b border-zinc-200/80 px-4 sm:px-8 py-3.5 print:hidden">
+        <div className="w-full flex items-center justify-between gap-4">
+          <Link
+            href="/"
+            className="inline-flex items-center gap-2 text-xs sm:text-sm font-bold text-zinc-700 hover:text-zinc-950 transition-colors"
+          >
+            <ArrowLeft className="w-4 h-4" />
+            <span>Volver al Portafolio</span>
+          </Link>
+
+          <div className="flex items-center gap-2.5">
+            <button
+              onClick={handlePrint}
+              className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-zinc-900 hover:bg-zinc-800 text-white text-xs sm:text-sm font-bold transition-all shadow-sm cursor-pointer"
+              title="Imprimir o guardar como PDF"
+            >
+              <Printer className="w-4 h-4" />
+              <span>Imprimir / Guardar PDF</span>
+            </button>
+          </div>
+        </div>
+      </header>
+
+      {/* ── 100% FULL-WIDTH SEAMLESS CV ── */}
       <main className="w-full py-4 sm:py-6 md:py-8 px-3 sm:px-6 md:px-8 lg:px-12 print:p-0 print:m-0">
         <div id="cv-printable-sheet" className="w-full print:p-0 print:m-0">
           
@@ -125,23 +155,23 @@ export function PrintableCVView() {
 
           {/* 2. RESUMEN PROFESIONAL & FILOSOFÍA (A TODO EL ANCHO) */}
           <section className="w-full pb-6 mb-8 print:mb-6">
-            <h2 className="text-xs font-black uppercase tracking-wider text-indigo-400 print:text-indigo-800 mb-3 flex items-center gap-1.5">
+            <h2 className="text-xs font-black uppercase tracking-wider text-indigo-700 mb-3 flex items-center gap-1.5">
               <User className="w-4 h-4" />
               <span>Perfil Profesional & Filosofía de Trabajo</span>
             </h2>
-            <p className="text-sm sm:text-base font-normal leading-relaxed text-zinc-100 print:text-black">
+            <p className="text-sm sm:text-base font-normal leading-relaxed text-zinc-900">
               {PERSONAL_INFO.aboutSummary}
             </p>
-            <div className="mt-3 p-4 rounded-xl border-l-4 bg-zinc-900 border-indigo-400 text-zinc-200 print:bg-zinc-100 print:border-indigo-600 print:text-black">
-              <p className="text-xs sm:text-sm font-semibold italic">
+            <div className="mt-3 p-4 rounded-xl border-l-4 bg-zinc-100 border-indigo-600 text-zinc-900">
+              <p className="text-xs sm:text-sm font-semibold italic text-zinc-800">
                 &quot;{PERSONAL_INFO.designPhilosophy}&quot;
               </p>
             </div>
           </section>
 
-          {/* 3. FORMACIÓN ACADÉMICA, DIPLOMADOS & CURSOS TÉCNICOS ── PRIMERO QUE LO LABORAL ── */}
+          {/* 3. FORMACIÓN ACADÉMICA, DIPLOMADOS & CURSOS TÉCNICOS */}
           <section className="w-full pb-6 mb-8 print:mb-6">
-            <h2 className="text-xs font-black uppercase tracking-wider text-indigo-400 print:text-indigo-800 mb-4 flex items-center gap-1.5">
+            <h2 className="text-xs font-black uppercase tracking-wider text-indigo-700 mb-4 flex items-center gap-1.5">
               <GraduationCap className="w-4 h-4" />
               <span>Formación Académica & Diplomados</span>
             </h2>
@@ -150,15 +180,15 @@ export function PrintableCVView() {
               {EDUCATION_ITEMS.map((edu) => (
                 <div 
                   key={edu.id} 
-                  className="p-5 rounded-2xl bg-zinc-900 text-zinc-100 print:bg-zinc-100 print:text-black"
+                  className="p-5 rounded-2xl bg-zinc-100 border border-zinc-200/80 text-zinc-900"
                 >
-                  <p className="font-black text-sm sm:text-base text-white print:text-black">
+                  <p className="font-black text-sm sm:text-base text-zinc-950">
                     {edu.degree}
                   </p>
-                  <p className="font-bold text-xs sm:text-sm mt-1 text-indigo-400 print:text-indigo-800">
+                  <p className="font-bold text-xs sm:text-sm mt-1 text-indigo-700">
                     {edu.institution}
                   </p>
-                  <p className="text-xs font-mono font-bold mt-1.5 text-zinc-400 print:text-zinc-700">
+                  <p className="text-xs font-mono font-bold mt-1.5 text-zinc-600">
                     {edu.period} • {edu.statusLabel}
                   </p>
                 </div>
@@ -166,7 +196,7 @@ export function PrintableCVView() {
             </div>
 
             {/* Cursos Técnicos & Certificaciones Especializadas */}
-            <h3 className="text-xs font-black uppercase tracking-wider text-indigo-400 print:text-indigo-800 mb-3 flex items-center gap-1.5">
+            <h3 className="text-xs font-black uppercase tracking-wider text-indigo-700 mb-3 flex items-center gap-1.5">
               <Award className="w-4 h-4" />
               <span>Cursos Técnicos & Certificaciones Especializadas (INFOTEP, IDAD, CETEP...)</span>
             </h3>
@@ -175,17 +205,17 @@ export function PrintableCVView() {
               {TECHNICAL_COURSES.map((course, cIdx) => (
                 <div 
                   key={cIdx} 
-                  className="p-3.5 rounded-2xl bg-zinc-900 text-zinc-100 print:bg-zinc-100 print:text-black flex flex-col justify-between"
+                  className="p-3.5 rounded-2xl bg-zinc-100 border border-zinc-200/80 text-zinc-900 flex flex-col justify-between"
                 >
                   <div>
-                    <p className="font-black text-xs text-white print:text-black leading-snug">
+                    <p className="font-black text-xs text-zinc-950 leading-snug">
                       {course.name}
                     </p>
-                    <p className="text-indigo-400 print:text-indigo-800 text-[11px] font-bold mt-1">
+                    <p className="text-indigo-700 text-[11px] font-bold mt-1">
                       {course.institution}
                     </p>
                   </div>
-                  <span className="text-[10px] font-bold font-mono px-2 py-0.5 rounded-md bg-zinc-800 text-zinc-300 print:bg-zinc-200 print:text-black w-fit mt-2">
+                  <span className="text-[10px] font-bold font-mono px-2 py-0.5 rounded-md bg-zinc-200 text-zinc-800 w-fit mt-2">
                     {course.category}
                   </span>
                 </div>
@@ -193,9 +223,9 @@ export function PrintableCVView() {
             </div>
           </section>
 
-          {/* 4. EXPERIENCIA LABORAL & TRAYECTORIA PROFESIONAL (A TODO EL ANCHO) */}
+          {/* 4. EXPERIENCIA LABORAL & TRAYECTORIA PROFESIONAL */}
           <section className="w-full pb-6 mb-8 print:mb-6">
-            <h2 className="text-xs font-black uppercase tracking-wider text-indigo-400 print:text-indigo-800 mb-4 flex items-center gap-1.5">
+            <h2 className="text-xs font-black uppercase tracking-wider text-indigo-700 mb-4 flex items-center gap-1.5">
               <Briefcase className="w-4 h-4" />
               <span>Experiencia Laboral & Trayectoria Profesional</span>
             </h2>
@@ -204,24 +234,24 @@ export function PrintableCVView() {
               {WORK_EXPERIENCES.map((exp) => (
                 <div 
                   key={exp.id} 
-                  className="w-full p-5 sm:p-6 rounded-2xl bg-zinc-900 text-zinc-100 print:bg-zinc-100 print:text-black"
+                  className="w-full p-5 sm:p-6 rounded-2xl bg-zinc-100 border border-zinc-200/80 text-zinc-900"
                 >
                   <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-1.5 mb-2">
                     <div>
-                      <h3 className="text-base sm:text-lg font-black text-white print:text-black">
+                      <h3 className="text-base sm:text-lg font-black text-zinc-950">
                         {exp.role}
                       </h3>
-                      <p className="text-xs sm:text-sm font-bold text-indigo-400 print:text-indigo-800">
-                        {exp.company} • <span className="font-semibold text-zinc-300 print:text-zinc-800">{exp.location}</span>
+                      <p className="text-xs sm:text-sm font-bold text-indigo-700">
+                        {exp.company} • <span className="font-semibold text-zinc-700">{exp.location}</span>
                       </p>
                     </div>
-                    <span className="text-xs font-black font-mono px-3 py-1 rounded-full w-fit shadow-xs bg-zinc-800 text-white print:bg-zinc-200 print:text-black">
+                    <span className="text-xs font-black font-mono px-3 py-1 rounded-full w-fit shadow-xs bg-zinc-200 text-zinc-900">
                       {exp.period}
                     </span>
                   </div>
 
                   {/* Responsabilidades */}
-                  <ul className="mt-3 space-y-1.5 text-xs sm:text-sm list-disc list-inside font-medium text-zinc-200 print:text-black">
+                  <ul className="mt-3 space-y-1.5 text-xs sm:text-sm list-disc list-inside font-medium text-zinc-800">
                     {exp.responsibilities.map((resp, idx) => (
                       <li key={idx} className="leading-relaxed">
                         <span>{resp}</span>
@@ -234,7 +264,7 @@ export function PrintableCVView() {
                     {exp.skills.map((skill, sIdx) => (
                       <span
                         key={sIdx}
-                        className="text-[11px] font-bold px-2.5 py-1 rounded-lg bg-zinc-800 text-zinc-200 print:bg-zinc-200 print:text-black"
+                        className="text-[11px] font-bold px-2.5 py-1 rounded-lg bg-zinc-200 text-zinc-900"
                       >
                         {skill}
                       </span>
@@ -245,9 +275,9 @@ export function PrintableCVView() {
             </div>
           </section>
 
-          {/* 5. SISTEMAS, SOFTWARE Y HERRAMIENTAS DIGITALES (A TODO EL ANCHO - SIN LOGOS) */}
+          {/* 5. SISTEMAS, SOFTWARE Y HERRAMIENTAS DIGITALES */}
           <section className="w-full pb-6 mb-8 print:mb-6">
-            <h2 className="text-xs font-black uppercase tracking-wider text-indigo-400 print:text-indigo-800 mb-3 flex items-center gap-1.5">
+            <h2 className="text-xs font-black uppercase tracking-wider text-indigo-700 mb-3 flex items-center gap-1.5">
               <Wrench className="w-4 h-4" />
               <span>Sistemas, Software y Herramientas Digitales</span>
             </h2>
@@ -256,13 +286,13 @@ export function PrintableCVView() {
               {CV_SOFTWARE_SKILLS.map((item, idx) => (
                 <div 
                   key={idx} 
-                  className="p-3.5 sm:p-4 rounded-2xl bg-zinc-900 text-zinc-100 print:bg-zinc-100 print:text-black flex flex-col justify-between"
+                  className="p-3.5 sm:p-4 rounded-2xl bg-zinc-100 border border-zinc-200/80 text-zinc-900 flex flex-col justify-between"
                 >
                   <div>
-                    <p className="font-black text-xs sm:text-[13px] text-white print:text-black mb-1.5 leading-snug">
+                    <p className="font-black text-xs sm:text-[13px] text-zinc-950 mb-1.5 leading-snug">
                       {item.category}
                     </p>
-                    <p className="text-xs font-medium leading-relaxed text-zinc-300 print:text-black">
+                    <p className="text-xs font-medium leading-relaxed text-zinc-700">
                       {item.tools}
                     </p>
                   </div>
@@ -271,9 +301,9 @@ export function PrintableCVView() {
             </div>
           </section>
 
-          {/* 6. REFERENCIAS PROFESIONALES (A TODO EL ANCHO) */}
+          {/* 6. REFERENCIAS PROFESIONALES */}
           <section className="w-full pt-2">
-            <h2 className="text-xs font-black uppercase tracking-wider text-indigo-400 print:text-indigo-800 mb-3 flex items-center gap-1.5">
+            <h2 className="text-xs font-black uppercase tracking-wider text-indigo-700 mb-3 flex items-center gap-1.5">
               <Award className="w-4 h-4" />
               <span>Referencias Comerciales & Profesionales</span>
             </h2>
@@ -282,12 +312,12 @@ export function PrintableCVView() {
               {REFERENCES.map((ref, idx) => (
                 <div 
                   key={idx} 
-                  className="p-4 rounded-2xl bg-zinc-900 print:bg-zinc-100"
+                  className="p-4 rounded-2xl bg-zinc-100 border border-zinc-200/80 text-zinc-900"
                 >
-                  <p className="font-black text-sm truncate text-white print:text-black">{ref.name}</p>
-                  <p className="font-bold text-xs truncate text-indigo-400 print:text-indigo-800">{ref.role}</p>
-                  <p className="text-xs truncate font-semibold text-zinc-300 print:text-zinc-800">{ref.company}</p>
-                  <p className="font-black font-mono text-xs mt-1.5 text-zinc-200 print:text-black">{ref.phone}</p>
+                  <p className="font-black text-sm truncate text-zinc-950">{ref.name}</p>
+                  <p className="font-bold text-xs truncate text-indigo-700">{ref.role}</p>
+                  <p className="text-xs truncate font-semibold text-zinc-700">{ref.company}</p>
+                  <p className="font-black font-mono text-xs mt-1.5 text-zinc-900">{ref.phone}</p>
                 </div>
               ))}
             </div>
@@ -296,7 +326,7 @@ export function PrintableCVView() {
         </div>
       </main>
 
-      {/* ── CSS PRINT RULES (Impresión libre sin restricciones de ancho ni márgenes fijos) ── */}
+      {/* ── CSS PRINT RULES ── */}
       <style jsx global>{`
         @media print {
           @page {
@@ -313,6 +343,10 @@ export function PrintableCVView() {
             padding: 0 !important;
             width: 100% !important;
             max-width: 100% !important;
+          }
+
+          header {
+            display: none !important;
           }
 
           main {
@@ -336,13 +370,11 @@ export function PrintableCVView() {
             max-width: 100% !important;
           }
 
-          /* 1. Evita que los títulos queden solos al final de una hoja */
           h1, h2, h3, h4 {
             break-after: avoid !important;
             page-break-after: avoid !important;
           }
 
-          /* 2. Evita que ninguna tarjeta ni bloque de información se corte por la mitad */
           div[class*="rounded-2xl"], 
           div[class*="rounded-3xl"], 
           div[class*="p-4"], 
