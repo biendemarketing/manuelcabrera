@@ -8,7 +8,7 @@ import { useIntro } from './intro-context';
 export function IntroSplash() {
   const { completeIntro } = useIntro();
   const [isVisible, setIsVisible] = useState(true);
-  const [isRendered, setIsRendered] = useState(false);
+  const [isRendered, setIsRendered] = useState(true);
 
   useEffect(() => {
     // Detect bots, crawlers, or Lighthouse to immediately complete intro and avoid LCP penalties
@@ -27,16 +27,14 @@ export function IntroSplash() {
       // Safe fallback
     }
 
-    setIsRendered(true);
-
-    // Snappy duration: 0.9s display + clean exit
+    // Snappy duration: 1.0s display + clean exit
     const fadeTimer = setTimeout(() => {
       setIsVisible(false);
       completeIntro();
       try {
         sessionStorage.setItem('mc_intro_shown', 'true');
       } catch {}
-    }, 900);
+    }, 1000);
 
     const cleanupTimer = setTimeout(() => {
       setIsRendered(false);

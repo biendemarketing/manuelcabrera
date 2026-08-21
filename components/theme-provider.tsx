@@ -22,13 +22,13 @@ function subscribe(callback: () => void) {
 }
 
 function getSnapshot(): Theme {
-  if (typeof window === 'undefined') return 'dark';
+  if (typeof window === 'undefined') return 'light';
   const saved = localStorage.getItem('mc_portfolio_theme');
-  return saved === 'light' ? 'light' : 'dark';
+  return saved === 'dark' ? 'dark' : 'light';
 }
 
 function getServerSnapshot(): Theme {
-  return 'dark';
+  return 'light';
 }
 
 export function ThemeProvider({ children }: { children: React.ReactNode }) {

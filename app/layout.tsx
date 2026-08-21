@@ -636,7 +636,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="es-DO" className={`dark ${dmSans.variable} ${inter.variable}`} suppressHydrationWarning>
+    <html lang="es-DO" className={`light ${dmSans.variable} ${inter.variable}`} suppressHydrationWarning>
       <head>
         {/* ── Favicon & Icons ── */}
         <link rel="icon" href="/favicon.ico" sizes="any" />
@@ -706,15 +706,16 @@ export default function RootLayout({
             __html: `
               try {
                 var theme = localStorage.getItem('mc_portfolio_theme');
-                if (theme === 'light') {
-                  document.documentElement.classList.remove('dark');
-                  document.documentElement.classList.add('light');
-                } else {
+                if (theme === 'dark') {
                   document.documentElement.classList.add('dark');
                   document.documentElement.classList.remove('light');
+                } else {
+                  document.documentElement.classList.remove('dark');
+                  document.documentElement.classList.add('light');
                 }
               } catch (e) {
-                document.documentElement.classList.add('dark');
+                document.documentElement.classList.remove('dark');
+                document.documentElement.classList.add('light');
               }
             `,
           }}

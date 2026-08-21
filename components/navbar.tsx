@@ -112,7 +112,9 @@ export function Navbar({ onOpenCV }: NavbarProps) {
             title="Manuel Cabrera - Inicio"
           >
             <div className="flex items-center justify-center group-hover:scale-105 transition-transform duration-200">
-              <ManuelCabreraLogo className="h-8 sm:h-9 w-auto text-zinc-950 dark:text-white drop-shadow-md" />
+              <ManuelCabreraLogo className={`h-8 sm:h-9 w-auto drop-shadow-md transition-colors duration-200 ${
+                hasSolidBg ? 'text-zinc-950 dark:text-white' : 'text-white'
+              }`} />
             </div>
           </Link>
 
@@ -128,13 +130,17 @@ export function Navbar({ onOpenCV }: NavbarProps) {
                 toggleTheme();
               }}
               aria-label="Cambiar tema oscuro/claro"
-              className="p-2 text-zinc-900 hover:text-black dark:text-zinc-100 dark:hover:text-white transition-all cursor-pointer active:scale-90 bg-transparent border-0 shadow-none outline-none"
+              className={`p-2 transition-all cursor-pointer active:scale-90 bg-transparent border-0 shadow-none outline-none ${
+                hasSolidBg
+                  ? 'text-zinc-900 hover:text-black dark:text-zinc-100 dark:hover:text-white'
+                  : 'text-white hover:text-amber-300'
+              }`}
               title="Cambiar tema claro/oscuro"
             >
               {theme === 'dark' ? (
                 <Sun className="w-5 h-5 text-amber-400 drop-shadow-sm" />
               ) : (
-                <Moon className="w-5 h-5 text-zinc-900 drop-shadow-sm" />
+                <Moon className={`w-5 h-5 drop-shadow-sm ${hasSolidBg ? 'text-zinc-900 dark:text-zinc-100' : 'text-white'}`} />
               )}
             </button>
 
@@ -147,7 +153,11 @@ export function Navbar({ onOpenCV }: NavbarProps) {
                 setMenuOpen((prev) => !prev);
               }}
               aria-label={menuOpen ? "Cerrar menú" : "Abrir menú de navegación"}
-              className="p-2 text-zinc-950 hover:text-black dark:text-white dark:hover:text-zinc-200 active:scale-90 transition-all cursor-pointer flex items-center justify-center bg-transparent border-0 shadow-none outline-none"
+              className={`p-2 active:scale-90 transition-all cursor-pointer flex items-center justify-center bg-transparent border-0 shadow-none outline-none ${
+                hasSolidBg
+                  ? 'text-zinc-950 hover:text-black dark:text-white dark:hover:text-zinc-200'
+                  : 'text-white hover:text-zinc-200'
+              }`}
               title={menuOpen ? "Cerrar menú" : "Abrir menú"}
             >
               {menuOpen ? (

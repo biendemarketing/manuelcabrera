@@ -21,42 +21,36 @@ export interface BentoCardItem {
 
 export const DEFAULT_APTITUDES_CARDS: BentoCardItem[] = [
   {
-    color: '#09090b',
     title: 'Estrategia de Marketing & ROAS',
     description: 'Planificación de campañas con metas cuantitativas claras orientadas a la rentabilidad comercial y retorno de inversión.',
     label: 'Performance',
     iconName: 'solar:chart-2-bold-duotone'
   },
   {
-    color: '#09090b',
     title: 'Comunicación Asertiva & Dirección',
     description: 'Elocuencia para defender conceptos creativos y alinear visiones estratégicas con comités directivos y clientes.',
     label: 'Dirección',
     iconName: 'solar:chat-round-line-bold-duotone'
   },
   {
-    color: '#09090b',
     title: 'Liderazgo & Capacitación',
     description: 'Experiencia coordinando equipos de diseño, estandarizando flujos ágiles y normativas de marca corporativas.',
     label: 'Liderazgo',
     iconName: 'solar:users-group-two-rounded-bold-duotone'
   },
   {
-    color: '#09090b',
     title: 'Toma de Decisiones Basada en Datos',
     description: 'Análisis de métricas, benchmarks y comportamiento del consumidor para resolver retos gráficos y de conversión.',
     label: 'Data-Driven',
     iconName: 'solar:pie-chart-2-bold-duotone'
   },
   {
-    color: '#09090b',
     title: 'Adaptabilidad & Entregas Ágiles',
     description: 'Respuesta efectiva en entornos dinámicos, cambios de último momento y lanzamientos comerciales simultáneos.',
     label: 'Agilidad',
     iconName: 'solar:bolt-bold-duotone'
   },
   {
-    color: '#09090b',
     title: 'Gestión Integral del Tiempo',
     description: 'Priorización estricta de proyectos complejos manteniendo acabados de calidad internacional y puntualidad.',
     label: 'Eficiencia',
@@ -559,16 +553,16 @@ export const MagicBento: React.FC<MagicBentoProps> = ({
           const cardProps = {
             className: baseClassName,
             style: {
-              backgroundColor: card.color || '#09090b',
+              ...(card.color ? { backgroundColor: card.color } : {}),
               '--glow-color': glowColor
             } as React.CSSProperties
           };
 
           const cardHeader = (
             <div className="magic-bento-card__header flex items-center justify-between w-full">
-              <div className="w-10 h-10 rounded-xl bg-purple-950/60 border border-purple-700/50 flex items-center justify-center text-purple-300 shadow-sm">
+              <div className="w-10 h-10 rounded-xl bg-purple-100 dark:bg-purple-950/60 border border-purple-200 dark:border-purple-700/50 flex items-center justify-center text-purple-700 dark:text-purple-300 shadow-xs">
                 {card.iconName ? (
-                  <Icon icon={card.iconName} className="w-5 h-5 text-purple-300" />
+                  <Icon icon={card.iconName} className="w-5 h-5 text-purple-700 dark:text-purple-300" />
                 ) : card.icon ? (
                   card.icon
                 ) : null}
